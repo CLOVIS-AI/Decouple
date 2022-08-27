@@ -5,4 +5,4 @@ import opensavvy.ui.material.basic.MaterialButtons
 import opensavvy.ui.material.basic.MaterialTexts
 import opensavvy.ui.material.layout.MaterialLinearLayouts
 
-expect interface MaterialUI : UI, MaterialButtons, MaterialLinearLayouts, MaterialTexts
+actual interface MaterialUI : UI, MaterialButtons, MaterialLinearLayouts, MaterialTexts
