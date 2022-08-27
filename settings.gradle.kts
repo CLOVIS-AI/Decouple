@@ -1,4 +1,4 @@
-rootProject.name = "OpenSavvy UI"
+rootProject.name = "OpenSavvy-UI"
 
 pluginManagement {
 	repositories {
