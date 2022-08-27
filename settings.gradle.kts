@@ -12,6 +12,9 @@ plugins {
 	id("de.fayard.refreshVersions") version "0.40.2"
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 include(
-	"core"
+	"core",
+	"material",
 )
