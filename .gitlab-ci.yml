@@ -8,6 +8,7 @@
 stages:
   - build
   - test
+  - deploy
 
 sast:
   stage: test
@@ -32,3 +33,19 @@ demo:web:build:
     name: review-demo/$CI_COMMIT_REF_SLUG
     url: https://$CI_PROJECT_NAMESPACE.$CI_PAGES_DOMAIN/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist-web/index.html
     deployment_tier: development
+
+pages:
+  image: alpine:latest
+  stage: deploy
+  needs:
+    - job: demo:web:build
+      artifacts: true
+  script:
+    - mkdir -p public/demo
+    - mv dist-web/* public/demo
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - when: never
