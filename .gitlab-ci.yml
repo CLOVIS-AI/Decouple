@@ -6,8 +6,29 @@
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
-- test
+  - build
+  - test
+
 sast:
   stage: test
+
 include:
-- template: Security/SAST.gitlab-ci.yml
+  - template: Security/SAST.gitlab-ci.yml
+
+demo:web:build:
+  needs: [ ]
+  stage: build
+  image: gradle:jdk17-focal
+
+  script:
+    - ./gradlew demo:jsProduction
+    - mv build/js/packages/OpenSavvy-UI-demo/kotlin/dist dist-web
+
+  artifacts:
+    paths:
+      - dist-web
+
+  environment:
+    name: review-demo/$CI_COMMIT_REF_SLUG
+    url: https://$CI_PROJECT_NAMESPACE.$CI_PAGES_DOMAIN/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist-web/index.html
+    deployment_tier: development
