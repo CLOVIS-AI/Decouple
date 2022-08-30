@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectStartupSharedConfiguration">
+    <configurations>
+      <configuration id="Gradle.Demo » Compile " name="Demo » Compile " />
+      <configuration id="Gradle.Demo » Host" name="Demo » Host" />
+    </configurations>
+  </component>
+</project>
