@@ -22,7 +22,7 @@ In turn, they delegate their visual representation to the stateless variant.
 Because they are available at the package top-level, manage some of their state directly, and have default values for most parameters, they are much more convenient to use in end-user code or to create your own components on top of existing ones.
 
 You may recognize this pattern as [state hoisting](https://developer.android.com/jetpack/compose/state#state-hoisting).
-If you have used web-based reactive frameworks before, note that this is not the same as saying stateless components are controlled and stateful components are uncontrolled: in OpenSavvy UI, all components are controlled.
+If you have used web-based reactive frameworks before, note that this is not the same as saying stateful components are controlled and stateless components are uncontrolled: in OpenSavvy UI, all components are uncontrolled.
 The stateful-ness of standard components refers to their non-primary functions ("is this component loading") but never to their primary function ("display 'Hello'").
 
 # Package opensavvy.ui.core
