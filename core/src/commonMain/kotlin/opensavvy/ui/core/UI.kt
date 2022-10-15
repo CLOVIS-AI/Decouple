@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import opensavvy.ui.core.basic.Buttons
+import opensavvy.ui.core.basic.Chips
 import opensavvy.ui.core.basic.Texts
 import opensavvy.ui.core.layout.LinearLayouts
 
@@ -53,7 +54,7 @@ import opensavvy.ui.core.layout.LinearLayouts
  * - it is easy for end users to replace the implementation of a component kind by another one,
  * - you may provide multiple implementations of entire component kinds.
  */
-interface UI : LinearLayouts, Buttons, Texts {
+interface UI : LinearLayouts, Buttons, Texts, Chips {
 
 	/**
 	 * Installs this UI implementation.
