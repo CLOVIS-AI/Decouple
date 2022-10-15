@@ -4,8 +4,7 @@ import androidx.compose.runtime.*
 import kotlinx.coroutines.delay
 import kotlinx.datetime.Clock
 import opensavvy.ui.core.basic.*
-import opensavvy.ui.core.layout.Column
-import opensavvy.ui.core.layout.Row
+import opensavvy.ui.core.layout.*
 import opensavvy.ui.core.progression.ReportProgression
 import opensavvy.ui.core.progression.loading
 import kotlin.random.Random
@@ -55,7 +54,7 @@ fun main() {
 				}
 			}
 
-			Row {
+			Row(horizontal = Arrangement.SpaceBetween, alignment = Alignment.End) {
 				Text("Regular chips :")
 
 				ChipGroup {
@@ -158,6 +157,13 @@ fun main() {
 					contrasted = true,
 					enabled = enabled,
 				)
+			}
+
+			Row(horizontal = Arrangement.Center, alignment = Alignment.Center) {
+				Box {
+					Text("Level 1 text")
+					Text("Level 2 text")
+				}
 			}
 		}
 	}
