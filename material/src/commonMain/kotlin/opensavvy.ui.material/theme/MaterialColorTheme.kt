@@ -6,6 +6,7 @@ import opensavvy.ui.core.theme.ColorTheme
 
 class MaterialColorTheme(
 	val palette: Palette,
+	override val dominant: ColorTheme.Dominant,
 	override val primary: ColorStrength,
 	override val secondary: ColorStrength,
 	override val tertiary: ColorStrength,

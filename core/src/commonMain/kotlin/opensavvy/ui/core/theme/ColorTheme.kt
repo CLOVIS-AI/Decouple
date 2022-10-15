@@ -58,9 +58,15 @@ interface ColorTheme {
 	val outlineVariant: Color
 
 	/**
+	 * Which is the dominant style of this theme?
+	 */
+	val dominant: Dominant?
+
+	/**
 	 * Simple immutable implementation of the [ColorTheme] interface.
 	 */
 	data class Immutable(
+		override val dominant: Dominant?,
 		override val primary: ColorStrength,
 		override val secondary: ColorStrength,
 		override val tertiary: ColorStrength,
@@ -72,4 +78,11 @@ interface ColorTheme {
 		override val outlineVariant: Color,
 	) : ColorTheme
 
+	enum class Dominant {
+		/** Mostly light background with dark text. */
+		Light,
+
+		/** Mostly dark background with light text. */
+		Dark,
+	}
 }
