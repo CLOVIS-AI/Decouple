@@ -48,6 +48,16 @@ interface ColorTheme {
 	val contrast: Color
 
 	/**
+	 * Outline/border of components.
+	 */
+	val outline: Color
+
+	/**
+	 * Alternative outline/border of components.
+	 */
+	val outlineVariant: Color
+
+	/**
 	 * Simple immutable implementation of the [ColorTheme] interface.
 	 */
 	data class Immutable(
@@ -58,6 +68,8 @@ interface ColorTheme {
 		override val background: Color,
 		override val backgroundVariant: Color,
 		override val contrast: Color,
+		override val outline: Color,
+		override val outlineVariant: Color,
 	) : ColorTheme
 
 }
