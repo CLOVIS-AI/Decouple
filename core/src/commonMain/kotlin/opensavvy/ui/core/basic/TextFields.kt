@@ -1,6 +1,10 @@
 package opensavvy.ui.core.basic
 
 import androidx.compose.runtime.Composable
+import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalTime
 import opensavvy.ui.core.UI
 
 interface TextFields {
@@ -35,6 +39,57 @@ interface TextFields {
 		failureMessage: (@Composable () -> Unit)?,
 	)
 
+	@Composable
+	fun InstantField(
+		label: String?,
+		value: Instant?,
+		onChange: (Instant) -> Unit,
+		onReset: (() -> Unit)?,
+		required: Boolean,
+		enabled: Boolean,
+		contrasted: Boolean,
+		supportingText: (@Composable () -> Unit)?,
+		failureMessage: (@Composable () -> Unit)?,
+	)
+
+	@Composable
+	fun LocalDateTimeField(
+		label: String?,
+		value: LocalDateTime?,
+		onChange: (LocalDateTime) -> Unit,
+		onReset: (() -> Unit)?,
+		required: Boolean,
+		enabled: Boolean,
+		contrasted: Boolean,
+		supportingText: (@Composable () -> Unit)?,
+		failureMessage: (@Composable () -> Unit)?,
+	)
+
+	@Composable
+	fun LocalDateField(
+		label: String?,
+		value: LocalDate?,
+		onChange: (LocalDate) -> Unit,
+		onReset: (() -> Unit)?,
+		required: Boolean,
+		enabled: Boolean,
+		contrasted: Boolean,
+		supportingText: (@Composable () -> Unit)?,
+		failureMessage: (@Composable () -> Unit)?,
+	)
+
+	@Composable
+	fun LocalTimeField(
+		label: String?,
+		value: LocalTime?,
+		onChange: (LocalTime) -> Unit,
+		onReset: (() -> Unit)?,
+		required: Boolean,
+		enabled: Boolean,
+		contrasted: Boolean,
+		supportingText: (@Composable () -> Unit)?,
+		failureMessage: (@Composable () -> Unit)?,
+	)
 }
 
 @Composable
@@ -80,5 +135,105 @@ fun TextField(
 		actions = actions,
 		supportingText = supportingText,
 		failureMessage = failureText
+	)
+}
+
+@Composable
+fun InstantField(
+	label: String?,
+	value: Instant?,
+	onChange: (Instant) -> Unit,
+	onReset: (() -> Unit)? = null,
+	required: Boolean = false,
+	enabled: Boolean = true,
+	contrasted: Boolean = false,
+	supportingText: (@Composable () -> Unit)? = null,
+	failureMessage: (@Composable () -> Unit)? = null,
+) {
+	UI.current.InstantField(
+		label = label,
+		value = value,
+		onChange = onChange,
+		onReset = onReset,
+		required = required,
+		enabled = enabled,
+		contrasted = contrasted,
+		supportingText = supportingText,
+		failureMessage = failureMessage
+	)
+}
+
+@Composable
+fun LocalDateTimeField(
+	label: String?,
+	value: LocalDateTime?,
+	onChange: (LocalDateTime) -> Unit,
+	onReset: (() -> Unit)? = null,
+	required: Boolean = false,
+	enabled: Boolean = true,
+	contrasted: Boolean = false,
+	supportingText: (@Composable () -> Unit)? = null,
+	failureMessage: (@Composable () -> Unit)? = null,
+) {
+	UI.current.LocalDateTimeField(
+		label = label,
+		value = value,
+		onChange = onChange,
+		onReset = onReset,
+		required = required,
+		enabled = enabled,
+		contrasted = contrasted,
+		supportingText = supportingText,
+		failureMessage = failureMessage
+	)
+}
+
+@Composable
+fun LocalDateField(
+	label: String?,
+	value: LocalDate?,
+	onChange: (LocalDate) -> Unit,
+	onReset: (() -> Unit)? = null,
+	required: Boolean = false,
+	enabled: Boolean = true,
+	contrasted: Boolean = false,
+	supportingText: (@Composable () -> Unit)? = null,
+	failureMessage: (@Composable () -> Unit)? = null,
+) {
+	UI.current.LocalDateField(
+		label = label,
+		value = value,
+		onChange = onChange,
+		onReset = onReset,
+		required = required,
+		enabled = enabled,
+		contrasted = contrasted,
+		supportingText = supportingText,
+		failureMessage = failureMessage
+	)
+}
+
+@Composable
+fun LocalTimeField(
+	label: String?,
+	value: LocalTime?,
+	onChange: (LocalTime) -> Unit,
+	onReset: (() -> Unit)? = null,
+	required: Boolean = false,
+	enabled: Boolean = true,
+	contrasted: Boolean = false,
+	supportingText: (@Composable () -> Unit)? = null,
+	failureMessage: (@Composable () -> Unit)? = null,
+) {
+	UI.current.LocalTimeField(
+		label = label,
+		value = value,
+		onChange = onChange,
+		onReset = onReset,
+		required = required,
+		enabled = enabled,
+		contrasted = contrasted,
+		supportingText = supportingText,
+		failureMessage = failureMessage
 	)
 }
