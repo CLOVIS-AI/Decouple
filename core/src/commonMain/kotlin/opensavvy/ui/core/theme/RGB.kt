@@ -42,6 +42,8 @@ data class RGB(
 		"#${red.toHex()}${green.toHex()}${blue.toHex()}${alpha.toHex()}"
 	}
 
+	override fun toString() = "RGB($red, $green, $blue, $alpha)"
+
 	companion object {
 
 		/**
@@ -54,8 +56,8 @@ data class RGB(
 			val stripped = hex.removePrefix("#")
 			require(stripped.length == 6 || stripped.length == 8) { "Expected an hexadecimal value of 6 or 8 digits, found ${stripped.length} digits: $hex" }
 			val red = stripped.substring(0..1).toUByte(16)
-			val green = stripped.substring(0..1).toUByte(16)
-			val blue = stripped.substring(0..1).toUByte(16)
+			val green = stripped.substring(2..3).toUByte(16)
+			val blue = stripped.substring(4..6).toUByte(16)
 			val alpha = if (stripped.length == 8) stripped.substring(6..7).toUByte(16) else 255u
 
 			return RGB(red, green, blue, alpha)
