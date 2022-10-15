@@ -1,6 +1,7 @@
 package opensavvy.ui.core.theme
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 
 /**
@@ -40,5 +41,14 @@ interface Theme {
 		val color: ColorTheme
 			@Composable get() = current.color
 
+		/**
+		 * Installs [theme] to [block].
+		 */
+		@Composable
+		fun Install(theme: Theme, block: @Composable () -> Unit) {
+			CompositionLocalProvider(Local provides theme) {
+				block()
+			}
+		}
 	}
 }
