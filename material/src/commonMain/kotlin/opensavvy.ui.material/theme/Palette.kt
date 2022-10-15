@@ -1,7 +1,6 @@
 package opensavvy.ui.material.theme
 
 import opensavvy.ui.core.theme.ColorStrength
-import opensavvy.ui.core.theme.ColorTheme
 import opensavvy.ui.core.theme.RGB
 
 @Suppress("MemberVisibilityCanBePrivate")
@@ -17,7 +16,8 @@ class Palette(
 	//region Generate light and dark schemes
 
 	@Suppress("DuplicatedCode")
-	fun toLightTheme() = ColorTheme.Immutable(
+	fun toLightTheme() = MaterialColorTheme(
+		palette = this,
 		primary = ColorStrength(
 			accent = primary.i40,
 			container = primary.i90,
@@ -42,7 +42,8 @@ class Palette(
 	)
 
 	@Suppress("DuplicatedCode")
-	fun toDarkTheme() = ColorTheme.Immutable(
+	fun toDarkTheme() = MaterialColorTheme(
+		palette = this,
 		primary = ColorStrength(
 			accent = primary.i80,
 			container = primary.i30,
