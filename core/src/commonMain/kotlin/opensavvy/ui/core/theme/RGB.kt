@@ -42,6 +42,8 @@ data class RGB(
 		"#${red.toHex()}${green.toHex()}${blue.toHex()}${alpha.toHex()}"
 	}
 
+	override fun toString() = "RGB($red, $green, $blue, $alpha)"
+
 	companion object {
 
 		/**
