@@ -30,7 +30,7 @@ fun main() {
 				}
 			}
 
-			Row {
+			Row(alignment = Alignment.Center) {
 				Text("Common Buttons :")
 
 				Button(onClick = { action() }, enabled = enabled) {
