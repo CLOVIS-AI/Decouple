@@ -109,30 +109,36 @@ actual interface MaterialButtons : Buttons {
 		icon: (@Composable () -> Unit)?,
 		content: @Composable () -> Unit,
 	) {
-		val outline = Theme.color.outline
-		val color = Theme.color.primary.accent
+		val outline = Theme.color.outline.css
+		val color = Theme.color.primary.accent.css
+		val backgroundOn = Theme.color.background.on.css
 
-		DomButton(
-			{
-				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/10
+		val classes = arrayOf(
+			"outline",
+			"outline-materialColor3",
+			"focus-visible:outline-materialColor1",
+			"outline-1",
+			"text-materialColor1",
+			"disabled:text-materialColor2/disabled",
+			"disabled:outline-materialColor2/disabledBg",
+			"focus-visible:bg-materialColor1/focus",
+			"enabled:hover:bg-materialColor1/hover"
+		)
 
-				style {
-					outlineColor(outline.css)
-					outlineWidth(1.px)
-					color(color.css)
-				}
-
-				onClick { onClick() }
-
-				if (!enabled || loading is Progression.Loading)
-					disabled()
-			}
-		) {
-			if (icon != null)
-				icon()
-
-			content()
-		}
+		AbstractButton(
+			onClick = onClick,
+			enabled = enabled,
+			loading = loading,
+			icon = icon,
+			classes = classes,
+			style = {
+				property("--material-color-1", color)
+				property("--material-color-2", backgroundOn)
+				property("--material-color-3", outline)
+			},
+			layerClasses = null,
+			content = content
+		)
 	}
 
 	@Composable
