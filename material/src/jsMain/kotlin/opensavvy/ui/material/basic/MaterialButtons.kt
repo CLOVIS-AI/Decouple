@@ -6,7 +6,8 @@ import opensavvy.ui.core.progression.Progression
 import opensavvy.ui.core.theme.Theme
 import opensavvy.ui.material.theme.css
 import org.jetbrains.compose.web.attributes.disabled
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.StyleScope
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Button as DomButton
 
 actual interface MaterialButtons : Buttons {
@@ -143,6 +144,85 @@ actual interface MaterialButtons : Buttons {
 				icon()
 
 			content()
+		}
+	}
+
+}
+
+private val layerAgnosticClasses = arrayOf(
+	"inline-flex",
+	"justify-center",
+	"items-center",
+	"gap-2",
+	"py-2",
+	"px-4",
+	"transition",
+	"duration-200",
+	"ease-linear",
+	"rounded-full"
+)
+
+private val buttonClasses = arrayOf(
+	*layerAgnosticClasses,
+	"group",
+	"relative",
+)
+
+@Composable
+private fun AbstractButton(
+	onClick: () -> Unit,
+	enabled: Boolean,
+	loading: Progression,
+	icon: (@Composable () -> Unit)?,
+	classes: Array<String>?,
+	style: (StyleScope.() -> Unit)?,
+	layerClasses: Array<Array<String>>?,
+	content: @Composable () -> Unit,
+) {
+
+	DomButton(
+		{
+
+			style {
+				if (style != null) {
+					style()
+				}
+			}
+
+			classes(*buttonClasses)
+
+			if (classes != null) {
+				classes(*classes)
+			}
+
+			if (!enabled || loading is Progression.Loading) {
+				disabled()
+				if (enabled) {
+					classes("cursor-wait")
+				} else {
+					classes("disabled:cursor-not-allowed")
+				}
+			}
+			onClick { onClick() }
+
+		}
+	) {
+		if (icon != null)
+			icon()
+
+		content()
+
+		layerClasses?.forEach {
+			Div(
+				{
+					classes(
+						"absolute",
+						"inset-0",
+						*layerAgnosticClasses,
+					)
+					classes(*it)
+				}
+			)
 		}
 	}
 
