@@ -16,6 +16,12 @@ sast:
 include:
   - template: Security/SAST.gitlab-ci.yml
 
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_REF_PROTECTED
+    - if: $CI_COMMIT_TAG
+
 demo:web:build:
   needs: [ ]
   stage: build
