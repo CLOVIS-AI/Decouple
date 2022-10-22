@@ -17,6 +17,7 @@ kotlin {
 			dependencies {
 				api(compose.runtime)
 				api(KotlinX.coroutines.core)
+				api(KotlinX.datetime)
 			}
 		}
 	}

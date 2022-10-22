@@ -2,6 +2,7 @@ package opensavvy.ui.demo
 
 import androidx.compose.runtime.*
 import kotlinx.coroutines.delay
+import kotlinx.datetime.Clock
 import opensavvy.ui.core.basic.*
 import opensavvy.ui.core.layout.Column
 import opensavvy.ui.core.layout.Row
@@ -111,6 +112,52 @@ fun main() {
 						Text("SuggestionChip")
 					}
 				}
+			}
+
+			Row {
+				Text("Fields (regular) :")
+
+				var userName by remember { mutableStateOf("") }
+				TextField(
+					"Username",
+					userName,
+					onChange = { userName = it },
+					required = true,
+					enabled = enabled,
+					allowedSize = 6..20,
+				)
+
+				var instant by remember { mutableStateOf(Clock.System.now()) }
+				InstantField(
+					"Instant",
+					instant,
+					onChange = { instant = it },
+					enabled = enabled,
+				)
+			}
+
+			Row {
+				Text("Fields (contrast) :")
+
+				var userName by remember { mutableStateOf("") }
+				TextField(
+					"Username",
+					userName,
+					onChange = { userName = it },
+					required = true,
+					enabled = enabled,
+					contrasted = true,
+					allowedSize = 6..20,
+				)
+
+				var instant by remember { mutableStateOf(Clock.System.now()) }
+				InstantField(
+					"Instant",
+					instant,
+					onChange = { instant = it },
+					contrasted = true,
+					enabled = enabled,
+				)
 			}
 		}
 	}
