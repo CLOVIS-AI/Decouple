@@ -1,8 +1,6 @@
 package opensavvy.ui.material.theme
 
 import opensavvy.ui.core.theme.Color
-import org.jetbrains.compose.web.css.CSSColorValue
-import org.jetbrains.compose.web.css.rgba
 
-val Color.css: CSSColorValue
-	get() = rgba(rgb.red.toInt(), rgb.green.toInt(), rgb.blue.toInt(), rgb.alpha.toInt().toDouble() / 255)
+internal val Color.css: String
+	get() = "${rgb.red} ${rgb.green} ${rgb.blue}" //TODO : Process alpha value and combine it with state layers opacity (https://gitlab.com/opensavvy/opensavvy-ui/-/issues/23)

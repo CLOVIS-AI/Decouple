@@ -6,7 +6,8 @@ import opensavvy.ui.core.progression.Progression
 import opensavvy.ui.core.theme.Theme
 import opensavvy.ui.material.theme.css
 import org.jetbrains.compose.web.attributes.disabled
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.StyleScope
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Button as DomButton
 
 actual interface MaterialButtons : Buttons {
@@ -19,27 +20,31 @@ actual interface MaterialButtons : Buttons {
 		icon: (@Composable () -> Unit)?,
 		content: @Composable () -> Unit,
 	) {
-		val color = Theme.color.primary.accent.css
+		val primaryAccent = Theme.color.primary.accent.css
+		val backgroundOn = Theme.color.background.on.css
 
-		DomButton(
-			{
-				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/10
+		val classes = arrayOf(
+			"focus-visible:outline-none",
+			"text-materialColor1",
+			"disabled:text-materialColor2",
+			"disabled:opacity-disabled",
+			"focus-visible:bg-materialColor1/focus",
+			"enabled:hover:bg-materialColor1/hover",
+		)
 
-				style {
-					color(color)
-				}
-
-				onClick { onClick() }
-
-				if (!enabled || loading is Progression.Loading)
-					disabled()
-			}
-		) {
-			if (icon != null)
-				icon()
-
-			content()
-		}
+		AbstractButton(
+			onClick = onClick,
+			enabled = enabled,
+			loading = loading,
+			icon = icon,
+			classes = classes,
+			style = {
+				property("--material-color-1", primaryAccent)
+				property("--material-color-2", backgroundOn)
+			},
+			layerClasses = null,
+			content = content
+		)
 	}
 
 	@Composable
@@ -56,29 +61,44 @@ actual interface MaterialButtons : Buttons {
 			false -> Theme.color.secondary.container
 		}
 
-		val background = Theme.color.primary.accent.css
-		val foreground = Theme.color.primary.accent.on.css
+		val backgroundOn = Theme.color.background.on.css
 
-		DomButton(
-			{
-				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/10
+		val classes = arrayOf(
+			"focus-visible:outline-none",
+			"text-materialColor1",
+			"bg-materialColor2",
+			"enabled:hover:shadow-elevation1",
+			"disabled:text-materialColor3/disabled",
+			"disabled:bg-materialColor3/disabledBg",
+		)
 
-				style {
-					backgroundColor(color.css)
-					color(color.on.css)
-				}
+		var elevationClasses = arrayOf(
+			"group-focus:bg-materialColor4/focus",
+			"group-enabled:hover:bg-materialColor4/hover",
+		)
 
-				onClick { onClick() }
-
-				if (!enabled || loading is Progression.Loading)
-					disabled()
-			}
-		) {
-			if (icon != null)
-				icon()
-
-			content()
+		if (primary) {
+			elevationClasses = arrayOf(
+				"group-focus:bg-materialColor1/focus",
+				"group-enabled:hover:bg-materialColor1/hover",
+			)
 		}
+
+		AbstractButton(
+			onClick = onClick,
+			enabled = enabled,
+			loading = loading,
+			icon = icon,
+			classes = classes,
+			style = {
+				property("--material-color-1", color.on.css)
+				property("--material-color-2", color.css)
+				property("--material-color-3", backgroundOn)
+				property("--material-color-4", color.on.css)
+			},
+			layerClasses = arrayOf(elevationClasses),
+			content = content
+		)
 	}
 
 	@Composable
@@ -89,30 +109,36 @@ actual interface MaterialButtons : Buttons {
 		icon: (@Composable () -> Unit)?,
 		content: @Composable () -> Unit,
 	) {
-		val outline = Theme.color.outline
-		val color = Theme.color.primary.accent
+		val outline = Theme.color.outline.css
+		val color = Theme.color.primary.accent.css
+		val backgroundOn = Theme.color.background.on.css
 
-		DomButton(
-			{
-				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/10
+		val classes = arrayOf(
+			"outline",
+			"outline-materialColor3",
+			"focus-visible:outline-materialColor1",
+			"outline-1",
+			"text-materialColor1",
+			"disabled:text-materialColor2/disabled",
+			"disabled:outline-materialColor2/disabledBg",
+			"focus-visible:bg-materialColor1/focus",
+			"enabled:hover:bg-materialColor1/hover"
+		)
 
-				style {
-					outlineColor(outline.css)
-					outlineWidth(1.px)
-					color(color.css)
-				}
-
-				onClick { onClick() }
-
-				if (!enabled || loading is Progression.Loading)
-					disabled()
-			}
-		) {
-			if (icon != null)
-				icon()
-
-			content()
-		}
+		AbstractButton(
+			onClick = onClick,
+			enabled = enabled,
+			loading = loading,
+			icon = icon,
+			classes = classes,
+			style = {
+				property("--material-color-1", color)
+				property("--material-color-2", backgroundOn)
+				property("--material-color-3", outline)
+			},
+			layerClasses = null,
+			content = content
+		)
 	}
 
 	@Composable
@@ -123,26 +149,125 @@ actual interface MaterialButtons : Buttons {
 		icon: (@Composable () -> Unit)?,
 		content: @Composable () -> Unit,
 	) {
-		val color = Theme.color.primary.accent
+		val color = Theme.color.primary.accent.css
+		val background = Theme.color.background.css
+		val backgroundOn = Theme.color.background.on.css
 
-		DomButton(
-			{
-				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/10
+		val classes = arrayOf(
+			"focus-visible:outline-none",
+			"text-materialColor1",
+			"bg-materialColor2",
+			"shadow-elevation1",
+			"hover:shadow-elevation2",
+			"disabled:text-materialColor3/disabled",
+			"disabled:bg-materialColor3/disabledBg",
+			"disabled:shadow-none",
+		)
 
-				style {
-					color(color.css)
+		val firstLayerClasses = arrayOf(
+			"bg-materialColor1/normal",
+		)
+
+		val secondLayerClasses = arrayOf(
+			"group-focus:bg-materialColor1/focus",
+			"group-enabled:hover:bg-materialColor1/hover",
+		)
+
+		AbstractButton(
+			onClick = onClick,
+			enabled = enabled,
+			loading = loading,
+			icon = icon,
+			classes = classes,
+			style = {
+				property("--material-color-1", color)
+				property("--material-color-2", background)
+				property("--material-color-3", backgroundOn)
+			},
+			layerClasses = arrayOf(
+				firstLayerClasses,
+				secondLayerClasses
+			),
+			content = content
+		)
+	}
+
+}
+
+private val layerAgnosticClasses = arrayOf(
+	"inline-flex",
+	"justify-center",
+	"items-center",
+	"gap-2",
+	"py-2",
+	"px-4",
+	"transition",
+	"duration-200",
+	"ease-linear",
+	"rounded-full"
+)
+
+private val buttonClasses = arrayOf(
+	*layerAgnosticClasses,
+	"group",
+	"relative",
+)
+
+@Composable
+private fun AbstractButton(
+	onClick: () -> Unit,
+	enabled: Boolean,
+	loading: Progression,
+	icon: (@Composable () -> Unit)?,
+	classes: Array<String>?,
+	style: (StyleScope.() -> Unit)?,
+	layerClasses: Array<Array<String>>?,
+	content: @Composable () -> Unit,
+) {
+
+	DomButton(
+		{
+
+			style {
+				if (style != null) {
+					style()
 				}
-
-				onClick { onClick() }
-
-				if (!enabled || loading is Progression.Loading)
-					disabled()
 			}
-		) {
-			if (icon != null)
-				icon()
 
-			content()
+			classes(*buttonClasses)
+
+			if (classes != null) {
+				classes(*classes)
+			}
+
+			if (!enabled || loading is Progression.Loading) {
+				disabled()
+				if (enabled) {
+					classes("cursor-wait")
+				} else {
+					classes("disabled:cursor-not-allowed")
+				}
+			}
+			onClick { onClick() }
+
+		}
+	) {
+		if (icon != null)
+			icon()
+
+		content()
+
+		layerClasses?.forEach {
+			Div(
+				{
+					classes(
+						"absolute",
+						"inset-0",
+						*layerAgnosticClasses,
+					)
+					classes(*it)
+				}
+			)
 		}
 	}
 
