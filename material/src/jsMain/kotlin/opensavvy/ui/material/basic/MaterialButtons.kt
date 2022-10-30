@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import opensavvy.ui.core.basic.Buttons
 import opensavvy.ui.core.progression.Progression
 import opensavvy.ui.core.theme.Theme
+import opensavvy.ui.material.icons.Spinner
 import opensavvy.ui.material.theme.css
 import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.css.StyleScope
@@ -26,10 +27,13 @@ actual interface MaterialButtons : Buttons {
 		val classes = arrayOf(
 			"focus-visible:outline-none",
 			"text-materialColor1",
-			"disabled:text-materialColor2",
-			"disabled:opacity-disabled",
 			"focus-visible:bg-materialColor1/focus",
 			"enabled:hover:bg-materialColor1/hover",
+		)
+
+		val disabledClasses = arrayOf(
+			"disabled:text-materialColor2",
+			"disabled:opacity-disabled",
 		)
 
 		AbstractButton(
@@ -38,6 +42,7 @@ actual interface MaterialButtons : Buttons {
 			loading = loading,
 			icon = icon,
 			classes = classes,
+			disabledClasses = disabledClasses,
 			style = {
 				property("--material-color-1", primaryAccent)
 				property("--material-color-2", backgroundOn)
@@ -68,6 +73,9 @@ actual interface MaterialButtons : Buttons {
 			"text-materialColor1",
 			"bg-materialColor2",
 			"enabled:hover:shadow-elevation1",
+		)
+
+		val disabledClasses = arrayOf(
 			"disabled:text-materialColor3/disabled",
 			"disabled:bg-materialColor3/disabledBg",
 		)
@@ -90,6 +98,7 @@ actual interface MaterialButtons : Buttons {
 			loading = loading,
 			icon = icon,
 			classes = classes,
+			disabledClasses = disabledClasses,
 			style = {
 				property("--material-color-1", color.on.css)
 				property("--material-color-2", color.css)
@@ -119,10 +128,13 @@ actual interface MaterialButtons : Buttons {
 			"focus-visible:outline-materialColor1",
 			"outline-1",
 			"text-materialColor1",
+			"focus-visible:bg-materialColor1/focus",
+			"enabled:hover:bg-materialColor1/hover",
+		)
+
+		val disabledClasses = arrayOf(
 			"disabled:text-materialColor2/disabled",
 			"disabled:outline-materialColor2/disabledBg",
-			"focus-visible:bg-materialColor1/focus",
-			"enabled:hover:bg-materialColor1/hover"
 		)
 
 		AbstractButton(
@@ -131,6 +143,7 @@ actual interface MaterialButtons : Buttons {
 			loading = loading,
 			icon = icon,
 			classes = classes,
+			disabledClasses = disabledClasses,
 			style = {
 				property("--material-color-1", color)
 				property("--material-color-2", backgroundOn)
@@ -158,7 +171,10 @@ actual interface MaterialButtons : Buttons {
 			"text-materialColor1",
 			"bg-materialColor2",
 			"shadow-elevation1",
-			"hover:shadow-elevation2",
+			"enabled:hover:shadow-elevation2",
+		)
+
+		val disabledClasses = arrayOf(
 			"disabled:text-materialColor3/disabled",
 			"disabled:bg-materialColor3/disabledBg",
 			"disabled:shadow-none",
@@ -179,6 +195,7 @@ actual interface MaterialButtons : Buttons {
 			loading = loading,
 			icon = icon,
 			classes = classes,
+			disabledClasses = disabledClasses,
 			style = {
 				property("--material-color-1", color)
 				property("--material-color-2", background)
@@ -195,10 +212,14 @@ actual interface MaterialButtons : Buttons {
 }
 
 private val layerAgnosticClasses = arrayOf(
+	"font-roboto",
+	"font-medium",
+	"text-sm",
+	"leading-5",
 	"inline-flex",
 	"justify-center",
 	"items-center",
-	"gap-2",
+	"gap-1",
 	"py-2",
 	"px-4",
 	"transition",
@@ -220,6 +241,7 @@ private fun AbstractButton(
 	loading: Progression,
 	icon: (@Composable () -> Unit)?,
 	classes: Array<String>?,
+	disabledClasses: Array<String>?,
 	style: (StyleScope.() -> Unit)?,
 	layerClasses: Array<Array<String>>?,
 	content: @Composable () -> Unit,
@@ -240,6 +262,10 @@ private fun AbstractButton(
 				classes(*classes)
 			}
 
+			if (!enabled && disabledClasses != null) {
+				classes(*disabledClasses)
+			}
+
 			if (!enabled || loading is Progression.Loading) {
 				disabled()
 				if (enabled) {
@@ -255,7 +281,27 @@ private fun AbstractButton(
 		if (icon != null)
 			icon()
 
-		content()
+		Div({
+			classes(
+				"transition-all",
+				"duration-300",
+				"relative",
+				"-mr-1"
+			)
+
+			if (loading is Progression.Loading) {
+				classes("w-5", "h-5", "mr-1")
+			} else {
+				classes("w-0", "h-5")
+			}
+		}
+		) {
+			Spinner(loading)
+		}
+
+		Div {
+			content()
+		}
 
 		layerClasses?.forEach {
 			Div(

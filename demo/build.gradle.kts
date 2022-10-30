@@ -45,6 +45,16 @@ val kotlinNpmInstall by rootProject.tasks.getting(org.jetbrains.kotlin.gradle.ta
 
 val jsProductionExecutableCompileSync by tasks.getting(Task::class)
 
+val copyMaterialResources by tasks.registering(Copy::class) {
+	description = "Copies Material resources to the build directory"
+	group = "vite"
+
+	from(project(":material").projectDir / "src" / "jsMain" / "resources")
+	into(jsProjectDir)
+
+	dependsOn(kotlinNpmInstall)
+}
+
 val configureTailwind by tasks.registering(Copy::class) {
 	description = "Copies the Tailwind configuration file to the build directory"
 	group = "vite"
@@ -89,9 +99,15 @@ val vite by tasks.registering(Exec::class) {
 	dependsOn(
 		kotlinNodeJsSetup,
 		kotlinNpmInstall,
+	)
+}
+
+val jsDevelopmentExecutableCompileSync: Task by tasks.getting {
+	dependsOn(
 		configureTailwind,
 		configureVite,
-		configurePostcss
+		configurePostcss,
+		copyMaterialResources,
 	)
 }
 
@@ -112,6 +128,7 @@ val jsProduction by tasks.registering(Exec::class) {
 		configureTailwind,
 		configureVite,
 		configurePostcss,
+		copyMaterialResources,
 		jsProductionExecutableCompileSync
 	)
 }
