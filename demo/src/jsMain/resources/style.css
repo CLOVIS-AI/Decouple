@@ -1,3 +1,2 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* As this is a monorepo, we directly import this file */
+@import "../opensavvy.ui.material/style.css";
