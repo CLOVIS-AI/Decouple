@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import opensavvy.ui.core.basic.Buttons
 import opensavvy.ui.core.progression.Progression
 import opensavvy.ui.core.theme.Theme
+import opensavvy.ui.material.icons.Spinner
 import opensavvy.ui.material.theme.css
 import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.css.StyleScope
@@ -255,7 +256,27 @@ private fun AbstractButton(
 		if (icon != null)
 			icon()
 
-		content()
+		Div({
+			classes(
+				"transition-all",
+				"duration-300",
+				"relative",
+				"-mr-1"
+			)
+
+			if (loading is Progression.Loading) {
+				classes("w-5", "h-5", "mr-1")
+			} else {
+				classes("w-0", "h-5")
+			}
+		}
+		) {
+			Spinner(loading)
+		}
+
+		Div {
+			content()
+		}
 
 		layerClasses?.forEach {
 			Div(
