@@ -1,6 +1,7 @@
 plugins {
 	kotlin("multiplatform") apply false
 	id("org.jetbrains.dokka") apply false
+	id("maven-publish")
 
 	id("com.palantir.git-version")
 }
@@ -21,6 +22,9 @@ buildscript {
 }
 
 allprojects {
+	plugins.apply("org.jetbrains.dokka")
+	plugins.apply("maven-publish")
+
 	repositories {
 		google()
 		mavenCentral()
@@ -36,13 +40,36 @@ allprojects {
 		}
 	}
 
+	publishing {
+		repositories {
+			val projectId = System.getenv("CI_PROJECT_ID")
+			val token = System.getenv("CI_JOB_TOKEN")
+
+			if (projectId != null && token != null)
+				maven {
+					name = "GitLab"
+					url = uri("https://gitlab.com/api/v4/projects/$projectId/packages/maven")
+
+					credentials(HttpHeaderCredentials::class.java) {
+						name = "Job-Token"
+						value = token
+					}
+
+					authentication {
+						create<HttpHeaderAuthentication>("header")
+					}
+				}
+			else
+				logger.debug("The GitLab registry is disabled because credentials are missing.")
+		}
+	}
+
+
 	tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 		kotlinOptions {
 			jvmTarget = "17"
 		}
 	}
-
-	plugins.apply("org.jetbrains.dokka")
 }
 
 fun calculateVersion(): String {
