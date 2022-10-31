@@ -18,7 +18,7 @@ interface Buttons {
 		enabled: Boolean,
 		loading: Progression,
 		icon: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable ButtonScope.() -> Unit,
 	)
 
 	/**
@@ -36,7 +36,7 @@ interface Buttons {
 		enabled: Boolean,
 		loading: Progression,
 		icon: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable ButtonScope.() -> Unit,
 	)
 
 	/**
@@ -51,7 +51,7 @@ interface Buttons {
 		enabled: Boolean,
 		loading: Progression,
 		icon: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable ButtonScope.() -> Unit,
 	)
 
 	/**
@@ -68,9 +68,10 @@ interface Buttons {
 		enabled: Boolean,
 		loading: Progression,
 		icon: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable ButtonScope.() -> Unit,
 	)
 
+	interface ButtonScope
 }
 
 /**
@@ -83,7 +84,7 @@ fun Button(
 	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
 	icon: (@Composable () -> Unit)? = null,
-	content: @Composable () -> Unit,
+	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
 	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
@@ -113,7 +114,7 @@ fun PrimaryButton(
 	primary: Boolean = false,
 	enabled: Boolean = true,
 	icon: (@Composable () -> Unit)? = null,
-	content: @Composable () -> Unit,
+	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
 	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
@@ -143,7 +144,7 @@ fun SecondaryButton(
 	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
 	icon: (@Composable () -> Unit)? = null,
-	content: @Composable () -> Unit,
+	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
 	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
@@ -172,7 +173,7 @@ fun ContrastButton(
 	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
 	icon: (@Composable () -> Unit)? = null,
-	content: @Composable () -> Unit,
+	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
 	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
