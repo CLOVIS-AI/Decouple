@@ -40,15 +40,37 @@ demo:web:build:
     url: https://$CI_PROJECT_NAMESPACE.$CI_PAGES_DOMAIN/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist-web/index.html
     deployment_tier: development
 
+dokka:
+  needs: [ ]
+  stage: build
+  image: gradle:jdk17-focal
+
+  script:
+    - ./gradlew dokkaHtmlMultiModule
+    - mkdir -p docs
+    - mv build/dokka/htmlMultiModule docs
+
+  artifacts:
+    paths:
+      - docs
+
+  environment:
+    name: review-documentation/$CI_COMMIT_REF_SLUG
+    url: https://$CI_PROJECT_NAMESPACE.$CI_PAGES_DOMAIN/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/docs/index.html
+    deployment_tier: development
+
 pages:
   image: alpine:latest
   stage: deploy
   needs:
     - job: demo:web:build
       artifacts: true
+    - job: dokka
+      artifacts: true
   script:
-    - mkdir -p public/demo
+    - mkdir -p public/demo public/documentation
     - mv dist-web/* public/demo
+    - mv docs/* public/documentation
   artifacts:
     paths:
       - public
