@@ -3,18 +3,18 @@ package opensavvy.ui.demo
 import androidx.compose.runtime.*
 import kotlinx.coroutines.delay
 import kotlinx.datetime.Clock
+import opensavvy.state.Progression.Companion.loading
+import opensavvy.state.ProgressionReporter.Companion.report
 import opensavvy.ui.core.basic.*
 import opensavvy.ui.core.layout.*
-import opensavvy.ui.core.progression.ReportProgression
-import opensavvy.ui.core.progression.loading
 import kotlin.random.Random
 
 expect fun start(app: @Composable () -> Unit)
 
-suspend fun ReportProgression.action() {
+suspend fun action() {
 	// Loading for 5 seconds
 	for (i in 0..100) {
-		loading(i)
+		report(loading(i / 100.0))
 		delay(50)
 	}
 	println("Clicked")

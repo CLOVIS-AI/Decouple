@@ -1,8 +1,8 @@
 package opensavvy.ui.material.basic
 
 import androidx.compose.runtime.Composable
+import opensavvy.state.Progression
 import opensavvy.ui.core.basic.Buttons
-import opensavvy.ui.core.progression.Progression
 import opensavvy.ui.core.theme.Theme
 import opensavvy.ui.material.icons.Spinner
 import opensavvy.ui.material.theme.css

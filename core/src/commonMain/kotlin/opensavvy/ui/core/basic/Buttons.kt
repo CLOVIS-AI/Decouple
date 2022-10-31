@@ -1,9 +1,8 @@
 package opensavvy.ui.core.basic
 
 import androidx.compose.runtime.*
+import opensavvy.state.Progression
 import opensavvy.ui.core.UI
-import opensavvy.ui.core.progression.Progression
-import opensavvy.ui.core.progression.ReportProgression
 import opensavvy.ui.core.progression.launch
 
 interface Buttons {
@@ -81,7 +80,7 @@ interface Buttons {
  */
 @Composable
 fun Button(
-	onClick: suspend ReportProgression.() -> Unit,
+	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable () -> Unit,
@@ -110,7 +109,7 @@ fun Button(
  */
 @Composable
 fun PrimaryButton(
-	onClick: suspend ReportProgression.() -> Unit,
+	onClick: suspend () -> Unit,
 	primary: Boolean = false,
 	enabled: Boolean = true,
 	icon: (@Composable () -> Unit)? = null,
@@ -141,7 +140,7 @@ fun PrimaryButton(
  */
 @Composable
 fun SecondaryButton(
-	onClick: suspend ReportProgression.() -> Unit,
+	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable () -> Unit,
@@ -170,7 +169,7 @@ fun SecondaryButton(
  */
 @Composable
 fun ContrastButton(
-	onClick: suspend ReportProgression.() -> Unit,
+	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable () -> Unit,
