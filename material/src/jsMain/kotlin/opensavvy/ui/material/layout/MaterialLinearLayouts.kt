@@ -28,7 +28,11 @@ private val Alignment.css: String
 actual interface MaterialLinearLayouts : LinearLayouts {
 
 	@Composable
-	override fun Column(vertical: Arrangement, alignment: Alignment, content: @Composable () -> Unit) {
+	override fun Column(
+		vertical: Arrangement,
+		alignment: Alignment,
+		content: @Composable LinearLayouts.ColumnScope.() -> Unit,
+	) {
 		Div(
 			{
 				classes(
@@ -40,12 +44,16 @@ actual interface MaterialLinearLayouts : LinearLayouts {
 				)
 			}
 		) {
-			content()
+			content(ColumnScope)
 		}
 	}
 
 	@Composable
-	override fun Row(horizontal: Arrangement, alignment: Alignment, content: @Composable () -> Unit) {
+	override fun Row(
+		horizontal: Arrangement,
+		alignment: Alignment,
+		content: @Composable LinearLayouts.RowScope.() -> Unit,
+	) {
 		Div(
 			{
 				classes(
@@ -57,12 +65,12 @@ actual interface MaterialLinearLayouts : LinearLayouts {
 				)
 			}
 		) {
-			content()
+			content(RowScope)
 		}
 	}
 
 	@Composable
-	override fun Box(alignment: Alignment, content: @Composable () -> Unit) {
+	override fun Box(alignment: Alignment, content: @Composable LinearLayouts.BoxScope.() -> Unit) {
 		Div(
 			{
 				classes(
@@ -72,8 +80,11 @@ actual interface MaterialLinearLayouts : LinearLayouts {
 				)
 			}
 		) {
-			content()
+			content(BoxScope)
 		}
 	}
 
+	private object ColumnScope : LinearLayouts.ColumnScope
+	private object RowScope : LinearLayouts.RowScope
+	private object BoxScope : LinearLayouts.BoxScope
 }

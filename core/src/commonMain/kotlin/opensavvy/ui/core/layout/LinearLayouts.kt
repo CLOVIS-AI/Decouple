@@ -12,7 +12,7 @@ interface LinearLayouts {
 	fun Column(
 		vertical: Arrangement,
 		alignment: Alignment,
-		content: @Composable () -> Unit,
+		content: @Composable ColumnScope.() -> Unit,
 	)
 
 	/**
@@ -26,7 +26,7 @@ interface LinearLayouts {
 	fun Row(
 		horizontal: Arrangement,
 		alignment: Alignment,
-		content: @Composable () -> Unit,
+		content: @Composable RowScope.() -> Unit,
 	)
 
 	/**
@@ -38,9 +38,20 @@ interface LinearLayouts {
 	@Composable
 	fun Box(
 		alignment: Alignment,
-		content: @Composable () -> Unit,
+		content: @Composable BoxScope.() -> Unit,
 	)
 
+	@LayoutScopeMarker
+	interface LinearLayoutScope
+
+	@LayoutScopeMarker
+	interface ColumnScope : LinearLayoutScope
+
+	@LayoutScopeMarker
+	interface RowScope : LinearLayoutScope
+
+	@LayoutScopeMarker
+	interface BoxScope : LinearLayoutScope
 }
 
 /**
@@ -52,7 +63,7 @@ interface LinearLayouts {
 fun Column(
 	vertical: Arrangement = Arrangement.Start,
 	alignment: Alignment = Alignment.Stretch,
-	content: @Composable () -> Unit,
+	content: @Composable LinearLayouts.ColumnScope.() -> Unit,
 ) = UI.current.Column(vertical, alignment, content)
 
 /**
@@ -64,7 +75,7 @@ fun Column(
 fun Row(
 	horizontal: Arrangement = Arrangement.Start,
 	alignment: Alignment = Alignment.Stretch,
-	content: @Composable () -> Unit,
+	content: @Composable LinearLayouts.RowScope.() -> Unit,
 ) = UI.current.Row(horizontal, alignment, content)
 
 /**
@@ -75,5 +86,5 @@ fun Row(
 @Composable
 fun Box(
 	alignment: Alignment = Alignment.Stretch,
-	content: @Composable () -> Unit,
+	content: @Composable LinearLayouts.BoxScope.() -> Unit,
 ) = UI.current.Box(alignment, content)
