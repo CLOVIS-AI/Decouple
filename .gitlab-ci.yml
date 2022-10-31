@@ -22,6 +22,16 @@ workflow:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
 
+build:
+  needs: [ ]
+  stage: build
+  image: gradle:jdk17-focal
+
+  script:
+    - ./gradlew build
+
+  interruptible: true
+
 demo:web:build:
   needs: [ ]
   stage: build
