@@ -18,6 +18,8 @@ kotlin {
 				api(compose.runtime)
 				api(KotlinX.coroutines.core)
 				api(KotlinX.datetime)
+
+				api("opensavvy:state:_")
 			}
 		}
 	}
