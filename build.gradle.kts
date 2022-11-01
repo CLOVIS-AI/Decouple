@@ -1,14 +1,16 @@
+plugins {
+	kotlin("multiplatform") apply false
+	id("org.jetbrains.dokka") apply false
+
+	id("com.palantir.git-version")
+}
+
 group = "opensavvy"
-version = "0.1.0-SNAPSHOT"
+version = calculateVersion()
 
 subprojects {
 	group = rootProject.group
 	version = rootProject.version
-}
-
-plugins {
-	kotlin("multiplatform") apply false
-	id("org.jetbrains.dokka") apply false
 }
 
 buildscript {
@@ -41,4 +43,14 @@ allprojects {
 	}
 
 	plugins.apply("org.jetbrains.dokka")
+}
+
+fun calculateVersion(): String {
+	val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
+	val details = versionDetails()
+
+	return if (details.commitDistance == 0)
+		details.lastTag
+	else
+		"${details.lastTag}-post.${details.commitDistance}+${details.gitHash}"
 }
