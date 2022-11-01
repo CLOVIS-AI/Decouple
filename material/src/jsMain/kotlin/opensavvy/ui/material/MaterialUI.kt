@@ -8,10 +8,12 @@ import opensavvy.ui.material.basic.MaterialButtons
 import opensavvy.ui.material.basic.MaterialChips
 import opensavvy.ui.material.basic.MaterialTextFields
 import opensavvy.ui.material.basic.MaterialTexts
+import opensavvy.ui.material.layout.MaterialLazyLayouts
 import opensavvy.ui.material.layout.MaterialLinearLayouts
 import opensavvy.ui.material.theme.MaterialDefaultTheme
 
-actual interface MaterialUI : UI, MaterialButtons, MaterialLinearLayouts, MaterialTexts, MaterialChips,
+actual interface MaterialUI : UI, MaterialButtons, MaterialLinearLayouts, MaterialLazyLayouts, MaterialTexts,
+                              MaterialChips,
                               MaterialTextFields {
 	@Composable
 	override fun Install(content: @Composable () -> Unit) {

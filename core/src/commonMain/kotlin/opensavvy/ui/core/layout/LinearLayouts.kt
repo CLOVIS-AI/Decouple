@@ -44,13 +44,10 @@ interface LinearLayouts {
 	@LayoutScopeMarker
 	interface LinearLayoutScope
 
-	@LayoutScopeMarker
 	interface ColumnScope : LinearLayoutScope
 
-	@LayoutScopeMarker
 	interface RowScope : LinearLayoutScope
 
-	@LayoutScopeMarker
 	interface BoxScope : LinearLayoutScope
 }
 
