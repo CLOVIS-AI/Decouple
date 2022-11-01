@@ -19,8 +19,18 @@ include:
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-    - if: $CI_COMMIT_REF_PROTECTED
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
+
+build:
+  needs: [ ]
+  stage: build
+  image: gradle:jdk17-focal
+
+  script:
+    - ./gradlew build
+
+  interruptible: true
 
 demo:web:build:
   needs: [ ]
@@ -58,6 +68,17 @@ dokka:
     name: review-documentation/$CI_COMMIT_REF_SLUG
     url: https://$CI_PROJECT_NAMESPACE.$CI_PAGES_DOMAIN/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/docs/index.html
     deployment_tier: development
+
+publish:
+  needs: [ build ]
+  stage: deploy
+  image: gradle:jdk17-focal
+
+  script:
+    - "./gradlew core:publishAllPublicationsToGitLabRepository material:publishAllPublicationsToGitLabRepository"
+
+  rules:
+    - if: $CI_COMMIT_TAG
 
 pages:
   image: alpine:latest
