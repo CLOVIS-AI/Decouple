@@ -17,7 +17,7 @@ actual interface MaterialChips : Chips {
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		action: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
 		DomButton(
 			{
@@ -32,7 +32,7 @@ actual interface MaterialChips : Chips {
 			if (icon != null)
 				icon()
 
-			content()
+			content(ChipScope)
 
 			if (action != null)
 				action()
@@ -47,7 +47,7 @@ actual interface MaterialChips : Chips {
 		loading: Progression,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
 		DomButton(
 			{
@@ -62,7 +62,7 @@ actual interface MaterialChips : Chips {
 			if (icon != null)
 				icon()
 
-			content()
+			content(ChipScope)
 		}
 	}
 
@@ -73,7 +73,7 @@ actual interface MaterialChips : Chips {
 		loading: Progression,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
 		DomButton(
 			{
@@ -88,7 +88,7 @@ actual interface MaterialChips : Chips {
 			if (icon != null)
 				icon()
 
-			content()
+			content(ChipScope)
 		}
 	}
 
@@ -100,7 +100,7 @@ actual interface MaterialChips : Chips {
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		action: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
 		DomButton(
 			{
@@ -115,7 +115,7 @@ actual interface MaterialChips : Chips {
 			if (icon != null)
 				icon()
 
-			content()
+			content(ChipScope)
 
 			if (action != null)
 				action()
@@ -125,10 +125,13 @@ actual interface MaterialChips : Chips {
 	@Composable
 	override fun ChipGroup(
 		multiline: Boolean,
-		chips: @Composable () -> Unit,
+		chips: @Composable Chips.ChipGroupScope.() -> Unit,
 	) {
 		Row {
-			chips()
+			chips(ChipGroupScope)
 		}
 	}
+
+	private object ChipScope : Chips.ChipScope
+	private object ChipGroupScope : Chips.ChipGroupScope
 }

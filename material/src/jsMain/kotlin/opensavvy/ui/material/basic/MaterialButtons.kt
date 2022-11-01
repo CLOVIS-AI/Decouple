@@ -19,7 +19,7 @@ actual interface MaterialButtons : Buttons {
 		enabled: Boolean,
 		loading: Progression,
 		icon: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {
 		val primaryAccent = Theme.color.primary.accent.css
 		val backgroundOn = Theme.color.background.on.css
@@ -59,7 +59,7 @@ actual interface MaterialButtons : Buttons {
 		enabled: Boolean,
 		loading: Progression,
 		icon: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {
 		val color = when (primary) {
 			true -> Theme.color.primary.accent
@@ -116,7 +116,7 @@ actual interface MaterialButtons : Buttons {
 		enabled: Boolean,
 		loading: Progression,
 		icon: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {
 		val outline = Theme.color.outline.css
 		val color = Theme.color.primary.accent.css
@@ -160,7 +160,7 @@ actual interface MaterialButtons : Buttons {
 		enabled: Boolean,
 		loading: Progression,
 		icon: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {
 		val color = Theme.color.primary.accent.css
 		val background = Theme.color.background.css
@@ -209,6 +209,7 @@ actual interface MaterialButtons : Buttons {
 		)
 	}
 
+
 }
 
 private val layerAgnosticClasses = arrayOf(
@@ -234,6 +235,8 @@ private val buttonClasses = arrayOf(
 	"relative",
 )
 
+private object ButtonScope : Buttons.ButtonScope
+
 @Composable
 private fun AbstractButton(
 	onClick: () -> Unit,
@@ -244,7 +247,7 @@ private fun AbstractButton(
 	disabledClasses: Array<String>?,
 	style: (StyleScope.() -> Unit)?,
 	layerClasses: Array<Array<String>>?,
-	content: @Composable () -> Unit,
+	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
 
 	DomButton(
@@ -300,7 +303,7 @@ private fun AbstractButton(
 		}
 
 		Div {
-			content()
+			content(ButtonScope)
 		}
 
 		layerClasses?.forEach {

@@ -3,6 +3,7 @@ package opensavvy.ui.core.basic
 import androidx.compose.runtime.*
 import opensavvy.state.Progression
 import opensavvy.ui.core.UI
+import opensavvy.ui.core.layout.LinearLayouts
 import opensavvy.ui.core.progression.launch
 
 /**
@@ -42,7 +43,7 @@ interface Chips {
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		action: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable ChipScope.() -> Unit,
 	)
 
 	/**
@@ -66,7 +67,7 @@ interface Chips {
 		loading: Progression,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable ChipScope.() -> Unit,
 	)
 
 	/**
@@ -83,7 +84,7 @@ interface Chips {
 		loading: Progression,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable ChipScope.() -> Unit,
 	)
 
 	/**
@@ -104,7 +105,7 @@ interface Chips {
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		action: (@Composable () -> Unit)?,
-		content: @Composable () -> Unit,
+		content: @Composable ChipScope.() -> Unit,
 	)
 
 	/**
@@ -115,8 +116,12 @@ interface Chips {
 	@Composable
 	fun ChipGroup(
 		multiline: Boolean,
-		chips: @Composable () -> Unit,
+		chips: @Composable ChipGroupScope.() -> Unit,
 	)
+
+	interface ChipScope
+
+	interface ChipGroupScope : LinearLayouts.RowScope
 }
 
 /**
@@ -131,7 +136,7 @@ fun AssistChip(
 	contrasted: Boolean = false,
 	icon: (@Composable () -> Unit)? = null,
 	action: (@Composable () -> Unit)? = null,
-	content: @Composable () -> Unit,
+	content: @Composable Chips.ChipScope.() -> Unit,
 ) {
 	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
@@ -164,7 +169,7 @@ fun FilterChip(
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
 	icon: (@Composable () -> Unit)? = null,
-	content: @Composable () -> Unit,
+	content: @Composable Chips.ChipScope.() -> Unit,
 ) {
 	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
@@ -196,7 +201,7 @@ fun InputChip(
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
 	icon: (@Composable () -> Unit)? = null,
-	content: @Composable () -> Unit,
+	content: @Composable Chips.ChipScope.() -> Unit,
 ) {
 	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
@@ -228,7 +233,7 @@ fun SuggestionChip(
 	contrasted: Boolean = false,
 	icon: (@Composable () -> Unit)? = null,
 	action: (@Composable () -> Unit)? = null,
-	content: @Composable () -> Unit,
+	content: @Composable Chips.ChipScope.() -> Unit,
 ) {
 	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
@@ -257,7 +262,7 @@ fun SuggestionChip(
 @Composable
 fun ChipGroup(
 	multiline: Boolean = false,
-	chips: @Composable () -> Unit,
+	chips: @Composable Chips.ChipGroupScope.() -> Unit,
 ) {
 	UI.current.ChipGroup(multiline, chips)
 }
