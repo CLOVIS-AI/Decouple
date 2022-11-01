@@ -3,6 +3,7 @@ package opensavvy.ui.core
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
+import opensavvy.ui.core.UI.Companion.Install
 import opensavvy.ui.core.basic.Buttons
 import opensavvy.ui.core.basic.Chips
 import opensavvy.ui.core.basic.TextFields
@@ -59,21 +60,13 @@ import opensavvy.ui.core.layout.LinearLayouts
 interface UI : LinearLayouts, LazyLayouts, Buttons, Texts, Chips, TextFields {
 
 	/**
-	 * Installs this UI implementation.
+	 * Prepares the interface so [content] can use all the components of this UI implementation.
 	 *
-	 * All components declared in this module and called within [content] will delegate their implementation to this UI.
-	 *
-	 * To access the current UI implementation, see [current].
-	 *
-	 * **Note to implementors**: if you override this function, do not forget to call its original implementation (`super.Install { … }`).
-	 * Otherwise, this UI will not be properly installed.
+	 * **Important.** This function is called internally by [Install].
+	 * Calling this function directly will not correctly install this UI instance.
 	 */
 	@Composable
-	fun Install(content: @Composable () -> Unit) {
-		CompositionLocalProvider(LocalUI provides this) {
-			content()
-		}
-	}
+	fun initializeFor(content: @Composable () -> Unit) = content()
 
 	companion object {
 
@@ -88,6 +81,20 @@ interface UI : LinearLayouts, LazyLayouts, Buttons, Texts, Chips, TextFields {
 		val current: UI
 			@Composable get() = LocalUI.current ?: error("No UI instance was installed. See clovis.ui.Install().")
 
+		/**
+		 * Installs a [ui] implementation.
+		 *
+		 * All OS UI components declared within [content] will delegate their implementation [ui].
+		 * To access the current UI implementation, see [current].
+		 */
+		@Composable
+		fun Install(ui: UI, content: @Composable () -> Unit) {
+			CompositionLocalProvider(LocalUI provides ui) {
+				ui.initializeFor {
+					content()
+				}
+			}
+		}
 	}
 
 }

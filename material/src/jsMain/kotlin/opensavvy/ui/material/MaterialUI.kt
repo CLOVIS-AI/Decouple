@@ -16,11 +16,9 @@ actual interface MaterialUI : UI, MaterialButtons, MaterialLinearLayouts, Materi
                               MaterialChips,
                               MaterialTextFields {
 	@Composable
-	override fun Install(content: @Composable () -> Unit) {
-		super.Install {
-			CompositionLocalProvider(Theme.Local providesDefault MaterialDefaultTheme) {
-				content()
-			}
+	override fun initializeFor(content: @Composable () -> Unit) {
+		CompositionLocalProvider(Theme.Local providesDefault MaterialDefaultTheme) {
+			content()
 		}
 	}
 }
