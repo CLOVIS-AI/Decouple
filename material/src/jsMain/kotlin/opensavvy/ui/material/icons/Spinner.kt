@@ -1,7 +1,7 @@
 package opensavvy.ui.material.icons
 
 import androidx.compose.runtime.Composable
-import opensavvy.ui.core.progression.Progression
+import opensavvy.state.Progression
 import org.jetbrains.compose.web.ExperimentalComposeWebSvgApi
 import org.jetbrains.compose.web.svg.Circle
 import org.jetbrains.compose.web.svg.Path
@@ -10,8 +10,7 @@ import org.jetbrains.compose.web.svg.Svg
 @OptIn(ExperimentalComposeWebSvgApi::class)
 @Composable
 fun Spinner(
-	loading: Progression
-
+	loading: Progression,
 ) {
 	Svg(
 		"0 0 24 24",

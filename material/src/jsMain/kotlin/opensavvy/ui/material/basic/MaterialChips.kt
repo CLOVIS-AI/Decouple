@@ -1,9 +1,9 @@
 package opensavvy.ui.material.basic
 
 import androidx.compose.runtime.Composable
+import opensavvy.state.Progression
 import opensavvy.ui.core.basic.Chips
 import opensavvy.ui.core.layout.Row
-import opensavvy.ui.core.progression.Progression
 import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.dom.Button as DomButton
 

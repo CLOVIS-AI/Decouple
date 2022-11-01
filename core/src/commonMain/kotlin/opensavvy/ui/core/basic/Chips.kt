@@ -1,9 +1,8 @@
 package opensavvy.ui.core.basic
 
 import androidx.compose.runtime.*
+import opensavvy.state.Progression
 import opensavvy.ui.core.UI
-import opensavvy.ui.core.progression.Progression
-import opensavvy.ui.core.progression.ReportProgression
 import opensavvy.ui.core.progression.launch
 
 /**
@@ -127,7 +126,7 @@ interface Chips {
  */
 @Composable
 fun AssistChip(
-	onClick: suspend ReportProgression.() -> Unit,
+	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
 	icon: (@Composable () -> Unit)? = null,
@@ -161,7 +160,7 @@ fun AssistChip(
 @Composable
 fun FilterChip(
 	activated: Boolean,
-	onToggle: suspend ReportProgression.() -> Unit,
+	onToggle: suspend () -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
 	icon: (@Composable () -> Unit)? = null,
@@ -193,7 +192,7 @@ fun FilterChip(
  */
 @Composable
 fun InputChip(
-	onRemoval: suspend ReportProgression.() -> Unit,
+	onRemoval: suspend () -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
 	icon: (@Composable () -> Unit)? = null,
@@ -224,7 +223,7 @@ fun InputChip(
  */
 @Composable
 fun SuggestionChip(
-	onClick: suspend ReportProgression.() -> Unit,
+	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
 	icon: (@Composable () -> Unit)? = null,
