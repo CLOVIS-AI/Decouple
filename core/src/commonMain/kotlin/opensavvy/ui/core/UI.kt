@@ -10,6 +10,7 @@ import opensavvy.ui.core.basic.TextFields
 import opensavvy.ui.core.basic.Texts
 import opensavvy.ui.core.layout.LazyLayouts
 import opensavvy.ui.core.layout.LinearLayouts
+import opensavvy.ui.core.theme.Theme
 
 /**
  * A fully-featured UI implementation.
@@ -67,6 +68,15 @@ interface UI : LinearLayouts, LazyLayouts, Buttons, Texts, Chips, TextFields {
 	 */
 	@Composable
 	fun initializeFor(content: @Composable () -> Unit) = content()
+
+	/**
+	 * Applies [theme] to [content].
+	 *
+	 * **Important.** This function is called internally by [Install][Theme.Install].
+	 * Calling this function directly will not correctly install this Theme instance.
+	 */
+	@Composable
+	fun initializeThemeFor(theme: Theme, content: @Composable () -> Unit) = content()
 
 	companion object {
 
