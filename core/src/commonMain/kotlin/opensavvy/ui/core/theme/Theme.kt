@@ -3,6 +3,7 @@ package opensavvy.ui.core.theme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
+import opensavvy.ui.core.UI
 
 /**
  * The visual identity of the application.
@@ -42,12 +43,14 @@ interface Theme {
 			@Composable get() = current.color
 
 		/**
-		 * Installs [theme] to [block].
+		 * Installs [theme] to [content].
 		 */
 		@Composable
-		fun Install(theme: Theme, block: @Composable () -> Unit) {
+		fun Install(theme: Theme, content: @Composable () -> Unit) {
 			CompositionLocalProvider(Local provides theme) {
-				block()
+				UI.current.initializeThemeFor(theme) {
+					content()
+				}
 			}
 		}
 	}

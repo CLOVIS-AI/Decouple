@@ -26,4 +26,17 @@ class TonalPalette(vararg colors: RGB) {
 	val i20 get() = MaterialColor(this, 13)
 	val i10 get() = MaterialColor(this, 14)
 	val i0 get() = MaterialColor(this, 15)
+
+	override fun equals(other: Any?): Boolean {
+		if (this === other) return true
+		if (other !is TonalPalette) return false
+
+		if (colors != other.colors) return false
+
+		return true
+	}
+
+	override fun hashCode(): Int {
+		return colors.hashCode()
+	}
 }

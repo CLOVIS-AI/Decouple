@@ -5,7 +5,8 @@ import opensavvy.ui.core.theme.ColorTheme
 import opensavvy.ui.core.theme.RGB
 
 @Suppress("MemberVisibilityCanBePrivate")
-class Palette(
+data class Palette(
+	val name: String,
 	val primary: TonalPalette,
 	val secondary: TonalPalette,
 	val tertiary: TonalPalette,
@@ -76,6 +77,7 @@ class Palette(
 		//region Default palette
 
 		val default = Palette(
+			name = "Magenta",
 			primary = TonalPalette(
 				white,
 				RGB.fromHex("#FFFBFE"),
