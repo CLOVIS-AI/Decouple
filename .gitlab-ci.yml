@@ -58,7 +58,7 @@ dokka:
   script:
     - ./gradlew dokkaHtmlMultiModule
     - mkdir -p docs
-    - mv build/dokka/htmlMultiModule docs
+    - mv build/dokka/htmlMultiModule/* docs
 
   artifacts:
     paths:
