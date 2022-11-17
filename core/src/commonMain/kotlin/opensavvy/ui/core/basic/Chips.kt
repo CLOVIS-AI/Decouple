@@ -1,6 +1,7 @@
 package opensavvy.ui.core.basic
 
 import androidx.compose.runtime.*
+import kotlinx.coroutines.CoroutineScope
 import opensavvy.state.Progression
 import opensavvy.ui.core.UI
 import opensavvy.ui.core.layout.LinearLayouts
@@ -134,11 +135,11 @@ fun AssistChip(
 	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
+	scope: CoroutineScope = rememberCoroutineScope(),
 	icon: (@Composable () -> Unit)? = null,
 	action: (@Composable () -> Unit)? = null,
 	content: @Composable Chips.ChipScope.() -> Unit,
 ) {
-	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
 
 	UI.current.AssistChip(
@@ -168,10 +169,10 @@ fun FilterChip(
 	onToggle: suspend () -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
+	scope: CoroutineScope = rememberCoroutineScope(),
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable Chips.ChipScope.() -> Unit,
 ) {
-	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
 
 	UI.current.FilterChip(
@@ -200,10 +201,10 @@ fun InputChip(
 	onRemoval: suspend () -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
+	scope: CoroutineScope = rememberCoroutineScope(),
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable Chips.ChipScope.() -> Unit,
 ) {
-	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
 
 	UI.current.InputChip(
@@ -231,11 +232,11 @@ fun SuggestionChip(
 	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
+	scope: CoroutineScope = rememberCoroutineScope(),
 	icon: (@Composable () -> Unit)? = null,
 	action: (@Composable () -> Unit)? = null,
 	content: @Composable Chips.ChipScope.() -> Unit,
 ) {
-	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
 
 	UI.current.SuggestionChip(

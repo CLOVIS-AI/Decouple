@@ -1,6 +1,7 @@
 package opensavvy.ui.core.basic
 
 import androidx.compose.runtime.*
+import kotlinx.coroutines.CoroutineScope
 import opensavvy.state.Progression
 import opensavvy.ui.core.UI
 import opensavvy.ui.core.progression.launch
@@ -83,10 +84,10 @@ interface Buttons {
 fun Button(
 	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
+	scope: CoroutineScope = rememberCoroutineScope(),
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
-	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
 
 	UI.current.Button(
@@ -113,10 +114,10 @@ fun PrimaryButton(
 	onClick: suspend () -> Unit,
 	primary: Boolean = false,
 	enabled: Boolean = true,
+	scope: CoroutineScope = rememberCoroutineScope(),
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
-	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
 
 	UI.current.PrimaryButton(
@@ -144,9 +145,9 @@ fun SecondaryButton(
 	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
 	icon: (@Composable () -> Unit)? = null,
+	scope: CoroutineScope = rememberCoroutineScope(),
 	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
-	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
 
 	UI.current.SecondaryButton(
@@ -172,10 +173,10 @@ fun SecondaryButton(
 fun ContrastButton(
 	onClick: suspend () -> Unit,
 	enabled: Boolean = true,
+	scope: CoroutineScope = rememberCoroutineScope(),
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
-	val scope = rememberCoroutineScope()
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
 
 	UI.current.ContrastButton(
