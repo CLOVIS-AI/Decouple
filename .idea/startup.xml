@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectStartupSharedConfiguration">
     <configurations>
-      <configuration id="Gradle.Demo » Compile " name="Demo » Compile " />
-      <configuration id="Gradle.Demo » Host" name="Demo » Host" />
+      <configuration id="Gradle.Demo (web) » Compile " name="Demo (web) » Compile " />
+      <configuration id="Gradle.Demo (web) » Host" name="Demo (web) » Host" />
     </configurations>
   </component>
 </project>

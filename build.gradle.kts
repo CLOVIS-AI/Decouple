@@ -1,5 +1,7 @@
 plugins {
 	kotlin("multiplatform") apply false
+	kotlin("jvm") apply false
+	kotlin("js") apply false
 	id("org.jetbrains.dokka") apply false
 	id("maven-publish")
 
