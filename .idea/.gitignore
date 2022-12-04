@@ -4,6 +4,7 @@
 /misc.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+uiDesigner.xml
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
@@ -15,6 +16,9 @@ gradle.xml
 jarRepositories.xml
 kotlinc.xml
 libraries
+/artifacts
+/modules
+/modules.xml
 
 # Generated from Git import
 vcs.xml
