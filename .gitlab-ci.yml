@@ -38,8 +38,8 @@ demo:web:build:
   image: gradle:jdk17-focal
 
   script:
-    - ./gradlew demo:jsProduction
-    - mv build/js/packages/OpenSavvy-UI-demo/kotlin/dist dist-web
+    - ./gradlew demo-web:production
+    - mv build/js/packages/OpenSavvy-UI-demo-web/kotlin/dist dist-web
 
   artifacts:
     paths:
