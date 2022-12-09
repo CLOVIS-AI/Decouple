@@ -5,6 +5,8 @@ import opensavvy.ui.core.basic.Button
 import opensavvy.ui.core.basic.Text
 import opensavvy.ui.core.layout.Column
 import opensavvy.ui.core.layout.Row
+import opensavvy.ui.demo.components.Buttons
+import opensavvy.ui.demo.components.Chips
 import opensavvy.ui.navigation.Destination
 
 enum class Screen(
