@@ -7,12 +7,15 @@ import kotlinx.browser.window
 import opensavvy.logger.Logger.Companion.debug
 import opensavvy.logger.Logger.Companion.trace
 import opensavvy.logger.loggerFor
+
 class BrowserNavigation(
 	initial: Destination,
 	private val routes: Collection<Destination>,
+	private val hashNavigation: Boolean = false,
 ) : Navigation {
 
 	private val log = loggerFor(this)
+	private val separator = if (hashNavigation) '#' else '/'
 
 	override var current: Destination by mutableStateOf(initial)
 		private set
@@ -22,7 +25,10 @@ class BrowserNavigation(
 	}
 
 	private fun initPath() {
-		val path = window.location.pathname.removePrefix("/")
+		val path = if (!hashNavigation)
+			window.location.pathname.removePrefix("/")
+		else
+			window.location.hash.removePrefix("#")
 
 		val candidate = routes.find { it.fullRoute.joinToString(separator = "/") == path }
 		if (candidate != null)
@@ -45,7 +51,7 @@ class BrowserNavigation(
 		window.history.pushState(
 			null,
 			destination.title,
-			'/' + destination.fullRoute.joinToString(separator = "/")
+			separator + destination.fullRoute.joinToString(separator = "/")
 		)
 		current = destination
 	}
@@ -55,7 +61,7 @@ class BrowserNavigation(
 		window.history.replaceState(
 			null,
 			destination.title,
-			'/' + destination.fullRoute.joinToString(separator = "/")
+			separator + destination.fullRoute.joinToString(separator = "/")
 		)
 		current = destination
 	}
