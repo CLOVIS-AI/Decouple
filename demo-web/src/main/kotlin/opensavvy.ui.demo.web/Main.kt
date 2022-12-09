@@ -12,6 +12,6 @@ object MaterialUI : MaterialUI {
 
 fun main() {
 	renderComposable(rootElementId = "root") {
-		Demo(listOf(MaterialUI), BrowserNavigation(Screen.Home, Screen.values().asList()))
+		Demo(listOf(MaterialUI), BrowserNavigation(Screen.Home, Screen.values().asList(), hashNavigation = true))
 	}
 }
