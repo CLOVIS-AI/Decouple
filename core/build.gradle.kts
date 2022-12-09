@@ -20,6 +20,7 @@ kotlin {
 				api(KotlinX.datetime)
 
 				api("opensavvy:state:_")
+				api("opensavvy:logger:_")
 			}
 		}
 	}
