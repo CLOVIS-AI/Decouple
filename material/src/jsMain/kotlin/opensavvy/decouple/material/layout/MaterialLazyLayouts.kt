@@ -7,7 +7,7 @@ import opensavvy.decouple.core.layout.*
 // this is just a placeholder until a proper implementation is written
 // TODO in https://gitlab.com/opensavvy/opensavvy-ui/-/work_items/117887682
 
-actual interface MaterialLazyLayouts : LazyLayouts {
+actual object MaterialLazyLayouts : LazyLayouts {
 
 	@Composable
 	override fun LazyColumn(

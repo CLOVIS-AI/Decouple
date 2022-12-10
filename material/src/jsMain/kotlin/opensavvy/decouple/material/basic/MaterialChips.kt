@@ -7,7 +7,7 @@ import opensavvy.state.Progression
 import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.dom.Button as DomButton
 
-actual interface MaterialChips : Chips {
+actual object MaterialChips : Chips {
 
 	@Composable
 	override fun AssistChip(
