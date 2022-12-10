@@ -1,5 +1,7 @@
 @file:Suppress("UNUSED_VARIABLE")
 
+import java.net.URL
+
 plugins {
 	kotlin("multiplatform")
 	id("org.jetbrains.compose")
@@ -42,5 +44,11 @@ kotlin {
 tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
 	dokkaSourceSets.configureEach {
 		includes.from("${project.projectDir}/material.md")
+
+		sourceLink {
+			localDirectory.set(file("src"))
+			remoteUrl.set(URL("https://gitlab.com/opensavvy/decouple/-/blob/main/material/src"))
+			remoteLineSuffix.set("#L")
+		}
 	}
 }
