@@ -1,3 +1,5 @@
+import java.net.URL
+
 plugins {
 	kotlin("multiplatform") apply false
 	kotlin("jvm") apply false
@@ -70,6 +72,18 @@ allprojects {
 	tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 		kotlinOptions {
 			jvmTarget = "17"
+		}
+	}
+
+
+	tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
+		dokkaSourceSets.configureEach {
+			externalDocumentationLink {
+				url.set(URL("https://kotlinlang.org/api/kotlinx.coroutines/"))
+			}
+			externalDocumentationLink {
+				url.set(URL("https://opensavvy.gitlab.io/pedestal/documentation/"))
+			}
 		}
 	}
 }
