@@ -25,7 +25,7 @@ private val Alignment.css: String
 		Alignment.End -> "items-end"
 	}
 
-actual interface MaterialLinearLayouts : LinearLayouts {
+actual object MaterialLinearLayouts : LinearLayouts {
 
 	@Composable
 	override fun Column(

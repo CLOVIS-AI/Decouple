@@ -11,7 +11,7 @@ import org.jetbrains.compose.web.css.StyleScope
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Button as DomButton
 
-actual interface MaterialButtons : Buttons {
+actual object MaterialButtons : Buttons {
 
 	@Composable
 	override fun Button(

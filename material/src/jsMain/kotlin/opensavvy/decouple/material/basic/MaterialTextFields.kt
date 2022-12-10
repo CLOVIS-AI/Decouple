@@ -9,7 +9,7 @@ import opensavvy.decouple.core.basic.Text
 import opensavvy.decouple.core.basic.TextField
 import opensavvy.decouple.core.basic.TextFields
 
-actual interface MaterialTextFields : TextFields {
+actual object MaterialTextFields : TextFields {
 
 	/**
 	 * The label to a text field such as [TextField].

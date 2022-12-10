@@ -5,7 +5,7 @@ import opensavvy.decouple.core.basic.Texts
 import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text as DomText
 
-actual interface MaterialTexts : Texts {
+actual object MaterialTexts : Texts {
 
 	@Composable
 	override fun Text(text: String) {
