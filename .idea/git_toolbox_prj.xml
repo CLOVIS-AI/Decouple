@@ -15,6 +15,7 @@
             <option name="enabled" value="true" />
             <option name="regexConfig">
               <RegexConfig>
+                <option name="dotAll" value="true" />
                 <option name="expression" value="(build|Build|upgrade|Upgrade|ci|doc|docs|Docs|feat|New|fix|fixes|Fix|perf|perfs|Update|refactor|style|test|tests|breaking|Breaking|merge)(\([a-z-]*\))?: .+" />
                 <option name="testInput" value="fix: Bug #123" />
               </RegexConfig>
