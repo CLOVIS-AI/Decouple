@@ -21,4 +21,6 @@ include(
 
 	"demo",
 	"demo-web",
+
+	"documentation",
 )
