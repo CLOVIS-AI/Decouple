@@ -39,7 +39,7 @@ demo:web:build:
 
   script:
     - ./gradlew demo-web:production
-    - mv build/js/packages/OpenSavvy-UI-demo-web/kotlin/dist dist-web
+    - mv build/js/packages/Decouple-demo-web/kotlin/dist dist-web
 
   artifacts:
     paths:

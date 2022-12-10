@@ -1,2 +1,2 @@
 /* As this is a monorepo, we directly import this file */
-@import "../opensavvy.ui.material/style.css";
+@import "../opensavvy/decouple/material/style.css";

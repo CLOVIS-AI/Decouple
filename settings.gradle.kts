@@ -1,4 +1,4 @@
-rootProject.name = "OpenSavvy-UI"
+rootProject.name = "Decouple"
 
 pluginManagement {
 	repositories {
