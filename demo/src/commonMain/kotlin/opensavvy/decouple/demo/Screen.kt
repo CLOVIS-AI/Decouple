@@ -7,6 +7,7 @@ import opensavvy.decouple.core.layout.Column
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.demo.components.Buttons
 import opensavvy.decouple.demo.components.Chips
+import opensavvy.decouple.demo.components.Progression
 import opensavvy.decouple.demo.components.TextFields
 import opensavvy.decouple.navigation.Destination
 
@@ -20,6 +21,7 @@ enum class Screen(
 	Buttons("buttons", "Buttons", parent = Home, { Buttons() }),
 	Chips("chips", "Chips", parent = Home, { Chips() }),
 	TextFields("fields", "Text fields", parent = Home, { TextFields() }),
+	Progression("progress", "Progression", parent = Home, { Progression() }),
 	;
 
 	@Composable

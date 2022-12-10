@@ -2,8 +2,8 @@ package opensavvy.decouple.material.basic
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.basic.Buttons
+import opensavvy.decouple.core.basic.ProgressIndicator
 import opensavvy.decouple.core.theme.Theme
-import opensavvy.decouple.material.icons.Spinner
 import opensavvy.decouple.material.theme.css
 import opensavvy.state.Progression
 import org.jetbrains.compose.web.attributes.disabled
@@ -299,7 +299,7 @@ private fun AbstractButton(
 			}
 		}
 		) {
-			Spinner(loading)
+			ProgressIndicator(loading)
 		}
 
 		Div {
