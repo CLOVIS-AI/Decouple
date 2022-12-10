@@ -63,7 +63,7 @@ interface Chips {
 	@Composable
 	fun FilterChip(
 		activated: Boolean,
-		onToggle: () -> Unit,
+		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
 		loading: Progression,
 		contrasted: Boolean,
@@ -166,7 +166,7 @@ fun AssistChip(
 @Composable
 fun FilterChip(
 	activated: Boolean,
-	onToggle: suspend () -> Unit,
+	onToggle: suspend (Boolean) -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
 	scope: CoroutineScope = rememberCoroutineScope(),
@@ -177,11 +177,10 @@ fun FilterChip(
 
 	UI.current.FilterChip(
 		activated = activated,
-		onToggle = {
+		onToggle = { bool ->
 			scope.launch(
 				onProgress = { loading = it },
-				block = onToggle,
-			)
+			) { onToggle(bool) }
 		},
 		enabled = enabled,
 		loading = loading,

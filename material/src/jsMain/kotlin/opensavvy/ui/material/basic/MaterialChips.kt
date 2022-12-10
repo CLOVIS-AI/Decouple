@@ -42,7 +42,7 @@ actual interface MaterialChips : Chips {
 	@Composable
 	override fun FilterChip(
 		activated: Boolean,
-		onToggle: () -> Unit,
+		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
 		loading: Progression,
 		contrasted: Boolean,
@@ -53,7 +53,7 @@ actual interface MaterialChips : Chips {
 			{
 				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/16
 
-				onClick { onToggle() }
+				onClick { onToggle(!activated) }
 
 				if (!enabled || loading is Progression.Loading)
 					disabled()

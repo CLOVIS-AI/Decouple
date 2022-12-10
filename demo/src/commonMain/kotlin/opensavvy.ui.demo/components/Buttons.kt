@@ -40,7 +40,7 @@ fun Buttons() = Column {
 
 	Text("States:")
 	ChipGroup {
-		FilterChip(enabled, onToggle = { enabled = !enabled }) {
+		FilterChip(enabled, onToggle = { enabled = it }) {
 			Text("Enabled")
 		}
 	}
