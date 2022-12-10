@@ -5,6 +5,9 @@ import opensavvy.ui.core.basic.Button
 import opensavvy.ui.core.basic.Text
 import opensavvy.ui.core.layout.Column
 import opensavvy.ui.core.layout.Row
+import opensavvy.ui.demo.components.Buttons
+import opensavvy.ui.demo.components.Chips
+import opensavvy.ui.demo.components.TextFields
 import opensavvy.ui.navigation.Destination
 
 enum class Screen(
@@ -16,6 +19,7 @@ enum class Screen(
 	Home("", "OpenSavvy UI", parent = null, { Home() }),
 	Buttons("buttons", "Buttons", parent = Home, { Buttons() }),
 	Chips("chips", "Chips", parent = Home, { Chips() }),
+	TextFields("fields", "Text fields", parent = Home, { TextFields() }),
 	;
 
 	@Composable

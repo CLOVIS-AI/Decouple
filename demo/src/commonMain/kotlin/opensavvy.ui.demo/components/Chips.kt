@@ -1,4 +1,4 @@
-package opensavvy.ui.demo
+package opensavvy.ui.demo.components
 
 import androidx.compose.runtime.*
 import kotlinx.coroutines.delay
