@@ -140,31 +140,31 @@ fun TextFields() = Column {
 
 	Text("States:")
 	ChipGroup {
-		FilterChip(enabled, onToggle = { enabled = !enabled }) {
+		FilterChip(enabled, onToggle = { enabled = it }) {
 			Text("Enabled")
 		}
 
-		FilterChip(required, onToggle = { required = !required }) {
+		FilterChip(required, onToggle = { required = it }) {
 			Text("Required")
 		}
 
-		FilterChip(contrasted, onToggle = { contrasted = !contrasted }) {
+		FilterChip(contrasted, onToggle = { contrasted = it }) {
 			Text("Contrasted")
 		}
 
-		FilterChip(allowReset, onToggle = { allowReset = !allowReset }) {
+		FilterChip(allowReset, onToggle = { allowReset = it }) {
 			Text("Allow reset")
 		}
 
-		FilterChip(multiLine, onToggle = { multiLine = !multiLine }) {
+		FilterChip(multiLine, onToggle = { multiLine = it }) {
 			Text("Multiline")
 		}
 
-		FilterChip(showSupportingText, onToggle = { showSupportingText = !showSupportingText }) {
+		FilterChip(showSupportingText, onToggle = { showSupportingText = it }) {
 			Text("Show supporting text")
 		}
 
-		FilterChip(showFailureText, onToggle = { showFailureText = !showFailureText }) {
+		FilterChip(showFailureText, onToggle = { showFailureText = it }) {
 			Text("Show supporting text")
 		}
 	}

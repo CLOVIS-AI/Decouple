@@ -40,11 +40,11 @@ fun Chips() = Column {
 
 	Text("States:")
 	ChipGroup {
-		FilterChip(enabled, onToggle = { enabled = !enabled }) {
+		FilterChip(enabled, onToggle = { enabled = it }) {
 			Text("Enabled")
 		}
 
-		FilterChip(contrasted, onToggle = { contrasted = !contrasted }) {
+		FilterChip(contrasted, onToggle = { contrasted = it }) {
 			Text("Contrasted")
 		}
 	}
