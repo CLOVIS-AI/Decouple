@@ -6,7 +6,6 @@ import opensavvy.decouple.core.basic.ProgressIndicator
 import opensavvy.decouple.core.theme.Theme
 import opensavvy.decouple.material.theme.css
 import opensavvy.state.Progression
-import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.css.StyleScope
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Button as DomButton
@@ -31,10 +30,10 @@ actual object MaterialButtons : Buttons {
 			"enabled:hover:bg-materialColor1/hover",
 		)
 
-		val disabledClasses = arrayOf(
-			"disabled:text-materialColor2",
-			"disabled:opacity-disabled",
-		)
+		val disabledClasses = buildList {
+			add("disabled:text-materialColor2")
+			add("disabled:opacity-disabled")
+		}
 
 		AbstractButton(
 			onClick = onClick,
@@ -75,10 +74,10 @@ actual object MaterialButtons : Buttons {
 			"enabled:hover:shadow-elevation1",
 		)
 
-		val disabledClasses = arrayOf(
-			"disabled:text-materialColor3/disabled",
-			"disabled:bg-materialColor3/disabledBg",
-		)
+		val disabledClasses = buildList {
+			add("disabled:text-materialColor3/disabled")
+			add("disabled:bg-materialColor3/disabledBg")
+		}
 
 		var elevationClasses = arrayOf(
 			"group-focus:bg-materialColor4/focus",
@@ -132,10 +131,11 @@ actual object MaterialButtons : Buttons {
 			"enabled:hover:bg-materialColor1/hover",
 		)
 
-		val disabledClasses = arrayOf(
-			"disabled:text-materialColor2/disabled",
-			"disabled:outline-materialColor2/disabledBg",
-		)
+		val disabledClasses = buildList {
+			add("disabled:text-materialColor2/disabled")
+			add("disabled:outline-materialColor2/disabledBg")
+		}
+
 
 		AbstractButton(
 			onClick = onClick,
@@ -174,11 +174,11 @@ actual object MaterialButtons : Buttons {
 			"enabled:hover:shadow-elevation2",
 		)
 
-		val disabledClasses = arrayOf(
-			"disabled:text-materialColor3/disabled",
-			"disabled:bg-materialColor3/disabledBg",
-			"disabled:shadow-none",
-		)
+		val disabledClasses = buildList {
+			add("disabled:text-materialColor3/disabled")
+			add("disabled:bg-materialColor3/disabledBg")
+			add("disabled:shadow-none")
+		}
 
 		val firstLayerClasses = arrayOf(
 			"bg-materialColor1/normal",
@@ -244,20 +244,15 @@ private fun AbstractButton(
 	loading: Progression,
 	icon: (@Composable () -> Unit)?,
 	classes: Array<String>?,
-	disabledClasses: Array<String>?,
-	style: (StyleScope.() -> Unit)?,
+	disabledClasses: List<String>,
+	style: (StyleScope.() -> Unit) = {},
 	layerClasses: Array<Array<String>>?,
 	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
 
 	DomButton(
 		{
-
-			style {
-				if (style != null) {
-					style()
-				}
-			}
+			style(style)
 
 			classes(*buttonClasses)
 
@@ -265,18 +260,8 @@ private fun AbstractButton(
 				classes(*classes)
 			}
 
-			if (!enabled && disabledClasses != null) {
-				classes(*disabledClasses)
-			}
+			setDisabledState(enabled, disabledClasses, loading)
 
-			if (!enabled || loading is Progression.Loading) {
-				disabled()
-				if (enabled) {
-					classes("cursor-wait")
-				} else {
-					classes("disabled:cursor-not-allowed")
-				}
-			}
 			onClick { onClick() }
 
 		}
@@ -284,21 +269,7 @@ private fun AbstractButton(
 		if (icon != null)
 			icon()
 
-		Div({
-			classes(
-				"transition-all",
-				"duration-300",
-				"relative",
-				"-mr-1"
-			)
-
-			if (loading is Progression.Loading) {
-				classes("w-5", "h-5", "mr-1")
-			} else {
-				classes("w-0", "h-5")
-			}
-		}
-		) {
+		AnimatedLeadingIcon(loading is Progression.Loading) {
 			ProgressIndicator(loading)
 		}
 
@@ -306,18 +277,7 @@ private fun AbstractButton(
 			content(ButtonScope)
 		}
 
-		layerClasses?.forEach {
-			Div(
-				{
-					classes(
-						"absolute",
-						"inset-0",
-						*layerAgnosticClasses,
-					)
-					classes(*it)
-				}
-			)
-		}
+		StateLayers(layerClasses, layerAgnosticClasses)
 	}
 
 }

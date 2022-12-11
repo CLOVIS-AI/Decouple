@@ -19,7 +19,7 @@ actual object MaterialUIMetadata : UIMetadata {
 	override fun initializeThemeFor(theme: Theme, content: @Composable () -> Unit) {
 		Div(
 			{
-				classes("transition-colors")
+				classes("transition-colors", "h-full")
 
 				style {
 					backgroundColor(theme.color.background.rgb.css)
