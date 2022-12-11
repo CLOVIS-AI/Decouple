@@ -38,7 +38,7 @@ data class Palette(
 			container = error.i90,
 		),
 		background = neutral.i99,
-		backgroundVariant = neutralVariant.i99,
+		backgroundVariant = neutralVariant.i90,
 		contrast = neutral.i20,
 		outline = neutralVariant.i50,
 		outlineVariant = neutralVariant.i80,
@@ -95,7 +95,7 @@ data class Palette(
 				RGB.fromHex("#432B7E"),
 				RGB.fromHex("#381E72"),
 				RGB.fromHex("#21005D"),
-				opensavvy.decouple.material.theme.black,
+				black,
 			),
 			secondary = TonalPalette(
 				TonalPalette.RoleType.Normal,
@@ -103,18 +103,18 @@ data class Palette(
 				RGB.fromHex("#FFFBFF"),
 				RGB.fromHex("#FCF8FF"),
 				RGB.fromHex("#F3EEFF"),
-				RGB.fromHex("#E4DFFF"),
+				RGB.fromHex("#E8DEF8"),
 				RGB.fromHex("#C7BFFF"),
 				RGB.fromHex("#AAA0FB"),
 				RGB.fromHex("#8F86DE"),
 				RGB.fromHex("#756CC2"),
 				RGB.fromHex("#5C53A7"),
 				RGB.fromHex("#50469A"),
-				RGB.fromHex("#443A8E"),
+				RGB.fromHex("#4A4458"),
 				RGB.fromHex("#392E81"),
 				RGB.fromHex("#2D2176"),
-				RGB.fromHex("#180362"),
-				opensavvy.decouple.material.theme.black,
+				RGB.fromHex("#1E192B"),
+				black,
 			),
 			tertiary = TonalPalette(
 				TonalPalette.RoleType.Normal,
@@ -133,7 +133,7 @@ data class Palette(
 				RGB.fromHex("#56303D"),
 				RGB.fromHex("#4A2532"),
 				RGB.fromHex("#31101D"),
-				opensavvy.decouple.material.theme.black,
+				black,
 			),
 			error = TonalPalette(
 				TonalPalette.RoleType.Normal,
@@ -152,7 +152,7 @@ data class Palette(
 				RGB.fromHex("#7E0007"),
 				RGB.fromHex("#690005"),
 				RGB.fromHex("#410002"),
-				opensavvy.decouple.material.theme.black,
+				black,
 			),
 			neutral = TonalPalette(
 				TonalPalette.RoleType.Normal,
@@ -171,7 +171,7 @@ data class Palette(
 				RGB.fromHex("#3D3B3E"),
 				RGB.fromHex("#313033"),
 				RGB.fromHex("#1C1B1E"),
-				opensavvy.decouple.material.theme.black,
+				black,
 			),
 			neutralVariant = TonalPalette(
 				TonalPalette.RoleType.Variant,
@@ -190,7 +190,7 @@ data class Palette(
 				RGB.fromHex("#3D3A43"),
 				RGB.fromHex("#322F38"),
 				RGB.fromHex("#1D1A22"),
-				opensavvy.decouple.material.theme.black,
+				black,
 			)
 		)
 
