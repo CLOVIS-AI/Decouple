@@ -265,18 +265,8 @@ private fun AbstractButton(
 				classes(*classes)
 			}
 
-			if (!enabled && disabledClasses != null) {
-				classes(*disabledClasses)
-			}
+			setDisabledState(enabled, disabledClasses, loading)
 
-			if (!enabled || loading is Progression.Loading) {
-				disabled()
-				if (enabled) {
-					classes("cursor-wait")
-				} else {
-					classes("disabled:cursor-not-allowed")
-				}
-			}
 			onClick { onClick() }
 
 		}
@@ -284,21 +274,7 @@ private fun AbstractButton(
 		if (icon != null)
 			icon()
 
-		Div({
-			classes(
-				"transition-all",
-				"duration-300",
-				"relative",
-				"-mr-1"
-			)
-
-			if (loading is Progression.Loading) {
-				classes("w-5", "h-5", "mr-1")
-			} else {
-				classes("w-0", "h-5")
-			}
-		}
-		) {
+		AnimatedLeadingIcon(loading is Progression.Loading) {
 			ProgressIndicator(loading)
 		}
 
@@ -306,18 +282,7 @@ private fun AbstractButton(
 			content(ButtonScope)
 		}
 
-		layerClasses?.forEach {
-			Div(
-				{
-					classes(
-						"absolute",
-						"inset-0",
-						*layerAgnosticClasses,
-					)
-					classes(*it)
-				}
-			)
-		}
+		StateLayers(layerClasses, layerAgnosticClasses)
 	}
 
 }
