@@ -5,9 +5,11 @@ import opensavvy.decouple.core.UIMetadata
 import opensavvy.decouple.core.basic.*
 import opensavvy.decouple.core.layout.LazyLayouts
 import opensavvy.decouple.core.layout.LinearLayouts
+import opensavvy.decouple.core.layout.Navigation
 import opensavvy.decouple.material.basic.*
 import opensavvy.decouple.material.layout.MaterialLazyLayouts
 import opensavvy.decouple.material.layout.MaterialLinearLayouts
+import opensavvy.decouple.material.layout.MaterialNavigation
 
 expect object MaterialUIMetadata : UIMetadata
 
@@ -19,7 +21,8 @@ object MaterialUI : UI,
                     Texts by MaterialTexts,
                     ProgressIndicators by MaterialProgressIndicators,
                     LinearLayouts by MaterialLinearLayouts,
-                    LazyLayouts by MaterialLazyLayouts {
+                    LazyLayouts by MaterialLazyLayouts,
+                    Navigation by MaterialNavigation {
 
     override fun toString() = "Material You"
 }
