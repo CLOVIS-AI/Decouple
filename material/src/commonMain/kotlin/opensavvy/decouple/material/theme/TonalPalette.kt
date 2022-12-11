@@ -2,7 +2,7 @@ package opensavvy.decouple.material.theme
 
 import opensavvy.decouple.core.theme.RGB
 
-class TonalPalette(vararg colors: RGB) {
+class TonalPalette(val roleType: RoleType, vararg colors: RGB) {
 
 	init {
 		require(colors.size == 16) { "Material color roles should have 15 roles (100, 99, 98, 95, 90, 80, 70, 60, 50, 40, 35, 30, 25, 20, 10, 0), found ${colors.size} tones: $colors" }
@@ -38,5 +38,10 @@ class TonalPalette(vararg colors: RGB) {
 
 	override fun hashCode(): Int {
 		return colors.hashCode()
+	}
+
+	enum class RoleType {
+		Normal,
+		Variant,
 	}
 }

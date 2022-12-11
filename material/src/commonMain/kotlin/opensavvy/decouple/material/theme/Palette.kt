@@ -79,7 +79,8 @@ data class Palette(
 		val default = Palette(
 			name = "Magenta",
 			primary = TonalPalette(
-				opensavvy.decouple.material.theme.white,
+				TonalPalette.RoleType.Normal,
+				white,
 				RGB.fromHex("#FFFBFE"),
 				RGB.fromHex("#FDF7FF"),
 				RGB.fromHex("#F6EDFF"),
@@ -97,7 +98,8 @@ data class Palette(
 				opensavvy.decouple.material.theme.black,
 			),
 			secondary = TonalPalette(
-				opensavvy.decouple.material.theme.white,
+				TonalPalette.RoleType.Normal,
+				white,
 				RGB.fromHex("#FFFBFF"),
 				RGB.fromHex("#FCF8FF"),
 				RGB.fromHex("#F3EEFF"),
@@ -115,7 +117,8 @@ data class Palette(
 				opensavvy.decouple.material.theme.black,
 			),
 			tertiary = TonalPalette(
-				opensavvy.decouple.material.theme.white,
+				TonalPalette.RoleType.Normal,
+				white,
 				RGB.fromHex("#FFFBFF"),
 				RGB.fromHex("#FFF8F8"),
 				RGB.fromHex("#FFECF0"),
@@ -133,7 +136,8 @@ data class Palette(
 				opensavvy.decouple.material.theme.black,
 			),
 			error = TonalPalette(
-				opensavvy.decouple.material.theme.white,
+				TonalPalette.RoleType.Normal,
+				white,
 				RGB.fromHex("#FFFBFF"),
 				RGB.fromHex("#FFF8F7"),
 				RGB.fromHex("#FFEDEA"),
@@ -151,7 +155,8 @@ data class Palette(
 				opensavvy.decouple.material.theme.black,
 			),
 			neutral = TonalPalette(
-				opensavvy.decouple.material.theme.white,
+				TonalPalette.RoleType.Normal,
+				white,
 				RGB.fromHex("#FFFBFF"),
 				RGB.fromHex("#FDF8FD"),
 				RGB.fromHex("#F4EFF4"),
@@ -169,7 +174,8 @@ data class Palette(
 				opensavvy.decouple.material.theme.black,
 			),
 			neutralVariant = TonalPalette(
-				opensavvy.decouple.material.theme.white,
+				TonalPalette.RoleType.Variant,
+				white,
 				RGB.fromHex("#FFFBFF"),
 				RGB.fromHex("#FDF7FF"),
 				RGB.fromHex("#F5EEFA"),
