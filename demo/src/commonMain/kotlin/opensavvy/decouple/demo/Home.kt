@@ -5,5 +5,5 @@ import opensavvy.decouple.core.basic.Text
 
 @Composable
 fun Home() {
-	Text("Welcome to OpenSavvy UI, the semantic visual library.")
+	Text("Welcome to OpenSavvy Decouple, the semantic visual library.")
 }

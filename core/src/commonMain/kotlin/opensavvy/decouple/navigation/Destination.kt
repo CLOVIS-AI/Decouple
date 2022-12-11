@@ -14,20 +14,16 @@ interface Destination {
 	 */
 	val route: String
 
-	val fullRoute: List<String>
-		get() {
-			val result = ArrayList<String>()
-
-			var dst: Destination = this
-			while (true) {
-				if (dst.route.isNotBlank())
-					result += dst.route
-
-				dst = dst.parent ?: break
-			}
-
-			return result
-		}
+	/**
+	 * The absolute route of this destination.
+	 *
+	 * Returns a sequence of the [route] value for all elements from the root to this destination.
+	 * For more information about the hierarchy, see [parent].
+	 */
+	val fullRoute: Sequence<String>
+		get() = parents
+			.map { it.route }
+			.filter { it.isNotBlank() }
 
 	/**
 	 * The user-visible title of this screen.
@@ -43,8 +39,28 @@ interface Destination {
 	 * Screens form hierarchical forests.
 	 *
 	 * `null` if this screen is one of the navigation roots.
+	 *
+	 * To recursively access all parents, see [parents].
 	 */
 	val parent: Destination?
+
+	private suspend fun SequenceScope<Destination>.generateParents() {
+		parent?.apply { generateParents() }
+		yield(this@Destination)
+	}
+
+	/**
+	 * Generates the parents by following the [parent] attribute.
+	 *
+	 * Results are presented in postfix order: the parent appears before the child.
+	 * This is the same order as URLs are displayed in, for example, for the URl `/test/foo/bar`,
+	 * this property returns the sequence `[test, foo, bar]`, where the root is the first element,
+	 * and the current destination is the last element.
+	 */
+	val parents: Sequence<Destination>
+		get() = sequence {
+			generateParents()
+		}
 
 	/**
 	 * Is this destination a root of the navigation tree?

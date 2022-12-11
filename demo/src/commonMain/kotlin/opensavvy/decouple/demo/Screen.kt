@@ -1,12 +1,9 @@
 package opensavvy.decouple.demo
 
 import androidx.compose.runtime.Composable
-import opensavvy.decouple.core.basic.Button
-import opensavvy.decouple.core.basic.Text
-import opensavvy.decouple.core.layout.Column
-import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.demo.components.Buttons
 import opensavvy.decouple.demo.components.Chips
+import opensavvy.decouple.demo.components.Components
 import opensavvy.decouple.demo.components.Progression
 import opensavvy.decouple.demo.components.TextFields
 import opensavvy.decouple.navigation.Destination
@@ -17,24 +14,15 @@ enum class Screen(
 	override val parent: Screen?,
 	@JsName("renderSelf") val render: @Composable () -> Unit,
 ) : Destination {
-	Home("", "OpenSavvy UI", parent = null, { Home() }),
-	Buttons("buttons", "Buttons", parent = Home, { Buttons() }),
-	Chips("chips", "Chips", parent = Home, { Chips() }),
-	TextFields("fields", "Text fields", parent = Home, { TextFields() }),
+	Home("", "Home", parent = null, { Home() }),
+	GettingStarted("start", "Getting started", parent = null, { GettingStarted() }),
+	Components("components", "Components", parent = Home, { Components() }),
+	Buttons("buttons", "Buttons", parent = Components, { Buttons() }),
+	Chips("chips", "Chips", parent = Components, { Chips() }),
+	TextFields("fields", "Text fields", parent = Components, { TextFields() }),
 	Progression("progress", "Progression", parent = Home, { Progression() }),
 	;
 
 	@Composable
-	override fun render() = Column {
-		Row {
-			// TODO: in the future, this will be replaced by a proper navigation component
-			for (value in values()) {
-				Button({ Navigator.forwards(value) }, enabled = Navigator.current != value) {
-					Text(value.title)
-				}
-			}
-		}
-
-		render.invoke()
-	}
+	override fun render() = render.invoke()
 }

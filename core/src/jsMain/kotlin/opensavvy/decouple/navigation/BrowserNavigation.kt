@@ -3,6 +3,7 @@ package opensavvy.decouple.navigation
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import kotlinx.browser.document
 import kotlinx.browser.window
 import opensavvy.logger.Logger.Companion.debug
 import opensavvy.logger.Logger.Companion.trace
@@ -11,6 +12,7 @@ import opensavvy.logger.loggerFor
 class BrowserNavigation(
 	initial: Destination,
 	private val routes: Collection<Destination>,
+	private val applicationName: String,
 	private val hashNavigation: Boolean = false,
 ) : Navigation {
 
@@ -31,8 +33,10 @@ class BrowserNavigation(
 			window.location.hash.removePrefix("#")
 
 		val candidate = routes.find { it.fullRoute.joinToString(separator = "/") == path }
-		if (candidate != null)
+		if (candidate != null) {
 			current = candidate
+			updateMetadata(candidate)
+		}
 
 		log.debug { "Loaded URL from navigation bar: $candidate" }
 	}
@@ -46,6 +50,10 @@ class BrowserNavigation(
 		})
 	}
 
+	private fun updateMetadata(destination: Destination) {
+		document.title = "${destination.title} • $applicationName"
+	}
+
 	override fun forwards(destination: Destination) {
 		log.debug(destination) { "Forwards navigation" }
 		window.history.pushState(
@@ -54,6 +62,7 @@ class BrowserNavigation(
 			separator + destination.fullRoute.joinToString(separator = "/")
 		)
 		current = destination
+		updateMetadata(destination)
 	}
 
 	override fun lateral(destination: Destination) {
@@ -64,6 +73,7 @@ class BrowserNavigation(
 			separator + destination.fullRoute.joinToString(separator = "/")
 		)
 		current = destination
+		updateMetadata(destination)
 	}
 
 	override fun backwards() {

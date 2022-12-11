@@ -7,6 +7,7 @@ import opensavvy.decouple.core.UI.Companion.Install
 import opensavvy.decouple.core.basic.*
 import opensavvy.decouple.core.layout.LazyLayouts
 import opensavvy.decouple.core.layout.LinearLayouts
+import opensavvy.decouple.core.layout.Navigation
 
 /**
  * A fully-featured UI implementation.
@@ -54,7 +55,7 @@ import opensavvy.decouple.core.layout.LinearLayouts
  * - it is easy for end users to replace the implementation of a component kind by another one,
  * - you may provide multiple implementations of entire component kinds.
  */
-interface UI : UIMetadata, LinearLayouts, LazyLayouts, Buttons, Texts, Chips, TextFields, ProgressIndicators {
+interface UI : UIMetadata, LinearLayouts, LazyLayouts, Buttons, Texts, Chips, TextFields, Navigation, ProgressIndicators {
 
 	companion object {
 
