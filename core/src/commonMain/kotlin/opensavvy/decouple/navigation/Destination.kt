@@ -26,7 +26,7 @@ interface Destination {
 				dst = dst.parent ?: break
 			}
 
-			return result
+			return result.asReversed()
 		}
 
 	/**
