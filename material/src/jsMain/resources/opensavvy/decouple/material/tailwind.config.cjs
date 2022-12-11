@@ -10,6 +10,9 @@ module.exports = {
                 materialColor2: 'rgb(var(--material-color-2) / <alpha-value>)',
                 materialColor3: 'rgb(var(--material-color-3) / <alpha-value>)',
                 materialColor4: 'rgb(var(--material-color-4) / <alpha-value>)',
+                materialColor5: 'rgb(var(--material-color-5) / <alpha-value>)',
+                materialColor6: 'rgb(var(--material-color-6) / <alpha-value>)',
+                materialColor7: 'rgb(var(--material-color-7) / <alpha-value>)',
             },
             opacity: {
                 'normal': '0.05',
