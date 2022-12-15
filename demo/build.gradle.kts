@@ -14,6 +14,7 @@ kotlin {
 		val commonMain by getting {
 			dependencies {
 				api(projects.core)
+				api(projects.core.navigation)
 			}
 		}
 	}

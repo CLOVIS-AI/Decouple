@@ -16,6 +16,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(
 	"core",
+	"core:navigation",
 
 	"demo",
 	"demo:web",
