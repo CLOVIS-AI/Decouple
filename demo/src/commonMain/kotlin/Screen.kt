@@ -1,11 +1,7 @@
 package opensavvy.decouple.demo
 
 import androidx.compose.runtime.Composable
-import opensavvy.decouple.demo.components.Buttons
-import opensavvy.decouple.demo.components.Chips
-import opensavvy.decouple.demo.components.Components
-import opensavvy.decouple.demo.components.Progression
-import opensavvy.decouple.demo.components.TextFields
+import opensavvy.decouple.demo.components.*
 import opensavvy.decouple.navigation.Destination
 
 enum class Screen(
