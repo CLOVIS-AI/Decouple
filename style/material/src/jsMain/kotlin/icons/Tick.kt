@@ -1,4 +1,4 @@
-package opensavvy.ui.material.icons
+package opensavvy.decouple.material.icons
 
 import androidx.compose.runtime.Composable
 import opensavvy.state.Progression
@@ -20,7 +20,6 @@ fun Tick(activated: Boolean, loading: Progression) {
 			} else {
 				classes("opacity-0")
 			}
-
 		}
 	) {
 		Path(
@@ -28,7 +27,6 @@ fun Tick(activated: Boolean, loading: Progression) {
 			{
 				attr("fill", "currentColor")
 			}
-
 		)
 	}
 }

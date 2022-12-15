@@ -5,9 +5,9 @@ import opensavvy.decouple.core.basic.Chips
 import opensavvy.decouple.core.basic.ProgressIndicator
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.theme.Theme
+import opensavvy.decouple.material.icons.Tick
 import opensavvy.decouple.material.theme.css
 import opensavvy.state.Progression
-import opensavvy.ui.material.icons.Tick
 import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.css.StyleScope
 import org.jetbrains.compose.web.dom.Button
