@@ -2,6 +2,7 @@ package opensavvy.decouple.demo.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
@@ -10,7 +11,7 @@ import kotlinx.datetime.LocalTime
 import opensavvy.decouple.core.basic.*
 import opensavvy.decouple.core.layout.Column
 import opensavvy.decouple.core.layout.Row
-import opensavvy.decouple.utils.persist
+import opensavvy.decouple.persist.persistentStateOf
 
 @Composable
 fun TextFields() = Column {
@@ -21,23 +22,23 @@ fun TextFields() = Column {
 		FieldLabel("text")
 	}
 
-	var enabled by persist("fields.enabled") { true }
-	var required by persist("fields.required") { false }
-	var contrasted by persist("fields.contrasted") { false }
-	var allowReset by persist("fields.reset") { false }
-	var multiLine by persist("fields.multiline") { false }
+	var enabled by remember { persistentStateOf("fields.enabled") { true } }
+	var required by remember { persistentStateOf("fields.required") { false } }
+	var contrasted by remember { persistentStateOf("fields.contrasted") { false } }
+	var allowReset by remember { persistentStateOf("fields.reset") { false } }
+	var multiLine by remember { persistentStateOf("fields.multiline") { false } }
 
-	var showSupportingText by persist("fields.showSupporting") { false }
-	var supportingText by persist("fields.supporting") { "" }
+	var showSupportingText by remember { persistentStateOf("fields.showSupporting") { false } }
+	var supportingText by remember { persistentStateOf("fields.supporting") { "" } }
 
-	var showFailureText by persist("fields.showFailure") { false }
-	var failureText by persist("fields.failure") { "" }
+	var showFailureText by remember { persistentStateOf("fields.showFailure") { false } }
+	var failureText by remember { persistentStateOf("fields.failure") { "" } }
 
-	var text by persist<String?>("fields.text") { null }
-	var instant by persist<Instant?>("fields.instant") { null }
-	var localDateTime by persist<LocalDateTime?>("fields.localDateTime") { null }
-	var localDate by persist<LocalDate?>("fields.localDate") { null }
-	var localTime by persist<LocalTime?>("fields.localTime") { null }
+	var text by remember { persistentStateOf<String?>("fields.text") { null } }
+	var instant by remember { persistentStateOf<Instant?>("fields.instant") { null } }
+	var localDateTime by remember { persistentStateOf<LocalDateTime?>("fields.localDateTime") { null } }
+	var localDate by remember { persistentStateOf<LocalDate?>("fields.localDate") { null } }
+	var localTime by remember { persistentStateOf<LocalTime?>("fields.localTime") { null } }
 
 	TextField(
 		"My text field",

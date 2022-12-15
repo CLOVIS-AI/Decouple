@@ -4,14 +4,14 @@ import androidx.compose.runtime.*
 import kotlinx.coroutines.delay
 import opensavvy.decouple.core.basic.*
 import opensavvy.decouple.core.layout.Column
-import opensavvy.decouple.utils.persist
+import opensavvy.decouple.persist.persistentStateOf
 
 @Composable
 fun Chips() = Column {
 	Text("Chips represent additional actions.")
 
-	var enabled by persist("chips.enabled") { true }
-	var contrasted by persist("chips.contrasted") { false }
+	var enabled by remember { persistentStateOf("chips.enabled") { true } }
+	var contrasted by remember { persistentStateOf("chips.contrasted") { false } }
 
 	Text("There are multiple kinds of chips:")
 	ChipGroup {

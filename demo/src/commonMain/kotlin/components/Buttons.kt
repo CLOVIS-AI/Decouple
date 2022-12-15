@@ -2,18 +2,19 @@ package opensavvy.decouple.demo.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import kotlinx.coroutines.delay
 import opensavvy.decouple.core.basic.*
 import opensavvy.decouple.core.layout.Column
 import opensavvy.decouple.core.layout.Row
-import opensavvy.decouple.utils.persist
+import opensavvy.decouple.persist.persistentStateOf
 
 @Composable
 fun Buttons() = Column {
 	Text("Buttons are the primary interaction means with the library.")
 
-	var enabled by persist("buttons.enabled") { true }
+	var enabled by remember { persistentStateOf("buttons.enabled") { true } }
 
 	Text("There are multiple kinds of buttons:")
 	Row {

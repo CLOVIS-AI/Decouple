@@ -15,6 +15,7 @@ kotlin {
 			dependencies {
 				api(projects.core)
 				api(projects.core.navigation)
+				implementation(projects.core.persist)
 			}
 		}
 	}
