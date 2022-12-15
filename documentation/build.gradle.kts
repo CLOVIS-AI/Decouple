@@ -15,7 +15,7 @@ kotlin {
 		val commonMain by getting {
 			dependencies {
 				implementation(projects.core)
-				implementation(projects.material)
+				implementation(projects.style.material)
 			}
 		}
 	}
