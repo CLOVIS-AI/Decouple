@@ -2,7 +2,8 @@ package opensavvy.decouple.demo.components
 
 import androidx.compose.runtime.*
 import kotlinx.coroutines.delay
-import opensavvy.decouple.core.basic.*
+import opensavvy.decouple.core.atom.actionable.*
+import opensavvy.decouple.core.atom.text.Text
 import opensavvy.decouple.core.layout.Column
 import opensavvy.decouple.persist.persistentStateOf
 

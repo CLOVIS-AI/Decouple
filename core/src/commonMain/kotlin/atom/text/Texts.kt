@@ -1,4 +1,4 @@
-package opensavvy.decouple.core.basic
+package opensavvy.decouple.core.atom.text
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.UI

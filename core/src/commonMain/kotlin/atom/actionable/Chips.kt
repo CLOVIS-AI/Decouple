@@ -1,4 +1,4 @@
-package opensavvy.decouple.core.basic
+package opensavvy.decouple.core.atom.actionable
 
 import androidx.compose.runtime.*
 import kotlinx.coroutines.CoroutineScope

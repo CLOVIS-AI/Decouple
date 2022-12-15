@@ -4,7 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import opensavvy.decouple.core.UI.Companion.Install
-import opensavvy.decouple.core.basic.*
+import opensavvy.decouple.core.atom.ProgressIndicators
+import opensavvy.decouple.core.atom.actionable.Buttons
+import opensavvy.decouple.core.atom.actionable.Chips
+import opensavvy.decouple.core.atom.input.TextFields
+import opensavvy.decouple.core.atom.text.Texts
 import opensavvy.decouple.core.layout.LazyLayouts
 import opensavvy.decouple.core.layout.LinearLayouts
 import opensavvy.decouple.core.layout.Navigation
@@ -55,7 +59,8 @@ import opensavvy.decouple.core.layout.Navigation
  * - it is easy for end users to replace the implementation of a component kind by another one,
  * - you may provide multiple implementations of entire component kinds.
  */
-interface UI : UIMetadata, LinearLayouts, LazyLayouts, Buttons, Texts, Chips, TextFields, Navigation, ProgressIndicators {
+interface UI : UIMetadata, LinearLayouts, LazyLayouts, Buttons, Texts, Chips, TextFields, Navigation,
+               ProgressIndicators {
 
 	companion object {
 

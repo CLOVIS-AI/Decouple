@@ -1,4 +1,4 @@
-package opensavvy.decouple.core.basic
+package opensavvy.decouple.core.atom.input
 
 import androidx.compose.runtime.Composable
 import kotlinx.datetime.Instant

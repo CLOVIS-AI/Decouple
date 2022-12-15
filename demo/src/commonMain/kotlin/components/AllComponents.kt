@@ -1,7 +1,7 @@
 package opensavvy.decouple.demo.components
 
 import androidx.compose.runtime.Composable
-import opensavvy.decouple.core.basic.Text
+import opensavvy.decouple.core.atom.text.Text
 import opensavvy.decouple.core.layout.Column
 
 @Composable

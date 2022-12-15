@@ -5,9 +5,9 @@ import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
-import opensavvy.decouple.core.basic.Text
-import opensavvy.decouple.core.basic.TextField
-import opensavvy.decouple.core.basic.TextFields
+import opensavvy.decouple.core.atom.input.TextField
+import opensavvy.decouple.core.atom.input.TextFields
+import opensavvy.decouple.core.atom.text.Text
 
 actual object MaterialTextFields : TextFields {
 

@@ -1,8 +1,8 @@
 package opensavvy.decouple.material.layout
 
 import androidx.compose.runtime.*
-import opensavvy.decouple.core.basic.Button
-import opensavvy.decouple.core.basic.Text
+import opensavvy.decouple.core.atom.actionable.Button
+import opensavvy.decouple.core.atom.text.Text
 import opensavvy.decouple.core.layout.*
 import org.jetbrains.compose.web.dom.Div
 

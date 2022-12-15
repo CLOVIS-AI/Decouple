@@ -1,7 +1,7 @@
 package opensavvy.decouple.material.basic
 
 import androidx.compose.runtime.Composable
-import opensavvy.decouple.core.basic.ProgressIndicators
+import opensavvy.decouple.core.atom.ProgressIndicators
 import opensavvy.state.Progression
 import org.jetbrains.compose.web.ExperimentalComposeWebSvgApi
 import org.jetbrains.compose.web.svg.Circle

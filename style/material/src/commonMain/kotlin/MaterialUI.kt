@@ -2,7 +2,11 @@ package opensavvy.decouple.material
 
 import opensavvy.decouple.core.UI
 import opensavvy.decouple.core.UIMetadata
-import opensavvy.decouple.core.basic.*
+import opensavvy.decouple.core.atom.ProgressIndicators
+import opensavvy.decouple.core.atom.actionable.Buttons
+import opensavvy.decouple.core.atom.actionable.Chips
+import opensavvy.decouple.core.atom.input.TextFields
+import opensavvy.decouple.core.atom.text.Texts
 import opensavvy.decouple.core.layout.LazyLayouts
 import opensavvy.decouple.core.layout.LinearLayouts
 import opensavvy.decouple.core.layout.Navigation

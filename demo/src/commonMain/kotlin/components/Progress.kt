@@ -2,10 +2,10 @@ package opensavvy.decouple.demo.components
 
 import androidx.compose.runtime.*
 import kotlinx.coroutines.delay
-import opensavvy.decouple.core.basic.AssistChip
-import opensavvy.decouple.core.basic.ChipGroup
-import opensavvy.decouple.core.basic.ProgressIndicator
-import opensavvy.decouple.core.basic.Text
+import opensavvy.decouple.core.atom.ProgressIndicator
+import opensavvy.decouple.core.atom.actionable.AssistChip
+import opensavvy.decouple.core.atom.actionable.ChipGroup
+import opensavvy.decouple.core.atom.text.Text
 import opensavvy.decouple.core.layout.Column
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.progression.launch

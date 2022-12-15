@@ -1,8 +1,8 @@
 package opensavvy.decouple.demo
 
 import androidx.compose.runtime.*
-import opensavvy.decouple.core.basic.Button
-import opensavvy.decouple.core.basic.Text
+import opensavvy.decouple.core.atom.actionable.Button
+import opensavvy.decouple.core.atom.text.Text
 import opensavvy.decouple.core.layout.Column
 import opensavvy.decouple.core.layout.LazyColumn
 import opensavvy.decouple.core.layout.Row

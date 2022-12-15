@@ -1,5 +1,5 @@
 package opensavvy.decouple.material.basic
 
-import opensavvy.decouple.core.basic.TextFields
+import opensavvy.decouple.core.atom.input.TextFields
 
 expect object MaterialTextFields : TextFields

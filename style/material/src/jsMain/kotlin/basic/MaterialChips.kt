@@ -1,8 +1,8 @@
 package opensavvy.decouple.material.basic
 
 import androidx.compose.runtime.Composable
-import opensavvy.decouple.core.basic.Chips
-import opensavvy.decouple.core.basic.ProgressIndicator
+import opensavvy.decouple.core.atom.ProgressIndicator
+import opensavvy.decouple.core.atom.actionable.Chips
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.theme.Theme
 import opensavvy.decouple.material.icons.Tick
