@@ -80,6 +80,21 @@ publish:
   rules:
     - if: $CI_COMMIT_TAG
 
+telegram:
+  stage: deploy
+  image: registry.gitlab.com/clovis-ai/dotfiles:latest
+  needs: [ ]
+
+  script:
+    - git changelog --format telegram-html --incoming >changelog
+    - announce-telegram changelog "$CHAT_IDS"
+
+  rules:
+    - if: $BOT_TOKEN == null
+      when: never
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  interruptible: false
+
 pages:
   image: alpine:latest
   stage: deploy
