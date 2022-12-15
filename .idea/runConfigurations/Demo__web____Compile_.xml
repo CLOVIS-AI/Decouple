@@ -10,7 +10,7 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value="demo-web:developmentExecutableCompileSync" />
+          <option value="demo:web:developmentExecutableCompileSync" />
         </list>
       </option>
       <option name="vmOptions" />

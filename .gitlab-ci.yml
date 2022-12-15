@@ -38,8 +38,8 @@ demo:web:build:
   image: gradle:jdk17-focal
 
   script:
-    - ./gradlew demo-web:production
-    - mv build/js/packages/Decouple-demo-web/kotlin/dist dist-web
+    - ./gradlew demo:web:production
+    - mv build/js/packages/Decouple-web/kotlin/dist dist-web
 
   artifacts:
     paths:

@@ -20,7 +20,7 @@ include(
 	"material",
 
 	"demo",
-	"demo-web",
+	"demo:web",
 
 	"documentation",
 )
