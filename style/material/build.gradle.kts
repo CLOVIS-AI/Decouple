@@ -47,7 +47,7 @@ tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
 
 		sourceLink {
 			localDirectory.set(file("src"))
-			remoteUrl.set(URL("https://gitlab.com/opensavvy/decouple/-/blob/main/material/src"))
+			remoteUrl.set(URL("https://gitlab.com/opensavvy/decouple/-/blob/main/style/material/src"))
 			remoteLineSuffix.set("#L")
 		}
 	}
