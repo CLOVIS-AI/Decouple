@@ -25,6 +25,7 @@ include(
 	"style:material",
 	"style:material-common",
 	"style:material-tailwind",
+	"style:material-androidx",
 
 	"documentation",
 )
