@@ -1,4 +1,4 @@
-package opensavvy.decouple.material.theme
+package opensavvy.decouple.material.common.theme
 
 import opensavvy.decouple.core.theme.ColorStrength
 import opensavvy.decouple.core.theme.ColorTheme

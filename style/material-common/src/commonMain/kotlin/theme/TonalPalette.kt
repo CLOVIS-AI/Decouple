@@ -1,7 +1,8 @@
-package opensavvy.decouple.material.theme
+package opensavvy.decouple.material.common.theme
 
 import opensavvy.decouple.core.theme.RGB
 
+@Suppress("unused")
 class TonalPalette(val roleType: RoleType, vararg colors: RGB) {
 
 	init {

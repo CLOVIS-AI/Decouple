@@ -3,7 +3,7 @@ package opensavvy.decouple.material
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.UIMetadata
 import opensavvy.decouple.core.theme.Theme
-import opensavvy.decouple.material.theme.MaterialTheme
+import opensavvy.decouple.material.common.theme.MaterialTheme
 import opensavvy.decouple.material.theme.css
 import org.jetbrains.compose.web.css.backgroundColor
 import org.jetbrains.compose.web.css.color

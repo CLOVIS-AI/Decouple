@@ -1,4 +1,4 @@
-package opensavvy.decouple.material.theme
+package opensavvy.decouple.material.common.theme
 
 import opensavvy.decouple.core.theme.Theme
 
@@ -18,5 +18,9 @@ data class MaterialTheme(
 			append("(light)")
 		else
 			append("(dark)")
+	}
+
+	companion object {
+		val default get() = listOf(MaterialTheme(isLight = true), MaterialTheme(isLight = false))
 	}
 }

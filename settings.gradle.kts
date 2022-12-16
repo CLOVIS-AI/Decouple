@@ -23,6 +23,7 @@ include(
 	"demo:web",
 
 	"style:material",
+	"style:material-common",
 
 	"documentation",
 )
