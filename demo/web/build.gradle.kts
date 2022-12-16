@@ -36,7 +36,7 @@ val copyMaterialResources by tasks.registering(Copy::class) {
 	description = "Copies Material resources to the build directory"
 	group = "vite"
 
-	from(project(":style:material").projectDir / "src" / "jsMain" / "resources")
+	from(project(":style:material-tailwind").projectDir / "src" / "main" / "resources")
 	into(jsProjectDir)
 
 	dependsOn(kotlinNpmInstall)
