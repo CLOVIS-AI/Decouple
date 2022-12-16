@@ -12,7 +12,7 @@ kotlin {
 
 dependencies {
 	implementation(projects.demo)
-	implementation(projects.material)
+	implementation(projects.style.material)
 
 	implementation(devNpm("vite", "_"))
 	implementation(devNpm("postcss", "_"))
@@ -36,7 +36,7 @@ val copyMaterialResources by tasks.registering(Copy::class) {
 	description = "Copies Material resources to the build directory"
 	group = "vite"
 
-	from(project(":material").projectDir / "src" / "jsMain" / "resources")
+	from(project(":style:material").projectDir / "src" / "jsMain" / "resources")
 	into(jsProjectDir)
 
 	dependsOn(kotlinNpmInstall)
