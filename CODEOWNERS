@@ -1,0 +1,12 @@
+
+[Core APIs]
+core/ @clovis-ai
+
+[Automation]
+*gradle* @clovis-ai
+version.properties @clovis-ai @maximegirardet
+.gitlab-ci.yml @clovis-ai @maximegirardet
+
+[Configuration]
+CODEOWNERS @clovis-ai @maximegirardet
+LICENSE @clovis-ai @maximegirardet
