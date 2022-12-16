@@ -1,16 +1,19 @@
-package opensavvy.decouple.material.basic
+package opensavvy.decouple.material.tailwind.atom.actionable
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.atom.ProgressIndicator
 import opensavvy.decouple.core.atom.actionable.Buttons
 import opensavvy.decouple.core.theme.Theme
-import opensavvy.decouple.material.theme.css
+import opensavvy.decouple.material.tailwind.theme.AnimatedLeadingIcon
+import opensavvy.decouple.material.tailwind.theme.StateLayers
+import opensavvy.decouple.material.tailwind.theme.css
+import opensavvy.decouple.material.tailwind.theme.setDisabledState
 import opensavvy.state.Progression
 import org.jetbrains.compose.web.css.StyleScope
+import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
-import org.jetbrains.compose.web.dom.Button as DomButton
 
-actual object MaterialButtons : Buttons {
+object MTButtons : Buttons {
 
 	@Composable
 	override fun Button(
@@ -209,7 +212,6 @@ actual object MaterialButtons : Buttons {
 		)
 	}
 
-
 }
 
 private val layerAgnosticClasses = arrayOf(
@@ -250,7 +252,7 @@ private fun AbstractButton(
 	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
 
-	DomButton(
+	Button(
 		{
 			style(style)
 

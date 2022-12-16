@@ -1,4 +1,4 @@
-package opensavvy.decouple.material.layout
+package opensavvy.decouple.material.tailwind.layout
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.layout.Alignment
@@ -6,26 +6,26 @@ import opensavvy.decouple.core.layout.Arrangement
 import opensavvy.decouple.core.layout.LinearLayouts
 import org.jetbrains.compose.web.dom.Div
 
-private val Arrangement.css: String
-	get() = when (this) {
-		Arrangement.Stretch -> "justify-items-stretch"
-		Arrangement.Start -> "justify-start"
-		Arrangement.Center -> "justify-center"
-		Arrangement.End -> "justify-end"
-		Arrangement.SpaceBetween -> "justify-between"
-		Arrangement.SpaceAround -> "justify-around"
-		Arrangement.SpaceEvenly -> "justify-evenly"
-	}
+object MTLinearLayouts : LinearLayouts {
 
-private val Alignment.css: String
-	get() = when (this) {
-		Alignment.Stretch -> "items-stretch"
-		Alignment.Start -> "items-start"
-		Alignment.Center -> "items-center"
-		Alignment.End -> "items-end"
-	}
+	private val Arrangement.css: String
+		get() = when (this) {
+			Arrangement.Stretch -> "justify-items-stretch"
+			Arrangement.Start -> "justify-start"
+			Arrangement.Center -> "justify-center"
+			Arrangement.End -> "justify-end"
+			Arrangement.SpaceBetween -> "justify-between"
+			Arrangement.SpaceAround -> "justify-around"
+			Arrangement.SpaceEvenly -> "justify-evenly"
+		}
 
-actual object MaterialLinearLayouts : LinearLayouts {
+	private val Alignment.css: String
+		get() = when (this) {
+			Alignment.Stretch -> "items-stretch"
+			Alignment.Start -> "items-start"
+			Alignment.Center -> "items-center"
+			Alignment.End -> "items-end"
+		}
 
 	@Composable
 	override fun Column(

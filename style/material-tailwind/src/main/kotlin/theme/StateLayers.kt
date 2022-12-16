@@ -1,4 +1,4 @@
-package opensavvy.decouple.material.basic
+package opensavvy.decouple.material.tailwind.theme
 
 import androidx.compose.runtime.Composable
 import opensavvy.state.Progression

@@ -1,11 +1,11 @@
-package opensavvy.decouple.material.basic
+package opensavvy.decouple.material.tailwind.atom.text
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.atom.text.Texts
 import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text as DomText
 
-actual object MaterialTexts : Texts {
+object MTTexts : Texts {
 
 	@Composable
 	override fun Text(text: String) {

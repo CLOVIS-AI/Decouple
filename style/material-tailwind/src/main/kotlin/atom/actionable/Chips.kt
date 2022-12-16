@@ -1,20 +1,22 @@
-package opensavvy.decouple.material.basic
+package opensavvy.decouple.material.tailwind.atom.actionable
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.atom.ProgressIndicator
 import opensavvy.decouple.core.atom.actionable.Chips
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.theme.Theme
-import opensavvy.decouple.material.icons.Tick
-import opensavvy.decouple.material.theme.css
+import opensavvy.decouple.material.tailwind.atom.icon.Tick
+import opensavvy.decouple.material.tailwind.theme.AnimatedLeadingIcon
+import opensavvy.decouple.material.tailwind.theme.StateLayers
+import opensavvy.decouple.material.tailwind.theme.css
+import opensavvy.decouple.material.tailwind.theme.setDisabledState
 import opensavvy.state.Progression
 import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.css.StyleScope
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
-import org.jetbrains.compose.web.dom.Button as DomButton
 
-actual object MaterialChips : Chips {
+object MTChips : Chips {
 
 	@Composable
 	override fun AssistChip(
@@ -26,7 +28,7 @@ actual object MaterialChips : Chips {
 		action: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
-		DomButton(
+		Button(
 			{
 				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/16
 
@@ -76,7 +78,7 @@ actual object MaterialChips : Chips {
 			layerClasses = arrayOf(
 				arrayOf(
 					"-m-px",
-				    "group-enabled:bg-materialColor7/normal"
+					"group-enabled:bg-materialColor7/normal"
 				),
 				arrayOf(
 					"-m-px",
@@ -170,7 +172,7 @@ actual object MaterialChips : Chips {
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
-		DomButton(
+		Button(
 			{
 				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/16
 
@@ -197,7 +199,7 @@ actual object MaterialChips : Chips {
 		action: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
-		DomButton(
+		Button(
 			{
 				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/16
 
@@ -304,4 +306,5 @@ actual object MaterialChips : Chips {
 			StateLayers(layerClasses, layerAgnosticClasses)
 		}
 	}
+
 }

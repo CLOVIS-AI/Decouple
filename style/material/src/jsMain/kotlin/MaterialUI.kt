@@ -1,39 +1,35 @@
 package opensavvy.decouple.material
 
-import androidx.compose.runtime.Composable
+import opensavvy.decouple.core.UI
 import opensavvy.decouple.core.UIMetadata
-import opensavvy.decouple.core.theme.Theme
-import opensavvy.decouple.material.common.theme.MaterialTheme
-import opensavvy.decouple.material.theme.css
-import org.jetbrains.compose.web.css.backgroundColor
-import org.jetbrains.compose.web.css.color
-import org.jetbrains.compose.web.dom.Div
+import opensavvy.decouple.core.atom.ProgressIndicators
+import opensavvy.decouple.core.atom.actionable.Buttons
+import opensavvy.decouple.core.atom.actionable.Chips
+import opensavvy.decouple.core.atom.input.TextFields
+import opensavvy.decouple.core.atom.text.Texts
+import opensavvy.decouple.core.layout.LazyLayouts
+import opensavvy.decouple.core.layout.LinearLayouts
+import opensavvy.decouple.core.layout.Navigation
+import opensavvy.decouple.material.tailwind.MTUIMetadata
+import opensavvy.decouple.material.tailwind.atom.MTProgressIndicators
+import opensavvy.decouple.material.tailwind.atom.actionable.MTButtons
+import opensavvy.decouple.material.tailwind.atom.actionable.MTChips
+import opensavvy.decouple.material.tailwind.atom.input.MTTextFields
+import opensavvy.decouple.material.tailwind.atom.text.MTTexts
+import opensavvy.decouple.material.tailwind.layout.MTLazyLayouts
+import opensavvy.decouple.material.tailwind.layout.MTLinearLayouts
+import opensavvy.decouple.material.tailwind.layout.MTNavigation
 
-actual object MaterialUIMetadata : UIMetadata {
-	@Composable
-	override fun initializeFor(content: @Composable () -> Unit) {
-		content()
-	}
+actual object MaterialUI : UI,
+                           UIMetadata by MTUIMetadata,
+                           Buttons by MTButtons,
+                           Chips by MTChips,
+                           LinearLayouts by MTLinearLayouts,
+                           LazyLayouts by MTLazyLayouts,
+                           TextFields by MTTextFields,
+                           Texts by MTTexts,
+                           Navigation by MTNavigation,
+                           ProgressIndicators by MTProgressIndicators {
 
-	@Composable
-	override fun initializeThemeFor(theme: Theme, content: @Composable () -> Unit) {
-		Div(
-			{
-				classes("transition-colors", "h-full")
-
-				style {
-					backgroundColor(theme.color.background.rgb.css)
-					color(theme.color.background.on.rgb.css)
-				}
-			}
-		) {
-			content()
-		}
-	}
-
-	override val recommendedThemes: List<Theme>
-		get() = listOf(
-			MaterialTheme(isLight = true),
-			MaterialTheme(isLight = false),
-		)
+    override fun toString() = "Material You (Tailwind)"
 }

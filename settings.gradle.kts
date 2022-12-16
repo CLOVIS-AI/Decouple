@@ -24,6 +24,7 @@ include(
 
 	"style:material",
 	"style:material-common",
+	"style:material-tailwind",
 
 	"documentation",
 )

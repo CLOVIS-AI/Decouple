@@ -1,4 +1,4 @@
-package opensavvy.decouple.material.icons
+package opensavvy.decouple.material.tailwind.atom.icon
 
 import androidx.compose.runtime.Composable
 import opensavvy.state.Progression

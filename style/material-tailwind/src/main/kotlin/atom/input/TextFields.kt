@@ -1,21 +1,15 @@
-package opensavvy.decouple.material.basic
+package opensavvy.decouple.material.tailwind.atom.input
 
 import androidx.compose.runtime.Composable
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
-import opensavvy.decouple.core.atom.input.TextField
 import opensavvy.decouple.core.atom.input.TextFields
 import opensavvy.decouple.core.atom.text.Text
 
-actual object MaterialTextFields : TextFields {
+object MTTextFields : TextFields {
 
-	/**
-	 * The label to a text field such as [TextField].
-	 *
-	 * When the same input is composed of multiple
-	 */
 	@Composable
 	override fun FieldLabel(
 		label: String,

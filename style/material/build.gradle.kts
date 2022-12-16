@@ -33,10 +33,7 @@ kotlin {
 
 		val jsMain by getting {
 			dependencies {
-				implementation(npm("tailwindcss", "_"))
-				implementation(npm("@fontsource/roboto", "_"))
-				implementation(compose.web.core)
-				implementation(compose.web.svg)
+				implementation(projects.style.materialTailwind)
 			}
 		}
 	}

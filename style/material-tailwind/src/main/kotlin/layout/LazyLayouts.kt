@@ -1,4 +1,4 @@
-package opensavvy.decouple.material.layout
+package opensavvy.decouple.material.tailwind.layout
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.layout.*
@@ -7,7 +7,7 @@ import opensavvy.decouple.core.layout.*
 // this is just a placeholder until a proper implementation is written
 // TODO in https://gitlab.com/opensavvy/opensavvy-ui/-/work_items/117887682
 
-actual object MaterialLazyLayouts : LazyLayouts {
+object MTLazyLayouts : LazyLayouts {
 
 	@Composable
 	override fun LazyColumn(

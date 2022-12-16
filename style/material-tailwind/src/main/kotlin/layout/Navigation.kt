@@ -1,4 +1,4 @@
-package opensavvy.decouple.material.layout
+package opensavvy.decouple.material.tailwind.layout
 
 import androidx.compose.runtime.*
 import opensavvy.decouple.core.atom.actionable.Button
@@ -10,7 +10,7 @@ import org.jetbrains.compose.web.dom.Div
 // - Better visual appearance
 // - Accept any menu depth (currently the maximum is 2)
 
-actual object MaterialNavigation : Navigation {
+object MTNavigation : Navigation {
 
 	@Composable
 	override fun <P> GlobalNavigation(

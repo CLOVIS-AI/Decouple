@@ -1,4 +1,4 @@
-package opensavvy.decouple.material.basic
+package opensavvy.decouple.material.tailwind.atom
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.atom.ProgressIndicators
@@ -8,7 +8,7 @@ import org.jetbrains.compose.web.svg.Circle
 import org.jetbrains.compose.web.svg.Path
 import org.jetbrains.compose.web.svg.Svg
 
-actual object MaterialProgressIndicators : ProgressIndicators {
+object MTProgressIndicators : ProgressIndicators {
 
 	@OptIn(ExperimentalComposeWebSvgApi::class)
 	@Composable
