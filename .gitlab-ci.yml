@@ -28,7 +28,7 @@ build:
   image: gradle:jdk17-focal
 
   script:
-    - ./gradlew build
+    - ./gradlew build check allTests
 
   interruptible: true
 
