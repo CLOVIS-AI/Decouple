@@ -83,7 +83,7 @@ publish:
 telegram:
   stage: deploy
   image: registry.gitlab.com/clovis-ai/dotfiles:latest
-  needs: [ ]
+  needs: [ build ]
 
   script:
     - git changelog --format telegram-html --incoming >changelog
@@ -101,6 +101,8 @@ pages:
   needs:
     - job: demo:web:build
       artifacts: true
+    - job: build
+      artifacts: false
     - job: dokka
       artifacts: true
   script:
