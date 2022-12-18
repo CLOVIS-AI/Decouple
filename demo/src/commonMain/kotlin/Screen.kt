@@ -3,6 +3,7 @@ package opensavvy.decouple.demo
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.demo.components.*
 import opensavvy.decouple.navigation.Destination
+import kotlin.js.JsName
 
 enum class Screen(
 	override val route: String,
