@@ -63,6 +63,9 @@ dependencies {
 	implementation(AndroidX.compose.ui.toolingPreview)
 	implementation(AndroidX.compose.material3)
 
+	implementation(projects.demo)
+	implementation(projects.style.material)
+
 	testImplementation(Testing.junit4)
 
 	androidTestImplementation(AndroidX.test.ext.junit)
