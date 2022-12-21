@@ -5,6 +5,7 @@ import opensavvy.decouple.core.atom.ProgressIndicator
 import opensavvy.decouple.core.atom.actionable.Chips
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.theme.Theme
+import opensavvy.decouple.material.tailwind.atom.icon.Close
 import opensavvy.decouple.material.tailwind.atom.icon.Tick
 import opensavvy.decouple.material.tailwind.theme.AnimatedLeadingIcon
 import opensavvy.decouple.material.tailwind.theme.StateLayers
@@ -272,10 +273,12 @@ object MTChips : Chips {
 		activated: Boolean,
 		loading: Progression,
 		icon: (@Composable () -> Unit)?,
+		hasClosedButton: Boolean = false,
 		classes: List<String>,
 		disabledClasses: List<String>,
 		activatedClasses: List<String>,
 		nonActivatedClasses: List<String>,
+		closeButtonClasses: List<String> = emptyList(),
 		style: (StyleScope.() -> Unit) = {},
 		layerClasses: List<List<String>>?,
 		content: @Composable Chips.ChipScope.() -> Unit,
@@ -312,6 +315,11 @@ object MTChips : Chips {
 			Div {
 				content(ChipScope)
 			}
+
+			if (hasClosedButton)
+				Div(
+					{ classes(closeButtonClasses) }
+				) { Close() }
 
 			StateLayers(layerClasses, layerAgnosticClasses)
 		}
