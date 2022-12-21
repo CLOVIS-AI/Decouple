@@ -5,13 +5,13 @@ import opensavvy.decouple.core.atom.ProgressIndicator
 import opensavvy.decouple.core.atom.actionable.Chips
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.theme.Theme
+import opensavvy.decouple.material.tailwind.atom.icon.Close
 import opensavvy.decouple.material.tailwind.atom.icon.Tick
 import opensavvy.decouple.material.tailwind.theme.AnimatedLeadingIcon
 import opensavvy.decouple.material.tailwind.theme.StateLayers
 import opensavvy.decouple.material.tailwind.theme.css
 import opensavvy.decouple.material.tailwind.theme.setDisabledState
 import opensavvy.state.Progression
-import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.css.StyleScope
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
@@ -28,23 +28,24 @@ object MTChips : Chips {
 		action: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
-		Button(
-			{
-				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/16
+		val outline = Theme.color.outline.css
+		val backgroundOn = Theme.color.background.on.css
+		val background = Theme.color.background.css
+		val primary = Theme.color.primary.accent.css
 
-				onClick { onClick() }
-
-				if (!enabled || loading is Progression.Loading)
-					disabled()
-			}
+		BasicChip(
+			onClick = onClick,
+			enabled = enabled,
+			loading = loading,
+			contrasted = contrasted,
+			icon = icon,
+			action = action,
+			content = content,
 		) {
-			if (icon != null)
-				icon()
-
-			content(ChipScope)
-
-			if (action != null)
-				action()
+			property("--material-color-1", backgroundOn)
+			property("--material-color-2", outline)
+			property("--material-color-3", background)
+			property("--material-color-4", primary)
 		}
 	}
 
@@ -66,26 +67,36 @@ object MTChips : Chips {
 		val secondaryContainerOn = Theme.color.secondary.container.on.css
 		val primary = Theme.color.primary.accent.css
 
-		var layerClasses = arrayOf(
-			arrayOf(
-				"-m-px",
-				"group-enabled:hover:bg-materialColor5/hover",
-				"group-focus-visible:bg-materialColor5/focus"
-			)
-		)
-
-		if (contrasted) {
-			layerClasses = arrayOf(
-				arrayOf(
-					"-m-px",
-					"group-enabled:bg-materialColor7/normal"
-				),
-				arrayOf(
-					"-m-px",
-					"group-enabled:hover:bg-materialColor5/hover",
-					"group-focus-visible:bg-materialColor5/focus"
+		val layerClasses = buildList {
+			if (contrasted) {
+				add(
+					buildList {
+						add("-m-px")
+						if (enabled) {
+							add("bg-materialColor7/normal")
+						}
+					}
 				)
-			)
+				add(
+					buildList {
+						add("-m-px")
+						if (activated) {
+							add("group-enabled:hover:bg-materialColor5/hover")
+							add("group-focus-visible:bg-materialColor5/focus")
+						}
+					}
+				)
+			} else {
+				add(
+					buildList {
+						add("-m-px")
+						if (activated) {
+							add("group-enabled:hover:bg-materialColor5/hover")
+							add("group-focus-visible:bg-materialColor5/focus")
+						}
+					}
+				)
+			}
 		}
 
 		val classes = buildList {
@@ -140,11 +151,10 @@ object MTChips : Chips {
 		}
 
 		AbstractChip(
-			onClick = onToggle,
+			onClick = { onToggle(!activated) },
 			enabled = enabled,
 			activated = activated,
 			loading = loading,
-			icon = icon,
 			classes = classes,
 			disabledClasses = disabledClasses,
 			activatedClasses = activatedClasses,
@@ -159,6 +169,7 @@ object MTChips : Chips {
 				property("--material-color-7", primary)
 			},
 			layerClasses = layerClasses,
+			icon = icon,
 			content = content
 		)
 	}
@@ -172,20 +183,33 @@ object MTChips : Chips {
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
-		Button(
-			{
-				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/16
+		val outline = Theme.color.outline.css
+		val backgroundVariantOn = Theme.color.backgroundVariant.on.css
+		val backgroundOn = Theme.color.background.on.css
+		val background = Theme.color.background.css
+		val primary = Theme.color.primary.accent.css
 
-				onClick { onRemoval() }
+		val closeButtonClasses = listOf(
+			"group-enabled:group-hover:text-materialColor5",
+			"group-focus-visible:text-materialColor5",
+		)
 
-				if (!enabled || loading is Progression.Loading)
-					disabled()
-			}
-		) {
-			if (icon != null)
-				icon()
-
-			content(ChipScope)
+		BasicChip(
+			onClick = onRemoval,
+			enabled = enabled,
+			loading = loading,
+			contrasted = contrasted,
+			icon = icon,
+			hasClosedButton = true,
+			closeButtonClasses = closeButtonClasses,
+			content = content,
+		)
+		{
+			property("--material-color-1", backgroundVariantOn)
+			property("--material-color-2", outline)
+			property("--material-color-3", background)
+			property("--material-color-4", primary)
+			property("--material-color-5", backgroundOn)
 		}
 	}
 
@@ -199,23 +223,24 @@ object MTChips : Chips {
 		action: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
-		Button(
-			{
-				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/16
+		val outline = Theme.color.outline.css
+		val backgroundVariantOn = Theme.color.backgroundVariant.on.css
+		val background = Theme.color.background.css
+		val primary = Theme.color.primary.accent.css
 
-				onClick { onClick() }
-
-				if (!enabled || loading is Progression.Loading)
-					disabled()
-			}
+		BasicChip(
+			onClick = onClick,
+			enabled = enabled,
+			loading = loading,
+			contrasted = contrasted,
+			icon = icon,
+			action = action,
+			content = content,
 		) {
-			if (icon != null)
-				icon()
-
-			content(ChipScope)
-
-			if (action != null)
-				action()
+			property("--material-color-1", backgroundVariantOn)
+			property("--material-color-2", outline)
+			property("--material-color-3", background)
+			property("--material-color-4", primary)
 		}
 	}
 
@@ -256,18 +281,91 @@ object MTChips : Chips {
 	)
 
 	@Composable
+	private fun BasicChip(
+		onClick: () -> Unit,
+		enabled: Boolean,
+		loading: Progression,
+		contrasted: Boolean,
+		content: @Composable Chips.ChipScope.() -> Unit,
+		icon: (@Composable () -> Unit)? = null,
+		action: (@Composable () -> Unit)? = null,
+		hasClosedButton: Boolean = false,
+		closeButtonClasses: List<String> = emptyList(),
+		style: (StyleScope.() -> Unit) = {},
+	) {
+		val layerClasses = buildList {
+			if (contrasted) {
+				add(
+					buildList {
+						add("-m-px")
+						add("bg-materialColor4/normal")
+					}
+				)
+			}
+		}
+
+		val classes = buildList {
+			add("text-materialColor1")
+			add("border")
+			add("focus-visible:outline-none")
+			add("enabled:hover:bg-materialColor1/hover")
+			add("focus-visible:bg-materialColor1/focus")
+			if (contrasted) {
+				add("border-transparent")
+				add("bg-materialColor3")
+				add("shadow-elevation1")
+				add("focus-visible:shadow-elevation1")
+				add("enabled:hover:shadow-elevation2")
+			} else {
+				add("border-materialColor2")
+				add("focus-visible:border-materialColor1")
+			}
+		}
+
+
+		val disabledClasses = buildList {
+			add("disabled:text-materialColor1/disabled")
+			if (contrasted) {
+				add("disabled:shadow-none")
+				add("disabled:bg-materialColor1/disabledBg")
+			} else {
+				add("disabled:border-inherit")
+			}
+		}
+
+		AbstractChip(
+			onClick = onClick,
+			enabled = enabled,
+			activated = false,
+			loading = loading,
+			hasClosedButton = hasClosedButton,
+			classes = classes,
+			disabledClasses = disabledClasses,
+			closeButtonClasses = closeButtonClasses,
+			style = style,
+			layerClasses = layerClasses,
+			icon = icon,
+			action = action,
+			content = content
+		)
+	}
+
+	@Composable
 	private fun AbstractChip(
-		onClick: (Boolean) -> Unit,
+		onClick: () -> Unit,
 		enabled: Boolean,
 		activated: Boolean,
 		loading: Progression,
-		icon: (@Composable () -> Unit)?,
 		classes: List<String>,
 		disabledClasses: List<String>,
-		activatedClasses: List<String>,
-		nonActivatedClasses: List<String>,
-		style: (StyleScope.() -> Unit) = {},
-		layerClasses: Array<Array<String>>?,
+		activatedClasses: List<String> = emptyList(),
+		nonActivatedClasses: List<String> = emptyList(),
+		closeButtonClasses: List<String> = emptyList(),
+		style: StyleScope.() -> Unit = {},
+		layerClasses: List<List<String>>? = null,
+		hasClosedButton: Boolean = false,
+		icon: (@Composable () -> Unit)? = null,
+		action: (@Composable () -> Unit)? = null,
 		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
 
@@ -287,7 +385,7 @@ object MTChips : Chips {
 					classes(nonActivatedClasses)
 				}
 
-				onClick { onClick(!activated) }
+				onClick { onClick() }
 
 			}
 		) {
@@ -302,6 +400,14 @@ object MTChips : Chips {
 			Div {
 				content(ChipScope)
 			}
+
+			if (action != null)
+				action()
+
+			if (hasClosedButton)
+				Div(
+					{ classes(closeButtonClasses) }
+				) { Close() }
 
 			StateLayers(layerClasses, layerAgnosticClasses)
 		}
