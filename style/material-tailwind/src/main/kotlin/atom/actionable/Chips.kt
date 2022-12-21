@@ -150,7 +150,7 @@ object MTChips : Chips {
 		}
 
 		AbstractChip(
-			onClick = onToggle,
+			onClick = { onToggle(!activated) },
 			enabled = enabled,
 			activated = activated,
 			loading = loading,
@@ -267,7 +267,7 @@ object MTChips : Chips {
 
 	@Composable
 	private fun AbstractChip(
-		onClick: (Boolean) -> Unit,
+		onClick: () -> Unit,
 		enabled: Boolean,
 		activated: Boolean,
 		loading: Progression,
@@ -297,7 +297,7 @@ object MTChips : Chips {
 					classes(nonActivatedClasses)
 				}
 
-				onClick { onClick(!activated) }
+				onClick { onClick() }
 
 			}
 		) {
