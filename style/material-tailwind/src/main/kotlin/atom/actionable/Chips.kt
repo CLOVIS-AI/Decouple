@@ -155,7 +155,6 @@ object MTChips : Chips {
 			enabled = enabled,
 			activated = activated,
 			loading = loading,
-			icon = icon,
 			classes = classes,
 			disabledClasses = disabledClasses,
 			activatedClasses = activatedClasses,
@@ -189,10 +188,10 @@ object MTChips : Chips {
 		val background = Theme.color.background.css
 		val primary = Theme.color.primary.accent.css
 
-		val closeButtonClasses = buildList {
-			add("group-enabled:group-hover:text-materialColor5")
-			add("group-focus-visible:text-materialColor5")
-		}
+		val closeButtonClasses = listOf(
+			"group-enabled:group-hover:text-materialColor5",
+			"group-focus-visible:text-materialColor5",
+		)
 
 		BasicChip(
 			onClick = onRemoval,
@@ -203,7 +202,8 @@ object MTChips : Chips {
 			hasClosedButton = true,
 			closeButtonClasses = closeButtonClasses,
 			content = content,
-		) {
+		)
+		{
 			property("--material-color-1", backgroundVariantOn)
 			property("--material-color-2", outline)
 			property("--material-color-3", background)
@@ -355,9 +355,6 @@ object MTChips : Chips {
 		enabled: Boolean,
 		activated: Boolean,
 		loading: Progression,
-		icon: (@Composable () -> Unit)?,
-		action: (@Composable () -> Unit)? = null,
-		hasClosedButton: Boolean = false,
 		classes: List<String>,
 		disabledClasses: List<String>,
 		activatedClasses: List<String> = emptyList(),

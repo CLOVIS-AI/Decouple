@@ -33,10 +33,10 @@ object MTButtons : Buttons {
 			"enabled:hover:bg-materialColor1/hover",
 		)
 
-		val disabledClasses = buildList {
-			add("disabled:text-materialColor2")
-			add("disabled:opacity-disabled")
-		}
+		val disabledClasses = listOf(
+			"disabled:text-materialColor2",
+			"disabled:opacity-disabled",
+		)
 
 		AbstractButton(
 			onClick = onClick,
@@ -77,10 +77,10 @@ object MTButtons : Buttons {
 			"enabled:hover:shadow-elevation1",
 		)
 
-		val disabledClasses = buildList {
-			add("disabled:text-materialColor3/disabled")
-			add("disabled:bg-materialColor3/disabledBg")
-		}
+		val disabledClasses = listOf(
+			"disabled:text-materialColor3/disabled",
+			"disabled:bg-materialColor3/disabledBg",
+		)
 
 		val elevationClasses = buildList {
 			if (primary) {
@@ -105,9 +105,7 @@ object MTButtons : Buttons {
 				property("--material-color-3", backgroundOn)
 				property("--material-color-4", color.on.css)
 			},
-			layerClasses = buildList {
-				add(elevationClasses)
-			},
+			layerClasses = listOf(elevationClasses),
 			content = content
 		)
 	}
@@ -134,10 +132,9 @@ object MTButtons : Buttons {
 			"enabled:hover:bg-materialColor1/hover",
 		)
 
-		val disabledClasses = buildList {
-			add("disabled:text-materialColor2/disabled")
-			add("disabled:outline-materialColor2/disabledBg")
-		}
+		val disabledClasses = listOf(
+			"disabled:text-materialColor2/disabled", "disabled:outline-materialColor2/disabledBg"
+		)
 
 
 		AbstractButton(
@@ -177,20 +174,18 @@ object MTButtons : Buttons {
 			"enabled:hover:shadow-elevation2",
 		)
 
-		val disabledClasses = buildList {
-			add("disabled:text-materialColor3/disabled")
-			add("disabled:bg-materialColor3/disabledBg")
-			add("disabled:shadow-none")
-		}
+		val disabledClasses = listOf(
+			"disabled:text-materialColor3/disabled",
+			"disabled:bg-materialColor3/disabledBg",
+			"disabled:shadow-none",
+		)
 
-		val firstLayerClasses = buildList {
-			add("bg-materialColor1/normal")
-		}
+		val firstLayerClasses = listOf("bg-materialColor1/normal")
 
-		val secondLayerClasses = buildList {
-			add("group-focus:bg-materialColor1/focus")
-			add("group-enabled:hover:bg-materialColor1/hover")
-		}
+		val secondLayerClasses = listOf(
+			"group-focus:bg-materialColor1/focus",
+			"group-enabled:hover:bg-materialColor1/hover",
+		)
 
 		AbstractButton(
 			onClick = onClick,
@@ -204,10 +199,10 @@ object MTButtons : Buttons {
 				property("--material-color-2", background)
 				property("--material-color-3", backgroundOn)
 			},
-			layerClasses = buildList {
-				add(firstLayerClasses)
-				add(secondLayerClasses)
-			},
+			layerClasses = listOf(
+				firstLayerClasses,
+				secondLayerClasses,
+				),
 			content = content
 		)
 	}
@@ -252,24 +247,21 @@ private fun AbstractButton(
 	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
 
-	Button(
-		{
-			style(style)
+	Button({
+		style(style)
 
-			classes(*buttonClasses)
+		classes(*buttonClasses)
 
-			if (classes != null) {
-				classes(*classes)
-			}
-
-			setDisabledState(enabled, disabledClasses, loading)
-
-			onClick { onClick() }
-
+		if (classes != null) {
+			classes(*classes)
 		}
-	) {
-		if (icon != null)
-			icon()
+
+		setDisabledState(enabled, disabledClasses, loading)
+
+		onClick { onClick() }
+
+	}) {
+		if (icon != null) icon()
 
 		AnimatedLeadingIcon(loading is Progression.Loading) {
 			ProgressIndicator(loading)
