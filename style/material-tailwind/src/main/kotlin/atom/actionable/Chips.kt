@@ -12,7 +12,6 @@ import opensavvy.decouple.material.tailwind.theme.StateLayers
 import opensavvy.decouple.material.tailwind.theme.css
 import opensavvy.decouple.material.tailwind.theme.setDisabledState
 import opensavvy.state.Progression
-import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.css.StyleScope
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
@@ -265,6 +264,76 @@ object MTChips : Chips {
 		"group",
 		"relative",
 	)
+
+	@Composable
+	private fun BasicChip(
+		onClick: () -> Unit,
+		enabled: Boolean,
+		loading: Progression,
+		contrasted: Boolean,
+		icon: (@Composable () -> Unit)?,
+		action: (@Composable () -> Unit)? = null,
+		hasClosedButton: Boolean = false,
+		closeButtonClasses: List<String> = emptyList(),
+		content: @Composable Chips.ChipScope.() -> Unit,
+		style: (StyleScope.() -> Unit) = {}
+	) {
+		val layerClasses = buildList {
+			if (contrasted) {
+				add(
+					buildList {
+						add("-m-px")
+						add("bg-materialColor4/normal")
+					}
+				)
+			}
+		}
+
+		val classes = buildList {
+			add("text-materialColor1")
+			add("border")
+			add("focus-visible:outline-none")
+			add("enabled:hover:bg-materialColor1/hover")
+			add("focus-visible:bg-materialColor1/focus")
+			if (contrasted) {
+				add("border-transparent")
+				add("bg-materialColor3")
+				add("shadow-elevation1")
+				add("focus-visible:shadow-elevation1")
+				add("enabled:hover:shadow-elevation2")
+			} else {
+				add("border-materialColor2")
+				add("focus-visible:border-materialColor1")
+			}
+		}
+
+
+		val disabledClasses = buildList {
+			add("disabled:text-materialColor1/disabled")
+			if (contrasted) {
+				add("disabled:shadow-none")
+				add("disabled:bg-materialColor1/disabledBg")
+			} else {
+				add("disabled:border-inherit")
+			}
+		}
+
+		AbstractChip(
+			onClick = onClick,
+			enabled = enabled,
+			activated = false,
+			loading = loading,
+			icon = icon,
+			action = action,
+			hasClosedButton = hasClosedButton,
+			closeButtonClasses = closeButtonClasses,
+			classes = classes,
+			disabledClasses = disabledClasses,
+			style = style,
+			layerClasses = layerClasses,
+			content = content
+		)
+	}
 
 	@Composable
 	private fun AbstractChip(
