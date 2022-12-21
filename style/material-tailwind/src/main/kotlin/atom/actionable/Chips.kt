@@ -183,20 +183,32 @@ object MTChips : Chips {
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
-		Button(
-			{
-				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/16
+		val outline = Theme.color.outline.css
+		val backgroundVariantOn = Theme.color.backgroundVariant.on.css
+		val backgroundOn = Theme.color.background.on.css
+		val background = Theme.color.background.css
+		val primary = Theme.color.primary.accent.css
 
-				onClick { onRemoval() }
+		val closeButtonClasses = buildList {
+			add("group-enabled:group-hover:text-materialColor5")
+			add("group-focus-visible:text-materialColor5")
+		}
 
-				if (!enabled || loading is Progression.Loading)
-					disabled()
-			}
+		BasicChip(
+			onClick = onRemoval,
+			enabled = enabled,
+			loading = loading,
+			contrasted = contrasted,
+			icon = icon,
+			hasClosedButton = true,
+			closeButtonClasses = closeButtonClasses,
+			content = content,
 		) {
-			if (icon != null)
-				icon()
-
-			content(ChipScope)
+			property("--material-color-1", backgroundVariantOn)
+			property("--material-color-2", outline)
+			property("--material-color-3", background)
+			property("--material-color-4", primary)
+			property("--material-color-5", backgroundOn)
 		}
 	}
 
