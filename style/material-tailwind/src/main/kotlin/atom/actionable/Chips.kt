@@ -169,6 +169,7 @@ object MTChips : Chips {
 				property("--material-color-7", primary)
 			},
 			layerClasses = layerClasses,
+			icon = icon,
 			content = content
 		)
 	}
@@ -285,12 +286,12 @@ object MTChips : Chips {
 		enabled: Boolean,
 		loading: Progression,
 		contrasted: Boolean,
-		icon: (@Composable () -> Unit)?,
+		content: @Composable Chips.ChipScope.() -> Unit,
+		icon: (@Composable () -> Unit)? = null,
 		action: (@Composable () -> Unit)? = null,
 		hasClosedButton: Boolean = false,
 		closeButtonClasses: List<String> = emptyList(),
-		content: @Composable Chips.ChipScope.() -> Unit,
-		style: (StyleScope.() -> Unit) = {}
+		style: (StyleScope.() -> Unit) = {},
 	) {
 		val layerClasses = buildList {
 			if (contrasted) {
@@ -337,14 +338,14 @@ object MTChips : Chips {
 			enabled = enabled,
 			activated = false,
 			loading = loading,
-			icon = icon,
-			action = action,
 			hasClosedButton = hasClosedButton,
-			closeButtonClasses = closeButtonClasses,
 			classes = classes,
 			disabledClasses = disabledClasses,
+			closeButtonClasses = closeButtonClasses,
 			style = style,
 			layerClasses = layerClasses,
+			icon = icon,
+			action = action,
 			content = content
 		)
 	}
@@ -360,8 +361,11 @@ object MTChips : Chips {
 		activatedClasses: List<String> = emptyList(),
 		nonActivatedClasses: List<String> = emptyList(),
 		closeButtonClasses: List<String> = emptyList(),
-		style: (StyleScope.() -> Unit) = {},
-		layerClasses: List<List<String>>?,
+		style: StyleScope.() -> Unit = {},
+		layerClasses: List<List<String>>? = null,
+		hasClosedButton: Boolean = false,
+		icon: (@Composable () -> Unit)? = null,
+		action: (@Composable () -> Unit)? = null,
 		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
 
