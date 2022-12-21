@@ -222,23 +222,24 @@ object MTChips : Chips {
 		action: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
-		Button(
-			{
-				//TODO style in https://gitlab.com/opensavvy/opensavvy-ui/-/issues/16
+		val outline = Theme.color.outline.css
+		val backgroundVariantOn = Theme.color.backgroundVariant.on.css
+		val background = Theme.color.background.css
+		val primary = Theme.color.primary.accent.css
 
-				onClick { onClick() }
-
-				if (!enabled || loading is Progression.Loading)
-					disabled()
-			}
+		BasicChip(
+			onClick = onClick,
+			enabled = enabled,
+			loading = loading,
+			contrasted = contrasted,
+			icon = icon,
+			action = action,
+			content = content,
 		) {
-			if (icon != null)
-				icon()
-
-			content(ChipScope)
-
-			if (action != null)
-				action()
+			property("--material-color-1", backgroundVariantOn)
+			property("--material-color-2", outline)
+			property("--material-color-3", background)
+			property("--material-color-4", primary)
 		}
 	}
 
