@@ -82,16 +82,14 @@ object MTButtons : Buttons {
 			add("disabled:bg-materialColor3/disabledBg")
 		}
 
-		var elevationClasses = arrayOf(
-			"group-focus:bg-materialColor4/focus",
-			"group-enabled:hover:bg-materialColor4/hover",
-		)
-
-		if (primary) {
-			elevationClasses = arrayOf(
-				"group-focus:bg-materialColor1/focus",
-				"group-enabled:hover:bg-materialColor1/hover",
-			)
+		val elevationClasses = buildList {
+			if (primary) {
+				add("group-focus:bg-materialColor1/focus")
+				add("group-enabled:hover:bg-materialColor1/hover")
+			} else {
+				add("group-focus:bg-materialColor4/focus")
+				add("group-enabled:hover:bg-materialColor4/hover")
+			}
 		}
 
 		AbstractButton(
@@ -107,7 +105,9 @@ object MTButtons : Buttons {
 				property("--material-color-3", backgroundOn)
 				property("--material-color-4", color.on.css)
 			},
-			layerClasses = arrayOf(elevationClasses),
+			layerClasses = buildList {
+				add(elevationClasses)
+			},
 			content = content
 		)
 	}
@@ -183,14 +183,14 @@ object MTButtons : Buttons {
 			add("disabled:shadow-none")
 		}
 
-		val firstLayerClasses = arrayOf(
-			"bg-materialColor1/normal",
-		)
+		val firstLayerClasses = buildList {
+			add("bg-materialColor1/normal")
+		}
 
-		val secondLayerClasses = arrayOf(
-			"group-focus:bg-materialColor1/focus",
-			"group-enabled:hover:bg-materialColor1/hover",
-		)
+		val secondLayerClasses = buildList {
+			add("group-focus:bg-materialColor1/focus")
+			add("group-enabled:hover:bg-materialColor1/hover")
+		}
 
 		AbstractButton(
 			onClick = onClick,
@@ -204,10 +204,10 @@ object MTButtons : Buttons {
 				property("--material-color-2", background)
 				property("--material-color-3", backgroundOn)
 			},
-			layerClasses = arrayOf(
-				firstLayerClasses,
-				secondLayerClasses
-			),
+			layerClasses = buildList {
+				add(firstLayerClasses)
+				add(secondLayerClasses)
+			},
 			content = content
 		)
 	}
@@ -248,7 +248,7 @@ private fun AbstractButton(
 	classes: Array<String>?,
 	disabledClasses: List<String>,
 	style: (StyleScope.() -> Unit) = {},
-	layerClasses: Array<Array<String>>?,
+	layerClasses: List<List<String>>?,
 	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
 

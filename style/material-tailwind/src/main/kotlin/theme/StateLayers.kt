@@ -8,7 +8,7 @@ import org.jetbrains.compose.web.dom.Div
 import org.w3c.dom.HTMLButtonElement
 
 @Composable
-internal fun StateLayers(layerClasses: Array<Array<String>>?, layerAgnosticClasses: Array<String>) {
+internal fun StateLayers(layerClasses: List<List<String>>?, layerAgnosticClasses: Array<String>) {
 	layerClasses?.forEach {
 		Div(
 			{
@@ -17,7 +17,7 @@ internal fun StateLayers(layerClasses: Array<Array<String>>?, layerAgnosticClass
 					"inset-0",
 					*layerAgnosticClasses,
 				)
-				classes(*it)
+				classes(it)
 			}
 		)
 	}

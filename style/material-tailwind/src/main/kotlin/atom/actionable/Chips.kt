@@ -66,26 +66,36 @@ object MTChips : Chips {
 		val secondaryContainerOn = Theme.color.secondary.container.on.css
 		val primary = Theme.color.primary.accent.css
 
-		var layerClasses = arrayOf(
-			arrayOf(
-				"-m-px",
-				"group-enabled:hover:bg-materialColor5/hover",
-				"group-focus-visible:bg-materialColor5/focus"
-			)
-		)
-
-		if (contrasted) {
-			layerClasses = arrayOf(
-				arrayOf(
-					"-m-px",
-					"group-enabled:bg-materialColor7/normal"
-				),
-				arrayOf(
-					"-m-px",
-					"group-enabled:hover:bg-materialColor5/hover",
-					"group-focus-visible:bg-materialColor5/focus"
+		val layerClasses = buildList {
+			if (contrasted) {
+				add(
+					buildList {
+						add("-m-px")
+						if (enabled) {
+							add("bg-materialColor7/normal")
+						}
+					}
 				)
-			)
+				add(
+					buildList {
+						add("-m-px")
+						if (activated) {
+							add("group-enabled:hover:bg-materialColor5/hover")
+							add("group-focus-visible:bg-materialColor5/focus")
+						}
+					}
+				)
+			} else {
+				add(
+					buildList {
+						add("-m-px")
+						if (activated) {
+							add("group-enabled:hover:bg-materialColor5/hover")
+							add("group-focus-visible:bg-materialColor5/focus")
+						}
+					}
+				)
+			}
 		}
 
 		val classes = buildList {
@@ -267,7 +277,7 @@ object MTChips : Chips {
 		activatedClasses: List<String>,
 		nonActivatedClasses: List<String>,
 		style: (StyleScope.() -> Unit) = {},
-		layerClasses: Array<Array<String>>?,
+		layerClasses: List<List<String>>?,
 		content: @Composable Chips.ChipScope.() -> Unit,
 	) {
 
