@@ -273,6 +273,7 @@ object MTChips : Chips {
 		activated: Boolean,
 		loading: Progression,
 		icon: (@Composable () -> Unit)?,
+		action: (@Composable () -> Unit)? = null,
 		hasClosedButton: Boolean = false,
 		classes: List<String>,
 		disabledClasses: List<String>,
@@ -315,6 +316,9 @@ object MTChips : Chips {
 			Div {
 				content(ChipScope)
 			}
+
+			if (action != null)
+				action()
 
 			if (hasClosedButton)
 				Div(
