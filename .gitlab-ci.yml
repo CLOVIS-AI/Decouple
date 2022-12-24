@@ -53,6 +53,31 @@ chromium:publish:
 
   interruptible: true
 
+android-sdk:build:
+  extends: [ .os.docker.build ]
+  needs: [ ]
+  stage: docker
+
+  variables:
+    dockerfile: .gitlab/ci/android.dockerfile
+    context: .gitlab/ci
+    image: android-sdk
+
+  interruptible: true
+
+android-sdk:publish:
+  extends: [ .os.docker.rename ]
+  needs: [ android-sdk:build ]
+  stage: deploy
+
+  variables:
+    image: android-sdk
+
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+
+  interruptible: true
+
 # Tests
 
 jvm:test:
