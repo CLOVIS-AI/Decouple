@@ -173,7 +173,8 @@ demo:android:build:
 
 dokka:
   extends: [ .os.gradle ]
-  needs: [ ]
+  needs: [ android-sdk:build ]
+  image: $CI_REGISTRY_IMAGE/android-sdk:build-$CI_PIPELINE_IID
   stage: build
 
   script:
