@@ -57,7 +57,7 @@ data class RGB(
 			require(stripped.length == 6 || stripped.length == 8) { "Expected an hexadecimal value of 6 or 8 digits, found ${stripped.length} digits: $hex" }
 			val red = stripped.substring(0..1).toUByte(16)
 			val green = stripped.substring(2..3).toUByte(16)
-			val blue = stripped.substring(4..6).toUByte(16)
+			val blue = stripped.substring(4..5).toUByte(16)
 			val alpha = if (stripped.length == 8) stripped.substring(6..7).toUByte(16) else 255u
 
 			return RGB(red, green, blue, alpha)
