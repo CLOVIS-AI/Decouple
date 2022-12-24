@@ -169,7 +169,7 @@ fun TextFields() = Column {
 		}
 
 		FilterChip(showFailureText, onToggle = { showFailureText = it }) {
-			Text("Show supporting text")
+			Text("Show failure text")
 		}
 	}
 
