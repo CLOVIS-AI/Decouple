@@ -105,6 +105,36 @@ web:test:
 
   interruptible: true
 
+android:test:
+  extends: [ .os.gradle ]
+  needs: [ android-sdk:build ]
+  image: $CI_REGISTRY_IMAGE/android-sdk:build-$CI_PIPELINE_IID
+  stage: test
+
+  script:
+    - >
+      ./gradlew
+      demo:android:test
+
+  artifacts:
+    reports:
+      junit: demo/android/build/test-results/*/*.xml
+  interruptible: true
+
+android:lint:
+  extends: [ .os.gradle ]
+  needs: [ android-sdk:build ]
+  image: $CI_REGISTRY_IMAGE/android-sdk:build-$CI_PIPELINE_IID
+  stage: test
+
+  script:
+    - ./gradlew lint
+
+  artifacts:
+    paths:
+      - demo/android/build/reports/
+  interruptible: true
+
 # Build the demo
 
 demo:web:build:
@@ -124,6 +154,22 @@ demo:web:build:
     name: review-demo/$CI_COMMIT_REF_SLUG
     url: https://$CI_PROJECT_NAMESPACE.$CI_PAGES_DOMAIN/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist-web/index.html
     deployment_tier: development
+
+demo:android:build:
+  extends: [ .os.gradle ]
+  needs: [ android-sdk:build ]
+  image: $CI_REGISTRY_IMAGE/android-sdk:build-$CI_PIPELINE_IID
+  stage: build
+
+  script:
+    - ./gradlew demo:android:assembleDebug
+    - mv demo/android/build/outputs/apk/debug/android-debug.apk demo-debug.apk
+
+  artifacts:
+    paths:
+      - demo-debug.apk
+    expose_as: Android App - Debug
+  interruptible: true
 
 dokka:
   extends: [ .os.gradle ]
