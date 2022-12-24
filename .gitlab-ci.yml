@@ -30,6 +30,7 @@ workflow:
 
 chromium:build:
   extends: [ .os.docker.build ]
+  needs: [ ]
   stage: docker
 
   variables:
@@ -41,6 +42,7 @@ chromium:build:
 
 chromium:publish:
   extends: [ .os.docker.rename ]
+  needs: [ chromium:build ]
   stage: deploy
 
   variables:
