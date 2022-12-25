@@ -5,28 +5,25 @@ import java.net.URL
 
 plugins {
 	kotlin("multiplatform")
-	id("com.android.library")
-
 	id("org.jetbrains.compose")
-	id("org.jetbrains.dokka")
+	id("com.android.library")
 }
 
 kotlin {
-	jvm()
 	android()
-	js(IR) {
-		browser()
-	}
 
 	sourceSets {
 		val commonMain by getting {
 			dependencies {
-				api(compose.runtime)
-				api(KotlinX.coroutines.core)
-				api(KotlinX.datetime)
+				api(projects.core)
+				api(projects.style.materialCommon)
+			}
+		}
 
-				api("opensavvy:state:_")
-				api("opensavvy:logger:_")
+		val androidMain by getting {
+			dependencies {
+				implementation("androidx.compose.material3:material3:_")
+				implementation("androidx.compose.material3:material3-window-size-class:_")
 			}
 		}
 	}
@@ -44,16 +41,14 @@ android {
 		sourceCompatibility = JavaVersion.VERSION_1_8
 		targetCompatibility = JavaVersion.VERSION_1_8
 	}
-	namespace = "opensavvy.decouple.core"
+	namespace = "opensavvy.decouple.material.androidx"
 }
 
 tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
 	dokkaSourceSets.configureEach {
-		includes.from("${project.projectDir}/core.md")
-
 		sourceLink {
 			localDirectory.set(file("src"))
-			remoteUrl.set(URL("https://gitlab.com/opensavvy/decouple/-/blob/main/core/src"))
+			remoteUrl.set(URL("https://gitlab.com/opensavvy/decouple/-/blob/main/style/material-androidx/src"))
 			remoteLineSuffix.set("#L")
 		}
 	}

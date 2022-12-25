@@ -4,6 +4,9 @@ plugins {
 	kotlin("multiplatform") apply false
 	kotlin("jvm") apply false
 	kotlin("js") apply false
+
+	id("com.android.library") apply false
+
 	id("org.jetbrains.dokka") apply false
 	id("maven-publish")
 
@@ -68,13 +71,11 @@ allprojects {
 		}
 	}
 
-
 	tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 		kotlinOptions {
-			jvmTarget = "17"
+			jvmTarget = "1.8"
 		}
 	}
-
 
 	tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
 		dokkaSourceSets.configureEach {
