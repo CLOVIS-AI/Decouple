@@ -9,7 +9,13 @@ object MTTexts : Texts {
 
 	@Composable
 	override fun Text(text: String) {
-		Span { DomText(text) }
+		Span(
+			{
+				classes("max-w-[50em]")
+			}
+		) {
+			DomText(text)
+		}
 	}
 
 }
