@@ -3,7 +3,6 @@ package opensavvy.decouple.material.tailwind.atom.actionable
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.atom.ProgressIndicator
 import opensavvy.decouple.core.atom.actionable.Chips
-import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.theme.Theme
 import opensavvy.decouple.material.tailwind.atom.icon.Close
 import opensavvy.decouple.material.tailwind.atom.icon.Tick
@@ -248,10 +247,12 @@ object MTChips : Chips {
 	override fun ChipGroup(
 		multiline: Boolean,
 		chips: @Composable Chips.ChipGroupScope.() -> Unit,
-	) {
-		Row {
-			chips(ChipGroupScope)
+	) = Div(
+		{
+			classes("flex", "flex-row", "flex-wrap", "gap-1")
 		}
+	) {
+		chips(ChipGroupScope)
 	}
 
 	private object ChipScope : Chips.ChipScope
