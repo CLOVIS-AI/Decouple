@@ -10,6 +10,8 @@ import org.jetbrains.compose.web.css.color
 import org.jetbrains.compose.web.dom.Div
 
 object MTUIMetadata : UIMetadata {
+	override val name: String = "Material You"
+
 	override val recommendedThemes: List<Theme>
 		get() = MaterialTheme.default
 
@@ -32,5 +34,5 @@ object MTUIMetadata : UIMetadata {
 		}
 	}
 
-	override fun toString() = "Material You"
+	override fun toString() = name
 }
