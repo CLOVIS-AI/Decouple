@@ -8,17 +8,20 @@ data class MaterialTheme(
 	val isLight: Boolean = true,
 ) : Theme {
 
+	override val name: String by lazy {
+		buildString {
+			append(palette.name)
+
+			if (isLight)
+				append(" Light")
+			else
+				append(" Dark")
+		}
+	}
+
 	override val color = if (isLight) palette.toLightTheme() else palette.toDarkTheme()
 
-	override fun toString() = buildString {
-		append(palette.name)
-		append(' ')
-
-		if (isLight)
-			append("(light)")
-		else
-			append("(dark)")
-	}
+	override fun toString() = name
 
 	companion object {
 		val default get() = listOf(MaterialTheme(isLight = true), MaterialTheme(isLight = false))
