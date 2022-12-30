@@ -28,7 +28,7 @@ fun AppearanceSelector(implementations: List<UI>, content: @Composable () -> Uni
 					Text("UI implementation :")
 					for (ui in implementations) {
 						Button({ currentUi = ui }, enabled = ui != currentUi) {
-							Text(ui.toString())
+							Text(ui.name)
 						}
 					}
 				}
@@ -40,7 +40,7 @@ fun AppearanceSelector(implementations: List<UI>, content: @Composable () -> Uni
 								{ currentTheme = theme },
 								enabled = theme != currentTheme
 							) {
-								Text(theme.toString())
+								Text(theme.name)
 							}
 						else
 							Button({ currentTheme = theme }, enabled = theme != currentTheme) {

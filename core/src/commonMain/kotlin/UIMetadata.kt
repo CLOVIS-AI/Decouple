@@ -10,6 +10,11 @@ import opensavvy.decouple.core.theme.Theme
 interface UIMetadata {
 
 	/**
+	 * Human-readable name of this implementation.
+	 */
+	val name: String
+
+	/**
 	 * Themes recommended by this [UI] instance.
 	 *
 	 * Although it is allowed to use any theme with any UI instance, it is possible that they do not follow the same

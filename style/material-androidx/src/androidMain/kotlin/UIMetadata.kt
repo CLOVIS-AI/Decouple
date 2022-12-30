@@ -9,6 +9,8 @@ import androidx.compose.material3.MaterialTheme as M3MaterialTheme
 
 @SuppressLint("ComposableNaming")
 object MAUIMetadata : UIMetadata {
+	override val name: String = "Material You"
+
 	override val recommendedThemes: List<Theme>
 		get() = MaterialTheme.default
 
@@ -26,6 +28,6 @@ object MAUIMetadata : UIMetadata {
 		M3MaterialTheme(content = content)
 	}
 
-	override fun toString() = "Material You"
+	override fun toString() = name
 
 }

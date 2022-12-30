@@ -14,6 +14,13 @@ import opensavvy.decouple.core.UI
 interface Theme {
 
 	/**
+	 * Human-readable name of this theme.
+	 *
+	 * May be used in a theme switcher, for example.
+	 */
+	val name: String
+
+	/**
 	 * The color identity of the application.
 	 */
 	val color: ColorTheme
