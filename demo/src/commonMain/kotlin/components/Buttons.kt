@@ -7,43 +7,48 @@ import androidx.compose.runtime.setValue
 import kotlinx.coroutines.delay
 import opensavvy.decouple.core.atom.actionable.*
 import opensavvy.decouple.core.atom.text.Text
-import opensavvy.decouple.core.layout.Column
 import opensavvy.decouple.core.layout.Row
+import opensavvy.decouple.core.layout.SupportedScreen
 import opensavvy.decouple.persist.persistentStateOf
 
 @Composable
-fun Buttons() = Column {
-	Text("Buttons are the primary interaction means with the library.")
-
+fun Buttons() {
 	var enabled by remember { persistentStateOf("buttons.enabled") { true } }
 
-	Text("There are multiple kinds of buttons:")
-	Row {
-		Button({ delay(1000) }, enabled = enabled) {
-			Text("Button")
-		}
+	SupportedScreen(
+		"Buttons",
+		supportTitle = "States",
+		support = {
+			ChipGroup {
+				FilterChip(enabled, onToggle = { enabled = it }) {
+					Text("Enabled")
+				}
+			}
+		},
+	) {
+		Text("Buttons are the primary interaction means with the library.")
 
-		SecondaryButton({ delay(1000) }, enabled = enabled) {
-			Text("Secondary button")
-		}
+		Text("There are multiple kinds of buttons:")
+		Row {
+			Button({ delay(1000) }, enabled = enabled) {
+				Text("Button")
+			}
 
-		PrimaryButton({ delay(1000) }, enabled = enabled) {
-			Text("Primary button")
-		}
+			SecondaryButton({ delay(1000) }, enabled = enabled) {
+				Text("Secondary button")
+			}
 
-		PrimaryButton({ delay(1000) }, enabled = enabled, primary = true) {
-			Text("Highlighted primary button")
-		}
+			PrimaryButton({ delay(1000) }, enabled = enabled) {
+				Text("Primary button")
+			}
 
-		ContrastButton({ delay(1000) }, enabled = enabled) {
-			Text("Contrast button")
-		}
-	}
+			PrimaryButton({ delay(1000) }, enabled = enabled, primary = true) {
+				Text("Highlighted primary button")
+			}
 
-	Text("States:")
-	ChipGroup {
-		FilterChip(enabled, onToggle = { enabled = it }) {
-			Text("Enabled")
+			ContrastButton({ delay(1000) }, enabled = enabled) {
+				Text("Contrast button")
+			}
 		}
 	}
 }
