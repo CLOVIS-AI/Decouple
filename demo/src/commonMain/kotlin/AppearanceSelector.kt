@@ -6,6 +6,7 @@ import opensavvy.decouple.core.UI.Companion.Install
 import opensavvy.decouple.core.atom.actionable.Button
 import opensavvy.decouple.core.atom.actionable.SecondaryButton
 import opensavvy.decouple.core.atom.text.Text
+import opensavvy.decouple.core.layout.Arrangement
 import opensavvy.decouple.core.layout.Column
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.theme.Theme.Companion.Install
@@ -23,7 +24,9 @@ fun AppearanceSelector(implementations: List<UI>, content: @Composable () -> Uni
 
 	Install(currentUi) {
 		Install(currentTheme) {
-			Column {
+			Column(Arrangement.SpaceBetween) {
+				content()
+
 				Row {
 					Text("UI implementation :")
 					for (ui in implementations) {
@@ -31,8 +34,7 @@ fun AppearanceSelector(implementations: List<UI>, content: @Composable () -> Uni
 							Text(ui.name)
 						}
 					}
-				}
-				Row {
+
 					Text("Themes :")
 					for (theme in themes) {
 						if (theme in currentUi.recommendedThemes)
@@ -48,8 +50,6 @@ fun AppearanceSelector(implementations: List<UI>, content: @Composable () -> Uni
 							}
 					}
 				}
-
-				content()
 			}
 		}
 	}
