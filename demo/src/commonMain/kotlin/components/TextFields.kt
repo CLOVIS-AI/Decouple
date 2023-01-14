@@ -12,19 +12,12 @@ import opensavvy.decouple.core.atom.actionable.ChipGroup
 import opensavvy.decouple.core.atom.actionable.FilterChip
 import opensavvy.decouple.core.atom.input.*
 import opensavvy.decouple.core.atom.text.Text
-import opensavvy.decouple.core.layout.Column
 import opensavvy.decouple.core.layout.Row
+import opensavvy.decouple.core.layout.SupportedScreen
 import opensavvy.decouple.persist.persistentStateOf
 
 @Composable
-fun TextFields() = Column {
-	Text("Text fields let the user input data into the app.")
-
-	Row {
-		Text("Label:")
-		FieldLabel("text")
-	}
-
+fun TextFields() {
 	var enabled by remember { persistentStateOf("fields.enabled") { true } }
 	var required by remember { persistentStateOf("fields.required") { false } }
 	var contrasted by remember { persistentStateOf("fields.contrasted") { false } }
@@ -43,136 +36,148 @@ fun TextFields() = Column {
 	var localDate by remember { persistentStateOf<LocalDate?>("fields.localDate") { null } }
 	var localTime by remember { persistentStateOf<LocalTime?>("fields.localTime") { null } }
 
-	TextField(
-		"My text field",
-		value = text,
-		onChange = { text = it },
-		enabled = enabled,
-		required = required,
-		contrasted = contrasted,
-		onReset = { text = null }.takeIf { allowReset },
-		multiline = multiLine,
-		supportingText = if (showSupportingText) {
-			{ Text(supportingText) }
-		} else null,
-		failureText = if (showFailureText) {
-			{ Text(failureText) }
-		} else null,
-	)
+	SupportedScreen(
+		"Text fields",
+		supportTitle = "States",
+		support = {
+			ChipGroup {
+				FilterChip(enabled, onToggle = { enabled = it }) {
+					Text("Enabled")
+				}
 
-	TextField(
-		"Password field",
-		value = text,
-		onChange = { text = it },
-		enabled = enabled,
-		required = required,
-		contrasted = contrasted,
-		onReset = { text = null }.takeIf { allowReset },
-		multiline = multiLine,
-		supportingText = if (showSupportingText) {
-			{ Text(supportingText) }
-		} else null,
-		failureText = if (showFailureText) {
-			{ Text(failureText) }
-		} else null,
-		hideValue = true,
-	)
+				FilterChip(required, onToggle = { required = it }) {
+					Text("Required")
+				}
 
-	InstantField(
-		"Instant",
-		value = instant,
-		onChange = { instant = it },
-		enabled = enabled,
-		required = required,
-		contrasted = contrasted,
-		onReset = { text = null }.takeIf { allowReset },
-		supportingText = if (showSupportingText) {
-			{ Text(supportingText) }
-		} else null,
-		failureMessage = if (showFailureText) {
-			{ Text(failureText) }
-		} else null,
-	)
+				FilterChip(contrasted, onToggle = { contrasted = it }) {
+					Text("Contrasted")
+				}
 
-	LocalDateTimeField(
-		"Local date time",
-		value = localDateTime,
-		onChange = { localDateTime = it },
-		enabled = enabled,
-		required = required,
-		contrasted = contrasted,
-		onReset = { text = null }.takeIf { allowReset },
-		supportingText = if (showSupportingText) {
-			{ Text(supportingText) }
-		} else null,
-		failureMessage = if (showFailureText) {
-			{ Text(failureText) }
-		} else null,
-	)
+				FilterChip(allowReset, onToggle = { allowReset = it }) {
+					Text("Allow reset")
+				}
 
-	LocalDateField(
-		"Local date",
-		value = localDate,
-		onChange = { localDate = it },
-		enabled = enabled,
-		required = required,
-		contrasted = contrasted,
-		onReset = { text = null }.takeIf { allowReset },
-		supportingText = if (showSupportingText) {
-			{ Text(supportingText) }
-		} else null,
-		failureMessage = if (showFailureText) {
-			{ Text(failureText) }
-		} else null,
-	)
+				FilterChip(multiLine, onToggle = { multiLine = it }) {
+					Text("Multiline")
+				}
 
-	LocalTimeField(
-		"Local time",
-		value = localTime,
-		onChange = { localTime = it },
-		enabled = enabled,
-		required = required,
-		contrasted = contrasted,
-		onReset = { text = null }.takeIf { allowReset },
-		supportingText = if (showSupportingText) {
-			{ Text(supportingText) }
-		} else null,
-		failureMessage = if (showFailureText) {
-			{ Text(failureText) }
-		} else null,
-	)
+				FilterChip(showSupportingText, onToggle = { showSupportingText = it }) {
+					Text("Show supporting text")
+				}
 
-	Text("States:")
-	ChipGroup {
-		FilterChip(enabled, onToggle = { enabled = it }) {
-			Text("Enabled")
+				FilterChip(showFailureText, onToggle = { showFailureText = it }) {
+					Text("Show failure text")
+				}
+			}
+
+			TextField("Supporting text", supportingText, { supportingText = it }, enabled = showSupportingText)
+			TextField("Failure text", failureText, { failureText = it }, enabled = showFailureText)
+		}
+	) {
+		Text("Text fields let the user input data into the app.")
+
+		Row {
+			Text("Label:")
+			FieldLabel("text")
 		}
 
-		FilterChip(required, onToggle = { required = it }) {
-			Text("Required")
-		}
+		TextField(
+			"My text field",
+			value = text,
+			onChange = { text = it },
+			enabled = enabled,
+			required = required,
+			contrasted = contrasted,
+			onReset = { text = null }.takeIf { allowReset },
+			multiline = multiLine,
+			supportingText = if (showSupportingText) {
+				{ Text(supportingText) }
+			} else null,
+			failureText = if (showFailureText) {
+				{ Text(failureText) }
+			} else null,
+		)
 
-		FilterChip(contrasted, onToggle = { contrasted = it }) {
-			Text("Contrasted")
-		}
+		TextField(
+			"Password field",
+			value = text,
+			onChange = { text = it },
+			enabled = enabled,
+			required = required,
+			contrasted = contrasted,
+			onReset = { text = null }.takeIf { allowReset },
+			multiline = multiLine,
+			supportingText = if (showSupportingText) {
+				{ Text(supportingText) }
+			} else null,
+			failureText = if (showFailureText) {
+				{ Text(failureText) }
+			} else null,
+			hideValue = true,
+		)
 
-		FilterChip(allowReset, onToggle = { allowReset = it }) {
-			Text("Allow reset")
-		}
+		InstantField(
+			"Instant",
+			value = instant,
+			onChange = { instant = it },
+			enabled = enabled,
+			required = required,
+			contrasted = contrasted,
+			onReset = { text = null }.takeIf { allowReset },
+			supportingText = if (showSupportingText) {
+				{ Text(supportingText) }
+			} else null,
+			failureMessage = if (showFailureText) {
+				{ Text(failureText) }
+			} else null,
+		)
 
-		FilterChip(multiLine, onToggle = { multiLine = it }) {
-			Text("Multiline")
-		}
+		LocalDateTimeField(
+			"Local date time",
+			value = localDateTime,
+			onChange = { localDateTime = it },
+			enabled = enabled,
+			required = required,
+			contrasted = contrasted,
+			onReset = { text = null }.takeIf { allowReset },
+			supportingText = if (showSupportingText) {
+				{ Text(supportingText) }
+			} else null,
+			failureMessage = if (showFailureText) {
+				{ Text(failureText) }
+			} else null,
+		)
 
-		FilterChip(showSupportingText, onToggle = { showSupportingText = it }) {
-			Text("Show supporting text")
-		}
+		LocalDateField(
+			"Local date",
+			value = localDate,
+			onChange = { localDate = it },
+			enabled = enabled,
+			required = required,
+			contrasted = contrasted,
+			onReset = { text = null }.takeIf { allowReset },
+			supportingText = if (showSupportingText) {
+				{ Text(supportingText) }
+			} else null,
+			failureMessage = if (showFailureText) {
+				{ Text(failureText) }
+			} else null,
+		)
 
-		FilterChip(showFailureText, onToggle = { showFailureText = it }) {
-			Text("Show failure text")
-		}
+		LocalTimeField(
+			"Local time",
+			value = localTime,
+			onChange = { localTime = it },
+			enabled = enabled,
+			required = required,
+			contrasted = contrasted,
+			onReset = { text = null }.takeIf { allowReset },
+			supportingText = if (showSupportingText) {
+				{ Text(supportingText) }
+			} else null,
+			failureMessage = if (showFailureText) {
+				{ Text(failureText) }
+			} else null,
+		)
 	}
-
-	TextField("Supporting text", supportingText, { supportingText = it }, enabled = showSupportingText)
-	TextField("Failure text", failureText, { failureText = it }, enabled = showFailureText)
 }

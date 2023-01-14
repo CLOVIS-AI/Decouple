@@ -9,6 +9,7 @@ import opensavvy.decouple.core.atom.actionable.Buttons
 import opensavvy.decouple.core.atom.actionable.Chips
 import opensavvy.decouple.core.atom.input.TextFields
 import opensavvy.decouple.core.atom.text.Texts
+import opensavvy.decouple.core.layout.FullscreenLayouts
 import opensavvy.decouple.core.layout.LazyLayouts
 import opensavvy.decouple.core.layout.LinearLayouts
 import opensavvy.decouple.core.layout.Navigation
@@ -59,7 +60,15 @@ import opensavvy.decouple.core.layout.Navigation
  * - it is easy for end users to replace the implementation of a component kind by another one,
  * - you may provide multiple implementations of entire component kinds.
  */
-interface UI : UIMetadata, LinearLayouts, LazyLayouts, Buttons, Texts, Chips, TextFields, Navigation,
+interface UI : UIMetadata,
+               LinearLayouts,
+               LazyLayouts,
+               Buttons,
+               Texts,
+               Chips,
+               TextFields,
+               Navigation,
+               FullscreenLayouts,
                ProgressIndicators {
 
 	companion object {
