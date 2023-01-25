@@ -18,3 +18,21 @@ As a summary, this module allows you to:
 This module does not help to:
 - test the visual appearance of a button,
 - test whether an implementation of Decouple is correct.
+
+## Reading order
+
+When writing new UI tests using Decouple, please read [TestApplication][opensavvy.decouple.testing.execution.compose].
+
+When creating typesafe wrappers to allow other users to test your components, please read [Component][opensavvy.decouple.testing.Component].
+
+# Package opensavvy.decouple.testing
+
+The [Component][opensavvy.decouple.testing.Component] class allows to declare typesafe immutable objects that wrap composable function calls.
+
+# Package opensavvy.decouple.testing.execution
+
+[TestApplication][opensavvy.decouple.testing.execution.TestApplication] provides utilities to run a composable function in a test environment without starting an entire UI environment.
+
+# Package opensavvy.decouple.testing.node
+
+Representation of the state of composable functions during their execution.
