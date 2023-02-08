@@ -19,6 +19,27 @@ kotlin {
 				api(projects.core)
 			}
 		}
+
+		val commonTest by getting {
+			dependencies {
+				api(Kotlin.test.annotationsCommon)
+				api(Kotlin.test.common)
+
+				api(KotlinX.coroutines.test)
+			}
+		}
+
+		val jvmTest by getting {
+			dependencies {
+				api(Kotlin.test.junit)
+			}
+		}
+
+		val jsTest by getting {
+			dependencies {
+				api(Kotlin.test.js)
+			}
+		}
 	}
 }
 
