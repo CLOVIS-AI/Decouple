@@ -5,6 +5,7 @@ import opensavvy.decouple.testing.Component
 import opensavvy.decouple.testing.Component.Companion.viewAs
 import opensavvy.decouple.testing.node.Attributes
 import opensavvy.decouple.testing.node.Node
+import opensavvy.decouple.testing.node.NodeTree
 import opensavvy.decouple.testing.node.Slots
 import kotlin.reflect.KProperty
 
@@ -137,6 +138,6 @@ fun Slot(
  */
 @Composable
 fun Slot(
-	property: KProperty<Node?>,
+	property: KProperty<NodeTree>,
 	content: @Composable () -> Unit,
 ) = Slot(property.name, content)

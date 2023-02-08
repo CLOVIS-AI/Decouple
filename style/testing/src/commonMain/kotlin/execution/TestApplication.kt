@@ -12,6 +12,7 @@ import kotlinx.coroutines.yield
 import opensavvy.decouple.core.UI.Companion.Install
 import opensavvy.decouple.testing.Component
 import opensavvy.decouple.testing.TestUI
+import opensavvy.decouple.testing.node.NodeTree
 
 /**
  * Executes a composable function in a test environment where no UI is emitted.
@@ -24,7 +25,7 @@ class TestApplication internal constructor(
 	private val recomposer: Recomposer,
 	private val clock: BroadcastFrameClock,
 	private val root: ExecutableNode,
-) {
+) : NodeTree by root {
 
 	/**
 	 * Allows the application to respond to events once.

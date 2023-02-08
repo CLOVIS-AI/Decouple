@@ -11,7 +11,7 @@ private const val INDENT = "  "
  * During composition, the UI is represented as a tree of [Node].
  * For testing, they are converted to the immutable type-safe wrapper [Component].
  */
-interface Node {
+interface Node : NodeTree {
 	val name: String
 	val isSlot: Boolean
 	val attributes: Attributes
@@ -31,6 +31,16 @@ interface Node {
 	 * (not just read-only) may return itself, as modifications are impossible anyway.
 	 */
 	fun clone(): Node
+
+	override fun nodes(): Sequence<Node> = sequence {
+		yieldAll(slots.children.flatMap { it.nodes() })
+
+		yield(this@Node)
+	}
+
+	override fun directChildren(): Sequence<Node> = sequence {
+		yieldAll(slots.children)
+	}
 
 	fun toPrettyString(): String = buildString {
 		fun inner(node: Node, indent: String) {
@@ -54,8 +64,11 @@ interface Node {
 	 * See [content].
 	 */
 	class MainSlot(private val slots: Slots) {
-		operator fun getValue(thisRef: Any?, property: KProperty<*>) =
-			slots.children.filterNot { it.isSlot }
+		fun get(): NodeTree = slots.children
+			.filterNot { it.isSlot }
+			.let(::IterableNodeTree)
+
+		operator fun getValue(thisRef: Any?, property: KProperty<*>) = get()
 	}
 
 	data class Immutable(

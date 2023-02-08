@@ -37,15 +37,17 @@ interface Slots {
 /**
  * Gets a [slot].
  *
- * Returns `null` if no slot with that name is present.
+ * Returns an empty list if no slot with that name is present.
  */
 operator fun Slots.get(slot: String) =
 	children.firstOrNull { it.isSlot && it.name == slot }
+		?.content?.get()
+		?: NodeTree.Empty
 
 /**
  * Gets a slot named after [property].
  *
- * Returns `null` if no slot with that name is present.
+ * Returns an empty list if no slot with that name is present.
  */
 operator fun Slots.getValue(thisRef: Any?, property: KProperty<*>) =
 	get(property.name)
