@@ -11,6 +11,7 @@ plugins {
 }
 
 kotlin {
+	jvm()
 	android()
 
 	sourceSets {
@@ -18,11 +19,7 @@ kotlin {
 			dependencies {
 				api(projects.core)
 				api(projects.style.materialCommon)
-			}
-		}
 
-		val androidMain by getting {
-			dependencies {
 				@OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
 				implementation(compose.material3)
 			}

@@ -11,6 +11,7 @@ plugins {
 }
 
 kotlin {
+	jvm()
 	android()
 	js(IR) {
 		browser {
@@ -42,6 +43,12 @@ kotlin {
 		}
 
 		val androidMain by getting {
+			dependencies {
+				implementation(projects.style.materialAndroidx)
+			}
+		}
+
+		val jvmMain by getting {
 			dependencies {
 				implementation(projects.style.materialAndroidx)
 			}
