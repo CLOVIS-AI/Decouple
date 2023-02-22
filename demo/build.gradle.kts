@@ -37,6 +37,12 @@ kotlin {
 			}
 		}
 
+		val androidTest by getting {
+			dependencies {
+				implementation(Kotlin.test.junit)
+			}
+		}
+
 		val jvmTest by getting {
 			dependencies {
 				implementation(Kotlin.test.junit)
