@@ -85,6 +85,9 @@ allprojects {
 			externalDocumentationLink {
 				url.set(URL("https://opensavvy.gitlab.io/pedestal/documentation/"))
 			}
+			externalDocumentationLink {
+				url.set(URL("https://arrow-kt.io/docs/apidocs/"))
+			}
 		}
 	}
 }
