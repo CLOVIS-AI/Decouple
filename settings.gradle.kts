@@ -28,5 +28,7 @@ include(
 	"style:material-tailwind",
 	"style:material-androidx",
 
+	"style:testing",
+
 	"documentation",
 )
