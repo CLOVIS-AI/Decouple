@@ -18,6 +18,8 @@ These two layers have different responsibilities and rate of change throughout t
 It makes possible the creation of design-agnostic applications that can be easily deployed on each platform for which a Decouple implementation exists.
 Implementations can be easily created for any platform where Kotlin runs, and mixed to allow developers to build an application in parallel of the final design system.
 
+To discuss the project with us, you can join the `#decouple` channel in the [official Kotlin Slack](https://kotl.in/slack).
+
 ## Documentation
 
 > The documentation is currently a work-in-progress as the project is still experimental.
