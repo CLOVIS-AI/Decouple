@@ -151,7 +151,7 @@ demo:web:build:
       - dist-web
 
   environment:
-    name: review-demo/$CI_COMMIT_REF_SLUG
+    name: review/$CI_COMMIT_REF_SLUG/demo
     url: https://$CI_PROJECT_NAMESPACE.$CI_PAGES_DOMAIN/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist-web/index.html
     deployment_tier: development
 
@@ -187,7 +187,7 @@ dokka:
       - docs
 
   environment:
-    name: review-documentation/$CI_COMMIT_REF_SLUG
+    name: review/$CI_COMMIT_REF_SLUG/documentation
     url: https://$CI_PROJECT_NAMESPACE.$CI_PAGES_DOMAIN/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/docs/index.html
     deployment_tier: development
 
