@@ -36,7 +36,7 @@ The project is licensed under Apache 2.0, allowing usage in most projects with m
 The full text is available in the [LICENSE](LICENSE) file.
 
 Development takes place in the [OpenSavvy GitLab repository](https://gitlab.com/opensavvy/decouple).
-This is also the recommended place to report problems and feature requests.
+This is also the recommended place to [report problems and feature requests](https://gitlab.com/opensavvy/decouple/-/issues).
 
 We follow the various conventions:
 
