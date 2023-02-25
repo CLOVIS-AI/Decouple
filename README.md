@@ -18,6 +18,9 @@ These two layers have different responsibilities and rate of change throughout t
 It makes possible the creation of design-agnostic applications that can be easily deployed on each platform for which a Decouple implementation exists.
 Implementations can be easily created for any platform where Kotlin runs, and mixed to allow developers to build an application in parallel of the final design system.
 
+Learn more about the reasons we created this project and how it fits with other Compose-based projects [here](FAQ.md).
+To discuss the project with us, you can join the `#decouple` channel in the [official Kotlin Slack](https://kotl.in/slack).
+
 ## Documentation
 
 > The documentation is currently a work-in-progress as the project is still experimental.
@@ -36,9 +39,6 @@ The project is licensed under Apache 2.0, allowing usage in most projects with m
 The full text is available in the [LICENSE](LICENSE) file.
 
 Development takes place in the [OpenSavvy GitLab repository](https://gitlab.com/opensavvy/decouple).
-This is also the recommended place to report problems and feature requests.
+This is also the recommended place to [report problems and feature requests](https://gitlab.com/opensavvy/decouple/-/issues).
 
-We follow the various conventions:
-
-- Git commits follow the [BrainDot style](https://gitlab.com/braindot/legal/-/blob/master/coding-style/STYLE_Git.md).
-- The development is organized using the [OpenSavvy Flow](https://gitlab.com/opensavvy/documents/-/blob/main/Documents/flow.md).
+To learn more about the various ways to contribute, please read our [contribution guide](CONTRIBUTING.md).
