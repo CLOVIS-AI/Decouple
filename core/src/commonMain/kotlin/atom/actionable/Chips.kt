@@ -50,8 +50,8 @@ interface Chips {
 	/**
 	 * Filter provided by the application to the user.
 	 *
-	 * Clicking on a filter chip should only let the user toggle the [activated] attribute.
-	 * When [activated] is `true`, the chip should hide some information on the current page.
+	 * Clicking on a filter chip should only let the user toggle the [active] attribute.
+	 * When [active] is `true`, the chip should hide some information on the current page.
 	 *
 	 * Filter chips should be mostly static (they should be the same every time the user accesses the page).
 	 *
@@ -62,7 +62,7 @@ interface Chips {
 	 */
 	@Composable
 	fun FilterChip(
-		activated: Boolean,
+		active: Boolean,
 		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
 		loading: Progression,
@@ -165,7 +165,7 @@ fun AssistChip(
  */
 @Composable
 fun FilterChip(
-	activated: Boolean,
+	active: Boolean,
 	onToggle: suspend (Boolean) -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
@@ -176,7 +176,7 @@ fun FilterChip(
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
 
 	UI.current.FilterChip(
-		activated = activated,
+		active = active,
 		onToggle = { bool ->
 			scope.launch(
 				onProgress = { loading = it },

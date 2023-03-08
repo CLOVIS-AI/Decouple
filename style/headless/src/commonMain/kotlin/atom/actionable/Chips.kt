@@ -29,7 +29,7 @@ class AssistChip(node: Node) : Component {
 }
 
 class FilterChip(node: Node) : Component {
-	val activated: Boolean by node.attributes
+	val active: Boolean by node.attributes
 	val toggle: () -> Unit by node.attributes
 	val enabled: Boolean by node.attributes
 	val loading: Progression by node.attributes
@@ -127,7 +127,7 @@ object TChips : Chips {
 
 	@Composable
 	override fun FilterChip(
-		activated: Boolean,
+		active: Boolean,
 		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
 		loading: Progression,
@@ -137,7 +137,7 @@ object TChips : Chips {
 	) {
 		FilterChip.compose(
 			update = {
-				bind(activated, FilterChip::activated)
+				bind(active, FilterChip::active)
 				bind(onToggle, FilterChip::toggle)
 				bind(enabled, FilterChip::enabled)
 				bind(loading, FilterChip::loading)
