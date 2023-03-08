@@ -42,3 +42,7 @@ Development takes place in the [OpenSavvy GitLab repository](https://gitlab.com/
 This is also the recommended place to [report problems and feature requests](https://gitlab.com/opensavvy/decouple/-/issues).
 
 To learn more about the various ways to contribute, please read our [contribution guide](CONTRIBUTING.md).
+
+## Sponsors
+
+[![4SH Logo](https://www.4sh.fr/assets/img/svg/4sh_logo.svg)](https://www.4sh.fr/)
