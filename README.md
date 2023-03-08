@@ -33,10 +33,14 @@ The documentation is split into four sections, following the [Grand Unified Theo
 - [How-to guides](https://opensavvy.gitlab.io/decouple/documentation/howto/index.html) are small commented examples of how to solve specific problems (including project setup),
 - [The reference](https://opensavvy.gitlab.io/decouple/documentation/index.html) is a low-level precise explanation of the API elements and how to use them.
 
-## Contribution
+## Licensing
 
-The project is licensed under Apache 2.0, allowing usage in most projects with minimal constraints.
+The Decouple source code is licensed under Apache 2.0, allowing usage in most projects with minimal constraints.
 The full text is available in the [LICENSE](LICENSE) file.
+
+All rights to the Decouple logo and identity are reserved.
+
+## Contribution
 
 Development takes place in the [OpenSavvy GitLab repository](https://gitlab.com/opensavvy/decouple).
 This is also the recommended place to [report problems and feature requests](https://gitlab.com/opensavvy/decouple/-/issues).
