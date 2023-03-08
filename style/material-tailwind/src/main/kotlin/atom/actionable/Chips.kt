@@ -175,7 +175,7 @@ object MTChips : Chips {
 
 	@Composable
 	override fun InputChip(
-		onRemoval: () -> Unit,
+		onRemove: () -> Unit,
 		enabled: Boolean,
 		loading: Progression,
 		contrasted: Boolean,
@@ -194,7 +194,7 @@ object MTChips : Chips {
 		)
 
 		BasicChip(
-			onClick = onRemoval,
+			onClick = onRemove,
 			enabled = enabled,
 			loading = loading,
 			contrasted = contrasted,

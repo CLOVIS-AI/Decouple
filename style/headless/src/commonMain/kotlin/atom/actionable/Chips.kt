@@ -154,7 +154,7 @@ object TChips : Chips {
 
 	@Composable
 	override fun InputChip(
-		onRemoval: () -> Unit,
+		onRemove: () -> Unit,
 		enabled: Boolean,
 		loading: Progression,
 		contrasted: Boolean,
@@ -163,7 +163,7 @@ object TChips : Chips {
 	) {
 		InputChip.compose(
 			update = {
-				bind(onRemoval, InputChip::remove)
+				bind(onRemove, InputChip::remove)
 				bind(enabled, InputChip::enabled)
 				bind(loading, InputChip::loading)
 				bind(contrasted, InputChip::contrasted)

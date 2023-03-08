@@ -76,11 +76,11 @@ interface Chips {
 	 *
 	 * The `action` slot on this composable is used to delete the chip.
 	 * It cannot be customized by the caller.
-	 * When the user interacts with it, [onRemoval] is called.
+	 * When the user interacts with it, [onRemove] is called.
 	 */
 	@Composable
 	fun InputChip(
-		onRemoval: () -> Unit,
+		onRemove: () -> Unit,
 		enabled: Boolean,
 		loading: Progression,
 		contrasted: Boolean,
@@ -197,7 +197,7 @@ fun FilterChip(
  */
 @Composable
 fun InputChip(
-	onRemoval: suspend () -> Unit,
+	onRemove: suspend () -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
 	scope: CoroutineScope = rememberCoroutineScope(),
@@ -207,10 +207,10 @@ fun InputChip(
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
 
 	UI.current.InputChip(
-		onRemoval = {
+		onRemove = {
 			scope.launch(
 				onProgress = { loading = it },
-				block = onRemoval,
+				block = onRemove,
 			)
 		},
 		enabled = enabled,
