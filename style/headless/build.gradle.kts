@@ -3,6 +3,8 @@
 import java.net.URL
 
 plugins {
+	id("opensavvy.versioning")
+
 	kotlin("multiplatform")
 	id("org.jetbrains.compose")
 }

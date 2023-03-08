@@ -1,6 +1,8 @@
 import java.net.URL
 
 plugins {
+	id("opensavvy.versioning")
+
 	kotlin("multiplatform") apply false
 	kotlin("jvm") apply false
 	kotlin("js") apply false
@@ -9,16 +11,6 @@ plugins {
 
 	id("org.jetbrains.dokka") apply false
 	id("maven-publish")
-
-	id("com.palantir.git-version")
-}
-
-group = "opensavvy"
-version = calculateVersion()
-
-subprojects {
-	group = rootProject.group
-	version = rootProject.version
 }
 
 buildscript {
@@ -90,14 +82,4 @@ allprojects {
 			}
 		}
 	}
-}
-
-fun calculateVersion(): String {
-	val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
-	val details = versionDetails()
-
-	return if (details.commitDistance == 0)
-		details.lastTag
-	else
-		"${details.lastTag}-post.${details.commitDistance}+${details.gitHash}"
 }

@@ -3,5 +3,6 @@
 [plugins]
 
 [libraries]
+gradle-gitVersion = { module = "com.palantir.gradle.gitversion:gradle-git-version", version = "0.15.0" }
 
 [bundles]

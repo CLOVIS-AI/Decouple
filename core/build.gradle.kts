@@ -4,6 +4,8 @@ import de.fayard.refreshVersions.core.versionFor
 import java.net.URL
 
 plugins {
+	id("opensavvy.versioning")
+
 	kotlin("multiplatform")
 	id("com.android.library")
 

@@ -1,6 +1,8 @@
 @file:Suppress("UNUSED_VARIABLE")
 
 plugins {
+	id("opensavvy.versioning")
+
 	kotlin("multiplatform")
 	id("org.jetbrains.compose")
 	id("org.jetbrains.dokka")

@@ -10,3 +10,7 @@ dependencyResolutionManagement {
 		}
 	}
 }
+
+include(
+	"versioning",
+)

@@ -3,6 +3,8 @@
 import de.fayard.refreshVersions.core.versionFor
 
 plugins {
+	id("opensavvy.versioning")
+
 	kotlin("multiplatform")
 	id("org.jetbrains.compose")
 	id("com.android.library")
