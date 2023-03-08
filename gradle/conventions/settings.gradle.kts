@@ -13,4 +13,5 @@ dependencyResolutionManagement {
 
 include(
 	"versioning",
+	"documentation",
 )

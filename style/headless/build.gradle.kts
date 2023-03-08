@@ -1,9 +1,8 @@
 @file:Suppress("UNUSED_VARIABLE")
 
-import java.net.URL
-
 plugins {
 	id("opensavvy.versioning")
+	id("opensavvy.documentation")
 
 	kotlin("multiplatform")
 	id("org.jetbrains.compose")
@@ -48,11 +47,5 @@ kotlin {
 tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
 	dokkaSourceSets.configureEach {
 		includes.from("${project.projectDir}/README.md")
-
-		sourceLink {
-			localDirectory.set(file("src"))
-			remoteUrl.set(URL("https://gitlab.com/opensavvy/decouple/-/blob/main/style/testing/src"))
-			remoteLineSuffix.set("#L")
-		}
 	}
 }

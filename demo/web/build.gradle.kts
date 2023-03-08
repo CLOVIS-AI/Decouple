@@ -1,5 +1,6 @@
 plugins {
 	id("opensavvy.versioning")
+	id("opensavvy.documentation")
 
 	kotlin("js")
 	id("org.jetbrains.compose")

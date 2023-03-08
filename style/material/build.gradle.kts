@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_VARIABLE")
 
 import de.fayard.refreshVersions.core.versionFor
-import java.net.URL
 
 plugins {
 	id("opensavvy.versioning")
+	id("opensavvy.documentation")
 
 	kotlin("multiplatform")
 	id("org.jetbrains.compose")
@@ -68,11 +68,5 @@ android {
 tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
 	dokkaSourceSets.configureEach {
 		includes.from("${project.projectDir}/material.md")
-
-		sourceLink {
-			localDirectory.set(file("src"))
-			remoteUrl.set(URL("https://gitlab.com/opensavvy/decouple/-/blob/main/style/material/src"))
-			remoteLineSuffix.set("#L")
-		}
 	}
 }

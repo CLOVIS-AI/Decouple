@@ -4,6 +4,7 @@ import de.fayard.refreshVersions.core.versionFor
 
 plugins {
 	id("opensavvy.versioning")
+	id("opensavvy.documentation")
 
 	kotlin("multiplatform")
 	id("org.jetbrains.compose")

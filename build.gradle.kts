@@ -1,7 +1,6 @@
-import java.net.URL
-
 plugins {
 	id("opensavvy.versioning")
+	id("opensavvy.documentation")
 
 	kotlin("multiplatform") apply false
 	kotlin("jvm") apply false
@@ -9,7 +8,7 @@ plugins {
 
 	id("com.android.library") apply false
 
-	id("org.jetbrains.dokka") apply false
+	id("org.jetbrains.dokka")
 	id("maven-publish")
 }
 
@@ -21,7 +20,6 @@ buildscript {
 }
 
 allprojects {
-	plugins.apply("org.jetbrains.dokka")
 	plugins.apply("maven-publish")
 
 	repositories {
@@ -66,20 +64,6 @@ allprojects {
 	tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 		kotlinOptions {
 			jvmTarget = "1.8"
-		}
-	}
-
-	tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
-		dokkaSourceSets.configureEach {
-			externalDocumentationLink {
-				url.set(URL("https://kotlinlang.org/api/kotlinx.coroutines/"))
-			}
-			externalDocumentationLink {
-				url.set(URL("https://opensavvy.gitlab.io/pedestal/documentation/"))
-			}
-			externalDocumentationLink {
-				url.set(URL("https://arrow-kt.io/docs/apidocs/"))
-			}
 		}
 	}
 }

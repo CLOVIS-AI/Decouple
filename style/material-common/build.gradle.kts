@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_VARIABLE")
 
 import de.fayard.refreshVersions.core.versionFor
-import java.net.URL
 
 plugins {
 	id("opensavvy.versioning")
+	id("opensavvy.documentation")
 
 	kotlin("multiplatform")
 	id("org.jetbrains.compose")
@@ -50,14 +50,4 @@ android {
 		targetCompatibility = JavaVersion.VERSION_1_8
 	}
 	namespace = "opensavvy.decouple.material.common"
-}
-
-tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
-	dokkaSourceSets.configureEach {
-		sourceLink {
-			localDirectory.set(file("src"))
-			remoteUrl.set(URL("https://gitlab.com/opensavvy/decouple/-/blob/main/style/material-common/src"))
-			remoteLineSuffix.set("#L")
-		}
-	}
 }

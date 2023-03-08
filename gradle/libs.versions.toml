@@ -4,5 +4,6 @@
 
 [libraries]
 gradle-gitVersion = { module = "com.palantir.gradle.gitversion:gradle-git-version", version = "0.15.0" }
+gradle-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version = "1.7.20" }
 
 [bundles]
