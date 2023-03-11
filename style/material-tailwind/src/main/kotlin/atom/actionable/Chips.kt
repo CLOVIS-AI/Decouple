@@ -50,7 +50,7 @@ object MTChips : Chips {
 
 	@Composable
 	override fun FilterChip(
-		activated: Boolean,
+		active: Boolean,
 		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
 		loading: Progression,
@@ -79,7 +79,7 @@ object MTChips : Chips {
 				add(
 					buildList {
 						add("-m-px")
-						if (activated) {
+						if (active) {
 							add("group-enabled:hover:bg-materialColor5/hover")
 							add("group-focus-visible:bg-materialColor5/focus")
 						}
@@ -89,7 +89,7 @@ object MTChips : Chips {
 				add(
 					buildList {
 						add("-m-px")
-						if (activated) {
+						if (active) {
 							add("group-enabled:hover:bg-materialColor5/hover")
 							add("group-focus-visible:bg-materialColor5/focus")
 						}
@@ -141,7 +141,7 @@ object MTChips : Chips {
 				add("disabled:shadow-none")
 				add("disabled:bg-materialColor3/disabledBg")
 			} else {
-				if (!activated) {
+				if (!active) {
 					add("disabled:border-materialColor3/disabledBg")
 				} else {
 					add("disabled:bg-materialColor3/disabledBg")
@@ -150,9 +150,9 @@ object MTChips : Chips {
 		}
 
 		AbstractChip(
-			onClick = { onToggle(!activated) },
+			onClick = { onToggle(!active) },
 			enabled = enabled,
-			activated = activated,
+			activated = active,
 			loading = loading,
 			classes = classes,
 			disabledClasses = disabledClasses,
@@ -175,7 +175,7 @@ object MTChips : Chips {
 
 	@Composable
 	override fun InputChip(
-		onRemoval: () -> Unit,
+		onRemove: () -> Unit,
 		enabled: Boolean,
 		loading: Progression,
 		contrasted: Boolean,
@@ -194,7 +194,7 @@ object MTChips : Chips {
 		)
 
 		BasicChip(
-			onClick = onRemoval,
+			onClick = onRemove,
 			enabled = enabled,
 			loading = loading,
 			contrasted = contrasted,

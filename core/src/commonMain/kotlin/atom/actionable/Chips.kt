@@ -50,8 +50,8 @@ interface Chips {
 	/**
 	 * Filter provided by the application to the user.
 	 *
-	 * Clicking on a filter chip should only let the user toggle the [activated] attribute.
-	 * When [activated] is `true`, the chip should hide some information on the current page.
+	 * Clicking on a filter chip should only let the user toggle the [active] attribute.
+	 * When [active] is `true`, the chip should hide some information on the current page.
 	 *
 	 * Filter chips should be mostly static (they should be the same every time the user accesses the page).
 	 *
@@ -62,7 +62,7 @@ interface Chips {
 	 */
 	@Composable
 	fun FilterChip(
-		activated: Boolean,
+		active: Boolean,
 		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
 		loading: Progression,
@@ -76,11 +76,11 @@ interface Chips {
 	 *
 	 * The `action` slot on this composable is used to delete the chip.
 	 * It cannot be customized by the caller.
-	 * When the user interacts with it, [onRemoval] is called.
+	 * When the user interacts with it, [onRemove] is called.
 	 */
 	@Composable
 	fun InputChip(
-		onRemoval: () -> Unit,
+		onRemove: () -> Unit,
 		enabled: Boolean,
 		loading: Progression,
 		contrasted: Boolean,
@@ -165,7 +165,7 @@ fun AssistChip(
  */
 @Composable
 fun FilterChip(
-	activated: Boolean,
+	active: Boolean,
 	onToggle: suspend (Boolean) -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
@@ -176,7 +176,7 @@ fun FilterChip(
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
 
 	UI.current.FilterChip(
-		activated = activated,
+		active = active,
 		onToggle = { bool ->
 			scope.launch(
 				onProgress = { loading = it },
@@ -197,7 +197,7 @@ fun FilterChip(
  */
 @Composable
 fun InputChip(
-	onRemoval: suspend () -> Unit,
+	onRemove: suspend () -> Unit,
 	enabled: Boolean = true,
 	contrasted: Boolean = false,
 	scope: CoroutineScope = rememberCoroutineScope(),
@@ -207,10 +207,10 @@ fun InputChip(
 	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
 
 	UI.current.InputChip(
-		onRemoval = {
+		onRemove = {
 			scope.launch(
 				onProgress = { loading = it },
-				block = onRemoval,
+				block = onRemove,
 			)
 		},
 		enabled = enabled,
