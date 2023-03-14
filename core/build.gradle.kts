@@ -48,9 +48,3 @@ android {
 	}
 	namespace = "opensavvy.decouple.core"
 }
-
-tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
-	dokkaSourceSets.configureEach {
-		includes.from("${project.projectDir}/core.md")
-	}
-}

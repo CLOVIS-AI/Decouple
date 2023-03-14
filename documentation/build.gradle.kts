@@ -23,9 +23,3 @@ kotlin {
 		}
 	}
 }
-
-tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
-	dokkaSourceSets.configureEach {
-		includes.from("${project.projectDir}/documentation.md")
-	}
-}

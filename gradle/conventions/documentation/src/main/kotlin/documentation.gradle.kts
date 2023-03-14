@@ -38,5 +38,18 @@ tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
 		}
 
 		//endregion
+		//region Include the README file
+
+		val sourceSetName = name
+			.takeUnless { it == "common" || it == "commonMain" }
+
+		val readme =
+			File(project.projectDir, listOfNotNull("README", sourceSetName, "md").joinToString(separator = "."))
+
+		if (readme.exists()) {
+			includes.from(readme)
+		}
+
+		//endregion
 	}
 }
