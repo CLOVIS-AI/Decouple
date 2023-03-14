@@ -3,14 +3,10 @@
 import de.fayard.refreshVersions.core.versionFor
 
 plugins {
-	id("opensavvy.versioning")
-	id("opensavvy.documentation")
-
+	id("opensavvy.kotlin")
 	kotlin("multiplatform")
 	id("com.android.library")
-
 	id("org.jetbrains.compose")
-	id("org.jetbrains.dokka")
 }
 
 kotlin {

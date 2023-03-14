@@ -1,3 +1,5 @@
+rootProject.name = "decouple-conventions"
+
 dependencyResolutionManagement {
 	repositories {
 		mavenCentral()
@@ -14,4 +16,7 @@ dependencyResolutionManagement {
 include(
 	"versioning",
 	"documentation",
+	"kotlin",
 )
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

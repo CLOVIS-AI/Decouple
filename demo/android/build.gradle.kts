@@ -3,9 +3,7 @@
 import de.fayard.refreshVersions.core.versionFor
 
 plugins {
-	id("opensavvy.versioning")
-	id("opensavvy.documentation")
-
+	id("opensavvy.kotlin")
 	id("com.android.application")
 	kotlin("android")
 }
