@@ -1,11 +1,14 @@
 [versions]
 kotlin = "1.7.20"
+dokka = "1.7.20"
+android = "7.3.1"
 
 [plugins]
 
 [libraries]
 gradle-gitVersion = { module = "com.palantir.gradle.gitversion:gradle-git-version", version = "0.15.0" }
-gradle-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version = "1.7.20" }
+gradle-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
 gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradle-android = { module = "com.android.tools.build:gradle", version.ref = "android" }
 
 [bundles]

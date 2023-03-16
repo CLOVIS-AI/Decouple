@@ -17,6 +17,7 @@ include(
 	"versioning",
 	"documentation",
 	"kotlin",
+	"android",
 )
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

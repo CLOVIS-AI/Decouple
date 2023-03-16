@@ -5,17 +5,12 @@ import de.fayard.refreshVersions.core.versionFor
 plugins {
 	id("opensavvy.kotlin")
 	id("com.android.application")
+	id("opensavvy.android")
 	kotlin("android")
 }
 
 android {
-	compileSdk = versionFor("version.android.compileSdk").toIntOrNull()
-
 	defaultConfig {
-		minSdk = versionFor("version.android.minSdk").toIntOrNull()
-		targetSdk = versionFor("version.android.targetSdk").toIntOrNull()
-		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
 		versionCode = 1 //TODO: generate from the Gradle version
 		versionName = project.version as String
 
@@ -44,11 +39,6 @@ android {
 
 	composeOptions {
 		kotlinCompilerExtensionVersion = versionFor("version.androidx.compose.compiler-extensions")
-	}
-
-	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_1_8
-		targetCompatibility = JavaVersion.VERSION_1_8
 	}
 
 	namespace = "opensavvy.decouple.demo.android"
