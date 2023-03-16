@@ -1,7 +1,8 @@
 plugins {
-	id("opensavvy.kotlin")
-	kotlin("js")
-	id("org.jetbrains.compose")
+	alias(libs.plugins.kotlin)
+	alias(libs.plugins.kotlinJs)
+
+	alias(libs.plugins.compose)
 }
 
 kotlin {

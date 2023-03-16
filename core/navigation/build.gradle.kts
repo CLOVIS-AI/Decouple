@@ -1,9 +1,10 @@
 @file:Suppress("UNUSED_VARIABLE")
 
 plugins {
-	id("opensavvy.kotlin")
-	kotlin("multiplatform")
-	id("org.jetbrains.compose")
+	alias(libs.plugins.kotlin)
+	alias(libs.plugins.kotlinMpp)
+
+	alias(libs.plugins.compose)
 }
 
 kotlin {

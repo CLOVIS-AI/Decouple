@@ -1,13 +1,12 @@
 plugins {
-	id("opensavvy.kotlin")
+	alias(libs.plugins.kotlin)
+	alias(libs.plugins.kotlinMpp) apply false
+	alias(libs.plugins.kotlinJvm) apply false
+	alias(libs.plugins.kotlinJs) apply false
+	alias(libs.plugins.kotlinAndroid) apply false
 
-	kotlin("multiplatform") apply false
-	kotlin("jvm") apply false
-	kotlin("js") apply false
-
-	id("com.android.library") apply false
-
-	id("org.jetbrains.dokka")
+	alias(libs.plugins.androidApplication) apply false
+	alias(libs.plugins.androidLibrary) apply false
 }
 
 buildscript {

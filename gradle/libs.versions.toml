@@ -2,8 +2,20 @@
 kotlin = "1.7.20"
 dokka = "1.7.20"
 android = "7.3.1"
+compose = "1.2.1"
 
 [plugins]
+kotlin = { id = "opensavvy.kotlin", version = "unspecified" }
+kotlinJs = { id = "org.jetbrains.kotlin.js", version.ref = "kotlin" }
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinMpp = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+
+android = { id = "opensavvy.android", version = "unspecified" }
+androidLibrary = { id = "com.android.library", version.ref = "android" }
+androidApplication = { id = "com.android.application", version.ref = "android" }
 
 [libraries]
 gradle-gitVersion = { module = "com.palantir.gradle.gitversion:gradle-git-version", version = "0.15.0" }

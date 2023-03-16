@@ -3,10 +3,11 @@
 import de.fayard.refreshVersions.core.versionFor
 
 plugins {
-	id("opensavvy.kotlin")
-	id("com.android.application")
-	id("opensavvy.android")
-	kotlin("android")
+	alias(libs.plugins.kotlin)
+	alias(libs.plugins.kotlinAndroid)
+
+	alias(libs.plugins.android)
+	alias(libs.plugins.androidApplication)
 }
 
 android {
