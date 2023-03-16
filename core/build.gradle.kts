@@ -21,11 +21,11 @@ kotlin {
 		val commonMain by getting {
 			dependencies {
 				api(compose.runtime)
-				api(KotlinX.coroutines.core)
-				api(KotlinX.datetime)
+				api(libs.kotlinx.coroutines)
+				api(libs.kotlinx.datetime)
 
-				api("opensavvy:state:_")
-				api("opensavvy:logger:_")
+				api(libs.pedestal.state)
+				api(libs.pedestal.logger)
 			}
 		}
 	}

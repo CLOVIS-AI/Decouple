@@ -16,12 +16,12 @@ dependencies {
 	implementation(projects.demo)
 	implementation(projects.style.material)
 
-	implementation(devNpm("vite", "_"))
-	implementation(devNpm("postcss", "_"))
-	implementation(devNpm("postcss-loader", "_"))
-	implementation(devNpm("autoprefixer", "_"))
-	implementation(devNpm("@originjs/vite-plugin-commonjs", "_"))
-	implementation(devNpm("@rollup/plugin-commonjs", "_"))
+	implementation(devNpm("vite", libs.versions.npm.vite.asProvider().get()))
+	implementation(devNpm("postcss", libs.versions.npm.postcss.get()))
+	implementation(devNpm("postcss-loader", libs.versions.npm.postcssLoader.get()))
+	implementation(devNpm("autoprefixer", libs.versions.npm.autoprefixer.get()))
+	implementation(devNpm("@originjs/vite-plugin-commonjs", libs.versions.npm.vite.commonJs.get()))
+	implementation(devNpm("@rollup/plugin-commonjs", libs.versions.npm.rollup.commonJs.get()))
 }
 
 //region Vite

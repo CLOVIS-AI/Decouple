@@ -22,22 +22,22 @@ kotlin {
 
 		val commonTest by getting {
 			dependencies {
-				api(Kotlin.test.annotationsCommon)
-				api(Kotlin.test.common)
+				api(libs.kotlin.test)
+				api(libs.kotlin.test.annotations)
 
-				api(KotlinX.coroutines.test)
+				api(libs.kotlinx.coroutines.test)
 			}
 		}
 
 		val jvmTest by getting {
 			dependencies {
-				api(Kotlin.test.junit)
+				api(libs.kotlin.test.jvm)
 			}
 		}
 
 		val jsTest by getting {
 			dependencies {
-				api(Kotlin.test.js)
+				api(libs.kotlin.test.js)
 			}
 		}
 	}

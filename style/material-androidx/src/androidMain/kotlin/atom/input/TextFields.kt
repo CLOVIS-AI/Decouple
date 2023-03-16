@@ -80,7 +80,7 @@ object MATextFields : TextFields {
 				onValueChange = { onChange(it) },
 				enabled = enabled,
 				label = label?.let { { Text(label) } },
-				supportingText = failureMessage ?: supportingText,
+//				supportingText = failureMessage ?: supportingText, //TODO in #120
 				isError = failureMessage != null,
 				visualTransformation = if (hideValue) PasswordVisualTransformation() else VisualTransformation.None,
 				singleLine = !multiline,
@@ -93,7 +93,7 @@ object MATextFields : TextFields {
 				onValueChange = { onChange(it) },
 				enabled = enabled,
 				label = label?.let { { Text(label) } },
-				supportingText = failureMessage ?: supportingText,
+//				supportingText = failureMessage ?: supportingText, //TODO in #120
 				isError = failureMessage != null,
 				visualTransformation = if (hideValue) PasswordVisualTransformation() else VisualTransformation.None,
 				singleLine = !multiline,

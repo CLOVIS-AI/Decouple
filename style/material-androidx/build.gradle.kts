@@ -23,8 +23,8 @@ kotlin {
 
 		val androidMain by getting {
 			dependencies {
-				implementation("androidx.compose.material3:material3:_")
-				implementation("androidx.compose.material3:material3-window-size-class:_")
+				@OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+				implementation(compose.material3)
 			}
 		}
 	}

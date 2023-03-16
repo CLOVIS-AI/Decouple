@@ -34,26 +34,26 @@ kotlin {
 
 		val commonTest by getting {
 			dependencies {
-				implementation(Kotlin.test.common)
-				implementation(Kotlin.test.annotationsCommon)
+				implementation(libs.kotlin.test)
+				implementation(libs.kotlin.test.annotations)
 			}
 		}
 
 		val androidTest by getting {
 			dependencies {
-				implementation(Kotlin.test.junit)
+				implementation(libs.kotlin.test.jvm)
 			}
 		}
 
 		val jvmTest by getting {
 			dependencies {
-				implementation(Kotlin.test.junit)
+				implementation(libs.kotlin.test.jvm)
 			}
 		}
 
 		val jsTest by getting {
 			dependencies {
-				implementation(Kotlin.test.js)
+				implementation(libs.kotlin.test.js)
 			}
 		}
 	}
