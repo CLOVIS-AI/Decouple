@@ -14,8 +14,6 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(
 	"core",
-	"core:navigation",
-	"core:persist",
 
 	"demo",
 	"demo:web",
@@ -27,6 +25,9 @@ include(
 	"style:material-androidx",
 
 	"style:headless",
+
+	"extra:navigation",
+	"extra:persistence",
 
 	"documentation",
 )
