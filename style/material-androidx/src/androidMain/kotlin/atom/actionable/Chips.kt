@@ -50,7 +50,7 @@ object MAChips : Chips {
 
 	@Composable
 	override fun FilterChip(
-		activated: Boolean,
+		active: Boolean,
 		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
 		loading: Progression,
@@ -62,16 +62,16 @@ object MAChips : Chips {
 
 		if (contrasted) {
 			M3ElevatedFilterChip(
-				activated,
-				onClick = { onToggle(!activated) },
+				active,
+				onClick = { onToggle(!active) },
 				label = { content(MAChipScope) },
 				enabled = enabled && loading == Progression.done(),
 				leadingIcon = icon,
 			)
 		} else {
 			M3FilterChip(
-				activated,
-				onClick = { onToggle(!activated) },
+				active,
+				onClick = { onToggle(!active) },
 				label = { content(MAChipScope) },
 				enabled = enabled && loading == Progression.done(),
 				leadingIcon = icon,
@@ -81,7 +81,7 @@ object MAChips : Chips {
 
 	@Composable
 	override fun InputChip(
-		onRemoval: () -> Unit,
+		onRemove: () -> Unit,
 		enabled: Boolean,
 		loading: Progression,
 		contrasted: Boolean,
@@ -92,7 +92,7 @@ object MAChips : Chips {
 
 		M3InputChip(
 			selected = true,
-			onClick = onRemoval,
+			onClick = onRemove,
 			label = { content(MAChipScope) },
 			enabled = enabled && loading == Progression.done(),
 			leadingIcon = icon,
