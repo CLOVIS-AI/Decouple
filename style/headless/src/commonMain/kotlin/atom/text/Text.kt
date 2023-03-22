@@ -6,6 +6,7 @@ import opensavvy.decouple.headless.Component
 import opensavvy.decouple.headless.bind
 import opensavvy.decouple.headless.compose
 import opensavvy.decouple.headless.node.Node
+import opensavvy.decouple.headless.node.NodeTree
 import opensavvy.decouple.headless.node.getValue
 
 class Text(node: Node) : Component {
@@ -29,3 +30,17 @@ object TTexts : Texts {
 	}
 
 }
+
+/**
+ * Convenience to access the inner [Text] element of a [NodeTree].
+ *
+ * Example usage:
+ * ```kotlin
+ * val button = find(Button)
+ *
+ * assertEquals("Text", button.content.innerText)
+ * // …is a shortcut for…
+ * assertEquals("Text", button.content[Text].text)
+ * ```
+ */
+val NodeTree.innerText get() = this[Text].text
