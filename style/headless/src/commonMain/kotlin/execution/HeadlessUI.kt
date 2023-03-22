@@ -8,6 +8,7 @@ import androidx.compose.runtime.snapshots.Snapshot
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import opensavvy.decouple.core.UI
 import opensavvy.decouple.core.UI.Companion.Install
 import opensavvy.decouple.headless.Component
 import opensavvy.decouple.headless.TestUI
@@ -136,6 +137,7 @@ class HeadlessUI internal constructor(
  * To start it, call [recomposeAutomatically][HeadlessUI.recomposeAutomatically].
  */
 fun CoroutineScope.runHeadlessUI(
+	ui: UI = TestUI,
 	manualRecomposition: Boolean = false,
 	content: @Composable () -> Unit,
 ): HeadlessUI {
@@ -156,7 +158,7 @@ fun CoroutineScope.runHeadlessUI(
 	}
 
 	composition.setContent {
-		Install(TestUI) {
+		Install(ui) {
 			content()
 		}
 	}
