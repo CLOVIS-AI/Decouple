@@ -70,7 +70,7 @@ class SecondaryButton(node: Node) : AbstractButton, Component {
 	}
 }
 
-class ContractButton(node: Node) : AbstractButton, Component {
+class ContrastButton(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes
 	override val enabled: Boolean by node.attributes
 	override val loading: Progression by node.attributes
@@ -167,7 +167,7 @@ object TButtons : Buttons {
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {
-		ContractButton.compose(
+		ContrastButton.compose(
 			update = {
 				bind(onClick, SecondaryButton::click)
 				bind(enabled, SecondaryButton::enabled)
