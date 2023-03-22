@@ -11,7 +11,7 @@ import kotlinx.coroutines.sync.withLock
 import opensavvy.decouple.core.UI
 import opensavvy.decouple.core.UI.Companion.Install
 import opensavvy.decouple.headless.Component
-import opensavvy.decouple.headless.TestUI
+import opensavvy.decouple.headless.DefaultHeadlessUI
 import opensavvy.decouple.headless.node.NodeTree
 import opensavvy.logger.Logger.Companion.trace
 import opensavvy.logger.loggerFor
@@ -137,7 +137,7 @@ class HeadlessUI internal constructor(
  * To start it, call [recomposeAutomatically][HeadlessUI.recomposeAutomatically].
  */
 fun CoroutineScope.runHeadlessUI(
-	ui: UI = TestUI,
+	ui: UI = DefaultHeadlessUI,
 	manualRecomposition: Boolean = false,
 	content: @Composable () -> Unit,
 ): HeadlessUI {
