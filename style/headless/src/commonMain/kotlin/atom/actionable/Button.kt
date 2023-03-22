@@ -21,6 +21,9 @@ interface AbstractButton {
 	val content: NodeTree
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.Button].
+ */
 class Button(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes
 	override val enabled: Boolean by node.attributes
@@ -37,6 +40,9 @@ class Button(node: Node) : AbstractButton, Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.PrimaryButton].
+ */
 class PrimaryButton(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes
 	override val enabled: Boolean by node.attributes
@@ -54,6 +60,9 @@ class PrimaryButton(node: Node) : AbstractButton, Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.SecondaryButton].
+ */
 class SecondaryButton(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes
 	override val enabled: Boolean by node.attributes
@@ -70,6 +79,9 @@ class SecondaryButton(node: Node) : AbstractButton, Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.ContrastButton].
+ */
 class ContrastButton(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes
 	override val enabled: Boolean by node.attributes

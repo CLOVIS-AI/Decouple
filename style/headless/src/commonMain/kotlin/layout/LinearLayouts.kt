@@ -10,6 +10,9 @@ import opensavvy.decouple.headless.compose
 import opensavvy.decouple.headless.node.Node
 import opensavvy.decouple.headless.node.getValue
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.layout.Column].
+ */
 class Column(node: Node) : Component {
 	val vertical: Arrangement by node.attributes
 	val alignment: Alignment by node.attributes
@@ -23,6 +26,9 @@ class Column(node: Node) : Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.layout.Row].
+ */
 class Row(node: Node) : Component {
 	val horizontal: Arrangement by node.attributes
 	val alignment: Alignment by node.attributes
@@ -36,6 +42,9 @@ class Row(node: Node) : Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.layout.Box].
+ */
 class Box(node: Node) : Component {
 	val alignment: Alignment by node.attributes
 

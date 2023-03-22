@@ -24,6 +24,9 @@ class FieldLabel(node: Node) : Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.input.TextField].
+ */
 class TextField(node: Node) : Component {
 	val label: String? by node.attributes
 	val value: String? by node.attributes
@@ -63,6 +66,9 @@ interface TemporalField<T> {
 	val failureMessage: NodeTree
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.input.InstantField].
+ */
 class InstantField(node: Node) : TemporalField<Instant>, Component {
 	override val label: String? by node.attributes
 	override val value: Instant? by node.attributes
@@ -82,6 +88,9 @@ class InstantField(node: Node) : TemporalField<Instant>, Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.input.LocalDateTimeField].
+ */
 class LocalDateTimeField(node: Node) : TemporalField<LocalDateTime>, Component {
 	override val label: String? by node.attributes
 	override val value: LocalDateTime? by node.attributes
@@ -101,6 +110,9 @@ class LocalDateTimeField(node: Node) : TemporalField<LocalDateTime>, Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.input.LocalDateField].
+ */
 class LocalDateField(node: Node) : TemporalField<LocalDate>, Component {
 	override val label: String? by node.attributes
 	override val value: LocalDate? by node.attributes
@@ -120,6 +132,9 @@ class LocalDateField(node: Node) : TemporalField<LocalDate>, Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.input.LocalTimeField].
+ */
 class LocalTimeField(node: Node) : TemporalField<LocalTime>, Component {
 	override val label: String? by node.attributes
 	override val value: LocalTime? by node.attributes

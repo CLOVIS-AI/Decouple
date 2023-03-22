@@ -9,6 +9,9 @@ import opensavvy.decouple.headless.compose
 import opensavvy.decouple.headless.node.Node
 import opensavvy.decouple.headless.node.getValue
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.layout.GlobalNavigation].
+ */
 class GlobalNavigation(node: Node) : Component {
 	val menu: NavigationMenu.Menu<*> by node.attributes
 	val selected: NavigationMenu<*> by node.attributes

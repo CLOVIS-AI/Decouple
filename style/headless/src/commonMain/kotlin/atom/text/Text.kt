@@ -8,6 +8,9 @@ import opensavvy.decouple.headless.compose
 import opensavvy.decouple.headless.node.Node
 import opensavvy.decouple.headless.node.getValue
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.text.Text].
+ */
 class Text(node: Node) : Component {
 	val text: String by node.attributes
 
