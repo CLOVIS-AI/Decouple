@@ -17,7 +17,7 @@ class GlobalNavigation(node: Node) : Component {
 	val selected: NavigationMenu<*> by node.attributes
 	val select: (NavigationMenu.Page<*>) -> Unit by node.attributes
 
-	val currentContents by node.content
+	val content by node.content
 
 	companion object : Component.Meta<GlobalNavigation> {
 		override val name = "Navigation.GlobalNavigation"
