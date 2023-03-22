@@ -37,6 +37,7 @@ class HeadlessUI internal constructor(
 		log.trace { "The test application is recomposing…" }
 		yield()
 		Snapshot.sendApplyNotifications()
+		yield()
 		clock.sendFrame(1)
 		recomposer.awaitIdle()
 	}
