@@ -42,3 +42,11 @@ kotlin {
 		}
 	}
 }
+
+tasks.named("compileKotlinJs", org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile::class.java) {
+	compilerOptions {
+		// Workaround for a false positive IdSignature Clash on UIMetadata.initializeFor
+		// https://youtrack.jetbrains.com/issue/KT-56660
+		freeCompilerArgs.add("-Xklib-enable-signature-clash-checks=false")
+	}
+}
