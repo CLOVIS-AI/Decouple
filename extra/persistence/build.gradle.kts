@@ -3,9 +3,12 @@
 plugins {
 	alias(libs.plugins.kotlin)
 	alias(libs.plugins.kotlinMpp)
+
+	alias(libs.plugins.compose)
 }
 
 kotlin {
+	jvm()
 	js(IR) {
 		browser()
 	}
@@ -13,8 +16,7 @@ kotlin {
 	sourceSets {
 		val commonMain by getting {
 			dependencies {
-				implementation(projects.core)
-				implementation(projects.style.material)
+				api(projects.core)
 			}
 		}
 	}

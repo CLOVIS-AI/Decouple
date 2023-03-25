@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_VARIABLE")
 
-import java.net.URL
-
 plugins {
-	kotlin("multiplatform")
-	id("org.jetbrains.compose")
+	alias(libs.plugins.kotlin)
+	alias(libs.plugins.kotlinMpp)
+
+	alias(libs.plugins.compose)
 }
 
 kotlin {
@@ -22,35 +22,31 @@ kotlin {
 
 		val commonTest by getting {
 			dependencies {
-				api(Kotlin.test.annotationsCommon)
-				api(Kotlin.test.common)
+				api(libs.kotlin.test)
+				api(libs.kotlin.test.annotations)
 
-				api(KotlinX.coroutines.test)
+				api(libs.kotlinx.coroutines.test)
 			}
 		}
 
 		val jvmTest by getting {
 			dependencies {
-				api(Kotlin.test.junit)
+				api(libs.kotlin.test.jvm)
 			}
 		}
 
 		val jsTest by getting {
 			dependencies {
-				api(Kotlin.test.js)
+				api(libs.kotlin.test.js)
 			}
 		}
 	}
 }
 
-tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
-	dokkaSourceSets.configureEach {
-		includes.from("${project.projectDir}/README.md")
-
-		sourceLink {
-			localDirectory.set(file("src"))
-			remoteUrl.set(URL("https://gitlab.com/opensavvy/decouple/-/blob/main/style/testing/src"))
-			remoteLineSuffix.set("#L")
-		}
+tasks.named("compileKotlinJs", org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile::class.java) {
+	compilerOptions {
+		// Workaround for a false positive IdSignature Clash on UIMetadata.initializeFor
+		// https://youtrack.jetbrains.com/issue/KT-56660
+		freeCompilerArgs.add("-Xklib-enable-signature-clash-checks=false")
 	}
 }

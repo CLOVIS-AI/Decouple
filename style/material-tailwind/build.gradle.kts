@@ -1,8 +1,8 @@
-import java.net.URL
-
 plugins {
-	kotlin("js")
-	id("org.jetbrains.compose")
+	alias(libs.plugins.kotlin)
+	alias(libs.plugins.kotlinJs)
+
+	alias(libs.plugins.compose)
 }
 
 kotlin {
@@ -10,7 +10,7 @@ kotlin {
 		browser {
 			commonWebpackConfig {
 				cssSupport {
-					enabled = true
+					enabled.set(true)
 				}
 			}
 		}
@@ -23,16 +23,6 @@ dependencies {
 	implementation(compose.web.core)
 	implementation(compose.web.svg)
 
-	implementation(npm("tailwindcss", "_"))
-	implementation(npm("@fontsource/roboto", "_"))
-}
-
-tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
-	dokkaSourceSets.configureEach {
-		sourceLink {
-			localDirectory.set(file("src"))
-			remoteUrl.set(URL("https://gitlab.com/opensavvy/decouple/-/blob/main/style/material-tailwind/src"))
-			remoteLineSuffix.set("#L")
-		}
-	}
+	implementation(npm("tailwindcss", libs.versions.npm.tailwindcss.get()))
+	implementation(npm("@fontsource/roboto", libs.versions.npm.roboto.get()))
 }

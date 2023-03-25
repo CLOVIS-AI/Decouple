@@ -6,18 +6,14 @@ pluginManagement {
 		maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 		google()
 	}
-}
 
-plugins {
-	id("de.fayard.refreshVersions") version "0.51.0"
+	includeBuild("gradle/conventions")
 }
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(
 	"core",
-	"core:navigation",
-	"core:persist",
 
 	"demo",
 	"demo:web",
@@ -29,6 +25,9 @@ include(
 	"style:material-androidx",
 
 	"style:headless",
+
+	"extra:navigation",
+	"extra:persistence",
 
 	"documentation",
 )
