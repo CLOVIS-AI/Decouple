@@ -9,6 +9,9 @@ import opensavvy.decouple.headless.execution.Slot
 import opensavvy.decouple.headless.node.Node
 import opensavvy.decouple.headless.node.getValue
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.layout.Screen].
+ */
 class Screen(node: Node) : Component {
 	val title: String by node.attributes
 	val subtitle: String? by node.attributes
@@ -24,6 +27,9 @@ class Screen(node: Node) : Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.layout.ListDetailScreen].
+ */
 class ListDetailScreen(node: Node) : Component {
 	val title: String by node.attributes
 	val subtitle: String? by node.attributes
@@ -40,6 +46,9 @@ class ListDetailScreen(node: Node) : Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.layout.SupportedScreen].
+ */
 class SupportedScreen(node: Node) : Component {
 	val title: String by node.attributes
 	val subtitle: String? by node.attributes

@@ -10,6 +10,9 @@ import opensavvy.decouple.headless.node.Node
 import opensavvy.decouple.headless.node.getValue
 import opensavvy.state.Progression
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.AssistChip].
+ */
 class AssistChip(node: Node) : Component {
 	val click: () -> Unit by node.attributes
 	val enabled: Boolean by node.attributes
@@ -28,6 +31,9 @@ class AssistChip(node: Node) : Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.FilterChip].
+ */
 class FilterChip(node: Node) : Component {
 	val active: Boolean by node.attributes
 	val toggle: () -> Unit by node.attributes
@@ -46,6 +52,9 @@ class FilterChip(node: Node) : Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.InputChip].
+ */
 class InputChip(node: Node) : Component {
 	val remove: () -> Unit by node.attributes
 	val enabled: Boolean by node.attributes
@@ -63,6 +72,9 @@ class InputChip(node: Node) : Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.SuggestionChip].
+ */
 class SuggestionChip(node: Node) : Component {
 	val click: () -> Unit by node.attributes
 	val enabled: Boolean by node.attributes
@@ -81,6 +93,9 @@ class SuggestionChip(node: Node) : Component {
 	}
 }
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.ChipGroup].
+ */
 class ChipGroup(node: Node) : Component {
 	val multiline: Boolean by node.attributes
 

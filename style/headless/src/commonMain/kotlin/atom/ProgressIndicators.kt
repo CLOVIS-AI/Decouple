@@ -9,6 +9,9 @@ import opensavvy.decouple.headless.node.Node
 import opensavvy.decouple.headless.node.getValue
 import opensavvy.state.Progression
 
+/**
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.ProgressIndicator].
+ */
 class ProgressIndicator(node: Node) : Component {
 	val progress: Progression by node.attributes
 
