@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "opensavvy"
+group = "opensavvy.decouple"
 
 dependencies {
     compileOnly(libs.gradle.kotlin)

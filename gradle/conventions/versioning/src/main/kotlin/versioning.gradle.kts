@@ -14,5 +14,5 @@ fun calculateVersion(): String {
 		"${details.lastTag}-post.${details.commitDistance}+${details.gitHash}"
 }
 
-group = "opensavvy"
+group = "opensavvy.decouple"
 version = calculateVersion()
