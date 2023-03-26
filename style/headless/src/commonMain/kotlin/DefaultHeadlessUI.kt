@@ -23,31 +23,31 @@ import opensavvy.decouple.headless.layout.TLazyLayouts
 import opensavvy.decouple.headless.layout.TLinearLayouts
 import opensavvy.decouple.headless.layout.TNavigation
 
-object TestUI : UI,
-                UIMetadata by TestUIMetadata,
-                Buttons by TButtons,
-                Chips by TChips,
-                TextFields by TTextFields,
-                Texts by TTexts,
-                ProgressIndicators by TProgressIndicators,
-                LinearLayouts by TLinearLayouts,
-                LazyLayouts by TLazyLayouts,
-                FullscreenLayouts by TFullscreenLayouts,
-                Navigation by TNavigation
+object DefaultHeadlessUI : UI,
+    UIMetadata by HeadlessUIMetadata,
+    Buttons by TButtons,
+    Chips by TChips,
+    TextFields by TTextFields,
+    Texts by TTexts,
+    ProgressIndicators by TProgressIndicators,
+    LinearLayouts by TLinearLayouts,
+    LazyLayouts by TLazyLayouts,
+    FullscreenLayouts by TFullscreenLayouts,
+    Navigation by TNavigation
 
-object TestUIMetadata : UIMetadata {
-	override val name: String = "Test UI"
+object HeadlessUIMetadata : UIMetadata {
+    override val name: String = "Test UI"
 
-	override val recommendedThemes: List<Theme> = emptyList()
+    override val recommendedThemes: List<Theme> = emptyList()
 
-	@Composable
-	override fun initializeFor(content: @Composable () -> Unit) {
-		content()
-	}
+    @Composable
+    override fun initializeFor(content: @Composable () -> Unit) {
+        content()
+    }
 
-	@Composable
-	override fun initializeThemeFor(theme: Theme, content: @Composable () -> Unit) {
-		content()
-	}
+    @Composable
+    override fun initializeThemeFor(theme: Theme, content: @Composable () -> Unit) {
+        content()
+    }
 
 }
