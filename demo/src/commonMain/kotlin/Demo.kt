@@ -3,9 +3,9 @@ package opensavvy.decouple.demo
 import androidx.compose.runtime.*
 import opensavvy.decouple.core.UI
 import opensavvy.decouple.core.UI.Companion.Install
-import opensavvy.decouple.core.layout.NavigationMenu.Companion.navigationMenu
-import opensavvy.decouple.core.layout.NavigationMenu.Menu
-import opensavvy.decouple.core.layout.NavigationMenu.Page
+import opensavvy.decouple.core.navigation.NavigationMenu.Companion.navigationMenu
+import opensavvy.decouple.core.navigation.NavigationMenu.Menu
+import opensavvy.decouple.core.navigation.NavigationMenu.Page
 import opensavvy.decouple.core.theme.Theme.Companion.Install
 import opensavvy.decouple.demo.theming.StyleSelector
 import opensavvy.decouple.demo.theming.ThemeSelector

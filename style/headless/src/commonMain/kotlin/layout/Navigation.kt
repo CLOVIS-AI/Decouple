@@ -2,7 +2,7 @@ package opensavvy.decouple.headless.layout
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.layout.Navigation
-import opensavvy.decouple.core.layout.NavigationMenu
+import opensavvy.decouple.core.navigation.NavigationMenu
 import opensavvy.decouple.headless.Component
 import opensavvy.decouple.headless.bind
 import opensavvy.decouple.headless.compose

@@ -10,7 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import opensavvy.decouple.core.atom.actionable.SecondaryButton
 import opensavvy.decouple.core.layout.Navigation
-import opensavvy.decouple.core.layout.NavigationMenu
+import opensavvy.decouple.core.navigation.NavigationMenu
 
 object MANavigation : Navigation {
 
