@@ -28,5 +28,3 @@ fun GlobalNavigation(
 		currentContents = { selected.payload.render() }
 	)
 }
-
-fun Page(dest: Destination) = NavigationMenu.Page(dest.title, dest)

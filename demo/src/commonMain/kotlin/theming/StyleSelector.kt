@@ -6,20 +6,14 @@ import opensavvy.decouple.core.atom.actionable.Button
 import opensavvy.decouple.core.atom.text.Text
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.layout.Screen
-import opensavvy.decouple.demo.Screen
-import opensavvy.decouple.navigation.Destination
 
-class StyleSelector(
-    private val available: List<UI>,
-    private val current: UI,
-    private val setCurrent: (UI) -> Unit,
-) : Destination {
-    override val route: String get() = "style"
-    override val title: String get() = "Styles"
-    override val parent: Destination get() = Screen.Design
-
-    @Composable
-    override fun render() = Screen("Styles") {
+@Composable
+fun StyleSelector(
+    available: List<UI>,
+    current: UI,
+    setCurrent: (UI) -> Unit,
+) {
+    Screen("Styles") {
         Text("Decouple provides a collection of components which your application can use.")
         Text(
             "Because your application is written using these components, " +
@@ -53,5 +47,4 @@ class StyleSelector(
             }
         }
     }
-
 }

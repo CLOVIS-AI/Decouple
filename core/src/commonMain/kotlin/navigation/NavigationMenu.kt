@@ -34,8 +34,6 @@ sealed class NavigationMenu<out P> {
         val children: List<NavigationMenu<P>>,
     ) : NavigationMenu<P>() {
 
-        constructor(title: String, vararg children: NavigationMenu<P>) : this(title, children.asList())
-
         override fun asPrefixSequence() = sequence {
             yield(this@Menu)
             yieldAll(children.asSequence().flatMap { it.asPrefixSequence() })
@@ -43,13 +41,5 @@ sealed class NavigationMenu<out P> {
 
         override fun firstPage() = children
             .firstNotNullOfOrNull { it.firstPage() }
-    }
-
-    companion object {
-
-        fun <P> navigationMenu(
-            vararg pages: NavigationMenu<P>,
-        ) = Menu("Root", *pages)
-
     }
 }
