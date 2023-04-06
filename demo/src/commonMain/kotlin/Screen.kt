@@ -18,6 +18,7 @@ enum class Screen(
 	Chips("chips", "Chips", parent = Components, { Chips() }),
 	TextFields("fields", "Text fields", parent = Components, { TextFields() }),
 	Progression("progress", "Progression", parent = Home, { Progression() }),
+	Design("design", "Design", parent = Home, { }),
 	;
 
 	@Composable
