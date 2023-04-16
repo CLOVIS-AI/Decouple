@@ -16,5 +16,5 @@ dependencies {
 }
 
 compose.desktop {
-    application.mainClass = "MainKt"
+    application.mainClass = "opensavvy.decouple.demo.desktop.MainKt"
 }

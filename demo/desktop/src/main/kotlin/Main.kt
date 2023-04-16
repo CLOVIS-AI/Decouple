@@ -1,3 +1,5 @@
+package opensavvy.decouple.demo.desktop
+
 import androidx.compose.ui.window.singleWindowApplication
 import opensavvy.decouple.demo.Demo
 import opensavvy.decouple.demo.Screen
