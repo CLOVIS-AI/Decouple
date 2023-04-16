@@ -18,6 +18,7 @@ include(
 	"demo",
 	"demo:web",
 	"demo:android",
+	"demo:desktop",
 
 	"style:material",
 	"style:material-common",

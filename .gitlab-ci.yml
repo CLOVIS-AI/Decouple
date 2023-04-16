@@ -85,6 +85,7 @@ jvm:test:
     - >
       ./gradlew
       jvmTest
+      demo:desktop:test
 
   interruptible: true
 

@@ -1,13 +1,12 @@
 package opensavvy.decouple.material.androidx
 
-import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.UIMetadata
 import opensavvy.decouple.core.theme.Theme
 import opensavvy.decouple.material.common.theme.MaterialTheme
 import androidx.compose.material3.MaterialTheme as M3MaterialTheme
 
-@SuppressLint("ComposableNaming")
+@Suppress("ComposableNaming")
 object MAUIMetadata : UIMetadata {
 	override val name: String = "Material You"
 

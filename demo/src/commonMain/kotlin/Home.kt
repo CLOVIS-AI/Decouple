@@ -26,9 +26,9 @@ fun Home() = Screen(
 
 	Text("Currently, the following platforms are supported out-of-the-box:")
 	Text("• Material for Kotlin/JS, based on TailwindCSS and Compose for Web,")
+	Text("• Material for Kotlin/JVM, based on Jetpack Compose Material3 and Compose for Desktop,")
 	Text("• Material for Android, based on Jetpack Compose Material3.")
 	Text("In the future, we are planning support for:")
-	Text("• Material for Kotlin/JVM, based on Jetpack Compose Material3 and Compose for Desktop,")
 	Text("• Material for WASM, based on Jetpack Compose Material3 and Compose for Web (canvas),")
 	Text("• Jewel for Kotlin/JVM, based on JetBrains' Jewel design system (for IntelliJ plugins),")
 	Text("• TailwindUI for Kotlin/JS, a black-box implementation of the TailwindUI design system.")
