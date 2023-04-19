@@ -5,6 +5,10 @@ import opensavvy.decouple.core.atom.actionable.Button
 import opensavvy.decouple.core.atom.text.Text
 import opensavvy.decouple.core.layout.Navigation
 import opensavvy.decouple.core.navigation.NavigationMenu
+import opensavvy.decouple.core.theme.Theme
+import opensavvy.decouple.material.tailwind.theme.css
+import org.jetbrains.compose.web.css.backgroundColor
+import org.jetbrains.compose.web.css.color
 import org.jetbrains.compose.web.dom.Div
 
 //TODO in #54:
@@ -26,10 +30,17 @@ object MTNavigation : Navigation {
 	) {
 		var open by remember { mutableStateOf<NavigationMenu.Menu<P>?>(null) }
 
+		val backgroundColor = Theme.color.backgroundVariant
+
 		Div(
 			{
 				onMouseLeave { open = null }
-				classes("h-full", "flex", "flex-row")
+				classes("h-full", "flex", "flex-row", "px-2", "transition-colors")
+
+				style {
+					backgroundColor(backgroundColor.rgb.css)
+					color(backgroundColor.on.rgb.css)
+				}
 			}
 		) {
 			// Always-open panel
@@ -96,9 +107,16 @@ object MTNavigation : Navigation {
 		selected: NavigationMenu<P>,
 		onSelect: (NavigationMenu.Page<P>) -> Unit,
 	) {
+		val backgroundColor = Theme.color.backgroundVariant
+
 		Div(
 			{
-				classes("h-full", "flex", "flex-col", "justify-center", "items-stretch", "gap-4", "absolute", "left-0")
+				classes("h-full", "flex", "flex-col", "justify-center", "items-stretch", "gap-4", "absolute", "left-0", "pr-2")
+
+				style {
+					backgroundColor(backgroundColor.rgb.css)
+					color(backgroundColor.on.rgb.css)
+				}
 			}
 		) {
 			for (child in open.children) key(child) {
