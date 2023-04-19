@@ -11,9 +11,6 @@ import org.jetbrains.compose.web.css.backgroundColor
 import org.jetbrains.compose.web.css.color
 import org.jetbrains.compose.web.dom.Div
 
-//TODO in #54:
-// - Better visual appearance
-
 object MTNavigation : Navigation {
 
 	@Composable
@@ -75,12 +72,14 @@ object MTNavigation : Navigation {
 	) {
 		Div(
 			{
-				classes("h-full", "flex", "flex-col", "justify-center", "items-stretch", "gap-4")
+				classes("h-full", "w-full", "flex", "flex-col", "flex-grow", "justify-center", "items-stretch", "gap-4")
 			}
 		) {
 			for (child in menu.children) key(child) {
 				Div(
 					{
+						classes("w-full", "flex", "flex-row", "justify-center")
+
 						onMouseEnter {
 							onOpen(
 								if (child is NavigationMenu.Menu) child
@@ -113,7 +112,7 @@ object MTNavigation : Navigation {
 
 		Div(
 			{
-				classes("flex", "flex-col", "justify-center", "items-stretch", "gap-4", "p-2")
+				classes("flex", "flex-col", "justify-center", "items-start", "gap-4", "px-2")
 
 				if (firstLevel) {
 					classes("h-full", "absolute", "left-0")
