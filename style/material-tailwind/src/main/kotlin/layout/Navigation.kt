@@ -13,7 +13,6 @@ import org.jetbrains.compose.web.dom.Div
 
 //TODO in #54:
 // - Better visual appearance
-// - Accept any menu depth (currently the maximum is 2)
 
 object MTNavigation : Navigation {
 
@@ -53,7 +52,7 @@ object MTNavigation : Navigation {
 						classes("relative")
 					}
 				) {
-					Submenu1(it, selected, onSelect)
+					Submenu(it, selected, onSelect)
 				}
 			}
 		}
@@ -102,16 +101,23 @@ object MTNavigation : Navigation {
 	}
 
 	@Composable
-	private fun <P> Submenu1(
+	private fun <P> Submenu(
 		open: NavigationMenu.Menu<P>,
 		selected: NavigationMenu<P>,
 		onSelect: (NavigationMenu.Page<P>) -> Unit,
+		firstLevel: Boolean = true,
 	) {
 		val backgroundColor = Theme.color.backgroundVariant
 
+		var openedChildMenu by remember(selected) { mutableStateOf<NavigationMenu.Menu<P>?>(null) }
+
 		Div(
 			{
-				classes("h-full", "flex", "flex-col", "justify-center", "items-stretch", "gap-4", "absolute", "left-0", "pr-2")
+				classes("flex", "flex-col", "justify-center", "items-stretch", "gap-4", "p-2")
+
+				if (firstLevel) {
+					classes("h-full", "absolute", "left-0")
+				}
 
 				style {
 					backgroundColor(backgroundColor.rgb.css)
@@ -122,10 +128,27 @@ object MTNavigation : Navigation {
 			for (child in open.children) key(child) {
 				Button(
 					onClick = {
-						child.firstPage()?.also(onSelect)
+						when (child) {
+							is NavigationMenu.Menu -> {
+								openedChildMenu = child
+							}
+
+							is NavigationMenu.Page -> {
+								onSelect(child)
+							}
+						}
 					},
 					enabled = selected != child,
 				) { Text(child.title) }
+
+				if (openedChildMenu == child) {
+					Submenu(
+						open = openedChildMenu!!, // we just checked that it's the current child
+						selected,
+						onSelect,
+						firstLevel = false,
+					)
+				}
 			}
 		}
 	}
