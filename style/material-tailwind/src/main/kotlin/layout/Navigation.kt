@@ -29,19 +29,19 @@ object MTNavigation : Navigation {
 		Div(
 			{
 				onMouseLeave { open = null }
-				classes("h-full")
+				classes("h-full", "flex", "flex-row")
 			}
 		) {
-			Div(
-				{
-					classes("h-full", "flex", "flex-row")
-				}
-			) {
-				// Always-open panel
-				Rail(menu, onOpen = { open = it }, selected, onSelect)
+			// Always-open panel
+			Rail(menu, onOpen = { open = it }, selected, onSelect)
 
-				// Sub-panel
-				open?.let {
+			// Sub-panel
+			open?.let {
+				Div(
+					{
+						classes("relative")
+					}
+				) {
 					Submenu1(it, selected, onSelect)
 				}
 			}
@@ -98,7 +98,7 @@ object MTNavigation : Navigation {
 	) {
 		Div(
 			{
-				classes("h-full", "flex", "flex-col", "justify-center", "items-stretch", "gap-4")
+				classes("h-full", "flex", "flex-col", "justify-center", "items-stretch", "gap-4", "absolute", "left-0")
 			}
 		) {
 			for (child in open.children) key(child) {
