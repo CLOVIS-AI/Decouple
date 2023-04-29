@@ -9,7 +9,7 @@ object MTFullscreenLayouts : FullscreenLayouts {
 
 	//TODO in #31: make these components responsive
 
-	private val screenOutline = arrayOf("h-full", "w-full", "p-8")
+	private val screenOutline = arrayOf("h-full", "w-full", "p-6")
 	private val columns = arrayOf("flex", "flex-row", "gap-6")
 	private val panelOneThird = arrayOf("w-[33%]", "min-w-[15em]", "max-w-[25em]", "flex-none")
 

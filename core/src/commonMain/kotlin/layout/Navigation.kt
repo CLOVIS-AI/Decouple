@@ -2,6 +2,7 @@ package opensavvy.decouple.core.layout
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.UI
+import opensavvy.decouple.core.navigation.NavigationMenu
 
 interface Navigation {
 
@@ -18,59 +19,6 @@ interface Navigation {
 		currentContents: @Composable () -> Unit,
 	)
 
-}
-
-sealed class NavigationMenu<out P> {
-
-	abstract val title: String
-
-	abstract fun asPrefixSequence(): Sequence<NavigationMenu<P>>
-
-	open fun firstPage(): Page<P>? = asPrefixSequence()
-		.firstNotNullOfOrNull { it as? Page }
-
-	open fun find(predicate: (NavigationMenu<P>) -> Boolean): NavigationMenu<P>? = asPrefixSequence()
-		.find(predicate)
-
-	open fun payloads(): Sequence<P> = asPrefixSequence()
-		.mapNotNull { if (it is Page) it.payload else null }
-
-	data class Page<out P>(
-		override val title: String,
-		val payload: P,
-	) : NavigationMenu<P>() {
-
-		override fun asPrefixSequence() = sequenceOf(this)
-
-		override fun firstPage() = this
-
-		override fun find(predicate: (NavigationMenu<P>) -> Boolean) =
-			this.takeIf(predicate)
-	}
-
-	data class Menu<out P>(
-		override val title: String,
-		val children: List<NavigationMenu<P>>,
-	) : NavigationMenu<P>() {
-
-		constructor(title: String, vararg children: NavigationMenu<P>) : this(title, children.asList())
-
-		override fun asPrefixSequence() = sequence {
-			yield(this@Menu)
-			yieldAll(children.asSequence().flatMap { it.asPrefixSequence() })
-		}
-
-		override fun firstPage() = children
-			.firstNotNullOfOrNull { it.firstPage() }
-	}
-
-	companion object {
-
-		fun <P> navigationMenu(
-			vararg pages: NavigationMenu<P>,
-		) = Menu("Root", *pages)
-
-	}
 }
 
 @Composable

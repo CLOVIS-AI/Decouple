@@ -2,7 +2,7 @@ package opensavvy.decouple.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import opensavvy.decouple.core.layout.NavigationMenu
+import opensavvy.decouple.core.navigation.NavigationMenu
 
 @Composable
 fun GlobalNavigation(
@@ -28,5 +28,3 @@ fun GlobalNavigation(
 		currentContents = { selected.payload.render() }
 	)
 }
-
-fun Page(dest: Destination) = NavigationMenu.Page(dest.title, dest)
