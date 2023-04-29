@@ -19,6 +19,7 @@ libraries
 /artifacts
 /modules
 /modules.xml
+/jsLibraryMappings.xml
 
 # Generated from Git import
 vcs.xml
