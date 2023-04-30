@@ -6,6 +6,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import opensavvy.decouple.core.UI
 import opensavvy.decouple.core.atom.actionable.Chips
 import opensavvy.progress.Progress
 import opensavvy.progress.done
@@ -33,7 +34,10 @@ object MAChips : Chips {
 		if (contrasted) {
 			M3ElevatedAssistChip(
 				onClick = onClick,
-				label = { content(MAChipScope) },
+				label = {
+					UI.current.ProgressIndicator(loading)
+					content(MAChipScope)
+				},
 				enabled = enabled && loading == done(),
 				leadingIcon = icon,
 				trailingIcon = action,
@@ -41,7 +45,10 @@ object MAChips : Chips {
 		} else {
 			M3AssistChip(
 				onClick = onClick,
-				label = { content(MAChipScope) },
+				label = {
+					UI.current.ProgressIndicator(loading)
+					content(MAChipScope)
+				},
 				enabled = enabled && loading == done(),
 				leadingIcon = icon,
 				trailingIcon = action,
@@ -65,7 +72,10 @@ object MAChips : Chips {
 			M3ElevatedFilterChip(
 				active,
 				onClick = { onToggle(!active) },
-				label = { content(MAChipScope) },
+				label = {
+					UI.current.ProgressIndicator(loading)
+					content(MAChipScope)
+				},
 				enabled = enabled && loading == done(),
 				leadingIcon = icon,
 			)
@@ -73,7 +83,10 @@ object MAChips : Chips {
 			M3FilterChip(
 				active,
 				onClick = { onToggle(!active) },
-				label = { content(MAChipScope) },
+				label = {
+					UI.current.ProgressIndicator(loading)
+					content(MAChipScope)
+				},
 				enabled = enabled && loading == done(),
 				leadingIcon = icon,
 			)
@@ -94,7 +107,10 @@ object MAChips : Chips {
 		M3InputChip(
 			selected = true,
 			onClick = onRemove,
-			label = { content(MAChipScope) },
+			label = {
+				UI.current.ProgressIndicator(loading)
+				content(MAChipScope)
+			},
 			enabled = enabled && loading == done(),
 			leadingIcon = icon,
 		)
@@ -113,14 +129,20 @@ object MAChips : Chips {
 		if (contrasted) {
 			M3ElevatedSuggestionChip(
 				onClick = onClick,
-				label = { content(MAChipScope) },
+				label = {
+					UI.current.ProgressIndicator(loading)
+					content(MAChipScope)
+				},
 				enabled = enabled && loading == done(),
 				icon = icon,
 			)
 		} else {
 			M3SuggestionChip(
 				onClick = onClick,
-				label = { content(MAChipScope) },
+				label = {
+					UI.current.ProgressIndicator(loading)
+					content(MAChipScope)
+				},
 				enabled = enabled && loading == done(),
 				icon = icon,
 			)
