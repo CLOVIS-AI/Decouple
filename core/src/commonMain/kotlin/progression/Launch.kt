@@ -1,11 +1,27 @@
 package opensavvy.decouple.core.progression
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import kotlinx.coroutines.*
-import opensavvy.state.Progression
-import opensavvy.state.ProgressionReporter
-import opensavvy.state.ProgressionReporter.Companion.report
+import opensavvy.progress.Progress
+import opensavvy.progress.coroutines.asCoroutineContext
+import opensavvy.progress.coroutines.report
+import opensavvy.progress.done
+import opensavvy.progress.loading
+import opensavvy.progress.report.ProgressReporter
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
+
+/**
+ * Remember a [Progress] value, [done] by default.
+ *
+ * Often used with [launch].
+ *
+ * @see remember
+ */
+@Composable
+fun rememberProgress() = remember { mutableStateOf<Progress>(done()) }
 
 /**
  * Launches a new coroutine without blocking the current thread and returns a reference to the coroutine as a [Job].
@@ -20,23 +36,19 @@ import kotlin.coroutines.EmptyCoroutineContext
  * The parameters [context] and [start] are identical to their standard equivalent.
  */
 fun CoroutineScope.launch(
-	onProgress: (Progression) -> Unit,
+	onProgress: (Progress) -> Unit,
 	context: CoroutineContext = EmptyCoroutineContext,
 	start: CoroutineStart = CoroutineStart.DEFAULT,
 	block: suspend () -> Unit,
 ): Job {
-	val reporter = object : ProgressionReporter() {
-		override suspend fun emit(progression: Progression) {
-			onProgress(progression)
-		}
-	}
+	val reporter = ProgressReporter { onProgress(it) }
 
-	return launch(context + reporter, start) {
+	return launch(context + reporter.asCoroutineContext(), start) {
 		try {
-			report(Progression.loading())
+			report(loading())
 			block()
 		} finally {
-			report(Progression.done())
+			report(done())
 		}
 	}
 }

@@ -5,7 +5,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.runTest
 import opensavvy.decouple.headless.atom.actionable.Button
 import opensavvy.decouple.headless.execution.runHeadlessUI
-import opensavvy.state.Progression
+import opensavvy.progress.Progress
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -21,7 +21,7 @@ class ButtonsTest {
         ui.paused {
             val button = find(Button)
 
-            assertTrue(button.loading is Progression.Done)
+            assertTrue(button.loading is Progress.Done)
 
             println("Clicking on the first button…")
             button.click()
@@ -30,7 +30,7 @@ class ButtonsTest {
         ui.paused {
             val button = find(Button)
 
-            assertIs<Progression.Loading>(button.loading)
+            assertIs<Progress.Loading>(button.loading)
         }
 
         delay(10_000)
@@ -38,7 +38,7 @@ class ButtonsTest {
         ui.paused {
             val button = find(Button)
 
-            assertEquals(Progression.Done, button.loading)
+            assertEquals(Progress.Done, button.loading)
         }
     }
 

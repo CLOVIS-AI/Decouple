@@ -7,13 +7,13 @@ import opensavvy.decouple.headless.bind
 import opensavvy.decouple.headless.compose
 import opensavvy.decouple.headless.node.Node
 import opensavvy.decouple.headless.node.getValue
-import opensavvy.state.Progression
+import opensavvy.progress.Progress
 
 /**
  * Type-safe wrapper for [opensavvy.decouple.core.atom.ProgressIndicator].
  */
 class ProgressIndicator(node: Node) : Component {
-	val progress: Progression by node.attributes
+	val progress: Progress by node.attributes
 
 	companion object : Component.Meta<ProgressIndicator> {
 		override val name = "ProgressIndicators.ProgressIndicator"
@@ -24,7 +24,7 @@ class ProgressIndicator(node: Node) : Component {
 
 object TProgressIndicators : ProgressIndicators {
 	@Composable
-	override fun ProgressIndicator(progress: Progression) {
+	override fun ProgressIndicator(progress: Progress) {
 		ProgressIndicator.compose(
 			update = {
 				bind(progress, ProgressIndicator::progress)

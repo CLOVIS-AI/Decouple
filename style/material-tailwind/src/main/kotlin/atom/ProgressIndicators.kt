@@ -2,7 +2,7 @@ package opensavvy.decouple.material.tailwind.atom
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.atom.ProgressIndicators
-import opensavvy.state.Progression
+import opensavvy.progress.Progress
 import org.jetbrains.compose.web.ExperimentalComposeWebSvgApi
 import org.jetbrains.compose.web.svg.Circle
 import org.jetbrains.compose.web.svg.Path
@@ -12,7 +12,7 @@ object MTProgressIndicators : ProgressIndicators {
 
 	@OptIn(ExperimentalComposeWebSvgApi::class)
 	@Composable
-	override fun ProgressIndicator(progress: Progression) {
+	override fun ProgressIndicator(progress: Progress) {
 		Svg(
 			"0 0 24 24",
 			{
@@ -20,7 +20,7 @@ object MTProgressIndicators : ProgressIndicators {
 				attr("fill", "none")
 				classes("absolute", "inset-0", "h-5", "w-5", "transition-opacity", "duration-100")
 
-				if (progress is Progression.Loading) {
+				if (progress is Progress.Loading) {
 					classes("opacity-100", "delay-100")
 				} else {
 					classes("opacity-0")

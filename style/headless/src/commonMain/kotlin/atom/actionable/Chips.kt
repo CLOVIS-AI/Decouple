@@ -8,7 +8,7 @@ import opensavvy.decouple.headless.compose
 import opensavvy.decouple.headless.execution.Slot
 import opensavvy.decouple.headless.node.Node
 import opensavvy.decouple.headless.node.getValue
-import opensavvy.state.Progression
+import opensavvy.progress.Progress
 
 /**
  * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.AssistChip].
@@ -16,7 +16,7 @@ import opensavvy.state.Progression
 class AssistChip(node: Node) : Component {
 	val click: () -> Unit by node.attributes
 	val enabled: Boolean by node.attributes
-	val loading: Progression by node.attributes
+	val loading: Progress by node.attributes
 	val contrasted: Boolean by node.attributes
 
 	val icon by node.slots
@@ -38,7 +38,7 @@ class FilterChip(node: Node) : Component {
 	val active: Boolean by node.attributes
 	val toggle: () -> Unit by node.attributes
 	val enabled: Boolean by node.attributes
-	val loading: Progression by node.attributes
+	val loading: Progress by node.attributes
 	val contrasted: Boolean by node.attributes
 
 	val icon by node.slots
@@ -58,7 +58,7 @@ class FilterChip(node: Node) : Component {
 class InputChip(node: Node) : Component {
 	val remove: () -> Unit by node.attributes
 	val enabled: Boolean by node.attributes
-	val loading: Progression by node.attributes
+	val loading: Progress by node.attributes
 	val contrasted: Boolean by node.attributes
 
 	val icon by node.slots
@@ -78,7 +78,7 @@ class InputChip(node: Node) : Component {
 class SuggestionChip(node: Node) : Component {
 	val click: () -> Unit by node.attributes
 	val enabled: Boolean by node.attributes
-	val loading: Progression by node.attributes
+	val loading: Progress by node.attributes
 	val contrasted: Boolean by node.attributes
 
 	val icon by node.slots
@@ -114,7 +114,7 @@ object TChips : Chips {
 	override fun AssistChip(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		action: (@Composable () -> Unit)?,
@@ -145,7 +145,7 @@ object TChips : Chips {
 		active: Boolean,
 		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
@@ -171,7 +171,7 @@ object TChips : Chips {
 	override fun InputChip(
 		onRemove: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
@@ -196,7 +196,7 @@ object TChips : Chips {
 	override fun SuggestionChip(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		action: (@Composable () -> Unit)?,

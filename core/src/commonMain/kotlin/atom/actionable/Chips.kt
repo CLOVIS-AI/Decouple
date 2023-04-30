@@ -1,11 +1,15 @@
 package opensavvy.decouple.core.atom.actionable
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import kotlinx.coroutines.CoroutineScope
 import opensavvy.decouple.core.UI
 import opensavvy.decouple.core.layout.LinearLayouts
 import opensavvy.decouple.core.progression.launch
-import opensavvy.state.Progression
+import opensavvy.decouple.core.progression.rememberProgress
+import opensavvy.progress.Progress
 
 /**
  * Actions and filters provided to the user.
@@ -40,7 +44,7 @@ interface Chips {
 	fun AssistChip(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		action: (@Composable () -> Unit)?,
@@ -65,7 +69,7 @@ interface Chips {
 		active: Boolean,
 		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable ChipScope.() -> Unit,
@@ -82,7 +86,7 @@ interface Chips {
 	fun InputChip(
 		onRemove: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable ChipScope.() -> Unit,
@@ -102,7 +106,7 @@ interface Chips {
 	fun SuggestionChip(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		action: (@Composable () -> Unit)?,
@@ -140,7 +144,7 @@ fun AssistChip(
 	action: (@Composable () -> Unit)? = null,
 	content: @Composable Chips.ChipScope.() -> Unit,
 ) {
-	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
+	var loading by rememberProgress()
 
 	UI.current.AssistChip(
 		onClick = {
@@ -173,7 +177,7 @@ fun FilterChip(
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable Chips.ChipScope.() -> Unit,
 ) {
-	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
+	var loading by rememberProgress()
 
 	UI.current.FilterChip(
 		active = active,
@@ -204,7 +208,7 @@ fun InputChip(
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable Chips.ChipScope.() -> Unit,
 ) {
-	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
+	var loading by rememberProgress()
 
 	UI.current.InputChip(
 		onRemove = {
@@ -236,7 +240,7 @@ fun SuggestionChip(
 	action: (@Composable () -> Unit)? = null,
 	content: @Composable Chips.ChipScope.() -> Unit,
 ) {
-	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
+	var loading by rememberProgress()
 
 	UI.current.SuggestionChip(
 		onClick = {

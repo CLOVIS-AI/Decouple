@@ -6,18 +6,18 @@ import androidx.compose.material3.ProgressIndicatorDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import opensavvy.decouple.core.atom.ProgressIndicators
-import opensavvy.state.Progression
+import opensavvy.progress.Progress
 
 object MAProgressIndicators : ProgressIndicators {
 
 	@Composable
-	override fun ProgressIndicator(progress: Progression) = when (progress) {
-		is Progression.Done -> Unit
-		is Progression.Loading.Unquantified -> {
+	override fun ProgressIndicator(progress: Progress) = when (progress) {
+		is Progress.Done -> Unit
+		is Progress.Loading.Unquantified -> {
 			CircularProgressIndicator()
 		}
 
-		is Progression.Loading.Quantified -> {
+		is Progress.Loading.Quantified -> {
 			val animatedProgress by animateFloatAsState(
 				targetValue = progress.normalized.toFloat(),
 				animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec,

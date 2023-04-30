@@ -24,8 +24,9 @@ kotlin {
 				api(libs.kotlinx.coroutines)
 				api(libs.kotlinx.datetime)
 
-				api(libs.pedestal.state)
-				api(libs.pedestal.logger)
+				api(libs.pedestal.progress)
+				api(libs.pedestal.progressCoroutines)
+				implementation(libs.pedestal.logger)
 			}
 		}
 	}
