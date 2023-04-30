@@ -78,7 +78,7 @@ android-sdk:publish:
 
 jvm:test:
   extends: [ .os.gradle ]
-  needs: [ ]
+  needs: [ os.version ]
   stage: test
 
   script:
@@ -86,12 +86,13 @@ jvm:test:
       ./gradlew
       jvmTest
       demo:desktop:test
+      -PappVersion=$project_version
 
   interruptible: true
 
 web:test:
   extends: [ .os.gradle ]
-  needs: [ chromium:build ]
+  needs: [ chromium:build, os.version ]
   stage: test
   image: $CI_REGISTRY_IMAGE/chromium:build-$CI_PIPELINE_IID
 
@@ -99,12 +100,13 @@ web:test:
     - >
       ./gradlew
       jsBrowserTest
+      -PappVersion=$project_version
 
   interruptible: true
 
 android:test:
   extends: [ .os.gradle ]
-  needs: [ android-sdk:build ]
+  needs: [ android-sdk:build, os.version ]
   image: $CI_REGISTRY_IMAGE/android-sdk:build-$CI_PIPELINE_IID
   stage: test
 
@@ -112,6 +114,7 @@ android:test:
     - >
       ./gradlew
       demo:android:test
+      -PappVersion=$project_version
 
   artifacts:
     reports:
@@ -120,12 +123,12 @@ android:test:
 
 android:lint:
   extends: [ .os.gradle ]
-  needs: [ android-sdk:build ]
+  needs: [ android-sdk:build, os.version ]
   image: $CI_REGISTRY_IMAGE/android-sdk:build-$CI_PIPELINE_IID
   stage: test
 
   script:
-    - ./gradlew lint
+    - ./gradlew lint -PappVersion=$project_version
 
   artifacts:
     paths:
@@ -136,11 +139,11 @@ android:lint:
 
 demo:web:build:
   extends: [ .os.gradle ]
-  needs: [ ]
+  needs: [ os.version ]
   stage: build
 
   script:
-    - ./gradlew demo:web:production
+    - ./gradlew demo:web:production -PappVersion=$project_version
     - mv build/js/packages/Decouple-web/kotlin/dist dist-web
 
   artifacts:
@@ -154,12 +157,12 @@ demo:web:build:
 
 demo:android:build:
   extends: [ .os.gradle ]
-  needs: [ android-sdk:build ]
+  needs: [ android-sdk:build, os.version ]
   image: $CI_REGISTRY_IMAGE/android-sdk:build-$CI_PIPELINE_IID
   stage: build
 
   script:
-    - ./gradlew demo:android:assembleDebug
+    - ./gradlew demo:android:assembleDebug -PappVersion=$project_version
     - mv demo/android/build/outputs/apk/debug/android-debug.apk demo-debug.apk
 
   artifacts:
@@ -170,12 +173,12 @@ demo:android:build:
 
 dokka:
   extends: [ .os.gradle ]
-  needs: [ android-sdk:build ]
+  needs: [ android-sdk:build, os.version ]
   image: $CI_REGISTRY_IMAGE/android-sdk:build-$CI_PIPELINE_IID
   stage: build
 
   script:
-    - ./gradlew dokkaHtmlMultiModule
+    - ./gradlew dokkaHtmlMultiModule -PappVersion=$project_version
     - mkdir -p docs
     - mv build/dokka/htmlMultiModule/* docs
 
@@ -190,7 +193,7 @@ dokka:
 
 publish:
   extends: [ .os.gradle ]
-  needs: [ jvm:test, web:test ]
+  needs: [ jvm:test, web:test, os.version ]
   stage: deploy
 
   script:
@@ -200,6 +203,7 @@ publish:
       style:material:publishAllPublicationsToGitLabRepository
       style:material-common:publishAllPublicationsToGitLabRepository
       style:material-tailwind:publishToGitLabRepository
+      -PappVersion=$project_version
 
   rules:
     - if: $CI_COMMIT_TAG
