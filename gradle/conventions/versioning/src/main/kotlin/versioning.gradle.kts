@@ -1,18 +1,10 @@
 package opensavvy
 
 plugins {
-	id("com.palantir.git-version")
+	base
 }
 
-fun calculateVersion(): String {
-	val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
-	val details = versionDetails()
-
-	return if (details.commitDistance == 0)
-		details.lastTag
-	else
-		"${details.lastTag}-post.${details.commitDistance}+${details.gitHash}"
-}
+val appVersion: String? by project
 
 group = "opensavvy.decouple"
-version = calculateVersion()
+version = appVersion ?: "0.1.0-DEV"
