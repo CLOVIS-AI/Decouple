@@ -1,7 +1,7 @@
 package opensavvy.decouple.material.tailwind.theme
 
 import androidx.compose.runtime.Composable
-import opensavvy.state.Progression
+import opensavvy.progress.Progress
 import org.jetbrains.compose.web.attributes.AttrsScope
 import org.jetbrains.compose.web.attributes.disabled
 import org.jetbrains.compose.web.dom.Div
@@ -52,13 +52,13 @@ internal fun AnimatedLeadingIcon(
 internal fun AttrsScope<HTMLButtonElement>.setDisabledState(
 	enabled: Boolean,
 	disabledClasses: List<String>,
-	loading: Progression,
+	loading: Progress,
 ) {
 	if (!enabled) {
 		classes(disabledClasses)
 	}
 
-	if (!enabled || loading is Progression.Loading) {
+	if (!enabled || loading is Progress.Loading) {
 		disabled()
 		if (enabled) {
 			classes("cursor-wait")

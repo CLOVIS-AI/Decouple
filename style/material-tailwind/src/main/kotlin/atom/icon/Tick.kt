@@ -1,21 +1,21 @@
 package opensavvy.decouple.material.tailwind.atom.icon
 
 import androidx.compose.runtime.Composable
-import opensavvy.state.Progression
+import opensavvy.progress.Progress
 import org.jetbrains.compose.web.ExperimentalComposeWebSvgApi
 import org.jetbrains.compose.web.svg.Path
 import org.jetbrains.compose.web.svg.Svg
 
 @OptIn(ExperimentalComposeWebSvgApi::class)
 @Composable
-fun Tick(activated: Boolean, loading: Progression) {
+fun Tick(activated: Boolean, loading: Progress) {
 	Svg(
 		"0 0 48 48",
 		{
 			attr("fill", "none")
 			classes("absolute", "inset-0", "h-5", "w-5", "transition-opacity", "duration-100")
 
-			if (activated && loading !is Progression.Loading) {
+			if (activated && loading !is Progress.Loading) {
 				classes("opacity-100", "delay-100")
 			} else {
 				classes("opacity-0")

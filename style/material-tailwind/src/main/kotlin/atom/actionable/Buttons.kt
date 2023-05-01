@@ -8,7 +8,7 @@ import opensavvy.decouple.material.tailwind.theme.AnimatedLeadingIcon
 import opensavvy.decouple.material.tailwind.theme.StateLayers
 import opensavvy.decouple.material.tailwind.theme.css
 import opensavvy.decouple.material.tailwind.theme.setDisabledState
-import opensavvy.state.Progression
+import opensavvy.progress.Progress
 import org.jetbrains.compose.web.css.StyleScope
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
@@ -19,7 +19,7 @@ object MTButtons : Buttons {
 	override fun Button(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {
@@ -59,7 +59,7 @@ object MTButtons : Buttons {
 		onClick: () -> Unit,
 		primary: Boolean,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {
@@ -114,7 +114,7 @@ object MTButtons : Buttons {
 	override fun SecondaryButton(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {
@@ -158,7 +158,7 @@ object MTButtons : Buttons {
 	override fun ContrastButton(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {
@@ -238,7 +238,7 @@ private object ButtonScope : Buttons.ButtonScope
 private fun AbstractButton(
 	onClick: () -> Unit,
 	enabled: Boolean,
-	loading: Progression,
+	loading: Progress,
 	icon: (@Composable () -> Unit)?,
 	classes: Array<String>?,
 	disabledClasses: List<String>,
@@ -263,7 +263,7 @@ private fun AbstractButton(
 	}) {
 		if (icon != null) icon()
 
-		AnimatedLeadingIcon(loading is Progression.Loading) {
+		AnimatedLeadingIcon(loading is Progress.Loading) {
 			ProgressIndicator(loading)
 		}
 

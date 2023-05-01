@@ -1,6 +1,9 @@
 package opensavvy.decouple.demo.components
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import kotlinx.coroutines.delay
 import opensavvy.decouple.core.atom.ProgressIndicator
 import opensavvy.decouple.core.atom.actionable.AssistChip
@@ -9,15 +12,17 @@ import opensavvy.decouple.core.atom.text.Text
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.layout.SupportedScreen
 import opensavvy.decouple.core.progression.launch
-import opensavvy.state.Progression
-import opensavvy.state.ProgressionReporter.Companion.report
+import opensavvy.decouple.core.progression.rememberProgress
+import opensavvy.progress.Progress
+import opensavvy.progress.coroutines.report
+import opensavvy.progress.loading
 
 @Composable
-fun Progression()  {
+fun Progression() {
 	val scope = rememberCoroutineScope()
 
-	var unquantified: Progression by remember { mutableStateOf(Progression.Done) }
-	var quantified: Progression by remember { mutableStateOf(Progression.Done) }
+	var unquantified by rememberProgress()
+	var quantified by rememberProgress()
 
 	SupportedScreen(
 		"Progression",
@@ -29,17 +34,17 @@ fun Progression()  {
 						scope.launch(onProgress = { unquantified = it }) {
 							repeat(100) {
 								delay(100)
-								report(Progression.loading())
+								report(loading())
 							}
 						}
 						scope.launch(onProgress = { quantified = it }) {
 							repeat(100) {
 								delay(100)
-								report(Progression.loading(it / 100.0))
+								report(loading(it / 100.0))
 							}
 						}
 					},
-					enabled = unquantified is Progression.Done && quantified is Progression.Done
+					enabled = unquantified is Progress.Done && quantified is Progress.Done
 				) {
 					Text("Start the operation")
 				}

@@ -1,10 +1,14 @@
 package opensavvy.decouple.core.atom.actionable
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import kotlinx.coroutines.CoroutineScope
 import opensavvy.decouple.core.UI
 import opensavvy.decouple.core.progression.launch
-import opensavvy.state.Progression
+import opensavvy.decouple.core.progression.rememberProgress
+import opensavvy.progress.Progress
 
 interface Buttons {
 
@@ -17,7 +21,7 @@ interface Buttons {
 	fun Button(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable ButtonScope.() -> Unit,
 	)
@@ -35,7 +39,7 @@ interface Buttons {
 		onClick: () -> Unit,
 		primary: Boolean,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable ButtonScope.() -> Unit,
 	)
@@ -50,7 +54,7 @@ interface Buttons {
 	fun SecondaryButton(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable ButtonScope.() -> Unit,
 	)
@@ -67,7 +71,7 @@ interface Buttons {
 	fun ContrastButton(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable ButtonScope.() -> Unit,
 	)
@@ -88,7 +92,7 @@ fun Button(
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
-	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
+	var loading by rememberProgress()
 
 	UI.current.Button(
 		onClick = {
@@ -118,7 +122,7 @@ fun PrimaryButton(
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
-	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
+	var loading by rememberProgress()
 
 	UI.current.PrimaryButton(
 		onClick = {
@@ -148,7 +152,7 @@ fun SecondaryButton(
 	scope: CoroutineScope = rememberCoroutineScope(),
 	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
-	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
+	var loading by rememberProgress()
 
 	UI.current.SecondaryButton(
 		onClick = {
@@ -177,7 +181,7 @@ fun ContrastButton(
 	icon: (@Composable () -> Unit)? = null,
 	content: @Composable Buttons.ButtonScope.() -> Unit,
 ) {
-	var loading by remember { mutableStateOf<Progression>(Progression.Done) }
+	var loading by rememberProgress()
 
 	UI.current.ContrastButton(
 		onClick = {

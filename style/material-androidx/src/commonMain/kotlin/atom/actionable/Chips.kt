@@ -7,7 +7,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import opensavvy.decouple.core.atom.actionable.Chips
-import opensavvy.state.Progression
+import opensavvy.progress.Progress
+import opensavvy.progress.done
 import androidx.compose.material3.AssistChip as M3AssistChip
 import androidx.compose.material3.ElevatedAssistChip as M3ElevatedAssistChip
 import androidx.compose.material3.ElevatedFilterChip as M3ElevatedFilterChip
@@ -23,7 +24,7 @@ object MAChips : Chips {
 	override fun AssistChip(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		action: (@Composable () -> Unit)?,
@@ -33,7 +34,7 @@ object MAChips : Chips {
 			M3ElevatedAssistChip(
 				onClick = onClick,
 				label = { content(MAChipScope) },
-				enabled = enabled && loading == Progression.done(),
+				enabled = enabled && loading == done(),
 				leadingIcon = icon,
 				trailingIcon = action,
 			)
@@ -41,7 +42,7 @@ object MAChips : Chips {
 			M3AssistChip(
 				onClick = onClick,
 				label = { content(MAChipScope) },
-				enabled = enabled && loading == Progression.done(),
+				enabled = enabled && loading == done(),
 				leadingIcon = icon,
 				trailingIcon = action,
 			)
@@ -53,7 +54,7 @@ object MAChips : Chips {
 		active: Boolean,
 		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
@@ -65,7 +66,7 @@ object MAChips : Chips {
 				active,
 				onClick = { onToggle(!active) },
 				label = { content(MAChipScope) },
-				enabled = enabled && loading == Progression.done(),
+				enabled = enabled && loading == done(),
 				leadingIcon = icon,
 			)
 		} else {
@@ -73,7 +74,7 @@ object MAChips : Chips {
 				active,
 				onClick = { onToggle(!active) },
 				label = { content(MAChipScope) },
-				enabled = enabled && loading == Progression.done(),
+				enabled = enabled && loading == done(),
 				leadingIcon = icon,
 			)
 		}
@@ -83,7 +84,7 @@ object MAChips : Chips {
 	override fun InputChip(
 		onRemove: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
@@ -94,7 +95,7 @@ object MAChips : Chips {
 			selected = true,
 			onClick = onRemove,
 			label = { content(MAChipScope) },
-			enabled = enabled && loading == Progression.done(),
+			enabled = enabled && loading == done(),
 			leadingIcon = icon,
 		)
 	}
@@ -103,7 +104,7 @@ object MAChips : Chips {
 	override fun SuggestionChip(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		action: (@Composable () -> Unit)?,
@@ -113,14 +114,14 @@ object MAChips : Chips {
 			M3ElevatedSuggestionChip(
 				onClick = onClick,
 				label = { content(MAChipScope) },
-				enabled = enabled && loading == Progression.done(),
+				enabled = enabled && loading == done(),
 				icon = icon,
 			)
 		} else {
 			M3SuggestionChip(
 				onClick = onClick,
 				label = { content(MAChipScope) },
-				enabled = enabled && loading == Progression.done(),
+				enabled = enabled && loading == done(),
 				icon = icon,
 			)
 		}

@@ -9,12 +9,12 @@ import opensavvy.decouple.headless.execution.Slot
 import opensavvy.decouple.headless.node.Node
 import opensavvy.decouple.headless.node.NodeTree
 import opensavvy.decouple.headless.node.getValue
-import opensavvy.state.Progression
+import opensavvy.progress.Progress
 
 interface AbstractButton {
 	val click: () -> Unit
 	val enabled: Boolean
-	val loading: Progression
+	val loading: Progress
 
 	val icon: NodeTree
 
@@ -27,7 +27,7 @@ interface AbstractButton {
 class Button(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes
 	override val enabled: Boolean by node.attributes
-	override val loading: Progression by node.attributes
+	override val loading: Progress by node.attributes
 
 	override val icon by node.slots
 
@@ -46,7 +46,7 @@ class Button(node: Node) : AbstractButton, Component {
 class PrimaryButton(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes
 	override val enabled: Boolean by node.attributes
-	override val loading: Progression by node.attributes
+	override val loading: Progress by node.attributes
 	val primary: Boolean by node.attributes
 
 	override val icon by node.slots
@@ -66,7 +66,7 @@ class PrimaryButton(node: Node) : AbstractButton, Component {
 class SecondaryButton(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes
 	override val enabled: Boolean by node.attributes
-	override val loading: Progression by node.attributes
+	override val loading: Progress by node.attributes
 
 	override val icon by node.slots
 
@@ -85,7 +85,7 @@ class SecondaryButton(node: Node) : AbstractButton, Component {
 class ContrastButton(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes
 	override val enabled: Boolean by node.attributes
-	override val loading: Progression by node.attributes
+	override val loading: Progress by node.attributes
 
 	override val icon by node.slots
 
@@ -104,7 +104,7 @@ object TButtons : Buttons {
 	override fun Button(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {
@@ -128,7 +128,7 @@ object TButtons : Buttons {
 		onClick: () -> Unit,
 		primary: Boolean,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {
@@ -152,7 +152,7 @@ object TButtons : Buttons {
 	override fun SecondaryButton(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {
@@ -175,7 +175,7 @@ object TButtons : Buttons {
 	override fun ContrastButton(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Buttons.ButtonScope.() -> Unit,
 	) {

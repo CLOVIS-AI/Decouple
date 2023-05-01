@@ -10,7 +10,7 @@ import opensavvy.decouple.material.tailwind.theme.AnimatedLeadingIcon
 import opensavvy.decouple.material.tailwind.theme.StateLayers
 import opensavvy.decouple.material.tailwind.theme.css
 import opensavvy.decouple.material.tailwind.theme.setDisabledState
-import opensavvy.state.Progression
+import opensavvy.progress.Progress
 import org.jetbrains.compose.web.css.StyleScope
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
@@ -21,7 +21,7 @@ object MTChips : Chips {
 	override fun AssistChip(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		action: (@Composable () -> Unit)?,
@@ -53,7 +53,7 @@ object MTChips : Chips {
 		active: Boolean,
 		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
@@ -177,7 +177,7 @@ object MTChips : Chips {
 	override fun InputChip(
 		onRemove: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		content: @Composable Chips.ChipScope.() -> Unit,
@@ -216,7 +216,7 @@ object MTChips : Chips {
 	override fun SuggestionChip(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		icon: (@Composable () -> Unit)?,
 		action: (@Composable () -> Unit)?,
@@ -285,7 +285,7 @@ object MTChips : Chips {
 	private fun BasicChip(
 		onClick: () -> Unit,
 		enabled: Boolean,
-		loading: Progression,
+		loading: Progress,
 		contrasted: Boolean,
 		content: @Composable Chips.ChipScope.() -> Unit,
 		icon: (@Composable () -> Unit)? = null,
@@ -356,7 +356,7 @@ object MTChips : Chips {
 		onClick: () -> Unit,
 		enabled: Boolean,
 		activated: Boolean,
-		loading: Progression,
+		loading: Progress,
 		classes: List<String>,
 		disabledClasses: List<String>,
 		activatedClasses: List<String> = emptyList(),
@@ -393,7 +393,7 @@ object MTChips : Chips {
 			if (icon != null)
 				icon()
 
-			AnimatedLeadingIcon(activated || loading is Progression.Loading) {
+			AnimatedLeadingIcon(activated || loading is Progress.Loading) {
 				ProgressIndicator(loading)
 				Tick(activated, loading)
 			}

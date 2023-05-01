@@ -17,6 +17,8 @@ kotlin {
 		val commonMain by getting {
 			dependencies {
 				api(projects.core)
+
+				implementation(libs.pedestal.logger)
 			}
 		}
 	}
