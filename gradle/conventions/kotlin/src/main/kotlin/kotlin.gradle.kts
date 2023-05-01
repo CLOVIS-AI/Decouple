@@ -7,9 +7,12 @@ plugins {
     id("opensavvy.documentation")
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "1.8"
+for (kotlinPlugin in listOf("org.jetbrains.kotlin.jvm", "org.jetbrains.kotlin.js", "org.jetbrains.kotlin.multiplatform")) {
+    // The Android plugin doesn't support JVM toolchains
+    pluginManager.withPlugin(kotlinPlugin) {
+        extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinTopLevelExtension> {
+            jvmToolchain(17)
+        }
     }
 }
 
