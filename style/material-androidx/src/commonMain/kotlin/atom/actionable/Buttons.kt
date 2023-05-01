@@ -2,6 +2,7 @@ package opensavvy.decouple.material.androidx.atom.actionable
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
+import opensavvy.decouple.core.UI
 import opensavvy.decouple.core.atom.actionable.Buttons
 import opensavvy.progress.Progress
 import opensavvy.progress.done
@@ -23,7 +24,7 @@ object MAButtons : Buttons {
 		if (icon != null)
 			icon()
 
-		//TODO in #73: loading indicator
+		UI.current.ProgressIndicator(loading)
 
 		MAButtonScope.content()
 	}
