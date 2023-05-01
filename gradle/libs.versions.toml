@@ -65,7 +65,6 @@ androidx-compose-testManifest = { module = "androidx.compose.ui:ui-test-manifest
 androidx-compose-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso" }
 
-gradle-gitVersion = { module = "com.palantir.gradle.gitversion:gradle-git-version", version = "0.15.0" }
 gradle-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
 gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradle-android = { module = "com.android.tools.build:gradle", version.ref = "android" }
