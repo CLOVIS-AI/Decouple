@@ -1,6 +1,7 @@
 package opensavvy.decouple.material.androidx.layout
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.material3.NavigationBar
@@ -24,7 +25,9 @@ object MANavigation : Navigation {
 		onSelect: (NavigationMenu.Page<P>) -> Unit,
 		currentContents: @Composable () -> Unit,
 	) = Column(Modifier.fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
-		currentContents()
+		Box(Modifier.weight(1.0f)) {
+			currentContents()
+		}
 
 		var options by remember { mutableStateOf(emptyList<NavigationMenu<P>>()) }
 
