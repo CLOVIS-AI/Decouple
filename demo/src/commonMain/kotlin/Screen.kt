@@ -2,6 +2,8 @@ package opensavvy.decouple.demo
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.demo.components.*
+import opensavvy.decouple.demo.demos.Demos
+import opensavvy.decouple.demo.demos.calculator.Calculator
 import opensavvy.decouple.demo.design.DesignOverview
 import opensavvy.decouple.navigation.Destination
 import kotlin.js.JsName
@@ -20,6 +22,8 @@ enum class Screen(
 	TextFields("fields", "Text fields", parent = Components, { TextFields() }),
 	Progression("progress", "Progression", parent = Home, { Progression() }),
 	Design("design", "Design", parent = Home, { DesignOverview() }),
+	Demos("demos", "Demos", parent = Home, { Demos() }),
+	Calculator("calculator", "Calculator", parent = Demos, { Calculator() }),
 	;
 
 	@Composable

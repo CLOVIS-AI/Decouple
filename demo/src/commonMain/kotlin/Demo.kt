@@ -40,6 +40,10 @@ fun Demo(implementations: List<UI>, navigator: Navigation) {
 			page(Screen.TextFields)
 			page(Screen.Progression)
 		}
+		menu("Demos") {
+			page("Overview", Screen.Demos)
+			page(Screen.Calculator)
+		}
 	}
 
 	Navigator = navigator
