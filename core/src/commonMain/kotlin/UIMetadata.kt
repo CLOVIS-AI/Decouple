@@ -7,7 +7,7 @@ import opensavvy.decouple.core.theme.Theme
 /**
  * Metadata and initialization code for [UI] instances.
  */
-interface UIMetadata {
+interface UIMetadata : UIMarker {
 
 	/**
 	 * Human-readable name of this implementation.
