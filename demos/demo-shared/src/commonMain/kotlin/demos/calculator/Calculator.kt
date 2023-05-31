@@ -4,7 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import opensavvy.decouple.core.atom.actionable.Button
 import opensavvy.decouple.core.atom.text.Text
-import opensavvy.decouple.core.layout.Row
+import opensavvy.decouple.core.layout.Box
+import opensavvy.decouple.core.layout.Grid
 import opensavvy.decouple.core.layout.Screen
 
 @Composable
@@ -15,21 +16,19 @@ fun Calculator() = Screen("Calculator") {
 		listOf("1", "2", "3", "+"),
 		listOf("4", "5", "6", "-"),
 		listOf("7", "8", "9", "*"),
-		listOf("0", "AC", "=", "%"),
+		listOf("AC", "0", "=", "%"),
 	)
 
 	Text("Calculator")
 
 	Text(calc.getResult())
 
-	for (row in matrix) {
-		Row {
-			for (text in row) {
-				Button(onClick = {
-					calc.onClick(text)
-				}) {
-					Text(text)
-				}
+	Box {
+		Grid(matrix) {
+			Button(onClick = {
+				calc.onClick(it)
+			}) {
+				Text(it)
 			}
 		}
 	}
