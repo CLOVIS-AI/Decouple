@@ -89,7 +89,25 @@ object MTLinearLayouts : LinearLayouts {
 		}
 	}
 
+	@Composable
+	override fun GridSpec(
+		horizontal: IntRange,
+		vertical: IntRange,
+		content: @Composable LinearLayouts.GridScope.(Int, Int) -> Unit,
+	) {
+		Div {
+			for (y in vertical) {
+				RowSpec(Arrangement.SpaceBetween, Alignment.Center) {
+					for (x in horizontal) {
+						content(GridScope, x, y)
+					}
+				}
+			}
+		}
+	}
+
 	private object ColumnScope : LinearLayouts.ColumnScope
 	private object RowScope : LinearLayouts.RowScope
 	private object BoxScope : LinearLayouts.BoxScope
+	private object GridScope : LinearLayouts.GridScope
 }
