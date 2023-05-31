@@ -57,6 +57,16 @@ class Box(node: Node) : Component {
 	}
 }
 
+class Grid(node: Node) : Component {
+	val content by node.content
+
+	companion object : Component.Meta<Grid> {
+		override val name = "LinearLayouts.Grid"
+
+		override fun buildFrom(node: Node) = Grid(node)
+	}
+}
+
 object TLinearLayouts : LinearLayouts {
 	@Composable
 	override fun ColumnSpec(
@@ -104,7 +114,23 @@ object TLinearLayouts : LinearLayouts {
 		}
 	}
 
+	@Composable
+	override fun GridSpec(
+		horizontal: IntRange,
+		vertical: IntRange,
+		content: @Composable LinearLayouts.GridScope.(Int, Int) -> Unit,
+	) {
+		Grid.compose {
+			for (x in horizontal) {
+				for (y in vertical) {
+					content(TGridScope, x, y)
+				}
+			}
+		}
+	}
+
 	object TColumnScope : LinearLayouts.ColumnScope
 	object TRowScope : LinearLayouts.RowScope
 	object TBoxScope : LinearLayouts.BoxScope
+	object TGridScope : LinearLayouts.GridScope
 }
