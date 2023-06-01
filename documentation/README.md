@@ -14,6 +14,7 @@ The documentation is split in four categories:
 Project origin and identity:
 
 - [Comparison with other Compose-based projects](explanations/compose-ecosystem.md)
+- [High-level goals](explanations/goals.md)
 
 Project organization:
 
