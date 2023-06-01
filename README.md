@@ -28,10 +28,10 @@ To discuss the project with us, you can join the `#decouple` channel in the [off
 
 The documentation is split into four sections, following the [Grand Unified Theory of Documentation](https://documentation.divio.com/):
 
-- [Tutorials](https://opensavvy.gitlab.io/decouple/documentation/tutorials/index.html) demonstrate the usage of the library, skipping the setup steps,
-- [Explanations](https://opensavvy.gitlab.io/decouple/documentation/explanations/index.html) present the underlying guidelines and our goals in high-level goals, as well as explain technical decisions,
-- [How-to guides](https://opensavvy.gitlab.io/decouple/documentation/howto/index.html) are small commented examples of how to solve specific problems (including project setup),
-- [The reference](https://opensavvy.gitlab.io/decouple/documentation/index.html) is a low-level precise explanation of the API elements and how to use them.
+- [Tutorials](documentation/README.md#tutorials) demonstrate the usage of the library, skipping the setup steps,
+- [Explanations](documentation/README.md#explanations) present the underlying guidelines and our high-level goals, as well as explain technical decisions,
+- [How-to guides](documentation/README.md#how-to-guides) are small commented examples of how to solve specific problems (including project setup),
+- [The reference](documentation/README.md#the-reference) is a low-level precise explanation of the API elements and how to use them.
 
 ## Licensing
 
