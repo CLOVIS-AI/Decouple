@@ -29,8 +29,6 @@ include(
 
 	"extra:navigation",
 	"extra:persistence",
-
-	"documentation",
 )
 
 buildCache {
