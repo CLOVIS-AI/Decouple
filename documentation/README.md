@@ -11,6 +11,10 @@ The documentation is split in four categories:
 
 ## Explanations
 
+Project origin and identity:
+
+- [Comparison with other Compose-based projects](explanations/compose-ecosystem.md)
+
 Project organization:
 
 - [How are tasks organized?](../CONTRIBUTING.md#issue-tracking)

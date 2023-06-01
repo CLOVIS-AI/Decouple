@@ -12,30 +12,6 @@ In 2022, a rewrite of Formulaide was started to fix shortcomings of the first ve
 
 Decouple would be based from its inception on [context receivers](https://github.com/Kotlin/KEEP/blob/master/proposals/context-receivers.md), the spiritual successor to the much-loved [KEEP-87](https://github.com/Kotlin/KEEP/pull/87), which embraced Kotlin's nature to write typesafe DSLs to bring it to its next stage. Decouple would be able to abstract over the API differences of any Compose component library, allowing them to cohabit in a single project. It would be possible to write an application once and run it with entirely different UI libraries, making it possible to always be native no matter the platform or design style requested by a client. A friend would help me implement Material Design 3 from scratch for Kotlin/JS to provide an out-of-the-box implementation of the API.
 
-## How does Decouple fit with other Compose-based UI projects?
-
-The various Compose projects are [famously badly named](https://jakewharton.com/a-jetpack-compose-by-any-other-name/), making it hard to discuss them. In this section, we attempt to create an overview of the various efforts going around in the Compose ecosystem.
-
-> We are not affiliated with these projects. Our description of them and their goals is based on what we understood from their development, and not necessarily from official announcements on their part. If anything here is wrong or incomplete, please [report it](https://gitlab.com/opensavvy/decouple/-/issues/new) to us.
-
-The original Compose project can be split into two parts, which are officially named the same, so we will invent a new name for them.
-
-**Compose** (officially unnamed, created by Google), consisting of a compiler plugin and a runtime, is a multiplatform library to manage mutable trees. All projects mentioned in this section are based on it. By itself, Compose does not print anything to the screen, and can be used for non-UI related projects (for example, [Molecule](https://github.com/cashapp/molecule)). Compose brings powerful abstractions over state management (`remember`, `State`) which fit very well with the modern expectations of a Kotlin developer.
-
-[**Jetpack Compose**](https://developer.android.com/jetpack/compose) (created by Google) is a collection of libraries that implement various components for the Android platform. Jetpack Compose is the recommended way to build UIs on Android, and will slowly replace the traditional Views framework thanks to its easier usage and performance improvements. Jetpack Compose is based on the [Skia](https://skia.org/) rendering engine, which powers Android and the Chrome browser.
-
-[**JetBrains Compose**](https://www.jetbrains.com/lp/compose-mpp/) (officially named Compose Multiplatform Framework, created by JetBrains) uses [Skiko](https://github.com/JetBrains/skiko), JetBrains' Kotlin bindings for Skia, to port components from Jetpack Compose to other platforms supported by Kotlin. This approach leads to pixel-perfect similarities between platforms, an almost identical API on all platforms, and makes development much faster by avoiding to redesign an entirely new component library. However, it means the created UI will never be truly "native" on platforms where Skia is not native, so apps risk to "feel like an Android app" everywhere. This is especially visible on iOS and on Linux desktops. On the web, JetBrains Compose uses the canvas to draw its components, which may or may not be satisfying to all needs. For desktop targets, JetBrains also provides tooling to easily create installers for JVM-based apps, which may be used beyond Compose-based apps.
-
-[**Compose DOM**](https://www.jetbrains.com/lp/compose-mpp/) (officially named Compose for Web, part of the Compose Multiplatform Framework, created by JetBrains) is a small wrapper around the DOM components of the web platform for Kotlin/JS. It is essentially a direct equivalent to React DOM. Although it is in name part of the Compose Multiplatform Framework, it doesn't share component definitions with the other modules, meaning it is not possible to share UI code between them. However, it is much more natural to use for web developers.
-
-[**Redwood**](https://github.com/cashapp/redwood) (created by CashApp) helps create wrappers around traditional imperative UI libraries to use them with the Compose syntax (for example, Android Views or iOS SwiftUI).
-
-[**Mosaic**](https://github.com/JakeWharton/mosaic) (created by Jake Wharton) is a set of Compose components to create CLI applications.
-
-[**Kobweb**](https://github.com/varabyte/kobweb) (created by David Herman) adds features expected of modern web frameworks to Compose DOM, such as routing, Markdown support and more. It is built to be similar to Jetpack Compose when possible, diverging where the concepts do not fit with the web platform. Kobweb also provides a CLI app to easily bootstrap projects, which is useful for any web-based Kotlin project.
-
-[**Decouple**](https://gitlab.com/opensavvy/decouple) (created by Ivan Canet) recognizes all these alternatives, which all dramatically improve the experience of working with a particular platform but are all incompatible with each other, and aims to create a single unified component API surface that can be implemented on top of any Compose-based library for any platform, with an emphasis of the ability of opt-out of certain features to ensure it is always possible to drop-down below the surface and implement platform-specific components yourself, in the spirit of Kotlin Multiplatform itself.
-
 ## What are the high level goals of Decouple?
 
 At its core, Decouple uses [context receivers](https://github.com/Kotlin/KEEP/blob/master/proposals/context-receivers.md) to allow Composable functions to declare compile-time dependencies on other composables they expect to be available. These dependencies are satisfied using [interface delegation](https://kotlinlang.org/docs/delegation.html), allowing applications to easily substitute some components by an alternative version without having to rewrite all components.
