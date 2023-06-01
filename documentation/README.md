@@ -9,6 +9,8 @@ The documentation is split in four categories:
 
 ## Tutorials
 
+- [Introduction to Compose with Decouple](tutorials/1-discover.md)
+
 ## Explanations
 
 Project origin and identity:
@@ -22,6 +24,8 @@ Project organization:
 - [How can I contribute?](https://gitlab.com/opensavvy/wiki/-/blob/main/README.md)
 
 ## How-to guides
+
+In the future, this section will have guides to set a new project with Decouple.
 
 ## The reference
 
