@@ -36,4 +36,24 @@ fun Home() = Screen(
 		Anyone can add support for any platform supported by the Kotlin compiler, as well as any design system.
 		We welcome contributions!
 	""".trimIndent())
+
+	// Are you reading this because you are currently going through our tutorials?
+	// If so, uncomment the following line:
+
+	// Counter()
 }
+
+// Also uncomment this:
+
+// @Composable
+// fun Counter() = Row {
+// 	Button(onClick = { println("Clicked on -") }) {
+// 		Text("-")
+// 	}
+//
+// 	Text("0")
+//
+// 	Button(onClick = { println("Clicked on +") }) {
+// 		Text("+")
+// 	}
+// }

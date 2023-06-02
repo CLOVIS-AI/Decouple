@@ -65,5 +65,11 @@ Interoperability with other projects:
 
 ## Helping with development
 
+Before starting to work on any major feature, component addition or platform addition, please create an issue to ensure we are on the same page on how it should be done. Platform additions in particular, require that we are able to maintain the platform long-term, by compiling it in CI, etc. Otherwise, it risks being dropped in the future if we find no one to maintain it.
+
+We are also grateful for blog articles mentioning the project, but please mention to your users that Decouple is not ready for production use.
+
+> If we forget to remove this disclaimer when Decouple eventually goes stable, please [report it to us](https://gitlab.com/opensavvy/decouple/-/issues/new).
+
 The details about our workflow, our code style and our commit style
 are [available in our wiki](https://gitlab.com/opensavvy/wiki/-/blob/main/README.md).

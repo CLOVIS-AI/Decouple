@@ -1,15 +1,15 @@
 # OpenSavvy Decouple
 
-> _Decouple_ your design system from your view layer
+> _Decouple_ your design system from your application
 
-We frequently consider the entire user interface as a single layer, often called 'UI' or 'View'—in reality, however, it is composed of two very distinct layers:
+We frequently consider the entire user interface as a single layer, often called 'UI' or 'View'—however, it is composed of two very distinct layers:
 
 - the **design system** is the visual identity of the project,
 - the **domain UI** builds upon the design system to implement the functional requirements of the app.
 
 These two layers have different responsibilities and rate of change throughout the application's lifetime, and should therefore be split for better modularity.
 
-- The design system is primarily driven by the designers, whereas the domain UI is driven by the functional team, who request changes at different rates,
+- The design system is primarily driven by the designers, whereas the domain UI is driven by the domain team, who request changes at different rates,
 - The design system may be reused between multiple projects,
 - The same project may need to be adapted to multiple clients' design systems,
 - The same project on multiple platforms may have very different design systems.
@@ -18,8 +18,7 @@ These two layers have different responsibilities and rate of change throughout t
 It makes possible the creation of design-agnostic applications that can be easily deployed on each platform for which a Decouple implementation exists.
 Implementations can be easily created for any platform where Kotlin runs, and mixed to allow developers to build an application in parallel of the final design system.
 
-Learn more about the reasons we created this project and how it fits with other Compose-based projects [here](FAQ.md).
-To discuss the project with us, you can join the `#decouple` channel in the [official Kotlin Slack](https://kotl.in/slack).
+To discuss the project with us, join the `#decouple` channel in the [official Kotlin Slack](https://kotl.in/slack).
 
 ## Documentation
 
@@ -28,10 +27,10 @@ To discuss the project with us, you can join the `#decouple` channel in the [off
 
 The documentation is split into four sections, following the [Grand Unified Theory of Documentation](https://documentation.divio.com/):
 
-- [Tutorials](https://opensavvy.gitlab.io/decouple/documentation/tutorials/index.html) demonstrate the usage of the library, skipping the setup steps,
-- [Explanations](https://opensavvy.gitlab.io/decouple/documentation/explanations/index.html) present the underlying guidelines and our goals in high-level goals, as well as explain technical decisions,
-- [How-to guides](https://opensavvy.gitlab.io/decouple/documentation/howto/index.html) are small commented examples of how to solve specific problems (including project setup),
-- [The reference](https://opensavvy.gitlab.io/decouple/documentation/index.html) is a low-level precise explanation of the API elements and how to use them.
+- [Tutorials](documentation/README.md#tutorials) demonstrate the usage of the library, skipping the setup steps,
+- [Explanations](documentation/README.md#explanations) present the underlying guidelines and our high-level goals, as well as explain technical decisions,
+- [How-to guides](documentation/README.md#how-to-guides) are small commented examples of how to solve specific problems (including project setup),
+- [The reference](documentation/README.md#the-reference) is a low-level precise explanation of the API elements and how to use them.
 
 ## Licensing
 
