@@ -1,24 +1,35 @@
 # Module core
 
-This module contains the various interfaces of the OpenSavvy UI with no implementation.
+Component behavior specification.
 
-A UI implementation is represented by implementing [the UI interface][opensavvy.ui.core.UI].
-Individual components are grouped by kind (buttons, inputs…) into their own interface.
+This module specifies which components are included as part of the Decouple project.
+Components are declared as interface methods. Top-level functions are provided to call them easily.
 
-# Package opensavvy.ui.core
+At the root of the Compose call hierarchy, a style instance should be installed.
 
-The core interface.
+# Package opensavvy.decouple.core
 
-# Package opensavvy.ui.core.basic
+Overall utilities and entry points for the Decouple component collection.
 
-Basic components (buttons, inputs…).
+# Package opensavvy.decouple.core.atom
 
-# Package opensavvy.ui.core.layout
+Small components used to build more complex ones.
 
-# Package opensavvy.ui.core.theme
+# Package opensavvy.decouple.core.layout
+
+Components related to layout management.
+
+# Package opensavvy.decouple.core.navigation
+
+Components related to navigation.
+
+This package is not a navigation framework, it just stores a standard way to represent destinations so UI components can list them.
+If you're searching for a complete navigation framework, we recommend looking at our `extra-navigation` module.
+
+# Package opensavvy.decouple.core.theme
 
 Visual customization of a UI implementation (light/dark color scheme, typography…).
 
-# Package opensavvy.ui.core.progression
+# Package opensavvy.decouple.core.progression
 
 Management of asynchronous operations.
