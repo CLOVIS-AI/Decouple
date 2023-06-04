@@ -76,6 +76,49 @@ Display text on screen.
 
 Components related to layout management.
 
+## Linear layouts
+
+> [Specification](opensavvy.decouple.core.layout.LinearLayouts)
+
+Linear layouts align their contents on one axis.
+
+|                                                 |                                     |
+|-------------------------------------------------|-------------------------------------|
+| [Row](opensavvy.decouple.core.layout.Row)       | Place elements horizontally         |
+| [Column](opensavvy.decouple.core.layout.Column) | Place elements vertically           |
+| [Box](opensavvy.decouple.core.layout.Box)       | Place elements on top of each other |
+
+## Lazy layouts
+
+> [Specification](opensavvy.decouple.core.layout.LazyLayouts)
+
+Lazy layouts are versions of lazy layouts that allow displaying large (including infinite) amounts of data efficiently.
+
+|                                                         |                             |
+|---------------------------------------------------------|-----------------------------|
+| [LazyRow](opensavvy.decouple.core.layout.LazyRow)       | Place elements horizontally |
+| [LazyColumn](opensavvy.decouple.core.layout.LazyColumn) | Place elements vertically   |
+
+## Screen layouts
+
+> [Specification](opensavvy.decouple.core.layout.FullscreenLayouts)
+
+Responsive layouts for an entire screen or page.
+
+|                                                                     |                                                     |
+|---------------------------------------------------------------------|-----------------------------------------------------|
+| [Screen](opensavvy.decouple.core.layout.Screen)                     | Title and subtitle                                  |
+| [ListDetailScreen](opensavvy.decouple.core.layout.ListDetailScreen) | List of elements which have details                 |
+| [SupportedScreen](opensavvy.decouple.core.layout.SupportedScreen)   | Screen with a side panel for additional information |
+
+## Navigation
+
+> [Specification](opensavvy.decouple.core.layout.Navigation)
+
+|                                                                     |                     |
+|---------------------------------------------------------------------|---------------------|
+| [GlobalNavigation](opensavvy.decouple.core.layout.GlobalNavigation) | App-wide navigation |
+
 # Package opensavvy.decouple.core.navigation
 
 Components related to navigation.
