@@ -20,7 +20,7 @@ tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
 			"https://kotlinlang.org/api/kotlinx.coroutines/",
 			"https://kotlinlang.org/api/kotlinx.serialization/",
 			"https://opensavvy.gitlab.io/pedestal/documentation/",
-			"https://arrow-kt.io/docs/apidocs/",
+			"https://apidocs.arrow-kt.io",
 		)
 
 		//endregion
