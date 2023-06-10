@@ -39,6 +39,7 @@ fun Demo(implementations: List<UI>, navigator: Navigation) {
 			page(Screen.Chips)
 			page(Screen.TextFields)
 			page(Screen.Progression)
+			page(Screen.LazyLayouts)
 		}
 		menu("Demos") {
 			page("Overview", Screen.Demos)
