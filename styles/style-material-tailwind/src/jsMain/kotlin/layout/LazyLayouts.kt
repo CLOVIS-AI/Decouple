@@ -17,9 +17,6 @@ object MTLazyLayouts : LazyLayouts {
 		alignment: Alignment,
 		content: LazyLayouts.LazyColumnScope.() -> Unit,
 	) {
-		// Likely unique (64 bits) identifier for this column
-		val columnId = remember { "lazy-column-" + Random.nextUInt() }
-
 		val elements: List<() -> List<LazyItem>> = remember(content) {
 			val elements = ArrayList<() -> List<LazyItem>>()
 
@@ -52,35 +49,6 @@ object MTLazyLayouts : LazyLayouts {
 
 		val items = remember(content) { mutableStateListOf<LazyItem>() }
 
-		DisposableEffect(content, columnId, nextIndex) {
-			val column = document.getElementById(columnId) ?: run {
-				console.warn("Decouple: could not find the div with identifier $columnId, the lazy elements are broken.")
-				return@DisposableEffect onDispose { /* Nothing to do */ }
-			}
-
-			val observer = IntersectionObserver(
-				callback = { a, b ->
-					if (a.none { it.isIntersecting })
-					// The callback is executed once when the page loads, but we don't care about it
-						return@IntersectionObserver
-
-					if (nextIndex <= elements.lastIndex) {
-						// There are still elements that need to be loaded
-						Snapshot.withMutableSnapshot {
-							items += elements[nextIndex]()
-							nextIndex++
-						}
-					}
-				},
-			)
-
-			observer.observe(column)
-
-			onDispose {
-				observer.disconnect()
-			}
-		}
-
 		Column(vertical, alignment) {
 			for (item in items) {
 				key(item.key) {
@@ -88,10 +56,18 @@ object MTLazyLayouts : LazyLayouts {
 				}
 			}
 
-			// Marker for the end of the list
-			Div({
-				id(columnId)
-			})
+			key(content, nextIndex) {
+				VisibilityDetector(
+					onVisible = {
+						if (nextIndex <= elements.lastIndex) {
+							Snapshot.withMutableSnapshot {
+								items += elements[nextIndex]()
+								nextIndex++
+							}
+						}
+					}
+				)
+			}
 		}
 	}
 
@@ -111,3 +87,33 @@ private class LazyItem(
 	val key: Any?,
 	val block: @Composable () -> Unit,
 )
+
+@Composable
+private fun VisibilityDetector(onVisible: () -> Unit) {
+	val id = remember { "visibility-observer-" + Random.nextUInt() }
+
+	DisposableEffect(onVisible) {
+		val div = document.getElementById(id) ?: run {
+			console.warn("Decouple: could not find the div with identifier $id, the lazy elements are broken")
+			return@DisposableEffect onDispose { /* Nothing to do */ }
+		}
+
+		val observer = IntersectionObserver(
+			callback = { entries, _ ->
+				if (entries.any { it.isIntersecting }) {
+					onVisible()
+				}
+			}
+		)
+
+		observer.observe(div)
+
+		onDispose {
+			observer.disconnect()
+		}
+	}
+
+	Div({
+		id(id)
+	})
+}
