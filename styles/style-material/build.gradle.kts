@@ -32,25 +32,25 @@ kotlin {
 		val commonMain by getting {
 			dependencies {
 				api(projects.core)
-				api(projects.style.materialCommon)
+				api(projects.styles.styleMaterialCommon)
 			}
 		}
 
 		val jsMain by getting {
 			dependencies {
-				implementation(projects.style.materialTailwind)
+				implementation(projects.styles.styleMaterialTailwind)
 			}
 		}
 
 		val androidMain by getting {
 			dependencies {
-				implementation(projects.style.materialAndroidx)
+				implementation(projects.styles.styleMaterialAndroidx)
 			}
 		}
 
 		val jvmMain by getting {
 			dependencies {
-				implementation(projects.style.materialAndroidx)
+				implementation(projects.styles.styleMaterialAndroidx)
 			}
 		}
 	}

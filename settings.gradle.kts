@@ -20,12 +20,12 @@ include(
 	"demos:demo-android",
 	"demos:demo-desktop",
 
-	"style:material",
-	"style:material-common",
-	"style:material-tailwind",
-	"style:material-androidx",
+	"styles:style-material",
+	"styles:style-material-common",
+	"styles:style-material-tailwind",
+	"styles:style-material-androidx",
 
-	"style:headless",
+	"styles:style-headless",
 
 	"extras:extra-navigation",
 	"extras:extra-persistence",

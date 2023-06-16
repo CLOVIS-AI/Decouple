@@ -18,7 +18,7 @@ kotlin {
 		val commonMain by getting {
 			dependencies {
 				api(projects.core)
-				api(projects.style.materialCommon)
+				api(projects.styles.styleMaterialCommon)
 
 				@OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
 				implementation(compose.material3)
