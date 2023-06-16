@@ -85,7 +85,7 @@ jvm:test:
     - >
       ./gradlew
       jvmTest
-      demo:desktop:test
+      demos:demo-desktop:test
       -PappVersion=$project_version
 
   interruptible: true
@@ -113,7 +113,7 @@ android:test:
   script:
     - >
       ./gradlew
-      demo:android:test
+      demos:demo-android:test
       -PappVersion=$project_version
 
   artifacts:
@@ -143,8 +143,8 @@ demo:web:build:
   stage: build
 
   script:
-    - ./gradlew demo:web:production -PappVersion=$project_version
-    - mv build/js/packages/Decouple-web/kotlin/dist dist-web
+    - ./gradlew demos:demo-web:production -PappVersion=$project_version
+    - mv build/js/packages/Decouple-demo-web/kotlin/dist dist-web
 
   artifacts:
     paths:
@@ -162,8 +162,8 @@ demo:android:build:
   stage: build
 
   script:
-    - ./gradlew demo:android:assembleDebug -PappVersion=$project_version
-    - mv demo/android/build/outputs/apk/debug/android-debug.apk demo-debug.apk
+    - ./gradlew demos:demo-android:assembleDebug -PappVersion=$project_version
+    - mv demos/demo-android/build/outputs/apk/debug/demo-android-debug.apk demo-debug.apk
 
   artifacts:
     paths:
@@ -200,9 +200,9 @@ publish:
     - >
       ./gradlew
       core:publishAllPublicationsToGitLabRepository
-      style:material:publishAllPublicationsToGitLabRepository
-      style:material-common:publishAllPublicationsToGitLabRepository
-      style:material-tailwind:publishToGitLabRepository
+      styles:style-material:publishAllPublicationsToGitLabRepository
+      styles:style-material-common:publishAllPublicationsToGitLabRepository
+      styles:style-material-tailwind:publishToGitLabRepository
       -PappVersion=$project_version
 
   rules:
