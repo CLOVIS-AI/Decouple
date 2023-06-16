@@ -7,6 +7,7 @@ import androidx.compose.runtime.setValue
 import kotlinx.browser.window
 import opensavvy.logger.Logger.Companion.warn
 import opensavvy.logger.loggerFor
+import org.w3c.dom.Window
 
 private class SessionStorageState<T>(
 	id: String,
@@ -42,5 +43,18 @@ private class SessionStorageState<T>(
 
 }
 
+/**
+ * Stores a value across page reloads.
+ *
+ * For general information, please read the documentation in the common code.
+ *
+ * #### Implementation note
+ *
+ * > This relates to the current implementation.
+ * > We do not consider these details as part of the API, so we may change them without notice.
+ *
+ * Persisted values are stored in [Window.localStorage].
+ * They are serialized/deserialized with [JSON], [which is not appropriate for complex classes](https://stackoverflow.com/a/50934453), but is fine for simple types (primitives, arrays, strings).
+ */
 actual fun <T> persistentStateOf(id: String, initialValue: () -> T): MutableState<T> =
 	SessionStorageState(id, initialValue)
