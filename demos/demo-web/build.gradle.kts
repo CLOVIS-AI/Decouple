@@ -13,7 +13,7 @@ kotlin {
 }
 
 dependencies {
-	implementation(projects.demos)
+	implementation(projects.demos.demoShared)
 	implementation(projects.style.material)
 
 	implementation(devNpm("vite", libs.versions.npm.vite.asProvider().get()))

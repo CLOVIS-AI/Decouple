@@ -15,10 +15,10 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(
 	"core",
 
-	"demos",
-	"demos:web",
-	"demos:android",
-	"demos:desktop",
+	"demos:demo-shared",
+	"demos:demo-web",
+	"demos:demo-android",
+	"demos:demo-desktop",
 
 	"style:material",
 	"style:material-common",
