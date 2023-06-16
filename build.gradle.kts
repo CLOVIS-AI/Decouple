@@ -2,7 +2,6 @@ plugins {
 	alias(libs.plugins.kotlin)
 	alias(libs.plugins.kotlinMpp) apply false
 	alias(libs.plugins.kotlinJvm) apply false
-	alias(libs.plugins.kotlinJs) apply false
 	alias(libs.plugins.kotlinAndroid) apply false
 
 	alias(libs.plugins.androidApplication) apply false

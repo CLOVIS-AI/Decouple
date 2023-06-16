@@ -27,7 +27,6 @@ npm-roboto = "4.5.8"
 
 [plugins]
 kotlin = { id = "opensavvy.kotlin", version = "unspecified" }
-kotlinJs = { id = "org.jetbrains.kotlin.js", version.ref = "kotlin" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinMpp = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
