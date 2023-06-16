@@ -27,8 +27,8 @@ kotlin {
 		val commonMain by getting {
 			dependencies {
 				api(projects.core)
-				api(projects.extra.navigation)
-				implementation(projects.extra.persistence)
+				api(projects.extras.extraNavigation)
+				implementation(projects.extras.extraPersistence)
 			}
 		}
 

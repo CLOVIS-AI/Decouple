@@ -27,8 +27,8 @@ include(
 
 	"style:headless",
 
-	"extra:navigation",
-	"extra:persistence",
+	"extras:extra-navigation",
+	"extras:extra-persistence",
 )
 
 buildCache {
