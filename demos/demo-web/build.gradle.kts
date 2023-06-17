@@ -1,6 +1,6 @@
 plugins {
 	alias(libs.plugins.kotlin)
-	alias(libs.plugins.kotlinJs)
+	alias(libs.plugins.kotlinMpp)
 
 	alias(libs.plugins.compose)
 }
@@ -10,18 +10,22 @@ kotlin {
 		browser()
 		binaries.executable()
 	}
-}
 
-dependencies {
-	implementation(projects.demos.demoShared)
-	implementation(projects.styles.styleMaterial)
+	sourceSets {
+		val jsMain by getting {
+			dependencies {
+				implementation(projects.demos.demoShared)
+				implementation(projects.styles.styleMaterial)
 
-	implementation(devNpm("vite", libs.versions.npm.vite.asProvider().get()))
-	implementation(devNpm("postcss", libs.versions.npm.postcss.get()))
-	implementation(devNpm("postcss-loader", libs.versions.npm.postcssLoader.get()))
-	implementation(devNpm("autoprefixer", libs.versions.npm.autoprefixer.get()))
-	implementation(devNpm("@originjs/vite-plugin-commonjs", libs.versions.npm.vite.commonJs.get()))
-	implementation(devNpm("@rollup/plugin-commonjs", libs.versions.npm.rollup.commonJs.get()))
+				implementation(devNpm("vite", libs.versions.npm.vite.asProvider().get()))
+				implementation(devNpm("postcss", libs.versions.npm.postcss.get()))
+				implementation(devNpm("postcss-loader", libs.versions.npm.postcssLoader.get()))
+				implementation(devNpm("autoprefixer", libs.versions.npm.autoprefixer.get()))
+				implementation(devNpm("@originjs/vite-plugin-commonjs", libs.versions.npm.vite.commonJs.get()))
+				implementation(devNpm("@rollup/plugin-commonjs", libs.versions.npm.rollup.commonJs.get()))
+			}
+		}
+	}
 }
 
 //region Vite
@@ -32,13 +36,13 @@ val jsProjectDir = "$jsWorkspace/packages/${rootProject.name}-${project.name}"
 val kotlinNodeJsSetup by rootProject.tasks.getting(org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsSetupTask::class)
 val kotlinNpmInstall by rootProject.tasks.getting(org.jetbrains.kotlin.gradle.targets.js.npm.tasks.KotlinNpmInstallTask::class)
 
-val productionExecutableCompileSync by tasks.getting(Task::class)
+val jsProductionExecutableCompileSync by tasks.getting(Task::class)
 
 val copyMaterialResources by tasks.registering(Copy::class) {
 	description = "Copies Material resources to the build directory"
 	group = "vite"
 
-	from(project(":styles:style-material-tailwind").projectDir / "src" / "main" / "resources")
+	from(project(":styles:style-material-tailwind").projectDir / "src" / "jsMain" / "resources")
 	into(jsProjectDir)
 
 	dependsOn(kotlinNpmInstall)
@@ -91,7 +95,7 @@ val vite by tasks.registering(Exec::class) {
 	)
 }
 
-val developmentExecutableCompileSync: Task by tasks.getting {
+val jsDevelopmentExecutableCompileSync: Task by tasks.getting {
 	dependsOn(
 		configureTailwind,
 		configureVite,
@@ -118,7 +122,7 @@ val production by tasks.registering(Exec::class) {
 		configureVite,
 		configurePostcss,
 		copyMaterialResources,
-		productionExecutableCompileSync
+		jsProductionExecutableCompileSync
 	)
 }
 

@@ -199,10 +199,9 @@ publish:
   script:
     - >
       ./gradlew
-      core:publishAllPublicationsToGitLabRepository
-      styles:style-material:publishAllPublicationsToGitLabRepository
-      styles:style-material-common:publishAllPublicationsToGitLabRepository
-      styles:style-material-tailwind:publishToGitLabRepository
+      publishKotlinMultiplatformPublicationToGitLabRepository
+      publishJvmPublicationToGitLabRepository
+      publishJsPublicationToGitLabRepository
       -PappVersion=$project_version
 
   rules:
