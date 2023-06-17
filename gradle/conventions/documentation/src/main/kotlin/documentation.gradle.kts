@@ -43,10 +43,14 @@ tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
 		val sourceSetName = name
 			.takeUnless { it == "common" || it == "commonMain" }
 
-		val readme =
-			File(project.projectDir, listOfNotNull("README", sourceSetName, "md").joinToString(separator = "."))
+		val readme = sequenceOf(
+			listOfNotNull("README", sourceSetName, "md"),
+			listOf("README", "md"),
+		).map { it.joinToString(".") }
+			.map { File(project.projectDir, it) }
+			.firstOrNull { it.exists() }
 
-		if (readme.exists()) {
+		if (readme != null) {
 			includes.from(readme)
 		}
 

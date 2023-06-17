@@ -1,6 +1,10 @@
-# Module headless
+# Module style-headless
 
 Fake UI implementation used to test the behavior and state of an application without actually running the application.
+
+|           |                                                     |
+|-----------|-----------------------------------------------------|
+| Stability | Alpha: expect missing features and breaking changes |
 
 ## Testing the state, not the appearance
 

@@ -16,7 +16,7 @@ kotlin {
 	sourceSets {
 		val commonMain by getting {
 			dependencies {
-				api(projects.core)
+				api(compose.runtime)
 
 				implementation(libs.pedestal.logger)
 			}
