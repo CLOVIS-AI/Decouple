@@ -54,8 +54,8 @@ dependencies {
 	implementation(libs.androidx.compose.toolingPreview)
 	implementation(libs.androidx.compose.material3)
 
-	implementation(projects.demo)
-	implementation(projects.style.material)
+	implementation(projects.demos.demoShared)
+	implementation(projects.styles.styleMaterial)
 
 	testImplementation(libs.kotlin.test.jvm)
 

@@ -15,20 +15,20 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(
 	"core",
 
-	"demo",
-	"demo:web",
-	"demo:android",
-	"demo:desktop",
+	"demos:demo-shared",
+	"demos:demo-web",
+	"demos:demo-android",
+	"demos:demo-desktop",
 
-	"style:material",
-	"style:material-common",
-	"style:material-tailwind",
-	"style:material-androidx",
+	"styles:style-material",
+	"styles:style-material-common",
+	"styles:style-material-tailwind",
+	"styles:style-material-androidx",
 
-	"style:headless",
+	"styles:style-headless",
 
-	"extra:navigation",
-	"extra:persistence",
+	"extras:extra-navigation",
+	"extras:extra-persistence",
 )
 
 buildCache {

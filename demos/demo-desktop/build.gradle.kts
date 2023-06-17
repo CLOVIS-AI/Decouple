@@ -6,8 +6,8 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.demo)
-    implementation(projects.style.material)
+    implementation(projects.demos.demoShared)
+    implementation(projects.styles.styleMaterial)
 
     implementation(compose.runtime)
     implementation(compose.foundation)

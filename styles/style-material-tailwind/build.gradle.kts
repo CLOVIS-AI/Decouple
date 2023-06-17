@@ -18,7 +18,7 @@ kotlin {
 }
 
 dependencies {
-	api(projects.style.materialCommon)
+	api(projects.styles.styleMaterialCommon)
 
 	implementation(compose.web.core)
 	implementation(compose.web.svg)

@@ -27,8 +27,8 @@ kotlin {
 		val commonMain by getting {
 			dependencies {
 				api(projects.core)
-				api(projects.extra.navigation)
-				implementation(projects.extra.persistence)
+				api(projects.extras.extraNavigation)
+				implementation(projects.extras.extraPersistence)
 			}
 		}
 
@@ -37,7 +37,7 @@ kotlin {
 				implementation(libs.kotlin.test)
 				implementation(libs.kotlin.test.annotations)
 
-				implementation(projects.style.headless)
+				implementation(projects.styles.styleHeadless)
 				implementation(libs.kotlinx.coroutines.test)
 			}
 		}

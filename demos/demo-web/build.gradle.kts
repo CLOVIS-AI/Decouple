@@ -13,8 +13,8 @@ kotlin {
 }
 
 dependencies {
-	implementation(projects.demo)
-	implementation(projects.style.material)
+	implementation(projects.demos.demoShared)
+	implementation(projects.styles.styleMaterial)
 
 	implementation(devNpm("vite", libs.versions.npm.vite.asProvider().get()))
 	implementation(devNpm("postcss", libs.versions.npm.postcss.get()))
@@ -38,7 +38,7 @@ val copyMaterialResources by tasks.registering(Copy::class) {
 	description = "Copies Material resources to the build directory"
 	group = "vite"
 
-	from(project(":style:material-tailwind").projectDir / "src" / "main" / "resources")
+	from(project(":styles:style-material-tailwind").projectDir / "src" / "main" / "resources")
 	into(jsProjectDir)
 
 	dependsOn(kotlinNpmInstall)
