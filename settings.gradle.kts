@@ -29,6 +29,7 @@ include(
 
 	"extras:extra-navigation",
 	"extras:extra-persistence",
+	"extras:extra-html-lazy",
 )
 
 buildCache {
