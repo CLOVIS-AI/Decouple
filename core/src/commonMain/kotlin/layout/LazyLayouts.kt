@@ -2,6 +2,7 @@ package opensavvy.decouple.core.layout
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.UI
+import opensavvy.decouple.core.paging.PagingScope
 
 interface LazyLayouts {
 
@@ -20,19 +21,10 @@ interface LazyLayouts {
 	)
 
 	@LayoutScopeMarker
-	interface LazyLayoutScope {
+	interface LazyColumnScope : PagingScope
 
-		fun item(content: @Composable LazyItemScope.() -> Unit)
-
-		fun items(number: Int, content: @Composable LazyItemScope.(Int) -> Unit)
-
-		fun <T> items(values: List<T>, content: @Composable LazyItemScope.(T) -> Unit)
-
-	}
-
-	interface LazyColumnScope : LazyLayoutScope
-
-	interface LazyRowScope : LazyLayoutScope
+	@LayoutScopeMarker
+	interface LazyRowScope : PagingScope
 
 	interface LazyItemScope
 }

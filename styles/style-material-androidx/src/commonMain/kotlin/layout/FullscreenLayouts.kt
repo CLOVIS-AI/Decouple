@@ -1,11 +1,8 @@
 package opensavvy.decouple.material.androidx.layout
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 import opensavvy.decouple.core.layout.FullscreenLayouts
 
@@ -17,7 +14,7 @@ object MAFullscreenLayouts : FullscreenLayouts {
 		subtitle: String?,
 		actions: (@Composable () -> Unit)?,
 		content: @Composable () -> Unit,
-	) = Column(Modifier.verticalScroll(rememberScrollState())) {
+	) = Column {
 		Text(title, fontSize = 30.sp)
 
 		if (subtitle != null)
@@ -33,8 +30,8 @@ object MAFullscreenLayouts : FullscreenLayouts {
 		showDetails: Boolean,
 		actions: (@Composable () -> Unit)?,
 		list: @Composable () -> Unit,
-		content: @Composable () -> Unit
-	) = Column(Modifier.verticalScroll(rememberScrollState())) {
+		content: @Composable () -> Unit,
+	) = Column {
 		Text(title, fontSize = 30.sp)
 
 		if (subtitle != null)
@@ -54,8 +51,8 @@ object MAFullscreenLayouts : FullscreenLayouts {
 		showSupport: Boolean,
 		actions: (@Composable () -> Unit)?,
 		support: @Composable () -> Unit,
-		content: @Composable () -> Unit
-	) = Column(Modifier.verticalScroll(rememberScrollState())) {
+		content: @Composable () -> Unit,
+	) = Column {
 		Text(title, fontSize = 30.sp)
 
 		if (subtitle != null)

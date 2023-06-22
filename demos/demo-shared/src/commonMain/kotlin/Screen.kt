@@ -24,6 +24,7 @@ enum class Screen(
 	Design("design", "Design", parent = Home, { DesignOverview() }),
 	Demos("demos", "Demos", parent = Home, { Demos() }),
 	Calculator("calculator", "Calculator", parent = Demos, { Calculator() }),
+	LazyLayouts("lazy", "Lazy layouts", parent = Components, { LazyLayouts() }),
 	;
 
 	@Composable

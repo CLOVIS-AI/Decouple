@@ -24,6 +24,8 @@ kotlin {
 				implementation(compose.web.core)
 				implementation(compose.web.svg)
 
+				implementation(libs.kotlin.browser)
+
 				implementation(npm("tailwindcss", libs.versions.npm.tailwindcss.get()))
 				implementation(npm("@fontsource/roboto", libs.versions.npm.roboto.get()))
 			}
