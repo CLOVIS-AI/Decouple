@@ -6,26 +6,35 @@ import opensavvy.decouple.core.layout.Arrangement
 import opensavvy.decouple.core.layout.LinearLayouts
 import org.jetbrains.compose.web.dom.Div
 
+private val Arrangement.css: String
+	get() = when (this) {
+		Arrangement.Stretch -> "justify-items-stretch"
+		Arrangement.Start -> "justify-start"
+		Arrangement.Center -> "justify-center"
+		Arrangement.End -> "justify-end"
+		Arrangement.SpaceBetween -> "justify-between"
+		Arrangement.SpaceAround -> "justify-around"
+		Arrangement.SpaceEvenly -> "justify-evenly"
+	}
+
+private val Alignment.css: String
+	get() = when (this) {
+		Alignment.Stretch -> "items-stretch"
+		Alignment.Start -> "items-start"
+		Alignment.Center -> "items-center"
+		Alignment.End -> "items-end"
+	}
+
+internal fun linearClasses(
+	arrangement: Arrangement,
+	alignment: Alignment,
+) = listOf(
+	"gap-2",
+	arrangement.css,
+	alignment.css,
+)
+
 object MTLinearLayouts : LinearLayouts {
-
-	private val Arrangement.css: String
-		get() = when (this) {
-			Arrangement.Stretch -> "justify-items-stretch"
-			Arrangement.Start -> "justify-start"
-			Arrangement.Center -> "justify-center"
-			Arrangement.End -> "justify-end"
-			Arrangement.SpaceBetween -> "justify-between"
-			Arrangement.SpaceAround -> "justify-around"
-			Arrangement.SpaceEvenly -> "justify-evenly"
-		}
-
-	private val Alignment.css: String
-		get() = when (this) {
-			Alignment.Stretch -> "items-stretch"
-			Alignment.Start -> "items-start"
-			Alignment.Center -> "items-center"
-			Alignment.End -> "items-end"
-		}
 
 	@Composable
 	override fun Column(
@@ -38,10 +47,8 @@ object MTLinearLayouts : LinearLayouts {
 				classes(
 					"flex",
 					"flex-col",
-					"gap-y-2",
-					vertical.css,
-					alignment.css
 				)
+				classes(linearClasses(vertical, alignment))
 			}
 		) {
 			content(ColumnScope)
@@ -59,10 +66,8 @@ object MTLinearLayouts : LinearLayouts {
 				classes(
 					"flex",
 					"flex-row",
-					"gap-x-2",
-					horizontal.css,
-					alignment.css,
 				)
+				classes(linearClasses(horizontal, alignment))
 			}
 		) {
 			content(RowScope)
