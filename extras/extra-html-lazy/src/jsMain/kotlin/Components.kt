@@ -9,6 +9,14 @@ import org.jetbrains.compose.web.css.flexDirection
 import org.jetbrains.compose.web.dom.AttrBuilderContext
 import org.w3c.dom.HTMLDivElement
 
+/**
+ * HTML-based lazy column implementation.
+ *
+ * Use this composable to display large amounts of elements on screen.
+ * Items are only loaded as they appear on screen.
+ *
+ * Elements are loaded from top to bottom, in the same order as they are declared in [block].
+ */
 @Composable
 fun LazyColumn(
 	attrs: AttrBuilderContext<HTMLDivElement>? = null,
@@ -26,6 +34,14 @@ fun LazyColumn(
 	}
 }
 
+/**
+ * HTML-based lazy row implementation.
+ *
+ * Use this composable to display large amounts of elements on screen.
+ * Items are only loaded as they appear on screen.
+ *
+ * Elements are loaded from side to side, respecting the user's reading direction, in the same order as they are declared in [block].
+ */
 @Composable
 fun LazyRow(
 	attrs: AttrBuilderContext<HTMLDivElement>? = null,
