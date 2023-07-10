@@ -215,7 +215,7 @@ To finish this example, we'll just clean up our code a bit using [delegated prop
 ```kotlin
 @Composable
 fun Counter() = Row {
-          val counter by remember { mutableStateOf(0) }
+          var counter by remember { mutableStateOf(0) }
 
           Button(onClick = { counter-- }) {
             Text("-")
