@@ -12,7 +12,7 @@ interface Navigation {
 	 * @param currentContents Visual appearance of the [selected] menu item.
 	 */
 	@Composable
-	fun <P> GlobalNavigation(
+	fun <P> GlobalNavigationSpec(
 		menu: NavigationMenu.Menu<P>,
 		selected: NavigationMenu<P>,
 		onSelect: (NavigationMenu.Page<P>) -> Unit,
@@ -28,5 +28,5 @@ fun <P> GlobalNavigation(
 	onSelect: (NavigationMenu.Page<P>) -> Unit,
 	currentContents: @Composable () -> Unit,
 ) {
-	UI.current.GlobalNavigation(menu, selected, onSelect, currentContents)
+	UI.current.GlobalNavigationSpec(menu, selected, onSelect, currentContents)
 }

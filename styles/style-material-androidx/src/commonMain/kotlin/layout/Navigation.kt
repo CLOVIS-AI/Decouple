@@ -19,7 +19,7 @@ object MANavigation : Navigation {
 	//TODO in #88: handle submenus
 
 	@Composable
-	override fun <P> GlobalNavigation(
+	override fun <P> GlobalNavigationSpec(
 		menu: NavigationMenu.Menu<P>,
 		selected: NavigationMenu<P>,
 		onSelect: (NavigationMenu.Page<P>) -> Unit,

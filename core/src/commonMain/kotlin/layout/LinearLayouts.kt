@@ -9,7 +9,7 @@ interface LinearLayouts {
 	 * Places each element in [content] below the previous ones.
 	 */
 	@Composable
-	fun Column(
+	fun ColumnSpec(
 		vertical: Arrangement,
 		alignment: Alignment,
 		content: @Composable ColumnScope.() -> Unit,
@@ -23,7 +23,7 @@ interface LinearLayouts {
 	 * - In RTL layouts, all elements are to the left of the previous ones.
 	 */
 	@Composable
-	fun Row(
+	fun RowSpec(
 		horizontal: Arrangement,
 		alignment: Alignment,
 		content: @Composable RowScope.() -> Unit,
@@ -36,7 +36,7 @@ interface LinearLayouts {
 	 * Instead, [alignment] is used for both the horizontal and vertical axis.
 	 */
 	@Composable
-	fun Box(
+	fun BoxSpec(
 		alignment: Alignment,
 		content: @Composable BoxScope.() -> Unit,
 	)
@@ -54,34 +54,34 @@ interface LinearLayouts {
 /**
  * Places each element in [content] below the previous ones.
  *
- * For more information, see [LinearLayouts.Column].
+ * For more information, see [LinearLayouts.ColumnSpec].
  */
 @Composable
 fun Column(
 	vertical: Arrangement = Arrangement.Start,
 	alignment: Alignment = Alignment.Stretch,
 	content: @Composable LinearLayouts.ColumnScope.() -> Unit,
-) = UI.current.Column(vertical, alignment, content)
+) = UI.current.ColumnSpec(vertical, alignment, content)
 
 /**
  * Places each element in [content] above the previous ones.
  *
- * For more information, see [LinearLayouts.Row].
+ * For more information, see [LinearLayouts.RowSpec].
  */
 @Composable
 fun Row(
 	horizontal: Arrangement = Arrangement.Start,
 	alignment: Alignment = Alignment.Stretch,
 	content: @Composable LinearLayouts.RowScope.() -> Unit,
-) = UI.current.Row(horizontal, alignment, content)
+) = UI.current.RowSpec(horizontal, alignment, content)
 
 /**
  * Places each element in [content] on top of the previous ones.
  *
- * For more information, see [LinearLayouts.Box].
+ * For more information, see [LinearLayouts.BoxSpec].
  */
 @Composable
 fun Box(
 	alignment: Alignment = Alignment.Stretch,
 	content: @Composable LinearLayouts.BoxScope.() -> Unit,
-) = UI.current.Box(alignment, content)
+) = UI.current.BoxSpec(alignment, content)

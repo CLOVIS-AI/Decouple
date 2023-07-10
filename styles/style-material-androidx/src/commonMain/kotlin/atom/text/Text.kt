@@ -7,7 +7,7 @@ import androidx.compose.material3.Text as M3Text
 object MATexts : Texts {
 
 	@Composable
-	override fun Text(text: String) {
+	override fun TextSpec(text: String) {
 		M3Text(text)
 	}
 

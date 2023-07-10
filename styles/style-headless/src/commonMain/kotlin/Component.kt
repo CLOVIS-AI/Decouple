@@ -114,7 +114,7 @@ interface Component {
 		 * Components created as part of the Decouple project (declared as an interface in `core`)
 		 * should be named after their interface and their function name.
 		 *
-		 * For example, the component [PrimaryButton][Buttons.PrimaryButton] declared in the [Buttons] interface should
+		 * For example, the component [PrimaryButton][Buttons.PrimaryButtonSpec] declared in the [Buttons] interface should
 		 * be declared as `"Buttons.PrimaryButton"`.
 		 *
 		 * ### Naming convention for custom components

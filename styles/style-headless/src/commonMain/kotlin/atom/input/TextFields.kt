@@ -157,7 +157,7 @@ class LocalTimeField(node: Node) : TemporalField<LocalTime>, Component {
 object TTextFields : TextFields {
 
 	@Composable
-	override fun FieldLabel(label: String) {
+	override fun FieldLabelSpec(label: String) {
 		FieldLabel.compose(
 			update = {
 				bind(label, FieldLabel::label)
@@ -166,7 +166,7 @@ object TTextFields : TextFields {
 	}
 
 	@Composable
-	override fun TextField(
+	override fun TextFieldSpec(
 		label: String?,
 		value: String?,
 		onChange: (String) -> Unit,
@@ -219,7 +219,7 @@ object TTextFields : TextFields {
 	}
 
 	@Composable
-	override fun InstantField(
+	override fun InstantFieldSpec(
 		label: String?,
 		value: Instant?,
 		onChange: (Instant) -> Unit,
@@ -252,7 +252,7 @@ object TTextFields : TextFields {
 	}
 
 	@Composable
-	override fun LocalDateTimeField(
+	override fun LocalDateTimeFieldSpec(
 		label: String?,
 		value: LocalDateTime?,
 		onChange: (LocalDateTime) -> Unit,
@@ -285,7 +285,7 @@ object TTextFields : TextFields {
 	}
 
 	@Composable
-	override fun LocalDateField(
+	override fun LocalDateFieldSpec(
 		label: String?,
 		value: LocalDate?,
 		onChange: (LocalDate) -> Unit,
@@ -318,7 +318,7 @@ object TTextFields : TextFields {
 	}
 
 	@Composable
-	override fun LocalTimeField(
+	override fun LocalTimeFieldSpec(
 		label: String?,
 		value: LocalTime?,
 		onChange: (LocalTime) -> Unit,

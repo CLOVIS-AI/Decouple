@@ -10,17 +10,17 @@ import opensavvy.decouple.core.UI
 interface TextFields {
 
 	/**
-	 * The label to a text field such as [TextField].
+	 * The label to a text field such as [TextFieldSpec].
 	 *
 	 * When the same input is composed of multiple
 	 */
 	@Composable
-	fun FieldLabel(
+	fun FieldLabelSpec(
 		label: String,
 	)
 
 	@Composable
-	fun TextField(
+	fun TextFieldSpec(
 		label: String?,
 		value: String?,
 		onChange: (String) -> Unit,
@@ -40,7 +40,7 @@ interface TextFields {
 	)
 
 	@Composable
-	fun InstantField(
+	fun InstantFieldSpec(
 		label: String?,
 		value: Instant?,
 		onChange: (Instant) -> Unit,
@@ -53,7 +53,7 @@ interface TextFields {
 	)
 
 	@Composable
-	fun LocalDateTimeField(
+	fun LocalDateTimeFieldSpec(
 		label: String?,
 		value: LocalDateTime?,
 		onChange: (LocalDateTime) -> Unit,
@@ -66,7 +66,7 @@ interface TextFields {
 	)
 
 	@Composable
-	fun LocalDateField(
+	fun LocalDateFieldSpec(
 		label: String?,
 		value: LocalDate?,
 		onChange: (LocalDate) -> Unit,
@@ -79,7 +79,7 @@ interface TextFields {
 	)
 
 	@Composable
-	fun LocalTimeField(
+	fun LocalTimeFieldSpec(
 		label: String?,
 		value: LocalTime?,
 		onChange: (LocalTime) -> Unit,
@@ -96,7 +96,7 @@ interface TextFields {
 fun FieldLabel(
 	label: String,
 ) {
-	UI.current.FieldLabel(label)
+	UI.current.FieldLabelSpec(label)
 }
 
 @Composable
@@ -118,7 +118,7 @@ fun TextField(
 	supportingText: (@Composable () -> Unit)? = null,
 	failureText: (@Composable () -> Unit)? = null,
 ) {
-	UI.current.TextField(
+	UI.current.TextFieldSpec(
 		label = label,
 		value = value,
 		onChange = onChange,
@@ -150,7 +150,7 @@ fun InstantField(
 	supportingText: (@Composable () -> Unit)? = null,
 	failureMessage: (@Composable () -> Unit)? = null,
 ) {
-	UI.current.InstantField(
+	UI.current.InstantFieldSpec(
 		label = label,
 		value = value,
 		onChange = onChange,
@@ -175,7 +175,7 @@ fun LocalDateTimeField(
 	supportingText: (@Composable () -> Unit)? = null,
 	failureMessage: (@Composable () -> Unit)? = null,
 ) {
-	UI.current.LocalDateTimeField(
+	UI.current.LocalDateTimeFieldSpec(
 		label = label,
 		value = value,
 		onChange = onChange,
@@ -200,7 +200,7 @@ fun LocalDateField(
 	supportingText: (@Composable () -> Unit)? = null,
 	failureMessage: (@Composable () -> Unit)? = null,
 ) {
-	UI.current.LocalDateField(
+	UI.current.LocalDateFieldSpec(
 		label = label,
 		value = value,
 		onChange = onChange,
@@ -225,7 +225,7 @@ fun LocalTimeField(
 	supportingText: (@Composable () -> Unit)? = null,
 	failureMessage: (@Composable () -> Unit)? = null,
 ) {
-	UI.current.LocalTimeField(
+	UI.current.LocalTimeFieldSpec(
 		label = label,
 		value = value,
 		onChange = onChange,

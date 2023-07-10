@@ -18,7 +18,7 @@ import org.jetbrains.compose.web.dom.Div
 object MTChips : Chips {
 
 	@Composable
-	override fun AssistChip(
+	override fun AssistChipSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -49,7 +49,7 @@ object MTChips : Chips {
 	}
 
 	@Composable
-	override fun FilterChip(
+	override fun FilterChipSpec(
 		active: Boolean,
 		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
@@ -174,7 +174,7 @@ object MTChips : Chips {
 	}
 
 	@Composable
-	override fun InputChip(
+	override fun InputChipSpec(
 		onRemove: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -213,7 +213,7 @@ object MTChips : Chips {
 	}
 
 	@Composable
-	override fun SuggestionChip(
+	override fun SuggestionChipSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -244,7 +244,7 @@ object MTChips : Chips {
 	}
 
 	@Composable
-	override fun ChipGroup(
+	override fun ChipGroupSpec(
 		multiline: Boolean,
 		chips: @Composable Chips.ChipGroupScope.() -> Unit,
 	) = Div(

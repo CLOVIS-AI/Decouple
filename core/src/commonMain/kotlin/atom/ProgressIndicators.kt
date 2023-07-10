@@ -8,7 +8,7 @@ import opensavvy.progress.done
 interface ProgressIndicators {
 
 	@Composable
-	fun ProgressIndicator(
+	fun ProgressIndicatorSpec(
 		progress: Progress,
 	)
 
@@ -23,5 +23,5 @@ interface ProgressIndicators {
 fun ProgressIndicator(
 	progress: Progress,
 ) {
-	UI.current.ProgressIndicator(progress)
+	UI.current.ProgressIndicatorSpec(progress)
 }
