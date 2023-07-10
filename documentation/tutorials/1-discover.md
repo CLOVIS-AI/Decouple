@@ -114,7 +114,7 @@ We can now introduce two new components: `Button` and `Text`, which should be se
 So-called "reactive" frameworks detect changes to the UI and update it automatically. There are two ways of doing so:
 
 - The Angular family observes various events (button clicks, network requests…) and recalculates all values of an application to search for changes. This is easier to learn for developers, but is hard to optimize when performance is necessary.
-- The React family encapsulates all state changes inside a wrapper object which notifies the framework of modifications to its contained value. This wrapper is often called "state" or "signal". These frameworks encourage immutability by only allowing mutation between frames of rendering.
+- The React family encapsulates all state inside wrapper objects. The wrapper notifies the framework of modifications to its contained value. The wrapper is often called "state" or "signal". These frameworks encourage immutability by only allowing mutation between frames of rendering.
 
 Compose is part of the React family: all value changes must happen within a [State](https://developer.android.com/reference/kotlin/androidx/compose/runtime/State) or [MutableState](https://developer.android.com/reference/kotlin/androidx/compose/runtime/MutableState) instance. At compile-time, Compose tracks which parts of the codebase reads which state objects. At run-time, the state objects communicate changes in their values to Compose, which therefore knows exactly which parts of the UI needs to be updated.
 
