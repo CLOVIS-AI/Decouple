@@ -59,11 +59,11 @@ In this tutorial, we will create a simple counter which displays an integer, wit
 The demo app is used as living documentation of the Decouple project. It is structured as follows:
 
 ```text
-demo/
-  src/          ← Code shared between all platforms
-  android/src/  ← Configuration specific to Android
-  desktop/src/  ← Configuration specific to the Desktop
-  web/src/      ← Configuration specific to the web version
+demos/
+  demo-shared/src/   ← Code shared between all platforms
+  demo-android/src/  ← Configuration specific to Android
+  demo-desktop/src/  ← Configuration specific to the Desktop
+  demo-web/src/      ← Configuration specific to the web version
 ```
 
 In this tutorial, we will only write multiplatform code. For now, we will execute it on the Desktop (because it needs less configuration), but we will execute the other platforms later.
@@ -114,7 +114,7 @@ We can now introduce two new components: `Button` and `Text`, which should be se
 So-called "reactive" frameworks detect changes to the UI and update it automatically. There are two ways of doing so:
 
 - The Angular family observes various events (button clicks, network requests…) and recalculates all values of an application to search for changes. This is easier to learn for developers, but is hard to optimize when performance is necessary.
-- The React family encapsulates all state changes inside a wrapper object which notifies the framework of modifications to its contained value. This wrapper is often called "state" or "signal". These frameworks encourage immutability by only allowing mutation between frames of rendering.
+- The React family encapsulates all state inside wrapper objects. The wrapper notifies the framework of modifications to its contained value. The wrapper is often called "state" or "signal". These frameworks encourage immutability by only allowing mutation between frames of rendering.
 
 Compose is part of the React family: all value changes must happen within a [State](https://developer.android.com/reference/kotlin/androidx/compose/runtime/State) or [MutableState](https://developer.android.com/reference/kotlin/androidx/compose/runtime/MutableState) instance. At compile-time, Compose tracks which parts of the codebase reads which state objects. At run-time, the state objects communicate changes in their values to Compose, which therefore knows exactly which parts of the UI needs to be updated.
 
@@ -215,7 +215,7 @@ To finish this example, we'll just clean up our code a bit using [delegated prop
 ```kotlin
 @Composable
 fun Counter() = Row {
-          val counter by remember { mutableStateOf(0) }
+          var counter by remember { mutableStateOf(0) }
 
           Button(onClick = { counter-- }) {
             Text("-")
