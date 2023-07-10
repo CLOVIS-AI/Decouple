@@ -1,6 +1,6 @@
 # Decouple Documentation
 
-The documentation is split in four categories:
+The documentation is split in four categories, following the [Grand Unified Theory of Documentation](https://documentation.divio.com/):
 
 - **Tutorials** demonstrate the usage of the library, skipping the setup steps,
 - **Explanations** present the underlying guidelines and our high-level goals, as well as explain technical decisions,

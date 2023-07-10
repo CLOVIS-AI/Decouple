@@ -25,7 +25,7 @@ To discuss the project with us, join the `#decouple` channel in the [official Ko
 > The documentation is currently a work-in-progress as the project is still experimental.
 > We will gladly accept reports of missing or out-of-date information, as well as help with redaction.
 
-The documentation is split into four sections, following the [Grand Unified Theory of Documentation](https://documentation.divio.com/):
+The documentation is split into four sections:
 
 - [Tutorials](documentation/README.md#tutorials) demonstrate the usage of the library, skipping the setup steps,
 - [Explanations](documentation/README.md#explanations) present the underlying guidelines and our high-level goals, as well as explain technical decisions,
