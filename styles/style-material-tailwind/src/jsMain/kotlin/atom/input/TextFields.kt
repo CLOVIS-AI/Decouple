@@ -11,14 +11,14 @@ import opensavvy.decouple.core.atom.text.Text
 object MTTextFields : TextFields {
 
 	@Composable
-	override fun FieldLabel(
+	override fun FieldLabelSpec(
 		label: String,
 	) {
 		Text(label)
 	}
 
 	@Composable
-	override fun TextField(
+	override fun TextFieldSpec(
 		label: String?,
 		value: String?,
 		onChange: (String) -> Unit,
@@ -40,7 +40,7 @@ object MTTextFields : TextFields {
 	}
 
 	@Composable
-	override fun InstantField(
+	override fun InstantFieldSpec(
 		label: String?,
 		value: Instant?,
 		onChange: (Instant) -> Unit,
@@ -55,7 +55,7 @@ object MTTextFields : TextFields {
 	}
 
 	@Composable
-	override fun LocalDateTimeField(
+	override fun LocalDateTimeFieldSpec(
 		label: String?,
 		value: LocalDateTime?,
 		onChange: (LocalDateTime) -> Unit,
@@ -70,7 +70,7 @@ object MTTextFields : TextFields {
 	}
 
 	@Composable
-	override fun LocalDateField(
+	override fun LocalDateFieldSpec(
 		label: String?,
 		value: LocalDate?,
 		onChange: (LocalDate) -> Unit,
@@ -85,7 +85,7 @@ object MTTextFields : TextFields {
 	}
 
 	@Composable
-	override fun LocalTimeField(
+	override fun LocalTimeFieldSpec(
 		label: String?,
 		value: LocalTime?,
 		onChange: (LocalTime) -> Unit,

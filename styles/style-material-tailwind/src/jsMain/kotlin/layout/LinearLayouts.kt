@@ -37,7 +37,7 @@ internal fun linearClasses(
 object MTLinearLayouts : LinearLayouts {
 
 	@Composable
-	override fun Column(
+	override fun ColumnSpec(
 		vertical: Arrangement,
 		alignment: Alignment,
 		content: @Composable LinearLayouts.ColumnScope.() -> Unit,
@@ -56,7 +56,7 @@ object MTLinearLayouts : LinearLayouts {
 	}
 
 	@Composable
-	override fun Row(
+	override fun RowSpec(
 		horizontal: Arrangement,
 		alignment: Alignment,
 		content: @Composable LinearLayouts.RowScope.() -> Unit,
@@ -75,7 +75,7 @@ object MTLinearLayouts : LinearLayouts {
 	}
 
 	@Composable
-	override fun Box(alignment: Alignment, content: @Composable LinearLayouts.BoxScope.() -> Unit) {
+	override fun BoxSpec(alignment: Alignment, content: @Composable LinearLayouts.BoxScope.() -> Unit) {
 		Div(
 			{
 				classes(

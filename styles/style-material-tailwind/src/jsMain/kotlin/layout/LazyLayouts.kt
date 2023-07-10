@@ -12,7 +12,7 @@ import opensavvy.decouple.extra.html.lazy.LazyRow as ExtraHtmlLazyRow
 object MTLazyLayouts : LazyLayouts {
 
 	@Composable
-	override fun LazyColumn(
+	override fun LazyColumnSpec(
 		vertical: Arrangement,
 		alignment: Alignment,
 		content: LazyLayouts.LazyColumnScope.() -> Unit,
@@ -25,7 +25,7 @@ object MTLazyLayouts : LazyLayouts {
 	}
 
 	@Composable
-	override fun LazyRow(
+	override fun LazyRowSpec(
 		horizontal: Arrangement,
 		alignment: Alignment,
 		content: LazyLayouts.LazyRowScope.() -> Unit,

@@ -28,7 +28,7 @@ import opensavvy.progress.Progress
  * This is useful if the cheap appears on an image or another pattern.
  * When appearing on a plain background, it should be set to `false`.
  *
- * Chips generally appear in [groups][ChipGroup] of three or more elements.
+ * Chips generally appear in [groups][ChipGroupSpec] of three or more elements.
  */
 interface Chips {
 
@@ -41,7 +41,7 @@ interface Chips {
 	 * Assist chips should be mostly static (they should be the same every time the user accesses the page).
 	 */
 	@Composable
-	fun AssistChip(
+	fun AssistChipSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -59,13 +59,13 @@ interface Chips {
 	 *
 	 * Filter chips should be mostly static (they should be the same every time the user accesses the page).
 	 *
-	 * When a [ChipGroup] consists only a filter chips, they can act as checkboxes (any combination is valid) or as
+	 * When a [ChipGroupSpec] consists only a filter chips, they can act as checkboxes (any combination is valid) or as
 	 * radio buttons (activating a chip disables the others).
 	 *
 	 * Filter chips have no action except being activated/unactivated, they therefore do not need an `action` slot.
 	 */
 	@Composable
-	fun FilterChip(
+	fun FilterChipSpec(
 		active: Boolean,
 		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
@@ -83,7 +83,7 @@ interface Chips {
 	 * When the user interacts with it, [onRemove] is called.
 	 */
 	@Composable
-	fun InputChip(
+	fun InputChipSpec(
 		onRemove: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -99,11 +99,11 @@ interface Chips {
 	 * For example, they can be used to copy text detected in a picture.
 	 * For this reason, they are generally more visible than the other types of chips.
 	 *
-	 * Suggestion chips are also the only chips that can appear by themselves, outside a [ChipGroup].
+	 * Suggestion chips are also the only chips that can appear by themselves, outside a [ChipGroupSpec].
 	 * Unlike other chips, they can also have an impact outside the current screen (e.g. opening another app).
 	 */
 	@Composable
-	fun SuggestionChip(
+	fun SuggestionChipSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -119,7 +119,7 @@ interface Chips {
 	 * This component places the various chips horizontally with the correct spacing.
 	 */
 	@Composable
-	fun ChipGroup(
+	fun ChipGroupSpec(
 		multiline: Boolean,
 		chips: @Composable ChipGroupScope.() -> Unit,
 	)
@@ -132,7 +132,7 @@ interface Chips {
 /**
  * Bonus action available to the user.
  *
- * For more information, see [Chips.AssistChip].
+ * For more information, see [Chips.AssistChipSpec].
  */
 @Composable
 fun AssistChip(
@@ -146,7 +146,7 @@ fun AssistChip(
 ) {
 	var loading by rememberProgress()
 
-	UI.current.AssistChip(
+	UI.current.AssistChipSpec(
 		onClick = {
 			scope.launch(
 				onProgress = { loading = it },
@@ -165,7 +165,7 @@ fun AssistChip(
 /**
  * Filter provided by the application to the user.
  *
- * For more information, see [Chips.FilterChip].
+ * For more information, see [Chips.FilterChipSpec].
  */
 @Composable
 fun FilterChip(
@@ -179,7 +179,7 @@ fun FilterChip(
 ) {
 	var loading by rememberProgress()
 
-	UI.current.FilterChip(
+	UI.current.FilterChipSpec(
 		active = active,
 		onToggle = { bool ->
 			scope.launch(
@@ -197,7 +197,7 @@ fun FilterChip(
 /**
  * Filter provided by the user to the application.
  *
- * For more information, see [Chips.InputChip].
+ * For more information, see [Chips.InputChipSpec].
  */
 @Composable
 fun InputChip(
@@ -210,7 +210,7 @@ fun InputChip(
 ) {
 	var loading by rememberProgress()
 
-	UI.current.InputChip(
+	UI.current.InputChipSpec(
 		onRemove = {
 			scope.launch(
 				onProgress = { loading = it },
@@ -228,7 +228,7 @@ fun InputChip(
 /**
  * Highlighted context-dependent action.
  *
- * For more information, see [Chips.SuggestionChip].
+ * For more information, see [Chips.SuggestionChipSpec].
  */
 @Composable
 fun SuggestionChip(
@@ -242,7 +242,7 @@ fun SuggestionChip(
 ) {
 	var loading by rememberProgress()
 
-	UI.current.SuggestionChip(
+	UI.current.SuggestionChipSpec(
 		onClick = {
 			scope.launch(
 				onProgress = { loading = it },
@@ -261,12 +261,12 @@ fun SuggestionChip(
 /**
  * A group of [Chips].
  *
- * For more information, see [Chips.ChipGroup].
+ * For more information, see [Chips.ChipGroupSpec].
  */
 @Composable
 fun ChipGroup(
 	multiline: Boolean = false,
 	chips: @Composable Chips.ChipGroupScope.() -> Unit,
 ) {
-	UI.current.ChipGroup(multiline, chips)
+	UI.current.ChipGroupSpec(multiline, chips)
 }

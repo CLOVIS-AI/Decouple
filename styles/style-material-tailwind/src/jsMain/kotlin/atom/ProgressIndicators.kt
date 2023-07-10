@@ -12,7 +12,7 @@ object MTProgressIndicators : ProgressIndicators {
 
 	@OptIn(ExperimentalComposeWebSvgApi::class)
 	@Composable
-	override fun ProgressIndicator(progress: Progress) {
+	override fun ProgressIndicatorSpec(progress: Progress) {
 		Svg(
 			"0 0 24 24",
 			{

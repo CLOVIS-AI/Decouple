@@ -14,7 +14,7 @@ import org.jetbrains.compose.web.dom.Div
 object MTNavigation : Navigation {
 
 	@Composable
-	override fun <P> GlobalNavigation(
+	override fun <P> GlobalNavigationSpec(
 		menu: NavigationMenu.Menu<P>,
 		selected: NavigationMenu<P>,
 		onSelect: (NavigationMenu.Page<P>) -> Unit,

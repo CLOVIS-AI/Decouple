@@ -59,7 +59,7 @@ class Box(node: Node) : Component {
 
 object TLinearLayouts : LinearLayouts {
 	@Composable
-	override fun Column(
+	override fun ColumnSpec(
 		vertical: Arrangement,
 		alignment: Alignment,
 		content: @Composable LinearLayouts.ColumnScope.() -> Unit,
@@ -75,7 +75,7 @@ object TLinearLayouts : LinearLayouts {
 	}
 
 	@Composable
-	override fun Row(
+	override fun RowSpec(
 		horizontal: Arrangement,
 		alignment: Alignment,
 		content: @Composable LinearLayouts.RowScope.() -> Unit,
@@ -91,7 +91,7 @@ object TLinearLayouts : LinearLayouts {
 	}
 
 	@Composable
-	override fun Box(
+	override fun BoxSpec(
 		alignment: Alignment,
 		content: @Composable LinearLayouts.BoxScope.() -> Unit,
 	) {

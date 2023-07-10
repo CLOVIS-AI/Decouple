@@ -24,7 +24,7 @@ class ProgressIndicator(node: Node) : Component {
 
 object TProgressIndicators : ProgressIndicators {
 	@Composable
-	override fun ProgressIndicator(progress: Progress) {
+	override fun ProgressIndicatorSpec(progress: Progress) {
 		ProgressIndicator.compose(
 			update = {
 				bind(progress, ProgressIndicator::progress)

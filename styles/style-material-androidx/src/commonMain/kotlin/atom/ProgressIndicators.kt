@@ -18,7 +18,7 @@ object MAProgressIndicators : ProgressIndicators {
 	private val STROKE_WIDTH = 2.dp
 
 	@Composable
-	override fun ProgressIndicator(progress: Progress) = when (progress) {
+	override fun ProgressIndicatorSpec(progress: Progress) = when (progress) {
 		is Progress.Done -> Unit
 		is Progress.Loading.Unquantified -> {
 			CircularProgressIndicator(

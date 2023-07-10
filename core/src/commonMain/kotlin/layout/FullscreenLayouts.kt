@@ -6,12 +6,12 @@ import opensavvy.decouple.core.UI
 /**
  * Common examples of fullscreen layouts.
  *
- * The simplest layout is [Screen].
+ * The simplest layout is [ScreenSpec].
  */
 interface FullscreenLayouts {
 
 	@Composable
-	fun Screen(
+	fun ScreenSpec(
 		title: String,
 		subtitle: String?,
 		actions: (@Composable () -> Unit)?,
@@ -19,7 +19,7 @@ interface FullscreenLayouts {
 	)
 
 	@Composable
-	fun ListDetailScreen(
+	fun ListDetailScreenSpec(
 		title: String,
 		subtitle: String?,
 		showDetails: Boolean,
@@ -27,7 +27,7 @@ interface FullscreenLayouts {
 		list: @Composable () -> Unit,
 		content: @Composable () -> Unit,
 	) = Row {
-		Screen(title, subtitle, actions, list)
+		ScreenSpec(title, subtitle, actions, list)
 
 		Column {
 			if (showDetails)
@@ -36,7 +36,7 @@ interface FullscreenLayouts {
 	}
 
 	@Composable
-	fun SupportedScreen(
+	fun SupportedScreenSpec(
 		title: String,
 		subtitle: String?,
 		supportTitle: String?,
@@ -45,7 +45,7 @@ interface FullscreenLayouts {
 		support: @Composable () -> Unit,
 		content: @Composable () -> Unit,
 	) = Row {
-		Screen(title, subtitle, actions, content)
+		ScreenSpec(title, subtitle, actions, content)
 
 		Column {
 			if (showSupport)
@@ -65,7 +65,7 @@ fun Screen(
 	actions: (@Composable () -> Unit)? = null,
 	content: @Composable () -> Unit,
 ) {
-	UI.current.Screen(title, subtitle, actions, content)
+	UI.current.ScreenSpec(title, subtitle, actions, content)
 }
 
 /**
@@ -88,7 +88,7 @@ fun ListDetailScreen(
 	actions: (@Composable () -> Unit)? = null,
 	content: @Composable () -> Unit,
 ) {
-	UI.current.ListDetailScreen(title, subtitle, showDetails, actions, list, content)
+	UI.current.ListDetailScreenSpec(title, subtitle, showDetails, actions, list, content)
 }
 
 /**
@@ -111,5 +111,5 @@ fun SupportedScreen(
 	actions: (@Composable () -> Unit)? = null,
 	content: @Composable () -> Unit,
 ) {
-	UI.current.SupportedScreen(title, subtitle, supportTitle, showSupport, actions, support, content)
+	UI.current.SupportedScreenSpec(title, subtitle, supportTitle, showSupport, actions, support, content)
 }

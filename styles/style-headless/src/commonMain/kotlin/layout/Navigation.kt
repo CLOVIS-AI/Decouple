@@ -28,7 +28,7 @@ class GlobalNavigation(node: Node) : Component {
 
 object TNavigation : Navigation {
 	@Composable
-	override fun <P> GlobalNavigation(
+	override fun <P> GlobalNavigationSpec(
 		menu: NavigationMenu.Menu<P>,
 		selected: NavigationMenu<P>,
 		onSelect: (NavigationMenu.Page<P>) -> Unit,

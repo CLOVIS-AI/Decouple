@@ -8,7 +8,7 @@ import org.jetbrains.compose.web.dom.Text as DomText
 object MTTexts : Texts {
 
 	@Composable
-	override fun Text(text: String) {
+	override fun TextSpec(text: String) {
 		Span(
 			{
 				classes("max-w-[50em]")

@@ -9,15 +9,15 @@ interface Texts {
 	 * Basic text.
 	 */
 	@Composable
-	fun Text(text: String)
+	fun TextSpec(text: String)
 
 }
 
 /**
  * Basic text.
  *
- * For more information, see [Texts.Text].
+ * For more information, see [Texts.TextSpec].
  */
 @Composable
 fun Text(text: String) =
-	UI.current.Text(text)
+	UI.current.TextSpec(text)

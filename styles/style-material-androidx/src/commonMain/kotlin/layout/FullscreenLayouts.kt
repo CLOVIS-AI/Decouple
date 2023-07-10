@@ -9,7 +9,7 @@ import opensavvy.decouple.core.layout.FullscreenLayouts
 object MAFullscreenLayouts : FullscreenLayouts {
 
 	@Composable
-	override fun Screen(
+	override fun ScreenSpec(
 		title: String,
 		subtitle: String?,
 		actions: (@Composable () -> Unit)?,
@@ -24,7 +24,7 @@ object MAFullscreenLayouts : FullscreenLayouts {
 	}
 
 	@Composable
-	override fun ListDetailScreen(
+	override fun ListDetailScreenSpec(
 		title: String,
 		subtitle: String?,
 		showDetails: Boolean,
@@ -44,7 +44,7 @@ object MAFullscreenLayouts : FullscreenLayouts {
 	}
 
 	@Composable
-	override fun SupportedScreen(
+	override fun SupportedScreenSpec(
 		title: String,
 		subtitle: String?,
 		supportTitle: String?,

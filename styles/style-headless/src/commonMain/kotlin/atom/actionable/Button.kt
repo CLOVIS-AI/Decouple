@@ -101,7 +101,7 @@ class ContrastButton(node: Node) : AbstractButton, Component {
 object TButtons : Buttons {
 
 	@Composable
-	override fun Button(
+	override fun ButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -124,7 +124,7 @@ object TButtons : Buttons {
 	}
 
 	@Composable
-	override fun PrimaryButton(
+	override fun PrimaryButtonSpec(
 		onClick: () -> Unit,
 		primary: Boolean,
 		enabled: Boolean,
@@ -149,7 +149,7 @@ object TButtons : Buttons {
 	}
 
 	@Composable
-	override fun SecondaryButton(
+	override fun SecondaryButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -172,7 +172,7 @@ object TButtons : Buttons {
 	}
 
 	@Composable
-	override fun ContrastButton(
+	override fun ContrastButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,

@@ -24,7 +24,7 @@ class Text(node: Node) : Component {
 
 object TTexts : Texts {
 	@Composable
-	override fun Text(text: String) {
+	override fun TextSpec(text: String) {
 		Text.compose(
 			update = {
 				bind(text, Text::text)

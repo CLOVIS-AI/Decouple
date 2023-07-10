@@ -18,7 +18,7 @@ interface Buttons {
 	 * This should be used for low priority actions, especially when there are multiple of them.
 	 */
 	@Composable
-	fun Button(
+	fun ButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -35,7 +35,7 @@ interface Buttons {
 	 * Only one or two buttons should be marked as [primary] per page.
 	 */
 	@Composable
-	fun PrimaryButton(
+	fun PrimaryButtonSpec(
 		onClick: () -> Unit,
 		primary: Boolean,
 		enabled: Boolean,
@@ -47,11 +47,11 @@ interface Buttons {
 	/**
 	 * Medium-emphasis button.
 	 *
-	 * These buttons are used for actions that are important, but are not the primary action of the page, unlike [PrimaryButton].
-	 * For example, if [PrimaryButton] represents the page confirmation, [SecondaryButton] could be the cancellation option.
+	 * These buttons are used for actions that are important, but are not the primary action of the page, unlike [PrimaryButtonSpec].
+	 * For example, if [PrimaryButtonSpec] represents the page confirmation, [SecondaryButtonSpec] could be the cancellation option.
 	 */
 	@Composable
-	fun SecondaryButton(
+	fun SecondaryButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -63,12 +63,12 @@ interface Buttons {
 	 * Button variant used where high contrast is necessary.
 	 *
 	 * For example, this ma happen when displaying on top of an image.
-	 * Otherwise, they are used similarly to [PrimaryButton].
+	 * Otherwise, they are used similarly to [PrimaryButtonSpec].
 	 *
 	 * Because they require heavier decoration to separate them from the page, they should be used sparingly.
 	 */
 	@Composable
-	fun ContrastButton(
+	fun ContrastButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -82,7 +82,7 @@ interface Buttons {
 /**
  * The most common kind of button.
  *
- * For more information, see [Buttons.Button].
+ * For more information, see [Buttons.ButtonSpec].
  */
 @Composable
 fun Button(
@@ -94,7 +94,7 @@ fun Button(
 ) {
 	var loading by rememberProgress()
 
-	UI.current.Button(
+	UI.current.ButtonSpec(
 		onClick = {
 			scope.launch(
 				onProgress = { loading = it },
@@ -111,7 +111,7 @@ fun Button(
 /**
  * Important buttons.
  *
- * For more information, see [Buttons.PrimaryButton].
+ * For more information, see [Buttons.PrimaryButtonSpec].
  */
 @Composable
 fun PrimaryButton(
@@ -124,7 +124,7 @@ fun PrimaryButton(
 ) {
 	var loading by rememberProgress()
 
-	UI.current.PrimaryButton(
+	UI.current.PrimaryButtonSpec(
 		onClick = {
 			scope.launch(
 				onProgress = { loading = it },
@@ -142,7 +142,7 @@ fun PrimaryButton(
 /**
  * Medium-emphasis button.
  *
- * For more information, see [Buttons.SecondaryButton].
+ * For more information, see [Buttons.SecondaryButtonSpec].
  */
 @Composable
 fun SecondaryButton(
@@ -154,7 +154,7 @@ fun SecondaryButton(
 ) {
 	var loading by rememberProgress()
 
-	UI.current.SecondaryButton(
+	UI.current.SecondaryButtonSpec(
 		onClick = {
 			scope.launch(
 				onProgress = { loading = it },
@@ -171,7 +171,7 @@ fun SecondaryButton(
 /**
  * Button variant used where high contrast is necessary.
  *
- * For more information, see [Buttons.SecondaryButton].
+ * For more information, see [Buttons.SecondaryButtonSpec].
  */
 @Composable
 fun ContrastButton(
@@ -183,7 +183,7 @@ fun ContrastButton(
 ) {
 	var loading by rememberProgress()
 
-	UI.current.ContrastButton(
+	UI.current.ContrastButtonSpec(
 		onClick = {
 			scope.launch(
 				onProgress = { loading = it },

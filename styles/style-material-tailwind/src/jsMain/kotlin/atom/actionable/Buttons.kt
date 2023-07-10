@@ -16,7 +16,7 @@ import org.jetbrains.compose.web.dom.Div
 object MTButtons : Buttons {
 
 	@Composable
-	override fun Button(
+	override fun ButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -55,7 +55,7 @@ object MTButtons : Buttons {
 	}
 
 	@Composable
-	override fun PrimaryButton(
+	override fun PrimaryButtonSpec(
 		onClick: () -> Unit,
 		primary: Boolean,
 		enabled: Boolean,
@@ -111,7 +111,7 @@ object MTButtons : Buttons {
 	}
 
 	@Composable
-	override fun SecondaryButton(
+	override fun SecondaryButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -155,7 +155,7 @@ object MTButtons : Buttons {
 	}
 
 	@Composable
-	override fun ContrastButton(
+	override fun ContrastButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,

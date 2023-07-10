@@ -21,7 +21,7 @@ import androidx.compose.foundation.lazy.LazyRow as M3LazyRow
 object MALazyLayouts : LazyLayouts {
 
 	@Composable
-	override fun LazyColumn(
+	override fun LazyColumnSpec(
 		vertical: Arrangement,
 		alignment: Alignment,
 		content: LazyLayouts.LazyColumnScope.() -> Unit,
@@ -32,7 +32,7 @@ object MALazyLayouts : LazyLayouts {
 	}
 
 	@Composable
-	override fun LazyRow(
+	override fun LazyRowSpec(
 		horizontal: Arrangement,
 		alignment: Alignment,
 		content: LazyLayouts.LazyRowScope.() -> Unit,

@@ -16,7 +16,7 @@ import androidx.compose.material3.TextField as M3TextField
 @OptIn(ExperimentalMaterial3Api::class)
 object MATextFields : TextFields {
 	@Composable
-	override fun FieldLabel(label: String) {
+	override fun FieldLabelSpec(label: String) {
 		Text(label)
 	}
 
@@ -53,7 +53,7 @@ object MATextFields : TextFields {
 		}
 
 	@Composable
-	override fun TextField(
+	override fun TextFieldSpec(
 		label: String?,
 		value: String?,
 		onChange: (String) -> Unit,
@@ -104,7 +104,7 @@ object MATextFields : TextFields {
 	}
 
 	@Composable
-	override fun InstantField(
+	override fun InstantFieldSpec(
 		label: String?,
 		value: Instant?,
 		onChange: (Instant) -> Unit,
@@ -119,7 +119,7 @@ object MATextFields : TextFields {
 	}
 
 	@Composable
-	override fun LocalDateTimeField(
+	override fun LocalDateTimeFieldSpec(
 		label: String?,
 		value: LocalDateTime?,
 		onChange: (LocalDateTime) -> Unit,
@@ -134,7 +134,7 @@ object MATextFields : TextFields {
 	}
 
 	@Composable
-	override fun LocalDateField(
+	override fun LocalDateFieldSpec(
 		label: String?,
 		value: LocalDate?,
 		onChange: (LocalDate) -> Unit,
@@ -149,7 +149,7 @@ object MATextFields : TextFields {
 	}
 
 	@Composable
-	override fun LocalTimeField(
+	override fun LocalTimeFieldSpec(
 		label: String?,
 		value: LocalTime?,
 		onChange: (LocalTime) -> Unit,

@@ -7,14 +7,14 @@ import opensavvy.decouple.core.paging.PagingScope
 interface LazyLayouts {
 
 	@Composable
-	fun LazyColumn(
+	fun LazyColumnSpec(
 		vertical: Arrangement,
 		alignment: Alignment,
 		content: LazyColumnScope.() -> Unit,
 	)
 
 	@Composable
-	fun LazyRow(
+	fun LazyRowSpec(
 		horizontal: Arrangement,
 		alignment: Alignment,
 		content: LazyRowScope.() -> Unit,
@@ -34,11 +34,11 @@ fun LazyColumn(
 	vertical: Arrangement = Arrangement.Start,
 	alignment: Alignment = Alignment.Stretch,
 	content: LazyLayouts.LazyColumnScope.() -> Unit,
-) = UI.current.LazyColumn(vertical, alignment, content)
+) = UI.current.LazyColumnSpec(vertical, alignment, content)
 
 @Composable
 fun LazyRow(
 	horizontal: Arrangement = Arrangement.Start,
 	alignment: Alignment = Alignment.Stretch,
 	content: LazyLayouts.LazyRowScope.() -> Unit,
-) = UI.current.LazyRow(horizontal, alignment, content)
+) = UI.current.LazyRowSpec(horizontal, alignment, content)

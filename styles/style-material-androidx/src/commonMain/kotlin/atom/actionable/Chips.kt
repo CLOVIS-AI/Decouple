@@ -22,7 +22,7 @@ import androidx.compose.material3.SuggestionChip as M3SuggestionChip
 object MAChips : Chips {
 
 	@Composable
-	override fun AssistChip(
+	override fun AssistChipSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -35,7 +35,7 @@ object MAChips : Chips {
 			M3ElevatedAssistChip(
 				onClick = onClick,
 				label = {
-					UI.current.ProgressIndicator(loading)
+					UI.current.ProgressIndicatorSpec(loading)
 					content(MAChipScope)
 				},
 				enabled = enabled && loading == done(),
@@ -46,7 +46,7 @@ object MAChips : Chips {
 			M3AssistChip(
 				onClick = onClick,
 				label = {
-					UI.current.ProgressIndicator(loading)
+					UI.current.ProgressIndicatorSpec(loading)
 					content(MAChipScope)
 				},
 				enabled = enabled && loading == done(),
@@ -57,7 +57,7 @@ object MAChips : Chips {
 	}
 
 	@Composable
-	override fun FilterChip(
+	override fun FilterChipSpec(
 		active: Boolean,
 		onToggle: (Boolean) -> Unit,
 		enabled: Boolean,
@@ -73,7 +73,7 @@ object MAChips : Chips {
 				active,
 				onClick = { onToggle(!active) },
 				label = {
-					UI.current.ProgressIndicator(loading)
+					UI.current.ProgressIndicatorSpec(loading)
 					content(MAChipScope)
 				},
 				enabled = enabled && loading == done(),
@@ -84,7 +84,7 @@ object MAChips : Chips {
 				active,
 				onClick = { onToggle(!active) },
 				label = {
-					UI.current.ProgressIndicator(loading)
+					UI.current.ProgressIndicatorSpec(loading)
 					content(MAChipScope)
 				},
 				enabled = enabled && loading == done(),
@@ -94,7 +94,7 @@ object MAChips : Chips {
 	}
 
 	@Composable
-	override fun InputChip(
+	override fun InputChipSpec(
 		onRemove: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -108,7 +108,7 @@ object MAChips : Chips {
 			selected = true,
 			onClick = onRemove,
 			label = {
-				UI.current.ProgressIndicator(loading)
+				UI.current.ProgressIndicatorSpec(loading)
 				content(MAChipScope)
 			},
 			enabled = enabled && loading == done(),
@@ -117,7 +117,7 @@ object MAChips : Chips {
 	}
 
 	@Composable
-	override fun SuggestionChip(
+	override fun SuggestionChipSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -130,7 +130,7 @@ object MAChips : Chips {
 			M3ElevatedSuggestionChip(
 				onClick = onClick,
 				label = {
-					UI.current.ProgressIndicator(loading)
+					UI.current.ProgressIndicatorSpec(loading)
 					content(MAChipScope)
 				},
 				enabled = enabled && loading == done(),
@@ -140,7 +140,7 @@ object MAChips : Chips {
 			M3SuggestionChip(
 				onClick = onClick,
 				label = {
-					UI.current.ProgressIndicator(loading)
+					UI.current.ProgressIndicatorSpec(loading)
 					content(MAChipScope)
 				},
 				enabled = enabled && loading == done(),
@@ -150,7 +150,7 @@ object MAChips : Chips {
 	}
 
 	@Composable
-	override fun ChipGroup(
+	override fun ChipGroupSpec(
 		multiline: Boolean,
 		chips: @Composable Chips.ChipGroupScope.() -> Unit,
 	) {

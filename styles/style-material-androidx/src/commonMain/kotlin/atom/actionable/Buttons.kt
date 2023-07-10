@@ -24,13 +24,13 @@ object MAButtons : Buttons {
 		if (icon != null)
 			icon()
 
-		UI.current.ProgressIndicator(loading)
+		UI.current.ProgressIndicatorSpec(loading)
 
 		MAButtonScope.content()
 	}
 
 	@Composable
-	override fun Button(
+	override fun ButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -44,7 +44,7 @@ object MAButtons : Buttons {
 	}
 
 	@Composable
-	override fun PrimaryButton(
+	override fun PrimaryButtonSpec(
 		onClick: () -> Unit,
 		primary: Boolean,
 		enabled: Boolean,
@@ -66,7 +66,7 @@ object MAButtons : Buttons {
 	}
 
 	@Composable
-	override fun SecondaryButton(
+	override fun SecondaryButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -80,7 +80,7 @@ object MAButtons : Buttons {
 	}
 
 	@Composable
-	override fun ContrastButton(
+	override fun ContrastButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
