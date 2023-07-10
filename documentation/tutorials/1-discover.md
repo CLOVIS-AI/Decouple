@@ -59,11 +59,11 @@ In this tutorial, we will create a simple counter which displays an integer, wit
 The demo app is used as living documentation of the Decouple project. It is structured as follows:
 
 ```text
-demo/
-  src/          ← Code shared between all platforms
-  android/src/  ← Configuration specific to Android
-  desktop/src/  ← Configuration specific to the Desktop
-  web/src/      ← Configuration specific to the web version
+demos/
+  demo-shared/src/   ← Code shared between all platforms
+  demo-android/src/  ← Configuration specific to Android
+  demo-desktop/src/  ← Configuration specific to the Desktop
+  demo-web/src/      ← Configuration specific to the web version
 ```
 
 In this tutorial, we will only write multiplatform code. For now, we will execute it on the Desktop (because it needs less configuration), but we will execute the other platforms later.
