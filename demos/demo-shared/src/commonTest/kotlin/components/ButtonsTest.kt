@@ -3,7 +3,7 @@ package opensavvy.decouple.demo.components
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.runTest
-import opensavvy.decouple.headless.atom.actionable.Button
+import opensavvy.decouple.headless.atom.Button
 import opensavvy.decouple.headless.execution.runHeadlessUI
 import opensavvy.progress.Progress
 import kotlin.test.Test

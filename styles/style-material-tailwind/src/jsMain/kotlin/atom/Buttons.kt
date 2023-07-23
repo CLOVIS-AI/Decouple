@@ -1,8 +1,8 @@
-package opensavvy.decouple.material.tailwind.atom.actionable
+package opensavvy.decouple.material.tailwind.atom
 
 import androidx.compose.runtime.Composable
+import opensavvy.decouple.core.atom.Buttons
 import opensavvy.decouple.core.atom.ProgressIndicator
-import opensavvy.decouple.core.atom.actionable.Buttons
 import opensavvy.decouple.core.theme.Theme
 import opensavvy.decouple.material.tailwind.theme.AnimatedLeadingIcon
 import opensavvy.decouple.material.tailwind.theme.StateLayers

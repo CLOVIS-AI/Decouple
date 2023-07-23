@@ -1,4 +1,4 @@
-package opensavvy.decouple.core.atom.actionable
+package opensavvy.decouple.core.atom
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

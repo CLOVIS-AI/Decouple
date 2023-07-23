@@ -4,11 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import opensavvy.decouple.core.UI.Companion.Install
-import opensavvy.decouple.core.atom.ProgressIndicators
-import opensavvy.decouple.core.atom.actionable.Buttons
-import opensavvy.decouple.core.atom.actionable.Chips
-import opensavvy.decouple.core.atom.input.TextFields
-import opensavvy.decouple.core.atom.text.Texts
+import opensavvy.decouple.core.atom.*
 import opensavvy.decouple.core.layout.FullscreenLayouts
 import opensavvy.decouple.core.layout.LazyLayouts
 import opensavvy.decouple.core.layout.LinearLayouts
@@ -63,10 +59,10 @@ import opensavvy.decouple.core.layout.Navigation
 interface UI : UIMetadata,
                LinearLayouts,
                LazyLayouts,
-               Buttons,
-               Texts,
-               Chips,
-               TextFields,
+	Buttons,
+	Texts,
+	Chips,
+	TextFields,
                Navigation,
                FullscreenLayouts,
                ProgressIndicators {

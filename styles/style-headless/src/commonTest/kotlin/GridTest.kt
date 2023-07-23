@@ -2,7 +2,7 @@ package opensavvy.decouple.headless
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import opensavvy.decouple.core.atom.text.Text
+import opensavvy.decouple.core.atom.Text
 import opensavvy.decouple.core.layout.Grid
 import opensavvy.decouple.headless.execution.runHeadlessUI
 import opensavvy.decouple.headless.layout.Grid

@@ -1,7 +1,7 @@
-package opensavvy.decouple.headless.atom.text
+package opensavvy.decouple.headless.atom
 
 import androidx.compose.runtime.Composable
-import opensavvy.decouple.core.atom.text.Texts
+import opensavvy.decouple.core.atom.Texts
 import opensavvy.decouple.headless.Component
 import opensavvy.decouple.headless.bind
 import opensavvy.decouple.headless.compose
@@ -10,7 +10,7 @@ import opensavvy.decouple.headless.node.NodeTree
 import opensavvy.decouple.headless.node.getValue
 
 /**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.text.Text].
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.Text].
  */
 class Text(node: Node) : Component {
 	val text: String by node.attributes

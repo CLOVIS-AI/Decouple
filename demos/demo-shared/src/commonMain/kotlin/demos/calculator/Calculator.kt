@@ -2,8 +2,8 @@ package opensavvy.decouple.demo.demos.calculator
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import opensavvy.decouple.core.atom.actionable.Button
-import opensavvy.decouple.core.atom.text.Text
+import opensavvy.decouple.core.atom.Button
+import opensavvy.decouple.core.atom.Text
 import opensavvy.decouple.core.layout.Box
 import opensavvy.decouple.core.layout.Grid
 import opensavvy.decouple.core.layout.Screen
