@@ -6,10 +6,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import opensavvy.decouple.core.atom.actionable.Button
-import opensavvy.decouple.core.atom.text.Text
-import opensavvy.decouple.headless.atom.actionable.Button
-import opensavvy.decouple.headless.atom.text.innerText
+import opensavvy.decouple.core.atom.Button
+import opensavvy.decouple.core.atom.Text
+import opensavvy.decouple.headless.atom.Button
+import opensavvy.decouple.headless.atom.innerText
 import opensavvy.decouple.headless.execution.runHeadlessUI
 import kotlin.test.Test
 import kotlin.test.assertEquals

@@ -9,7 +9,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import opensavvy.decouple.core.atom.actionable.SecondaryButton
+import opensavvy.decouple.core.atom.SecondaryButton
 import opensavvy.decouple.core.layout.Navigation
 import opensavvy.decouple.core.navigation.NavigationMenu
 

@@ -1,7 +1,7 @@
-package opensavvy.decouple.headless.atom.actionable
+package opensavvy.decouple.headless.atom
 
 import androidx.compose.runtime.Composable
-import opensavvy.decouple.core.atom.actionable.Buttons
+import opensavvy.decouple.core.atom.Buttons
 import opensavvy.decouple.headless.Component
 import opensavvy.decouple.headless.bind
 import opensavvy.decouple.headless.compose
@@ -22,7 +22,7 @@ interface AbstractButton {
 }
 
 /**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.Button].
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.Button].
  */
 class Button(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes
@@ -41,7 +41,7 @@ class Button(node: Node) : AbstractButton, Component {
 }
 
 /**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.PrimaryButton].
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.PrimaryButton].
  */
 class PrimaryButton(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes
@@ -61,7 +61,7 @@ class PrimaryButton(node: Node) : AbstractButton, Component {
 }
 
 /**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.SecondaryButton].
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.SecondaryButton].
  */
 class SecondaryButton(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes
@@ -80,7 +80,7 @@ class SecondaryButton(node: Node) : AbstractButton, Component {
 }
 
 /**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.actionable.ContrastButton].
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.ContrastButton].
  */
 class ContrastButton(node: Node) : AbstractButton, Component {
 	override val click: () -> Unit by node.attributes

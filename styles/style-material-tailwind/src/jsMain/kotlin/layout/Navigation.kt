@@ -1,8 +1,8 @@
 package opensavvy.decouple.material.tailwind.layout
 
 import androidx.compose.runtime.*
-import opensavvy.decouple.core.atom.actionable.Button
-import opensavvy.decouple.core.atom.text.Text
+import opensavvy.decouple.core.atom.Button
+import opensavvy.decouple.core.atom.Text
 import opensavvy.decouple.core.layout.Navigation
 import opensavvy.decouple.core.navigation.NavigationMenu
 import opensavvy.decouple.core.theme.Theme

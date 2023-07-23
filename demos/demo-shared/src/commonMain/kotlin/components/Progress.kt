@@ -5,10 +5,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import kotlinx.coroutines.delay
+import opensavvy.decouple.core.atom.AssistChip
+import opensavvy.decouple.core.atom.ChipGroup
 import opensavvy.decouple.core.atom.ProgressIndicator
-import opensavvy.decouple.core.atom.actionable.AssistChip
-import opensavvy.decouple.core.atom.actionable.ChipGroup
-import opensavvy.decouple.core.atom.text.Text
+import opensavvy.decouple.core.atom.Text
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.layout.SupportedScreen
 import opensavvy.decouple.core.progression.launch

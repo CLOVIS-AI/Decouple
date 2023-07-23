@@ -1,12 +1,12 @@
-package opensavvy.decouple.material.tailwind.atom.input
+package opensavvy.decouple.material.tailwind.atom
 
 import androidx.compose.runtime.Composable
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
-import opensavvy.decouple.core.atom.input.TextFields
-import opensavvy.decouple.core.atom.text.Text
+import opensavvy.decouple.core.atom.Text
+import opensavvy.decouple.core.atom.TextFields
 
 object MTTextFields : TextFields {
 

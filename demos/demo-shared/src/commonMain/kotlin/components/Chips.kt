@@ -2,8 +2,7 @@ package opensavvy.decouple.demo.components
 
 import androidx.compose.runtime.*
 import kotlinx.coroutines.delay
-import opensavvy.decouple.core.atom.actionable.*
-import opensavvy.decouple.core.atom.text.Text
+import opensavvy.decouple.core.atom.*
 import opensavvy.decouple.core.layout.SupportedScreen
 import opensavvy.decouple.persist.persistentStateOf
 

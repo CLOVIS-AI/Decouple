@@ -1,11 +1,11 @@
-package opensavvy.decouple.headless.atom.input
+package opensavvy.decouple.headless.atom
 
 import androidx.compose.runtime.Composable
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
-import opensavvy.decouple.core.atom.input.TextFields
+import opensavvy.decouple.core.atom.TextFields
 import opensavvy.decouple.headless.Component
 import opensavvy.decouple.headless.bind
 import opensavvy.decouple.headless.compose
@@ -25,7 +25,7 @@ class FieldLabel(node: Node) : Component {
 }
 
 /**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.input.TextField].
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.TextField].
  */
 class TextField(node: Node) : Component {
 	val label: String? by node.attributes
@@ -67,7 +67,7 @@ interface TemporalField<T> {
 }
 
 /**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.input.InstantField].
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.InstantField].
  */
 class InstantField(node: Node) : TemporalField<Instant>, Component {
 	override val label: String? by node.attributes
@@ -89,7 +89,7 @@ class InstantField(node: Node) : TemporalField<Instant>, Component {
 }
 
 /**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.input.LocalDateTimeField].
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.LocalDateTimeField].
  */
 class LocalDateTimeField(node: Node) : TemporalField<LocalDateTime>, Component {
 	override val label: String? by node.attributes
@@ -111,7 +111,7 @@ class LocalDateTimeField(node: Node) : TemporalField<LocalDateTime>, Component {
 }
 
 /**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.input.LocalDateField].
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.LocalDateField].
  */
 class LocalDateField(node: Node) : TemporalField<LocalDate>, Component {
 	override val label: String? by node.attributes
@@ -133,7 +133,7 @@ class LocalDateField(node: Node) : TemporalField<LocalDate>, Component {
 }
 
 /**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.input.LocalTimeField].
+ * Type-safe wrapper for [opensavvy.decouple.core.atom.LocalTimeField].
  */
 class LocalTimeField(node: Node) : TemporalField<LocalTime>, Component {
 	override val label: String? by node.attributes

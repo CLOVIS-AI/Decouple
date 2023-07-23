@@ -3,7 +3,7 @@ package opensavvy.decouple.headless
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisallowComposableCalls
 import androidx.compose.runtime.Updater
-import opensavvy.decouple.core.atom.actionable.Buttons
+import opensavvy.decouple.core.atom.Buttons
 import opensavvy.decouple.headless.Component.Meta
 import opensavvy.decouple.headless.execution.ExecutableNode
 import opensavvy.decouple.headless.execution.Node

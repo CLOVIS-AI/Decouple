@@ -17,54 +17,54 @@ Small components used to build more complex ones.
 
 ## Buttons
 
-> [Specification](opensavvy.decouple.core.atom.actionable.Buttons)
+> [Specification](opensavvy.decouple.core.atom.Buttons)
 
 Buttons represent actions that have an impact on the application at large.
 
-|                                                                            |                                                          |
-|----------------------------------------------------------------------------|----------------------------------------------------------|
-| [Button](opensavvy.decouple.core.atom.actionable.Button)                   | Regular action                                           |
-| [PrimaryButton](opensavvy.decouple.core.atom.actionable.PrimaryButton)     | Most important action on a page                          |
-| [SecondaryButton](opensavvy.decouple.core.atom.actionable.SecondaryButton) | Other important actions                                  |
-| [ContrastButton](opensavvy.decouple.core.atom.actionable.ContrastButton)   | Increased contrast for use on top of complex backgrounds |
+|                                                                 |                                                          |
+|-----------------------------------------------------------------|----------------------------------------------------------|
+| [Button](opensavvy.decouple.core.atom.Button)                   | Regular action                                           |
+| [PrimaryButton](opensavvy.decouple.core.atom.PrimaryButton)     | Most important action on a page                          |
+| [SecondaryButton](opensavvy.decouple.core.atom.SecondaryButton) | Other important actions                                  |
+| [ContrastButton](opensavvy.decouple.core.atom.ContrastButton)   | Increased contrast for use on top of complex backgrounds |
 
 ## Chips
 
-> [Specification](opensavvy.decouple.core.atom.actionable.Chips)
+> [Specification](opensavvy.decouple.core.atom.Chips)
 
 Chips represent actions localized to the current page, like filters or sorting.
 
-|                                                                          |                                                    |
-|--------------------------------------------------------------------------|----------------------------------------------------|
-| [AssistChip](opensavvy.decouple.core.atom.actionable.AssistChip)         | Action that always behaves the same way            |
-| [SuggestionChip](opensavvy.decouple.core.atom.actionable.SuggestionChip) | Action available only in specific cases            |
-| [FilterChip](opensavvy.decouple.core.atom.actionable.FilterChip)         | Filter that can be active or inactive              |
-| [InputChip](opensavvy.decouple.core.atom.actionable.InputChip)           | Filter created by the user                         |
-| [ChipGroup](opensavvy.decouple.core.atom.actionable.ChipGroup)           | Layout component to align chips that work together |
+|                                                               |                                                    |
+|---------------------------------------------------------------|----------------------------------------------------|
+| [AssistChip](opensavvy.decouple.core.atom.AssistChip)         | Action that always behaves the same way            |
+| [SuggestionChip](opensavvy.decouple.core.atom.SuggestionChip) | Action available only in specific cases            |
+| [FilterChip](opensavvy.decouple.core.atom.FilterChip)         | Filter that can be active or inactive              |
+| [InputChip](opensavvy.decouple.core.atom.InputChip)           | Filter created by the user                         |
+| [ChipGroup](opensavvy.decouple.core.atom.ChipGroup)           | Layout component to align chips that work together |
 
 ## Inputs
 
-> [Specification](opensavvy.decouple.core.atom.input.TextFields)
+> [Specification](opensavvy.decouple.core.atom.TextFields)
 
 Used to let the user enter some data.
 
-|                                                                             |                                      |
-|-----------------------------------------------------------------------------|--------------------------------------|
-| [TextField](opensavvy.decouple.core.atom.input.TextField)                   | Text-based inputs                    |
-| [InstantField](opensavvy.decouple.core.atom.input.InstantField)             | Timezone-independent instant in time |
-| [LocalDateTimeField](opensavvy.decouple.core.atom.input.LocalDateTimeField) | Timezone-dependent instant in time   |
-| [LocalDateField](opensavvy.decouple.core.atom.input.LocalDateField)         | Timezone-dependent date              |
-| [LocalTimeField](opensavvy.decouple.core.atom.input.LocalTimeField)         | Timezone-dependent time              |
+|                                                                       |                                      |
+|-----------------------------------------------------------------------|--------------------------------------|
+| [TextField](opensavvy.decouple.core.atom.TextField)                   | Text-based inputs                    |
+| [InstantField](opensavvy.decouple.core.atom.InstantField)             | Timezone-independent instant in time |
+| [LocalDateTimeField](opensavvy.decouple.core.atom.LocalDateTimeField) | Timezone-dependent instant in time   |
+| [LocalDateField](opensavvy.decouple.core.atom.LocalDateField)         | Timezone-dependent date              |
+| [LocalTimeField](opensavvy.decouple.core.atom.LocalTimeField)         | Timezone-dependent time              |
 
 ## Text
 
-> [Specification](opensavvy.decouple.core.atom.text.Texts)
+> [Specification](opensavvy.decouple.core.atom.Texts)
 
 Display text on screen.
 
-|                                                |                              |
-|------------------------------------------------|------------------------------|
-| [Text](opensavvy.decouple.core.atom.text.Text) | Display basic text on screen |
+|                                           |                              |
+|-------------------------------------------|------------------------------|
+| [Text](opensavvy.decouple.core.atom.Text) | Display basic text on screen |
 
 ## Miscellaneous indicators
 

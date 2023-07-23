@@ -1,4 +1,4 @@
-package opensavvy.decouple.material.androidx.atom.input
+package opensavvy.decouple.material.androidx.atom
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -9,7 +9,7 @@ import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
-import opensavvy.decouple.core.atom.input.TextFields
+import opensavvy.decouple.core.atom.TextFields
 import androidx.compose.material3.OutlinedTextField as M3OutlinedTextField
 import androidx.compose.material3.TextField as M3TextField
 

@@ -1,9 +1,9 @@
-package opensavvy.decouple.material.androidx.atom.actionable
+package opensavvy.decouple.material.androidx.atom
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.UI
-import opensavvy.decouple.core.atom.actionable.Buttons
+import opensavvy.decouple.core.atom.Buttons
 import opensavvy.progress.Progress
 import opensavvy.progress.done
 import androidx.compose.material3.Button as M3Button
@@ -15,7 +15,7 @@ import androidx.compose.material3.TextButton as M3TextButton
 object MAButtons : Buttons {
 
 	@Composable
-	@Suppress("UnusedReceiverParameter", "UNUSED_PARAMETER")
+	@Suppress("UnusedReceiverParameter")
 	private fun RowScope.ButtonContents(
 		loading: Progress,
 		icon: (@Composable () -> Unit)?,

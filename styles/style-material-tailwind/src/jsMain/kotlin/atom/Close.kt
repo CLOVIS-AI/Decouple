@@ -1,4 +1,4 @@
-package opensavvy.decouple.material.tailwind.atom.icon
+package opensavvy.decouple.material.tailwind.atom
 
 import androidx.compose.runtime.Composable
 import org.jetbrains.compose.web.ExperimentalComposeWebSvgApi

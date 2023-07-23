@@ -2,8 +2,8 @@ package opensavvy.decouple.demo.theming
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.UI
-import opensavvy.decouple.core.atom.actionable.Button
-import opensavvy.decouple.core.atom.text.Text
+import opensavvy.decouple.core.atom.Button
+import opensavvy.decouple.core.atom.Text
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.layout.Screen
 

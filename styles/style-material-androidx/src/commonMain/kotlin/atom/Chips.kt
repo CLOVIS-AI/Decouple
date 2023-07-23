@@ -1,4 +1,4 @@
-package opensavvy.decouple.material.androidx.atom.actionable
+package opensavvy.decouple.material.androidx.atom
 
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Row
@@ -7,7 +7,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import opensavvy.decouple.core.UI
-import opensavvy.decouple.core.atom.actionable.Chips
+import opensavvy.decouple.core.atom.Chips
 import opensavvy.progress.Progress
 import opensavvy.progress.done
 import androidx.compose.material3.AssistChip as M3AssistChip
