@@ -1,6 +1,7 @@
 package opensavvy.decouple.core.layout
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import opensavvy.decouple.core.UI
 
 interface LinearLayouts {
@@ -41,6 +42,14 @@ interface LinearLayouts {
 		content: @Composable BoxScope.() -> Unit,
 	)
 
+	// TODO: Doc
+	@Composable
+	fun GridSpec(
+		horizontal: IntRange,
+		vertical: IntRange,
+		content: @Composable GridScope.(Int, Int) -> Unit,
+	)
+
 	@LayoutScopeMarker
 	interface LinearLayoutScope
 
@@ -49,6 +58,8 @@ interface LinearLayouts {
 	interface RowScope : LinearLayoutScope
 
 	interface BoxScope : LinearLayoutScope
+
+	interface GridScope : LinearLayoutScope
 }
 
 /**
@@ -85,3 +96,28 @@ fun Box(
 	alignment: Alignment = Alignment.Stretch,
 	content: @Composable LinearLayouts.BoxScope.() -> Unit,
 ) = UI.current.BoxSpec(alignment, content)
+
+@Composable
+fun Grid(
+	horizontal: IntRange,
+	vertical: IntRange,
+	content: @Composable LinearLayouts.GridScope.(Int, Int) -> Unit,
+) = UI.current.GridSpec(horizontal, vertical, content)
+
+@Composable
+fun <T> Grid(
+	data: List<List<T>>,
+	content: @Composable LinearLayouts.GridScope.(T) -> Unit,
+) {
+	val maxHorizontal = remember(data) { data.maxOf { it.size } }
+
+	Grid(
+		horizontal = data.indices,
+		vertical = 0 until maxHorizontal,
+	) { x, y ->
+		val item = data[y].getOrNull(x)
+		if (item != null) {
+			content(item)
+		}
+	}
+}

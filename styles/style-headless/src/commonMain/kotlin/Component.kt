@@ -165,7 +165,7 @@ interface Component {
  */
 @Composable
 fun Meta<*>.compose(
-	update: @DisallowComposableCalls() (Updater<ExecutableNode>.() -> Unit),
+	update: @DisallowComposableCalls() (Updater<ExecutableNode>.() -> Unit) = {},
 	content: @Composable () -> Unit,
 ) {
 	Node(name, isSlot = false, update, content)

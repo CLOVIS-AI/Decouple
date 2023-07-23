@@ -1,6 +1,7 @@
 package opensavvy.decouple.material.androidx.layout
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import opensavvy.decouple.core.layout.Alignment
 import opensavvy.decouple.core.layout.Arrangement
 import opensavvy.decouple.core.layout.LinearLayouts
@@ -74,12 +75,30 @@ object MALinearLayouts : LinearLayouts {
 		alignment: Alignment,
 		content: @Composable LinearLayouts.BoxScope.() -> Unit,
 	) {
-		//TODO in #80: rework the alignment
+		// TODO in #80: rework the alignment
 
 		M3Box { content(MABoxScope) }
+	}
+
+	@Composable
+	override fun GridSpec(
+		horizontal: IntRange,
+		vertical: IntRange,
+		content: @Composable LinearLayouts.GridScope.(Int, Int) -> Unit,
+	) {
+		M3Column {
+			for (y in vertical) {
+				M3Row {
+					for (x in horizontal) {
+						M3Box(Modifier.weight(1f)) { content(MAGridScope, x, y) }
+					}
+				}
+			}
+		}
 	}
 
 	private object MAColumnScope : LinearLayouts.ColumnScope
 	private object MARowScope : LinearLayouts.RowScope
 	private object MABoxScope : LinearLayouts.BoxScope
+	private object MAGridScope : LinearLayouts.GridScope
 }
