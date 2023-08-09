@@ -1,8 +1,8 @@
 package opensavvy.decouple.demo.theming
 
 import androidx.compose.runtime.Composable
+import opensavvy.decouple.core.atom.ActionButton
 import opensavvy.decouple.core.atom.Button
-import opensavvy.decouple.core.atom.SecondaryButton
 import opensavvy.decouple.core.atom.Text
 import opensavvy.decouple.core.layout.Row
 import opensavvy.decouple.core.layout.Screen
@@ -38,7 +38,7 @@ fun ThemeSelector(
     Row {
         for (theme in available) {
             if (theme in recommended) {
-                SecondaryButton(
+	            ActionButton(
                     onClick = { setCurrent(theme) },
                     enabled = theme != current,
                 ) {

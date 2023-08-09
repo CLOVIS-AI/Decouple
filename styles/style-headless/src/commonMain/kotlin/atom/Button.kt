@@ -1,37 +1,27 @@
 package opensavvy.decouple.headless.atom
 
 import androidx.compose.runtime.Composable
+import opensavvy.decouple.core.atom.ButtonAttrs
 import opensavvy.decouple.core.atom.Buttons
 import opensavvy.decouple.headless.Component
 import opensavvy.decouple.headless.bind
 import opensavvy.decouple.headless.compose
 import opensavvy.decouple.headless.execution.Slot
 import opensavvy.decouple.headless.node.Node
-import opensavvy.decouple.headless.node.NodeTree
 import opensavvy.decouple.headless.node.getValue
 import opensavvy.progress.Progress
 
-interface AbstractButton {
-	val click: () -> Unit
-	val enabled: Boolean
-	val loading: Progress
+class Button(node: Node) : Component {
+	val click: () -> Unit by node.attributes
 
-	val icon: NodeTree
+	val role: Buttons.Role by node.attributes
+	val enabled: Boolean by node.attributes
+	val loading: Progress by node.attributes
+	val contrasted: Boolean by node.attributes
 
-	val content: NodeTree
-}
+	val icon by node.slots
 
-/**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.Button].
- */
-class Button(node: Node) : AbstractButton, Component {
-	override val click: () -> Unit by node.attributes
-	override val enabled: Boolean by node.attributes
-	override val loading: Progress by node.attributes
-
-	override val icon by node.slots
-
-	override val content by node.content
+	val content by node.content
 
 	companion object : Component.Meta<Button> {
 		override val name = "Buttons.Button"
@@ -40,157 +30,24 @@ class Button(node: Node) : AbstractButton, Component {
 	}
 }
 
-/**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.PrimaryButton].
- */
-class PrimaryButton(node: Node) : AbstractButton, Component {
-	override val click: () -> Unit by node.attributes
-	override val enabled: Boolean by node.attributes
-	override val loading: Progress by node.attributes
-	val primary: Boolean by node.attributes
-
-	override val icon by node.slots
-
-	override val content by node.content
-
-	companion object : Component.Meta<PrimaryButton> {
-		override val name = "Buttons.PrimaryButton"
-
-		override fun buildFrom(node: Node) = PrimaryButton(node)
-	}
-}
-
-/**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.SecondaryButton].
- */
-class SecondaryButton(node: Node) : AbstractButton, Component {
-	override val click: () -> Unit by node.attributes
-	override val enabled: Boolean by node.attributes
-	override val loading: Progress by node.attributes
-
-	override val icon by node.slots
-
-	override val content by node.content
-
-	companion object : Component.Meta<SecondaryButton> {
-		override val name = "Buttons.SecondaryButton"
-
-		override fun buildFrom(node: Node) = SecondaryButton(node)
-	}
-}
-
-/**
- * Type-safe wrapper for [opensavvy.decouple.core.atom.ContrastButton].
- */
-class ContrastButton(node: Node) : AbstractButton, Component {
-	override val click: () -> Unit by node.attributes
-	override val enabled: Boolean by node.attributes
-	override val loading: Progress by node.attributes
-
-	override val icon by node.slots
-
-	override val content by node.content
-
-	companion object : Component.Meta<SecondaryButton> {
-		override val name = "Buttons.ContrastButton"
-
-		override fun buildFrom(node: Node) = SecondaryButton(node)
-	}
-}
-
 object TButtons : Buttons {
 
 	@Composable
-	override fun ButtonSpec(
-		onClick: () -> Unit,
-		enabled: Boolean,
-		loading: Progress,
-		icon: (@Composable () -> Unit)?,
-		content: @Composable Buttons.ButtonScope.() -> Unit,
-	) {
+	override fun ButtonSpec(attrs: ButtonAttrs) {
 		Button.compose(
 			update = {
-				bind(onClick, Button::click)
-				bind(enabled, Button::enabled)
-				bind(loading, Button::loading)
+				bind(attrs.onClick, Button::click)
+				bind(attrs.role, Button::role)
+				bind(attrs.enabled, Button::enabled)
+				bind(attrs.loading, Button::loading)
+				bind(attrs.contrasted, Button::contrasted)
 			}
 		) {
-			if (icon != null) Slot(Button::icon) {
-				icon()
+			attrs.icon?.let {
+				Slot(Button::icon, it)
 			}
 
-			content(TButtonScope)
-		}
-	}
-
-	@Composable
-	override fun PrimaryButtonSpec(
-		onClick: () -> Unit,
-		primary: Boolean,
-		enabled: Boolean,
-		loading: Progress,
-		icon: (@Composable () -> Unit)?,
-		content: @Composable Buttons.ButtonScope.() -> Unit,
-	) {
-		PrimaryButton.compose(
-			update = {
-				bind(onClick, PrimaryButton::click)
-				bind(primary, PrimaryButton::primary)
-				bind(enabled, PrimaryButton::enabled)
-				bind(loading, PrimaryButton::loading)
-			}
-		) {
-			if (icon != null) Slot(PrimaryButton::icon) {
-				icon()
-			}
-
-			content(TButtonScope)
-		}
-	}
-
-	@Composable
-	override fun SecondaryButtonSpec(
-		onClick: () -> Unit,
-		enabled: Boolean,
-		loading: Progress,
-		icon: (@Composable () -> Unit)?,
-		content: @Composable Buttons.ButtonScope.() -> Unit,
-	) {
-		SecondaryButton.compose(
-			update = {
-				bind(onClick, SecondaryButton::click)
-				bind(enabled, SecondaryButton::enabled)
-				bind(loading, SecondaryButton::loading)
-			}
-		) {
-			if (icon != null) Slot(SecondaryButton::icon) {
-				icon()
-			}
-
-			content(TButtonScope)
-		}
-	}
-
-	@Composable
-	override fun ContrastButtonSpec(
-		onClick: () -> Unit,
-		enabled: Boolean,
-		loading: Progress,
-		icon: (@Composable () -> Unit)?,
-		content: @Composable Buttons.ButtonScope.() -> Unit,
-	) {
-		ContrastButton.compose(
-			update = {
-				bind(onClick, SecondaryButton::click)
-				bind(enabled, SecondaryButton::enabled)
-				bind(loading, SecondaryButton::loading)
-			}
-		) {
-			if (icon != null) Slot(SecondaryButton::icon) {
-				icon()
-			}
-
-			content(TButtonScope)
+			attrs.content(TButtonScope)
 		}
 	}
 

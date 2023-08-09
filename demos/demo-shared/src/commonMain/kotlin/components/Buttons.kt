@@ -33,15 +33,15 @@ fun Buttons() {
 				Text("Button")
 			}
 
-			SecondaryButton({ delay(1000) }, enabled = enabled) {
+			ActionButton({ delay(1000) }, enabled = enabled) {
 				Text("Secondary button")
 			}
 
-			PrimaryButton({ delay(1000) }, enabled = enabled) {
+			SecondaryButton({ delay(1000) }, enabled = enabled) {
 				Text("Primary button")
 			}
 
-			PrimaryButton({ delay(1000) }, enabled = enabled, primary = true) {
+			PrimaryButton({ delay(1000) }, enabled = enabled) {
 				Text("Highlighted primary button")
 			}
 

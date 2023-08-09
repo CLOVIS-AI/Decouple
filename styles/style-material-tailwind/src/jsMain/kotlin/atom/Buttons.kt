@@ -1,6 +1,7 @@
 package opensavvy.decouple.material.tailwind.atom
 
 import androidx.compose.runtime.Composable
+import opensavvy.decouple.core.atom.ButtonAttrs
 import opensavvy.decouple.core.atom.Buttons
 import opensavvy.decouple.core.atom.ProgressIndicator
 import opensavvy.decouple.core.theme.Theme
@@ -16,7 +17,18 @@ import org.jetbrains.compose.web.dom.Div
 object MTButtons : Buttons {
 
 	@Composable
-	override fun ButtonSpec(
+	override fun ButtonSpec(attrs: ButtonAttrs) {
+		when {
+			attrs.role == Buttons.Role.Primary -> PrimaryButtonSpec(attrs.onClick, primary = true, attrs.enabled, attrs.loading, attrs.icon, attrs.content)
+			attrs.role == Buttons.Role.Secondary -> PrimaryButtonSpec(attrs.onClick, primary = false, attrs.enabled, attrs.loading, attrs.icon, attrs.content)
+			attrs.role == Buttons.Role.Action -> SecondaryButtonSpec(attrs.onClick, attrs.enabled, attrs.loading, attrs.icon, attrs.content)
+			attrs.role == Buttons.Role.Normal -> ButtonSpec(attrs.onClick, attrs.enabled, attrs.loading, attrs.icon, attrs.content)
+			attrs.contrasted -> ContrastButtonSpec(attrs.onClick, attrs.enabled, attrs.loading, attrs.icon, attrs.content)
+		}
+	}
+
+	@Composable
+	private fun ButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -55,7 +67,7 @@ object MTButtons : Buttons {
 	}
 
 	@Composable
-	override fun PrimaryButtonSpec(
+	private fun PrimaryButtonSpec(
 		onClick: () -> Unit,
 		primary: Boolean,
 		enabled: Boolean,
@@ -111,7 +123,7 @@ object MTButtons : Buttons {
 	}
 
 	@Composable
-	override fun SecondaryButtonSpec(
+	private fun SecondaryButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
@@ -155,7 +167,7 @@ object MTButtons : Buttons {
 	}
 
 	@Composable
-	override fun ContrastButtonSpec(
+	private fun ContrastButtonSpec(
 		onClick: () -> Unit,
 		enabled: Boolean,
 		loading: Progress,
