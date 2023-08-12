@@ -3,6 +3,7 @@ package opensavvy.decouple.material.androidx.atom
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.core.UI
+import opensavvy.decouple.core.atom.ButtonAttrs
 import opensavvy.decouple.core.atom.Buttons
 import opensavvy.progress.Progress
 import opensavvy.progress.done
@@ -13,6 +14,38 @@ import androidx.compose.material3.OutlinedButton as M3OutlinedButton
 import androidx.compose.material3.TextButton as M3TextButton
 
 object MAButtons : Buttons {
+
+	@Composable
+	override fun ButtonSpec(attrs: ButtonAttrs) {
+		val enabled = attrs.enabled && attrs.loading == done()
+
+		when {
+			attrs.role == Buttons.Role.Primary -> M3Button(
+				onClick = attrs.onClick,
+				enabled = enabled,
+			) { ButtonContents(attrs.loading, attrs.icon, attrs.content) }
+
+			attrs.role == Buttons.Role.Secondary -> M3FilledTonalButton(
+				onClick = attrs.onClick,
+				enabled = enabled,
+			) { ButtonContents(attrs.loading, attrs.icon, attrs.content) }
+
+			attrs.role == Buttons.Role.Action -> M3OutlinedButton(
+				onClick = attrs.onClick,
+				enabled = enabled
+			) { ButtonContents(attrs.loading, attrs.icon, attrs.content) }
+
+			attrs.role == Buttons.Role.Normal -> M3TextButton(
+				onClick = attrs.onClick,
+				enabled = enabled,
+			) { ButtonContents(attrs.loading, attrs.icon, attrs.content) }
+
+			attrs.contrasted -> M3ElevatedButton(
+				onClick = attrs.onClick,
+				enabled = enabled,
+			) { ButtonContents(attrs.loading, attrs.icon, attrs.content) }
+		}
+	}
 
 	@Composable
 	@Suppress("UnusedReceiverParameter")
@@ -27,70 +60,6 @@ object MAButtons : Buttons {
 		UI.current.ProgressIndicatorSpec(loading)
 
 		MAButtonScope.content()
-	}
-
-	@Composable
-	override fun ButtonSpec(
-		onClick: () -> Unit,
-		enabled: Boolean,
-		loading: Progress,
-		icon: (@Composable () -> Unit)?,
-		content: @Composable Buttons.ButtonScope.() -> Unit,
-	) {
-		M3TextButton(
-			onClick = onClick,
-			enabled = enabled && loading == done(),
-		) { ButtonContents(loading, icon, content) }
-	}
-
-	@Composable
-	override fun PrimaryButtonSpec(
-		onClick: () -> Unit,
-		primary: Boolean,
-		enabled: Boolean,
-		loading: Progress,
-		icon: (@Composable () -> Unit)?,
-		content: @Composable Buttons.ButtonScope.() -> Unit,
-	) {
-		if (primary) {
-			M3Button(
-				onClick = onClick,
-				enabled = enabled && loading == done(),
-			) { ButtonContents(loading, icon, content) }
-		} else {
-			M3FilledTonalButton(
-				onClick = onClick,
-				enabled = enabled && loading == done(),
-			) { ButtonContents(loading, icon, content) }
-		}
-	}
-
-	@Composable
-	override fun SecondaryButtonSpec(
-		onClick: () -> Unit,
-		enabled: Boolean,
-		loading: Progress,
-		icon: (@Composable () -> Unit)?,
-		content: @Composable Buttons.ButtonScope.() -> Unit,
-	) {
-		M3OutlinedButton(
-			onClick = onClick,
-			enabled = enabled && loading == done()
-		) { ButtonContents(loading, icon, content) }
-	}
-
-	@Composable
-	override fun ContrastButtonSpec(
-		onClick: () -> Unit,
-		enabled: Boolean,
-		loading: Progress,
-		icon: (@Composable () -> Unit)?,
-		content: @Composable Buttons.ButtonScope.() -> Unit,
-	) {
-		M3ElevatedButton(
-			onClick = onClick,
-			enabled = enabled && loading == done(),
-		) { ButtonContents(loading, icon, content) }
 	}
 
 	private object MAButtonScope : Buttons.ButtonScope
