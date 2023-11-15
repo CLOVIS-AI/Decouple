@@ -1,3 +1,3 @@
-package opensavvy.playground.core
+package opensavvy.decouple.core
 
 const val message = "Hello World!"

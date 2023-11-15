@@ -1,4 +1,4 @@
-package opensavvy.playground
+package opensavvy.decouple.demo
 
 import kotlin.test.Test
 import kotlin.test.assertTrue

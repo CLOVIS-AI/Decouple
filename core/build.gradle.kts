@@ -8,9 +8,9 @@ kotlin {
 }
 
 library {
-	name.set("Playground Core")
-	description.set("Project template with configured MavenCentral publication")
-	homeUrl.set("https://gitlab.com/opensavvy/playgrounds/gradle")
+	name.set("Core")
+	description.set("Architecture to declare overrideable Compose Multiplatform components")
+	homeUrl.set("https://gitlab.com/opensavvy/decouple")
 
 	license.set {
 		name.set("Apache 2.0")
