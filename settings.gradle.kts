@@ -28,4 +28,5 @@ plugins {
 include(
 	"demo",
 	"core",
+	"components",
 )
