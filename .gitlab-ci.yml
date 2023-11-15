@@ -1,0 +1,192 @@
+stages:
+  - docker  # create images that are needed by the rest of the build
+  - build   # create any outputs of the project (binaries, containers, charts…)
+  - test    # all quality checks
+  - deploy  # export the outputs (publish to an artifact registry, deploy on a server…)
+
+include:
+  - remote: https://gitlab.com/opensavvy/ci-templates/-/raw/main/version.gitlab-ci.yml
+  - remote: https://gitlab.com/opensavvy/ci-templates/-/raw/main/mirror.gitlab-ci.yml
+  - remote: https://gitlab.com/opensavvy/ci-templates/-/raw/main/gradle.gitlab-ci.yml
+  - remote: https://gitlab.com/opensavvy/ci-templates/-/raw/main/docker.gitlab-ci.yml
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
+
+# region Check
+
+check:
+  extends: [ .os.gradle ]
+  needs: [ os.version ]
+  stage: test
+
+  script:
+    - >
+      ./gradlew check
+      -PappVersion=$project_version
+
+  interruptible: true
+
+# endregion
+# region Publishing
+
+publish-maven:gitlab:
+  extends: [ .os.gradle ]
+  needs: [ os.version, check ]
+  stage: deploy
+
+  script:
+    - >
+      ./gradlew publishAllPublicationsToGitLabRepository
+      --no-configuration-cache
+      -PappVersion=$project_version
+
+  interruptible: false
+  rules:
+    - if: $PUBLISH_MAVEN == "no" || $PUBLISH_MAVEN_GITLAB == "no"
+      when: never
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
+
+publish-maven:central:initialize:
+  extends: [ .os.gradle ]
+  needs: [ os.version ]
+  stage: deploy
+
+  script:
+    - >
+      ./gradlew initializeSonatypeStagingRepository
+      --no-configuration-cache
+      -PappVersion=$project_version
+
+  interruptible: false
+  rules:
+    - if: $OSSRH_USERNAME == null || $OSSRH_PASSWORD == null
+      when: never
+    - if: $PUBLISH_MAVEN == "no" || $PUBLISH_MAVEN_CENTRAL == "no"
+      when: never
+    - if: $CI_COMMIT_TAG
+
+publish-maven:central:
+  extends: [ .os.gradle ]
+  needs: [ os.version, publish-maven:central:initialize ]
+  stage: deploy
+
+  script:
+    - export SIGNING_KEY_RING=$(mktemp)
+    - <"$SIGNING_KEY_RING_B64" base64 -d >"$SIGNING_KEY_RING"
+    - >
+      ./gradlew findSonatypeStagingRepository publishToSonatype
+      -x initializeSonatypeStagingRepository
+      --no-configuration-cache
+      -PappVersion=$project_version
+
+  interruptible: false
+  rules:
+    - if: $OSSRH_USERNAME == null || $OSSRH_PASSWORD == null
+      when: never
+    - if: $PUBLISH_MAVEN == "no" || $PUBLISH_MAVEN_CENTRAL == "no"
+      when: never
+    - if: $CI_COMMIT_TAG
+
+publish-maven:central:release:
+  extends: [ .os.gradle ]
+  needs: [ os.version, publish-maven:central ]
+  stage: deploy
+
+  script:
+    - >
+      ./gradlew findSonatypeStagingRepository closeAndReleaseSonatypeStagingRepository
+      --no-configuration-cache
+      -PappVersion=$project_version
+
+  interruptible: false
+  rules:
+    - if: $OSSRH_USERNAME == null || $OSSRH_PASSWORD == null
+      when: never
+    - if: $PUBLISH_MAVEN == "no" || $PUBLISH_MAVEN_CENTRAL == "no"
+      when: never
+    - if: $CI_COMMIT_TAG
+
+# endregion
+# region API documentation
+
+dokka:
+  extends: [ .os.gradle ]
+  stage: build
+  needs: [ os.version ]
+
+  script:
+    - >
+      ./gradlew :dokkatooGeneratePublicationHtml
+      --no-configuration-cache
+      -PappVersion=$project_version
+
+  after_script:
+    - mkdir -p api-docs
+    - mv build/dokka/html/* api-docs
+    - PREFIX="$CI_PROJECT_ROOT_NAMESPACE/"
+    - echo "URL=https://$CI_PROJECT_ROOT_NAMESPACE.$CI_PAGES_DOMAIN/-/${CI_PROJECT_PATH//$PREFIX}/-/jobs/$CI_JOB_ID/artifacts/api-docs/index.html" >>deploy.env
+
+  artifacts:
+    paths:
+      - api-docs
+    reports:
+      dotenv: deploy.env
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG/api-docs
+    url: $URL
+    deployment_tier: development
+
+  interruptible: true
+
+# endregion
+# region Automatically mirror the previous layer of the playground
+
+mirror-playground:
+  stage: deploy
+  extends: [ .os.mirror ]
+  needs: [ ]
+
+  variables:
+    url: "$playground_parent"
+    name: "$playground_parent_name"
+    key: "$playground_mirroring_key"
+    key_public: "$playground_mirroring_key_public"
+
+  rules:
+    - if: $playground_parent == null || $playground_parent_name == null
+      when: never
+    - if: $playground_mirroring_key == null || $playground_mirroring_key_public == null
+      when: never
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    - when: manual
+      allow_failure: true
+
+# endregion
+# GitLab Pages
+
+pages:
+  image: alpine:latest
+  stage: deploy
+  needs:
+    - job: dokka
+      artifacts: true
+
+  script:
+    - mkdir -p public
+    - mv api-docs public
+
+  artifacts:
+    paths:
+      - public
+
+  rules:
+    - if: $CI_COMMIT_TAG
+  interruptible: false
+
+# endregion
