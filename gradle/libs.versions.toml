@@ -1,8 +1,10 @@
 # List of dependencies of the project
 
 [versions]
+compose = "1.5.3"
 
 [plugins]
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 
 [libraries]
 

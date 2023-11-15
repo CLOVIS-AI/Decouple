@@ -1,15 +1,27 @@
 plugins {
 	alias(opensavvyConventions.plugins.base)
 	alias(opensavvyConventions.plugins.kotlin.library)
+
+	alias(libs.plugins.compose)
 }
 
 kotlin {
 	jvm()
+	js(IR) {
+		browser()
+	}
+	linuxX64()
+
+	val commonMain by sourceSets.getting {
+		dependencies {
+			api(compose.runtime)
+		}
+	}
 }
 
 library {
 	name.set("Core")
-	description.set("Architecture to declare overrideable Compose Multiplatform components")
+	description.set("Architecture to declare polymorphic Compose Multiplatform components")
 	homeUrl.set("https://gitlab.com/opensavvy/decouple")
 
 	license.set {
