@@ -1,37 +1,30 @@
-@file:Suppress("UNUSED_VARIABLE")
-
 plugins {
-	alias(libs.plugins.kotlin)
-	alias(libs.plugins.kotlinMpp)
-
-	alias(libs.plugins.android)
-	alias(libs.plugins.androidLibrary)
-
-	alias(libs.plugins.compose)
+	alias(opensavvyConventions.plugins.base)
+	alias(opensavvyConventions.plugins.kotlin.library)
+	alias(opensavvyConventions.plugins.aligned.composeMultiplatform)
 }
 
 kotlin {
 	jvm()
-	android()
 	js(IR) {
 		browser()
 	}
+	linuxX64()
 
-	sourceSets {
-		val commonMain by getting {
-			dependencies {
-				api(compose.runtime)
-				api(libs.kotlinx.coroutines)
-				api(libs.kotlinx.datetime)
-
-				api(libs.pedestal.progress)
-				api(libs.pedestal.progressCoroutines)
-				implementation(libs.pedestal.logger)
-			}
+	val commonMain by sourceSets.getting {
+		dependencies {
+			api(compose.runtime)
 		}
 	}
 }
 
-android {
-	namespace = "opensavvy.decouple.core"
+library {
+	name.set("Core")
+	description.set("Architecture to declare polymorphic Compose Multiplatform components")
+	homeUrl.set("https://gitlab.com/opensavvy/decouple")
+
+	license.set {
+		name.set("Apache 2.0")
+		url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+	}
 }

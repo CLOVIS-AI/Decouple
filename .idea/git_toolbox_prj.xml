@@ -6,18 +6,16 @@
         <option name="enabled" value="true" />
       </BoolValueOverride>
     </option>
-    <option name="commitMessageValidation" value="true" />
     <option name="commitMessageValidationConfigOverride">
       <CommitMessageValidationOverride>
         <option name="enabled" value="true" />
         <option name="value">
           <CommitMessageValidationConfig>
-            <option name="enabled" value="true" />
             <option name="regexConfig">
               <RegexConfig>
                 <option name="dotAll" value="true" />
-                <option name="expression" value="(build|Build|upgrade|Upgrade|ci|doc|docs|Docs|feat|New|fix|fixes|Fix|perf|perfs|Update|refactor|style|test|tests|breaking|Breaking|merge)(\([a-z-]*\))?: .+" />
-                <option name="testInput" value="fix: Bug #123" />
+                <option name="expression" value="(?:build|Build|upgrade|Upgrade|ci|doc|docs|Docs|feat|New|fix|fixes|Fix|perf|perfs|Update|refactor|style|test|tests|breaking|Breaking|merge)(?:\([a-z-]*\))?: .+" />
+                <option name="testInput" value="feat(app): Add a new feature" />
               </RegexConfig>
             </option>
           </CommitMessageValidationConfig>
@@ -30,12 +28,5 @@
         <option name="value" value="true" />
       </BoolValueOverride>
     </option>
-    <option name="commitMessageValidationOverride">
-      <BoolValueOverride>
-        <option name="enabled" value="true" />
-        <option name="value" value="true" />
-      </BoolValueOverride>
-    </option>
-    <option name="commitMessageValidationRegex" value="(?:build|Build|upgrade|Upgrade|ci|doc|docs|Docs|feat|New|fix|fixes|Fix|perf|perfs|Update|refactor|style|test|tests|breaking|Breaking|merge)(?:\([a-z-]*\))?: .+" />
   </component>
 </project>

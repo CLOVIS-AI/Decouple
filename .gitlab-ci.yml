@@ -1,243 +1,192 @@
-# You can override the included template(s) by including variable overrides
-# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
-# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/#customizing-settings
-# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
-# Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
-# Note that environment variables can be set in several places
-# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
-  - docker
-  - build
-  - test
-  - deploy
+  - docker  # create images that are needed by the rest of the build
+  - build   # create any outputs of the project (binaries, containers, charts…)
+  - test    # all quality checks
+  - deploy  # export the outputs (publish to an artifact registry, deploy on a server…)
 
 include:
-  - remote: https://gitlab.com/opensavvy/ci-templates/-/raw/main/docker.gitlab-ci.yml
-  - remote: https://gitlab.com/opensavvy/ci-templates/-/raw/main/gradle.gitlab-ci.yml
   - remote: https://gitlab.com/opensavvy/ci-templates/-/raw/main/version.gitlab-ci.yml
+  - remote: https://gitlab.com/opensavvy/ci-templates/-/raw/main/mirror.gitlab-ci.yml
+  - remote: https://gitlab.com/opensavvy/ci-templates/-/raw/main/gradle.gitlab-ci.yml
+  - remote: https://gitlab.com/opensavvy/ci-templates/-/raw/main/docker.gitlab-ci.yml
 
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
 
-# Build the necessary images
+# region Check
 
-chromium:build:
-  extends: [ .os.docker.build ]
-  needs: [ ]
-  stage: docker
-
-  variables:
-    dockerfile: .gitlab/ci/chromium.dockerfile
-    context: .gitlab/ci
-    image: chromium
-
-  interruptible: true
-
-chromium:publish:
-  extends: [ .os.docker.rename ]
-  needs: [ chromium:build ]
-  stage: deploy
-
-  variables:
-    image: chromium
-
-  rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-
-  interruptible: true
-
-android-sdk:build:
-  extends: [ .os.docker.build ]
-  needs: [ ]
-  stage: docker
-
-  variables:
-    dockerfile: .gitlab/ci/android.dockerfile
-    context: .gitlab/ci
-    image: android-sdk
-
-  interruptible: true
-
-android-sdk:publish:
-  extends: [ .os.docker.rename ]
-  needs: [ android-sdk:build ]
-  stage: deploy
-
-  variables:
-    image: android-sdk
-
-  rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-
-  interruptible: true
-
-# Tests
-
-jvm:test:
+check:
   extends: [ .os.gradle ]
   needs: [ os.version ]
   stage: test
 
   script:
     - >
-      ./gradlew
-      jvmTest
-      demos:demo-desktop:test
+      ./gradlew check
       -PappVersion=$project_version
 
   interruptible: true
 
-web:test:
+# endregion
+# region Publishing
+
+publish-maven:gitlab:
   extends: [ .os.gradle ]
-  needs: [ chromium:build, os.version ]
-  stage: test
-  image: $CI_REGISTRY_IMAGE/chromium:build-$CI_PIPELINE_IID
+  needs: [ os.version, check ]
+  stage: deploy
 
   script:
     - >
-      ./gradlew
-      jsBrowserTest
+      ./gradlew publishAllPublicationsToGitLabRepository
+      --no-configuration-cache
       -PappVersion=$project_version
 
-  interruptible: true
+  interruptible: false
+  rules:
+    - if: $PUBLISH_MAVEN == "no" || $PUBLISH_MAVEN_GITLAB == "no"
+      when: never
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
 
-android:test:
-  extends: [ .os.gradle ]
-  needs: [ android-sdk:build, os.version ]
-  image: $CI_REGISTRY_IMAGE/android-sdk:build-$CI_PIPELINE_IID
-  stage: test
-
-  script:
-    - >
-      ./gradlew
-      demos:demo-android:test
-      -PappVersion=$project_version
-
-  artifacts:
-    reports:
-      junit: demo/android/build/test-results/*/*.xml
-  interruptible: true
-
-android:lint:
-  extends: [ .os.gradle ]
-  needs: [ android-sdk:build, os.version ]
-  image: $CI_REGISTRY_IMAGE/android-sdk:build-$CI_PIPELINE_IID
-  stage: test
-
-  script:
-    - ./gradlew lint -PappVersion=$project_version
-
-  artifacts:
-    paths:
-      - demo/android/build/reports/
-  interruptible: true
-
-# Build the demo
-
-demo:web:build:
+publish-maven:central:initialize:
   extends: [ .os.gradle ]
   needs: [ os.version ]
-  stage: build
+  stage: deploy
 
   script:
-    - ./gradlew demos:demo-web:production -PappVersion=$project_version
-    - mv build/js/packages/Decouple-demo-web/kotlin/dist dist-web
+    - >
+      ./gradlew initializeSonatypeStagingRepository
+      --no-configuration-cache
+      -PappVersion=$project_version
 
-  artifacts:
-    paths:
-      - dist-web
+  interruptible: false
+  rules:
+    - if: $OSSRH_USERNAME == null || $OSSRH_PASSWORD == null
+      when: never
+    - if: $PUBLISH_MAVEN == "no" || $PUBLISH_MAVEN_CENTRAL == "no"
+      when: never
+    - if: $CI_COMMIT_TAG
 
-  environment:
-    name: review/$CI_COMMIT_REF_SLUG/demo
-    url: https://$CI_PROJECT_NAMESPACE.$CI_PAGES_DOMAIN/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist-web/index.html
-    deployment_tier: development
-
-demo:android:build:
+publish-maven:central:
   extends: [ .os.gradle ]
-  needs: [ android-sdk:build, os.version ]
-  image: $CI_REGISTRY_IMAGE/android-sdk:build-$CI_PIPELINE_IID
-  stage: build
+  needs: [ os.version, publish-maven:central:initialize ]
+  stage: deploy
 
   script:
-    - ./gradlew demos:demo-android:assembleDebug -PappVersion=$project_version
-    - mv demos/demo-android/build/outputs/apk/debug/demo-android-debug.apk demo-debug.apk
+    - export SIGNING_KEY_RING=$(mktemp)
+    - <"$SIGNING_KEY_RING_B64" base64 -d >"$SIGNING_KEY_RING"
+    - >
+      ./gradlew findSonatypeStagingRepository publishToSonatype
+      -x initializeSonatypeStagingRepository
+      --no-configuration-cache
+      -PappVersion=$project_version
 
-  artifacts:
-    paths:
-      - demo-debug.apk
-    expose_as: Android App - Debug
-  interruptible: true
+  interruptible: false
+  rules:
+    - if: $OSSRH_USERNAME == null || $OSSRH_PASSWORD == null
+      when: never
+    - if: $PUBLISH_MAVEN == "no" || $PUBLISH_MAVEN_CENTRAL == "no"
+      when: never
+    - if: $CI_COMMIT_TAG
+
+publish-maven:central:release:
+  extends: [ .os.gradle ]
+  needs: [ os.version, publish-maven:central ]
+  stage: deploy
+
+  script:
+    - >
+      ./gradlew findSonatypeStagingRepository closeAndReleaseSonatypeStagingRepository
+      --no-configuration-cache
+      -PappVersion=$project_version
+
+  interruptible: false
+  rules:
+    - if: $OSSRH_USERNAME == null || $OSSRH_PASSWORD == null
+      when: never
+    - if: $PUBLISH_MAVEN == "no" || $PUBLISH_MAVEN_CENTRAL == "no"
+      when: never
+    - if: $CI_COMMIT_TAG
+
+# endregion
+# region API documentation
 
 dokka:
   extends: [ .os.gradle ]
-  needs: [ android-sdk:build, os.version ]
-  image: $CI_REGISTRY_IMAGE/android-sdk:build-$CI_PIPELINE_IID
   stage: build
-
-  script:
-    - ./gradlew dokkaHtmlMultiModule -PappVersion=$project_version
-    - mkdir -p docs
-    - mv build/dokka/htmlMultiModule/* docs
-
-  artifacts:
-    paths:
-      - docs
-
-  environment:
-    name: review/$CI_COMMIT_REF_SLUG/documentation
-    url: https://$CI_PROJECT_NAMESPACE.$CI_PAGES_DOMAIN/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/docs/index.html
-    deployment_tier: development
-
-publish:
-  extends: [ .os.gradle ]
-  needs: [ jvm:test, web:test, os.version ]
-  stage: deploy
+  needs: [ os.version ]
 
   script:
     - >
-      ./gradlew
-      publishKotlinMultiplatformPublicationToGitLabRepository
-      publishJvmPublicationToGitLabRepository
-      publishJsPublicationToGitLabRepository
+      ./gradlew :dokkatooGeneratePublicationHtml
+      --no-configuration-cache
       -PappVersion=$project_version
 
-  rules:
-    - if: $CI_COMMIT_TAG
-  interruptible: false
+  after_script:
+    - mkdir -p api-docs
+    - mv build/dokka/html/* api-docs
+    - PREFIX="$CI_PROJECT_ROOT_NAMESPACE/"
+    - echo "URL=https://$CI_PROJECT_ROOT_NAMESPACE.$CI_PAGES_DOMAIN/-/${CI_PROJECT_PATH//$PREFIX}/-/jobs/$CI_JOB_ID/artifacts/api-docs/index.html" >>deploy.env
 
-telegram:
+  artifacts:
+    paths:
+      - api-docs
+    reports:
+      dotenv: deploy.env
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG/api-docs
+    url: $URL
+    deployment_tier: development
+
+  interruptible: true
+
+# endregion
+# region Automatically mirror the previous layer of the playground
+
+mirror-playground:
   stage: deploy
-  image: registry.gitlab.com/clovis-ai/dotfiles:latest
-  needs: [ jvm:test, web:test ]
+  extends: [ .os.mirror ]
+  needs: [ ]
 
-  script:
-    - git changelog --format telegram-html --incoming >changelog
-    - announce-telegram changelog "$CHAT_IDS"
+  variables:
+    url: "$playground_parent"
+    name: "$playground_parent_name"
+    key: "$playground_mirroring_key"
+    key_public: "$playground_mirroring_key_public"
 
   rules:
-    - if: $BOT_TOKEN == null
+    - if: $playground_parent == null || $playground_parent_name == null
       when: never
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-  interruptible: false
+    - if: $playground_mirroring_key == null || $playground_mirroring_key_public == null
+      when: never
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    - when: manual
+      allow_failure: true
+
+# endregion
+# GitLab Pages
 
 pages:
   image: alpine:latest
   stage: deploy
   needs:
-    - job: demo:web:build
-      artifacts: true
     - job: dokka
       artifacts: true
+
   script:
-    - mkdir -p public/demo public/documentation
-    - mv dist-web/* public/demo
-    - mv docs/* public/documentation
+    - mkdir -p public
+    - mv api-docs public
+
   artifacts:
     paths:
       - public
+
   rules:
     - if: $CI_COMMIT_TAG
   interruptible: false
+
+# endregion

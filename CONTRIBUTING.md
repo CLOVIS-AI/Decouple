@@ -1,75 +1,94 @@
-# Contribution guide
+# Contributing to this project
 
 Thanks for wanting to contribute to the project!
 
-There are many things we appreciate help with. The simplest is to [report problems](https://gitlab.com/opensavvy/decouple/-/issues/new) you see in the documentation or while using the project.
+There are many things we appreciate help with. The simplest is to report problems you see in the documentation or while using the project, by creating an issue.
+
+If you have a specific change you'd like to submit, be it documentation, bug fixes or new features, please read our guide on [how to create merge requests following our conventions](https://gitlab.com/opensavvy/wiki/-/blob/main/README.md#wiki).
+
+> Before starting making large changes, please do talk about it with us! Some things, in particular, deploying to new platforms requires changes on our side as well.
 
 ## Issue tracking
 
-We use labels to organize issues.
+If you want to contribute, but do not know what to improve, we recommend going through to existing issues.
+We assign labels to issues to make them easier to find.
 
-> If you are reading this page in the GitLab UI, you can click on any label to see related issues.
-> If you are seeing this file in another tool, you can manually search by label in the [issue page](https://gitlab.com/opensavvy/decouple/-/issues).
+If you're reading this page in GitLab, the labels should appear in color and be clickable.
+If you're reading this on another tool, you can search by label in the issue list.
 
-Issue categories:
+**Labels common to all OpenSavvy projects**
 
-- ~"feature": High-level feature description (implementation is split into multiple sub-issues).
-- ~"discussion": More discussion is required before classification or implementation can be started.
-- ~"deployment": Deployment or CI/CD modification.
-- ~"documentation": Documentation modification or problem.
-- ~"bug": Something is not working correctly (accompanied by a severity).
-- ~"security": Security issue, risk to users.
-- ~"incident": Deployment issue (e.g. the demo website is down, accompanied by a severity).
-- ~"wontfix": We decided this issue is out of scope of the project, or cannot be done.
+<details open>
+<summary>Issue type</summary>
 
-Priority of issues:
+- ~feature: High-level feature/use-case description (implementation is split into multiple sub-issues).
+- ~discussion: More discussion is required before classification or implementation can be started.
+- ~deployment: Issues related to deployment, CI/CD or other kinds of automation.
+- ~documentation: Documentation improvements or problems.
+- ~bug: Something does not behave as expected.
+- ~security: Security risk to users of the project.
+- ~incident: Deployment issue (the website is down…).
+- ~wontfix: We decided that this issue is out of scope for the project, or cannot be done.
+- ~blocked-externally: We cannot go further on this topic, because some external service/library we depend on has a bug/is missing a feature.
 
-- ~"priority::low": Implementation is not time-sensitive.
-- ~"priority::medium": Normal priority.
-- ~"priority::high": Should be worked on soon.
-- ~"priority::urgent": Should be worked on as soon as possible.
+</details>
+<details>
+<summary>Contribution difficulty</summary>
 
-Severity of issues (only for bugs and incidents):
+These labels are indicators of how hard we think it is to implement them for an external contributor.
+We do not always label issues by contribution difficulty. If you are interested in an issue that isn't labelled, don't hesitate to write a comment communicating your interest and asking for precision.
 
-- ~"severity::cosmetic": Some parts of the project are not documented properly or aren't as beautiful as expected, but usage is not impacted.
-- ~"severity::minor": Some parts of the project are inconvenient to use.
-- ~"severity::moderate": Some parts of the project cannot be used.
-- ~"severity::major": Some important parts of the project cannot be used.
-- ~"severity::critical": The entire project cannot be used.
+- ~contribution::easy: Issues that are well explained and require little project knowledge.
+- ~contribution::medium: Issues that are well explained, but require some project knowledge.
+- ~contribution::difficult: Issues that are well explained, but require a strong understanding of the project.
 
-Development state (should NOT be applied to merge requests; these labels are not always applied, also look at the assignee field or linked merge requests):
+</details>
+<details>
+<summary>Priority</summary>
 
-- ~"issue::doing": Someone is currently working on it.
-- ~"issue::review": A merge request exists that will close this issue, and it's not in draft status.
+- ~priority::low: Implementation is not time-sensitive.
+- ~priority::medium: Normal priority.
+- ~priority::high: We want to do this soon.
+- ~priority::urgent: We want to do this as soon as possible.
 
-Impacted module:
+</details>
+<details>
+<summary>Severity (only for bugs and incidents)</summary>
+
+- ~severity::cosmetic: Some parts of the project do not look as good as they could, or there is a minor error in documentation. Usage is not impacted.
+- ~severity::minor: Some parts of the project are inconvenient to use.
+- ~severity::moderate: Some parts of the project cannot be used.
+- ~severity::major: Some important parts of the project cannot be used.
+- ~severity::critical: The entire project cannot be used.
+
+</details>
+<details>
+<summary>Development state (issues only)</summary>
+
+We do not always use these labels. When in doubt, write a comment asking for precision.
+These labels should only be applied to issues, not merge requests.
+
+- ~issue::doing: Someone is currently working on it.
+- ~issue::review: A merge request exists that will close this issue, and it's entered the review cycle.
+
+</details>
+
+**Labels specific to this project**
+
+<details open>
+<summary>Modules</summary>
 
 - ~"core": The `core` module.
-- ~"extra:navigation": The `navigation` extra module.
-- ~"extra:persist": The `persist` extra module.
-- ~"style:material": Material You/Material 3 implementation.
-- ~"style:headless": Headless implementation used for tests.
-- ~"style:dom": Pure HTML implementation that is entirely styled through user-provided CSS.
+- ~"design:material": Material3 design system.
+- ~"design:headless": Headless implementation, useful for testing.
 
-Impacted Kotlin platform:
+</details>
+<details>
+<summary>Kotlin platform</summary>
 
-- ~"platform:jvm": Kotlin/JVM
-- ~"platform:js": Kotlin/JS
-- ~"platform:android": Android
-- ~"platform:ios": All iOS variants
+- ~"platform:jvm": Kotlin/JVM.
+- ~"platform:js": Kotlin/JS.
+- ~"platform:android": Android.
+- ~"platform:ios": All iOS variants.
 
-Interoperability with other projects:
-
-- ~"interop:androidx": Jetpack Compose and JetBrains Compose modules which share the same components as Jetpack Compose
-- ~"interop:compose-dom": JetBrains Compose for Web (DOM only)
-
-## Helping with development
-
-Before starting to work on any major feature, component addition or platform addition, please create an issue to ensure we are on the same page on how it should be done. Platform additions in particular, require that we are able to maintain the platform long-term, by compiling it in CI, etc. Otherwise, it risks being dropped in the future if we find no one to maintain it.
-
-We are also grateful for blog articles mentioning the project, but please mention to your users that Decouple is not ready for production use.
-
-> If we forget to remove this disclaimer when Decouple eventually goes stable, please [report it to us](https://gitlab.com/opensavvy/decouple/-/issues/new).
-
-The details about our workflow, our code style and our commit style
-are [available in our wiki](https://gitlab.com/opensavvy/wiki/-/blob/main/README.md).
+</details>

@@ -1,4 +1,4 @@
-# OpenSavvy Decouple
+# Decouple
 
 > _Decouple_ your design system from your application
 
@@ -20,32 +20,16 @@ Implementations can be easily created for any platform where Kotlin runs, and mi
 
 To discuss the project with us, join the `#decouple` channel in the [official Kotlin Slack](https://kotl.in/slack).
 
-## Documentation
+> **Decouple is currently ongoing a major restructuring.**
+> Links may be broken, and information may be incorrect.
+> [Learn more](https://gitlab.com/opensavvy/decouple/-/issues/192).
 
-> The documentation is currently a work-in-progress as the project is still experimental.
-> We will gladly accept reports of missing or out-of-date information, as well as help with redaction.
+## License
 
-The documentation is split into four sections:
+This project is licensed under the [Apache 2.0 license](LICENSE).
 
-- [Tutorials](documentation/README.md#tutorials) demonstrate the usage of the library, skipping the setup steps,
-- [Explanations](documentation/README.md#explanations) present the underlying guidelines and our high-level goals, as well as explain technical decisions,
-- [How-to guides](documentation/README.md#how-to-guides) are small commented examples of how to solve specific problems (including project setup),
-- [The reference](documentation/README.md#the-reference) is a low-level precise explanation of the API elements and how to use them.
+## Contributing
 
-## Licensing
-
-The Decouple source code is licensed under Apache 2.0, allowing usage in most projects with minimal constraints.
-The full text is available in the [LICENSE](LICENSE) file.
-
-All rights to the Decouple logo and identity are reserved.
-
-## Contribution
-
-Development takes place in the [OpenSavvy GitLab repository](https://gitlab.com/opensavvy/decouple).
-This is also the recommended place to [report problems and feature requests](https://gitlab.com/opensavvy/decouple/-/issues).
-
-To learn more about the various ways to contribute, please read our [contribution guide](CONTRIBUTING.md).
-
-## Sponsors
-
-[![4SH Logo](https://www.4sh.fr/assets/img/svg/4sh_logo.svg)](https://www.4sh.fr/)
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+- To learn more about our coding conventions and workflow, see the [OpenSavvy Wiki](https://gitlab.com/opensavvy/wiki/-/blob/main/README.md#wiki).
+- This project is based on the [OpenSavvy Playground](docs/playground/README.md), a collection of preconfigured project templates.

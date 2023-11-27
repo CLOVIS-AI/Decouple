@@ -1,9 +1,5 @@
 # Ignore Gradle project-specific cache directory
 .gradle
-local.properties
 
 # Ignore Gradle build output directory
 build
-
-# yarn.lock
-/kotlin-js-store

@@ -1,25 +1,11 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-/misc.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-uiDesigner.xml
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
+# Ignore everything by default
+# (ignore specific files instead of folders, because we can't unignore files in ignored folders)
+*.xml
+*.iml
 
-# Generated from Gradle import
-.name
-compiler.xml
-gradle.xml
-jarRepositories.xml
-kotlinc.xml
-libraries
-/artifacts
-/modules
-/modules.xml
-/jsLibraryMappings.xml
-
-# Generated from Git import
-vcs.xml
+!.name
+!inspectionProfiles/*
+!runConfigurations/*
+!git_toolbox_prj.xml
+!codeStyles/*
+!copyright/*
