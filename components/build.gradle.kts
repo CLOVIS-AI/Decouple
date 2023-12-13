@@ -17,6 +17,9 @@ kotlin {
 	val commonMain by sourceSets.getting {
 		dependencies {
 			api(projects.polymorphism)
+
+			api(libs.pedestal.progress)
+			api(libs.pedestal.progress.coroutines)
 		}
 	}
 }
