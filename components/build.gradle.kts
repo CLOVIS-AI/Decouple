@@ -22,6 +22,11 @@ kotlin {
 			api(libs.pedestal.progress.coroutines)
 		}
 	}
+
+	sourceSets.all {
+		languageSettings.optIn("opensavvy.decouple.components.RestrictedStabilityArgument")
+		languageSettings.optIn("opensavvy.decouple.components.ExperimentalComponent")
+	}
 }
 
 library {
