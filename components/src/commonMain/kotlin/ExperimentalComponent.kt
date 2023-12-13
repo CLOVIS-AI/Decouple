@@ -11,6 +11,7 @@ package opensavvy.decouple.components
  * However, other fields of a stable component are safe to use.
  */
 @RequiresOptIn(message = "This component or attribute is experimental. It may be changed in the future without notice.")
+@MustBeDocumented
 @Retention(AnnotationRetention.BINARY)
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FIELD, AnnotationTarget.PROPERTY, AnnotationTarget.FUNCTION)
 annotation class ExperimentalComponent
