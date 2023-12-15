@@ -23,6 +23,7 @@ To discuss the project with us, join the `#decouple` channel in the [official Ko
 > **Decouple is currently ongoing a major restructuring.**
 > Links may be broken, and information may be incorrect.
 > [Learn more](https://gitlab.com/opensavvy/decouple/-/issues/192).
+> [View the previous version](legacy).
 
 ## License
 
