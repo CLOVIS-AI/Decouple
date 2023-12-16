@@ -9,14 +9,10 @@ kotlin {
 	}
 
 	sourceSets.commonMain.dependencies {
-		implementation(projects.core)
-	}
-
-	sourceSets.commonTest.dependencies {
-		implementation(opensavvyConventions.aligned.kotlin.test.junit5)
+		implementation(projects.gradle.templates.templateLib)
 	}
 }
 
 application {
-	mainClass.set("opensavvy.decouple.demo.MainKt")
+	mainClass.set("opensavvy.playground.app.MainKt")
 }

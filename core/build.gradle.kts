@@ -10,6 +10,8 @@ kotlin {
 		browser()
 	}
 	linuxX64()
+	iosArm64()
+	iosSimulatorArm64()
 
 	val commonMain by sourceSets.getting {
 		dependencies {
