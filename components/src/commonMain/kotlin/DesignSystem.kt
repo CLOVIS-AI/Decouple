@@ -1,7 +1,7 @@
 package opensavvy.decouple.components
 
 import androidx.compose.runtime.Composable
-import opensavvy.decouple.core.PolymorphicComponent
+import opensavvy.decouple.polymorphism.PolymorphicComponent
 
 /**
  * Parent interface of all design systems.

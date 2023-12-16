@@ -13,7 +13,7 @@ kotlin {
 
 	val commonMain by sourceSets.getting {
 		dependencies {
-			api(projects.core)
+			api(projects.polymorphism)
 		}
 	}
 }
