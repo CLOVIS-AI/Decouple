@@ -1,0 +1,6 @@
+/* noinspection CssUnknownTarget */
+@import "@fontsource/roboto/500.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

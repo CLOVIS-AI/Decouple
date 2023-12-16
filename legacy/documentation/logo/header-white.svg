@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 712 200">
+	<defs>
+		<style>
+			.cls-1 {
+			fill: #f973d3;
+			}
+
+			.cls-2 {
+			fill: #00b7f5;
+			}
+
+			.cls-3 {
+			fill: #ba70e6;
+			}
+
+			.cls-4 {
+			fill: url(#Dégradé_sans_nom_35);
+			}
+
+			.cls-5 {
+			fill: url(#Dégradé_sans_nom_34);
+			}
+
+			.cls-6 {
+			fill: url(#Dégradé_sans_nom_77);
+			}
+
+			.cls-7 {
+			fill: #fff;
+			font-family: GalanoGrotesqueAltDEMO-Bold, 'Galano Grotesque Alt DEMO';
+			font-size: 97.22px;
+			font-weight: 700;
+			}
+
+			.cls-8 {
+			letter-spacing: 0em;
+			}
+
+			.cls-9 {
+			opacity: .69;
+			}
+
+			.cls-10 {
+			fill: url(#Dégradé_sans_nom_7);
+			}
+
+			.cls-11 {
+			fill: url(#Dégradé_sans_nom_77-2);
+			}
+		</style>
+		<linearGradient id="Dégradé_sans_nom_34" data-name="Dégradé sans nom 34" x1="63.44" y1="85.61" x2="195.33"
+		                y2="157.28" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#6175f4"/>
+			<stop offset="1" stop-color="#4e5e98"/>
+		</linearGradient>
+		<linearGradient id="Dégradé_sans_nom_77" data-name="Dégradé sans nom 77" x1="46.39" y1="106.15" x2="179.26"
+		                y2="67.21" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#f973d3" stop-opacity="0"/>
+			<stop offset="1" stop-color="#915477" stop-opacity=".6"/>
+		</linearGradient>
+		<linearGradient id="Dégradé_sans_nom_77-2" data-name="Dégradé sans nom 77" x1="47.03" y1="108.32" x2="179.9"
+		                y2="69.38" xlink:href="#Dégradé_sans_nom_77"/>
+		<linearGradient id="Dégradé_sans_nom_7" data-name="Dégradé sans nom 7" x1="49.34" y1="124.85" x2="90.25"
+		                y2="124.85" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#f4ca89"/>
+			<stop offset="1" stop-color="#bc9e6c"/>
+		</linearGradient>
+		<linearGradient id="Dégradé_sans_nom_35" data-name="Dégradé sans nom 35" x1="165.85" y1="76.87" x2="211.44"
+		                y2="81.21" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#f4ca89"/>
+			<stop offset="1" stop-color="#bc9e6c"/>
+		</linearGradient>
+	</defs>
+	<g class="cls-9">
+		<path class="cls-2"
+		      d="m100,99.84c-.12,0-.24,0-.36,0,.12.12.24.23.36.35.12-.12.24-.23.36-.35-.12,0-.24,0-.36,0Z"/>
+	</g>
+	<g class="cls-9">
+		<path class="cls-2"
+		      d="m126.66,41.17c.12,0,.24,0,.36,0-.12-.12-.24-.23-.36-.35-.12.12-.24.23-.36.35.12,0,.24,0,.36,0Z"/>
+	</g>
+	<path class="cls-1"
+	      d="m126.66,75.5c23.52,0,44.74,11.44,59.97,27.04-.2-32.97-26.95-61.37-59.97-61.37s-59.78,26.07-59.98,59.03c15.22-15.6,36.45-24.7,59.98-24.7Z"/>
+	<path class="cls-5"
+	      d="m126.63,127.84c-23.52,0-44.73-12.04-59.95-27.64.2,32.97,26.93,61.98,59.95,61.98,33.02,0,59.79-26.67,59.99-59.64-15.22,15.6-36.47,25.3-59.99,25.3Z"/>
+	<path class="cls-3"
+	      d="m186.62,102.54c-15.22-15.6-36.44-27.04-59.97-27.04s-44.75,9.1-59.98,24.7c0,.12,0-.12,0,0s0-.12,0,0c15.22,15.6,36.43,27.64,59.95,27.64,23.52,0,44.77-9.7,59.99-25.3,0-.12,0,.12,0,0s0,.12,0,0Z"/>
+	<g>
+		<path class="cls-6" d="m66.68,100.18s0,0,0,.02c0,.02,0,.03,0,.02,0,.02,0,.02,0-.02s0-.04,0-.02Z"/>
+		<path class="cls-11"
+		      d="m186.63,102.52s0,0,0,.01c-.2-32.97-26.95-61.37-59.97-61.37s-59.78,26.07-59.98,59.03c15.22,15.6,36.43,27.64,59.95,27.64s44.77-9.7,59.99-25.3c-11.42-11.7-26.21-21.06-42.81-25.01-1.38-.33-2.78-.62-4.19-.87-1.41-.25-2.83-.46-4.26-.64,1.43.17,2.85.38,4.26.64,1.41.25,2.8.54,4.19.87,16.6,3.95,31.4,13.31,42.81,25.01h0s0,.04,0,.02c0,0,0,0,0-.02h0s0-.03,0-.02Z"/>
+	</g>
+	<path class="cls-10"
+	      d="m66.66,101.17c-.01-.32.02-.64.02-.97-14,13.75-20.51,27.58-15.85,37.38,4.69,9.87,19.71,13.54,39.42,11.27-14.3-11.77-22.91-28.12-23.59-47.68Z"/>
+	<path class="cls-4"
+	      d="m186.66,101.17c.03.46-.02.92-.03,1.37,13.51-13.52,19.75-27.05,15.17-36.68-4.54-9.56-19.3-13.04-38.09-11.21,14.16,12.29,21.89,27.11,22.95,46.52Z"/>
+	<text class="cls-7" transform="translate(227.39 140.44)">
+		<tspan x="0" y="0">decoup</tspan>
+		<tspan class="cls-8" x="356.2" y="0">l</tspan>
+		<tspan x="388.38" y="0">e</tspan>
+	</text>
+</svg>

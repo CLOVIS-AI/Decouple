@@ -73,5 +73,22 @@ These labels should only be applied to issues, not merge requests.
 
 </details>
 
-<!-- **Labels specific to this project** -->
-<!-- Use the same format to document all labels used by this project. -->
+**Labels specific to this project**
+
+<details open>
+<summary>Modules</summary>
+
+- ~"core": The `core` module.
+- ~"design:material": Material3 design system.
+- ~"design:headless": Headless implementation, useful for testing.
+
+</details>
+<details>
+<summary>Kotlin platform</summary>
+
+- ~"platform:jvm": Kotlin/JVM.
+- ~"platform:js": Kotlin/JS.
+- ~"platform:android": Android.
+- ~"platform:ios": All iOS variants.
+
+</details>
