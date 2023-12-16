@@ -30,6 +30,6 @@ include(
 	"gradle:templates:template-lib",
 
 	"demo",
-	"core",
+	"polymorphism",
 	"components",
 )

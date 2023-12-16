@@ -1,4 +1,4 @@
-package opensavvy.decouple.core
+package opensavvy.decouple.polymorphism
 
 import androidx.compose.runtime.Composable
 

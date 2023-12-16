@@ -1,8 +1,8 @@
-# Module Core
+# Module Polymorphic Compose
 
 Machinery of the polymorphic composable functions.
 
-<a href="https://search.maven.org/search?q=dev.opensavvy.decouple.core"><img src="https://img.shields.io/maven-central/v/dev.opensavvy.decouple/core.svg?label=Maven%20Central"></a>
+<a href="https://search.maven.org/search?q=dev.opensavvy.decouple.polymorphism"><img src="https://img.shields.io/maven-central/v/dev.opensavvy.decouple/polymorphism.svg?label=Maven%20Central"></a>
 
 ## Why?
 
@@ -37,7 +37,8 @@ Our goal is to allow users to switch between design systems at run-time; we ther
 Design components expose a behavior API that multiple design systems can implement in any way they want. When invoked, the caller selects one of the existing design systems (or creates their own).
 
 To do this, they are declared in two parts:
-- a low-level specification, in the form of an interface that implements [PolymorphicComponent][opensavvy.decouple.core.PolymorphicComponent],
+
+- a low-level specification, in the form of an interface that implements [PolymorphicComponent][opensavvy.decouple.polymorphism.PolymorphicComponent],
 - a high-level helper, in the form of a top-level function, that implements common behavior for all design systems.
 
 For example, here's a simple example of what a button could look like:
@@ -158,7 +159,7 @@ Finally, because all design systems have, by definition, a common interface (in 
 
 Have you ever wanted to accept a `@Composable` lambda parameter in a function you're writing, but have hesitated because it would allow invoking UI components, and it would make no sense in the place where you are using it?
 
-Well, the pattern we're using here means that all components are naturally scoped to a single interface. Through a bit of [DslMarker][kotlin.DslMarker] magic, we can create an object that forbids using any component, which we call [NoUI][opensavvy.decouple.core.NoUI]:
+Well, the pattern we're using here means that all components are naturally scoped to a single interface. Through a bit of [DslMarker][kotlin.DslMarker] magic, we can create an object that forbids using any component, which we call [NoUI][opensavvy.decouple.polymorphism.NoUI]:
 ```kotlin
 @Composable
 fun DesktopUI.HomePage(

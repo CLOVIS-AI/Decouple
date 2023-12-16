@@ -18,7 +18,7 @@ plugins {
 
 dependencies {
 	// List the 'library' projects
-	dokkatoo(projects.core)
+	dokkatoo(projects.polymorphism)
 	dokkatoo(projects.components)
 }
 

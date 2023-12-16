@@ -9,4 +9,4 @@ Standardized component list without design choices.
 Decouple is founded on the ability to switch the implementation of composable functions at runtime.
 This allows creating business-level UI code that is design-less, but calls design-full UI code that can be replaced at any time.
 
-The technical details of how this is implemented are explained in the Core module.
+The technical details of how this is implemented are explained in the "Polymorphic composables" module.

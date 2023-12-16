@@ -21,7 +21,7 @@ kotlin {
 }
 
 library {
-	name.set("Core")
+	name.set("Polymorphic Compose")
 	description.set("Architecture to declare polymorphic Compose Multiplatform components")
 	homeUrl.set("https://gitlab.com/opensavvy/decouple")
 
