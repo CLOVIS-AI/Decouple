@@ -78,8 +78,9 @@ These labels should only be applied to issues, not merge requests.
 <details open>
 <summary>Modules</summary>
 
-- ~"core": The `core` module.
-- ~"design:material": Material3 design system.
+- ~"polymorphism": Our concept of polymorphic composable functions.
+- ~"components": Our design-agnostic UI component library.
+- ~"design:material3": Implementation of our component library for Material3.
 - ~"design:headless": Headless implementation, useful for testing.
 
 </details>

@@ -4,6 +4,8 @@ Machinery of the polymorphic composable functions.
 
 <a href="https://search.maven.org/search?q=dev.opensavvy.decouple.polymorphism"><img src="https://img.shields.io/maven-central/v/dev.opensavvy.decouple/polymorphism.svg?label=Maven%20Central"></a>
 
+<a href="https://gitlab.com/opensavvy/wiki/-/blob/main/stability.md#stability-levels"><img src="https://badgen.net/static/Stability/alpha/purple"></a>
+
 ## Why?
 
 The Compose UI style guide recommends composable functions to be top-level.
