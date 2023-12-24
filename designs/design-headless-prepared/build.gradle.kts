@@ -16,27 +16,25 @@ kotlin {
 
 	sourceSets.commonMain.dependencies {
 		dependencies {
-			api(projects.components)
-			api(libs.kotlinx.coroutines)
+			api(projects.designs.designHeadless)
+			api(libs.prepared)
 		}
 	}
 
 	sourceSets.commonTest.dependencies {
 		dependencies {
 			implementation(libs.prepared.kotest)
-			implementation(projects.designs.designHeadlessPrepared)
 		}
 	}
 
 	sourceSets.all {
 		languageSettings.optIn("opensavvy.decouple.components.RestrictedStabilityArgument")
-		languageSettings.optIn("opensavvy.decouple.components.ExperimentalComponent")
 	}
 }
 
 library {
-	name.set("Design system: Headless")
-	description.set("Headless implementation of the Decouple component library to help test the behavior of a UI")
+	name.set("Design system: Headless (Prepared compatibility)")
+	description.set("Headless implementation of the Decouple component library to help test the behavior of a UI using the Prepared test framework")
 	homeUrl.set("https://gitlab.com/opensavvy/decouple")
 
 	license.set {
