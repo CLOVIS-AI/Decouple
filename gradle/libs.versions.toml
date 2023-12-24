@@ -2,11 +2,13 @@
 
 [versions]
 pedestal = "2.1.0"
+prepared = "0.6.0"
 
 [plugins]
 
 [libraries]
 pedestal-progress = { module = "dev.opensavvy.pedestal:progress", version.ref = "pedestal" }
 pedestal-progress-coroutines = { module = "dev.opensavvy.pedestal:progress-coroutines", version.ref = "pedestal" }
+prepared-kotest = { module = "dev.opensavvy.prepared:runner-kotest", version.ref = "prepared" }
 
 [bundles]
