@@ -20,6 +20,7 @@ dependencies {
 	// List the 'library' projects
 	dokkatoo(projects.polymorphism)
 	dokkatoo(projects.components)
+	dokkatoo(projects.designs.designHeadless)
 }
 
 // region Check the users of the project didn't forget to rename the group

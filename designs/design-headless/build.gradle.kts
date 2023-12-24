@@ -17,6 +17,7 @@ kotlin {
 	sourceSets.commonMain.dependencies {
 		dependencies {
 			api(projects.components)
+			api(libs.kotlinx.coroutines)
 		}
 	}
 
