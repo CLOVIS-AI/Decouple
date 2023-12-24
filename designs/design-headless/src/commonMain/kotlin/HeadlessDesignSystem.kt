@@ -14,6 +14,7 @@ import opensavvy.decouple.headless.execution.runHeadlessUI
  */
 interface HeadlessDesignComponents :
 	Buttons,
+	Spies
 
 /**
  * Ready-to-use implementation of [HeadlessDesignComponents] used as the default value when executing headless tests.

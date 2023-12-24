@@ -40,3 +40,7 @@ The [Component](opensavvy.decouple.headless.Component) class allows to declare t
 # Package opensavvy.decouple.headless.node
 
 Representation of the state of composable functions during their execution.
+
+# Package opensavvy.decouple.headless.debug
+
+Utilities for analyzing running compose functions.
