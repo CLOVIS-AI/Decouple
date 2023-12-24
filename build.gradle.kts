@@ -22,6 +22,7 @@ dependencies {
 	dokkatoo(projects.components)
 	dokkatoo(projects.designs.designHeadless)
 	dokkatoo(projects.designs.designHeadlessPrepared)
+	dokkatoo(projects.designs.designPureCss)
 }
 
 // region Check the users of the project didn't forget to rename the group

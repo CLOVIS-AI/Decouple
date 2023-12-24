@@ -4,6 +4,7 @@
 coroutines = "1.7.3"
 pedestal = "2.1.0"
 prepared = "0.6.0"
+purecss = "3.0.0"
 
 [plugins]
 
