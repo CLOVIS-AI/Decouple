@@ -30,7 +30,7 @@ kotlin {
 }
 
 library {
-	name.set("Components")
+	name.set("Component library")
 	description.set("Standardized component list that forms the basis of most applications")
 	homeUrl.set("https://gitlab.com/opensavvy/decouple")
 

@@ -1,4 +1,4 @@
-# Module Components
+# Module Component library
 
 Standardized component list without design choices.
 
