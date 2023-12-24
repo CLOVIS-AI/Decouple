@@ -2,6 +2,8 @@ package opensavvy.decouple.headless
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.components.DesignSystem
+import opensavvy.decouple.headless.components.actions.Buttons
+import opensavvy.decouple.headless.debug.Spies
 import opensavvy.decouple.headless.execution.runHeadlessUI
 
 /**
@@ -10,7 +12,8 @@ import opensavvy.decouple.headless.execution.runHeadlessUI
  * @see runHeadlessUI Execute headless components
  * @see HeadlessDesignSystem Ready-made design system for these components.
  */
-interface HeadlessDesignComponents
+interface HeadlessDesignComponents :
+	Buttons,
 
 /**
  * Ready-to-use implementation of [HeadlessDesignComponents] used as the default value when executing headless tests.
