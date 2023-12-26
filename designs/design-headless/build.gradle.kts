@@ -10,16 +10,21 @@ kotlin {
 		browser()
 	}
 	linuxX64()
-	iosArm64()
-	iosSimulatorArm64()
-	iosX64()
+	// iosArm64()
+	// iosSimulatorArm64()
+	// iosX64()
 
-	val commonMain by sourceSets.getting {
+	sourceSets.commonMain.dependencies {
 		dependencies {
-			api(projects.polymorphism)
+			api(projects.components)
+			api(libs.kotlinx.coroutines)
+		}
+	}
 
-			api(libs.pedestal.progress)
-			api(libs.pedestal.progress.coroutines)
+	sourceSets.commonTest.dependencies {
+		dependencies {
+			implementation(libs.prepared.kotest)
+			implementation(projects.designs.designHeadlessPrepared)
 		}
 	}
 
@@ -30,8 +35,8 @@ kotlin {
 }
 
 library {
-	name.set("Component library")
-	description.set("Standardized component list that forms the basis of most applications")
+	name.set("Design system: Headless")
+	description.set("Headless implementation of the Decouple component library to help test the behavior of a UI")
 	homeUrl.set("https://gitlab.com/opensavvy/decouple")
 
 	license.set {

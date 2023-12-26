@@ -32,4 +32,7 @@ include(
 	"demo",
 	"polymorphism",
 	"components",
+
+	"designs:design-headless",
+	"designs:design-headless-prepared",
 )
