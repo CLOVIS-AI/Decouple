@@ -35,4 +35,5 @@ include(
 
 	"designs:design-headless",
 	"designs:design-headless-prepared",
+	"designs:design-pure-css",
 )
