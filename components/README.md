@@ -40,3 +40,17 @@ Explanations of various concepts and decisions we made.
 
 All symbols in this package are empty type aliases that are used as a place to put cross-referencable documentation.
 We are not expecting these type aliases to be used anywhere outside of documentation comments.
+
+# Package opensavvy.decouple.components.display
+
+Non-interactive components that provide information to the user.
+
+## Text
+
+> [Specification](opensavvy.decouple.components.display.Texts)
+
+Text is the most important way to communicate static information to the user.
+
+|                                                      |                         |
+|------------------------------------------------------|-------------------------|
+| [`Text`](opensavvy.decouple.components.display.Text) | Simple unformatted text |
