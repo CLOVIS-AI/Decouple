@@ -1,24 +1,25 @@
+
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsCompose)
+    alias(opensavvyConventions.plugins.aligned.kotlin)
+    alias(demoLibs.plugins.androidApplication)
+    alias(opensavvyConventions.plugins.aligned.composeMultiplatform)
 }
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-        moduleName = "composeApp"
-        browser {
-            commonWebpackConfig {
-                outputFileName = "composeApp.js"
-            }
-        }
-        binaries.executable()
-    }
+    // WASM is not yet supported in our Compose Multiplatform version
+    // @OptIn(ExperimentalWasmDsl::class)
+    // wasmJs {
+    //     moduleName = "composeApp"
+    //     browser {
+    //         commonWebpackConfig {
+    //             outputFileName = "composeApp.js"
+    //         }
+    //     }
+    //     binaries.executable()
+    // }
     
     androidTarget {
         compilations.all {
@@ -43,11 +44,7 @@ kotlin {
     
     sourceSets {
         val desktopMain by getting
-        
-        androidMain.dependencies {
-            implementation(libs.compose.ui.tooling.preview)
-            implementation(libs.androidx.activity.compose)
-        }
+
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -56,6 +53,12 @@ kotlin {
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
         }
+
+        androidMain.dependencies {
+            implementation(compose.uiTooling)
+            implementation(demoLibs.androidx.activity.compose)
+        }
+
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
         }
@@ -64,7 +67,7 @@ kotlin {
 
 android {
     namespace = "opensavvy.decouple.demo"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = demoLibs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
@@ -72,8 +75,8 @@ android {
 
     defaultConfig {
         applicationId = "opensavvy.decouple.demo"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = demoLibs.versions.android.minSdk.get().toInt()
+        targetSdk = demoLibs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
     }
@@ -92,7 +95,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     dependencies {
-        debugImplementation(libs.compose.ui.tooling)
+        debugImplementation(compose.uiTooling)
     }
 }
 
