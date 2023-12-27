@@ -1,5 +1,4 @@
 
-import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
@@ -46,12 +45,7 @@ kotlin {
         val desktopMain by getting
 
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
-            @OptIn(ExperimentalComposeLibrary::class)
-            implementation(compose.components.resources)
+            implementation(projects.components)
         }
 
         androidMain.dependencies {
@@ -61,6 +55,16 @@ kotlin {
 
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
+            implementation(projects.designs.designMaterial3Androidx)
+        }
+
+        iosMain.dependencies {
+            implementation(projects.designs.designMaterial3Androidx)
+        }
+
+        all {
+            languageSettings.optIn("opensavvy.decouple.components.RestrictedStabilityArgument")
+            languageSettings.optIn("opensavvy.decouple.components.ExperimentalComponent")
         }
     }
 }
@@ -101,7 +105,7 @@ android {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "opensavvy.decouple.demo.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)

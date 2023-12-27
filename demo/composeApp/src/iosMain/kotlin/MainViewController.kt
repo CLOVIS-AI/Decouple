@@ -1,3 +1,12 @@
-import androidx.compose.ui.window.ComposeUIViewController
+package opensavvy.decouple.demo
 
-fun MainViewController() = ComposeUIViewController { App() }
+import androidx.compose.ui.window.ComposeUIViewController
+import opensavvy.decouple.demo.design.InstallSelectedDesign
+
+// Regular Compose for iOS initialization code.
+// The only new code is the 'InstallSelectedDesign' call to initialize Decouple.
+fun MainViewController() = ComposeUIViewController {
+	InstallSelectedDesign {
+		App()
+	}
+}

@@ -154,7 +154,13 @@ We are building a component library, but it's not an easy task: we are categoriz
 
 You can also help out by creating Compose compatibility layers for other popular design systems (or reimplementing them from scratch!). For example, we're building a custom [Material3 implementation for the DOM](https://gitlab.com/opensavvy/ui/compose-material3-tailwind). We'd be very interested in compatibility layers for [GTK+](https://www.gtk.org/), [Qt](https://www.qt.io/) or other native UI frameworks. Or, of course, you can contribute to this repository directly—documentation is sparse at the moment, so we recommend getting in touch.
 
-The most up-to-date information can be found [in our documentation](https://opensavvy.gitlab.io/decouple/api-docs/index.html) or [in our issue tracker](https://gitlab.com/opensavvy/decouple/-/issues).
+## Documentation
+
+To discover how Decouple is used in practice, [the demo](demo/README.md) is a commented example.
+
+To learn more about the project, how to use it, and the list of available components, see [our documentation](https://opensavvy.gitlab.io/decouple/api-docs/index.html) ([older versions](https://javadoc.io/doc/dev.opensavvy.decouple)).
+
+Information on our future plans are available [in our issue tracker](https://gitlab.com/opensavvy/decouple/-/issues).
 
 ## License
 
