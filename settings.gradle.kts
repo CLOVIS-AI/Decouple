@@ -29,7 +29,6 @@ include(
 	"gradle:templates:template-app",
 	"gradle:templates:template-lib",
 
-	"demo",
 	"polymorphism",
 	"components",
 
@@ -37,3 +36,5 @@ include(
 	"designs:design-headless-prepared",
 	"designs:design-pure-css",
 )
+
+includeBuild("demo")

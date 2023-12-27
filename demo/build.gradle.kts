@@ -1,22 +1,8 @@
 plugins {
-	alias(opensavvyConventions.plugins.base)
-	alias(opensavvyConventions.plugins.kotlin.application)
-}
-
-kotlin {
-	jvm {
-		withJava() // required by the application plugin
-	}
-
-	sourceSets.commonMain.dependencies {
-		implementation(projects.polymorphism)
-	}
-
-	sourceSets.commonTest.dependencies {
-		implementation(opensavvyConventions.aligned.kotlin.test.junit5)
-	}
-}
-
-application {
-	mainClass.set("opensavvy.decouple.demo.MainKt")
+    // this is necessary to avoid the plugins to be loaded multiple times
+    // in each subproject's classloader
+    alias(libs.plugins.androidApplication) apply false
+    alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.jetbrainsCompose) apply false
+    alias(libs.plugins.kotlinMultiplatform) apply false
 }
