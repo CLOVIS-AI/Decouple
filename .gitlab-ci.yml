@@ -32,7 +32,7 @@ workflow:
 
 .kotlin-jvm:
   extends: [ .os.gradle ]
-  image: registry.gitlab.com/opensavvy/automation/containers/java:$ci_containers
+  image: registry.gitlab.com/opensavvy/automation/containers/android:$ci_containers
   needs: [ os.version ]
 
 .kotlin-js-browser:
