@@ -1,36 +1,45 @@
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.painterResource
+package opensavvy.decouple.demo
 
-@OptIn(ExperimentalResourceApi::class)
+import androidx.compose.runtime.*
+import opensavvy.decouple.components.actions.Button
+import opensavvy.decouple.components.display.Text
+import opensavvy.decouple.demo.design.Components
+
+// This is the project's entrypoint.
+// All platform-specific code (androidMain, desktopMain…) is there to initialize the platform before this function
+// can be called.
+//
+// This function is responsible for starting your app and triggering everything else.
+// For example, you could put your navigation logic here.
 @Composable
-fun App() {
-    MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        val greeting = remember { Greeting().greet() }
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
-            }
-            AnimatedVisibility(showContent) {
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painterResource("compose-multiplatform.xml"), null)
-                    Text("Compose: $greeting")
-                }
-            }
-        }
-    }
+fun Components.App() {
+	Text("Welcome to the Decouple demo!")
+
+	Counter()
 }
+
+// This is a regular composable function written using Decouple.
+//
+// Notice that it is exactly the same as a normal composable function without Decouple, but with an added 'Components'
+// receiver.
+//
+// In the future, the receiver will be replaced by a context receiver.
+@Composable
+fun Components.Counter() {
+	var counter by remember { mutableStateOf(0) }
+
+	Button({ counter-- }) { Text("-") }
+	Text("$counter")
+	Button({ counter++ }) { Text("+") }
+	// ^ Notice that these components are *not* part of androidx.compose.
+	// Here, we are calling thin abstractions over other existing components.
+	// The actual implementation is delegated to the Components receiver, which allows this function to run
+	// in different conditions (e.g. on platforms which don't have canvas-based rendering).
+
+	// If you want to play a bit with this demo, don't hesitate to pause here and edit this block of code.
+	// When you open the project in IntelliJ (Community or Ultimate, as you prefer), there should already be
+	// a run configuration available for all projects.
+}
+
+// To learn more about how design systems are represented, open design/Components.kt.
+// Tip: CTRL+click on the 'Components' class used as receiver of the previous function.
