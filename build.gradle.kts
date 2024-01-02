@@ -14,6 +14,10 @@ plugins {
 	// Some plugins *must* be configured on the root project.
 	// In these cases, we explicitly tell Gradle not to apply them.
 	alias(opensavvyConventions.plugins.aligned.kotlin) apply false
+	alias(opensavvyConventions.plugins.aligned.composeMultiplatform) apply false
+
+	alias(demoLibs.plugins.androidApplication) apply false
+	alias(demoLibs.plugins.androidLibrary) apply false
 }
 
 dependencies {

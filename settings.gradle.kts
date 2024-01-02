@@ -16,9 +16,28 @@ pluginManagement {
 
 		// OpenSavvy conventions
 		maven("https://gitlab.com/api/v4/projects/51233470/packages/maven")
+
+		// Compose Multiplatform
+		maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 	}
 
 	includeBuild("gradle/conventions")
+}
+
+dependencyResolutionManagement {
+	repositories {
+		google()
+		mavenCentral()
+
+		// Compose Multiplatform
+		maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+	}
+
+	versionCatalogs {
+		create("demoLibs") {
+			from(files("gradle/demo.versions.toml"))
+		}
+	}
 }
 
 plugins {
@@ -29,11 +48,13 @@ include(
 	"gradle:templates:template-app",
 	"gradle:templates:template-lib",
 
-	"demo",
 	"polymorphism",
 	"components",
 
 	"designs:design-headless",
 	"designs:design-headless-prepared",
 	"designs:design-pure-css",
+
+	"demo",
+	"demo:composeApp",
 )
