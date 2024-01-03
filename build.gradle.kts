@@ -14,11 +14,19 @@ plugins {
 	// Some plugins *must* be configured on the root project.
 	// In these cases, we explicitly tell Gradle not to apply them.
 	alias(opensavvyConventions.plugins.aligned.kotlin) apply false
+	alias(opensavvyConventions.plugins.aligned.composeMultiplatform) apply false
+
+	alias(demoLibs.plugins.androidApplication) apply false
+	alias(demoLibs.plugins.androidLibrary) apply false
 }
 
 dependencies {
 	// List the 'library' projects
-	// dokkatoo(projects.core)
+	dokkatoo(projects.polymorphism)
+	dokkatoo(projects.components)
+	dokkatoo(projects.designs.designHeadless)
+	dokkatoo(projects.designs.designHeadlessPrepared)
+	dokkatoo(projects.designs.designPureCss)
 }
 
 // region Check the users of the project didn't forget to rename the group

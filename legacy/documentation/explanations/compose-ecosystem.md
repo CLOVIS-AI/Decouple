@@ -1,0 +1,21 @@
+# State of the Compose ecosystem
+
+The various Compose projects are [famously badly named](https://jakewharton.com/a-jetpack-compose-by-any-other-name/), making it hard to discuss them. In this section, we attempt to create an overview of the various efforts going around in the Compose ecosystem.
+
+> We are not affiliated with these projects. Our description of them and their goals is based on what we understood from their development, and not necessarily from official announcements on their part. If anything here is wrong or incomplete, please [report it](https://gitlab.com/opensavvy/decouple/-/issues/new) to us.
+
+**Compose** (created by Google) is a React-inspired multiplatform mutable tree management library. By itself, Compose is not necessarily used to display UI (for example, [Molecule](https://github.com/cashapp/molecule) uses Compose as a reactive stream abstraction). UI trees are a great fit for Compose, thanks to powerful state-management abstractions and high performance. All the projects mentioned in this file are UI components sets created on top of Compose.
+
+[**Jetpack Compose**](https://developer.android.com/jetpack/compose) (created by Google) is a component library for Android. Jetpack Compose is the recommended way to build UIs on Android, and will slowly replace the traditional Views framework thanks to its improved developer experience. Jetpack Compose is based on the [Skia](https://skia.org/) rendering engine, which powers Android and the Chrome browser.
+
+[**Compose Multiplatform**](https://www.jetbrains.com/lp/compose-mpp/) (created by JetBrains) uses [Skiko](https://github.com/JetBrains/skiko), JetBrains' Kotlin bindings for Skia, to port components from Jetpack Compose to other platforms supported by Kotlin. This approach leads to pixel-perfect similarities between platforms, an almost identical API on all platforms, and makes development much faster by avoiding the need to design an entirely new component library. However, the created UI will never be truly "native" on platforms where Skia is not native, so apps risk to "feel like Android" everywhere. This is especially visible on iOS and on Linux desktops. On the web, JetBrains Compose uses the canvas to draw its components, which may or may not be satisfying to all needs. For desktop targets, JetBrains also provides tooling to easily create installers for JVM-based apps, which may be used beyond Compose-based apps.
+
+[**Compose HTML**](https://github.com/JetBrains/compose-multiplatform#compose-html) (created by JetBrains) is a wrapper around the DOM components of the web platform for Kotlin/JS, styled in CSS. It is a direct equivalent to React DOM.
+
+[**Kobweb**](https://kobweb.varabyte.com/) (created by David Herman) adds features expected of modern web frameworks to Compose HTML, such as routing, Markdown support and more. It is built to be similar to Jetpack Compose when possible, diverging where the concepts do not fit with the web platform. Kobweb also provides a CLI app to easily bootstrap projects, which is useful for any web-based Kotlin project.
+
+[**Mosaic**](https://github.com/JakeWharton/mosaic) (created by Jake Wharton) is a set of Compose components to create CLI applications.
+
+[**Redwood**](https://github.com/cashapp/redwood) (created by CashApp) allows users to define a design system, and generates bindings on each platform to the native UI components (e.g. SwiftUI on iOS).
+
+[**Decouple**](https://gitlab.com/opensavvy/decouple) (created by Ivan Canet) aims to provide a set of high-level multiplatform components, delegating to one of the other libraries on each platform to seamlessly create an application that always follows the best practices of the platform it is running on. Users can override the implementation of any component even after an application is developed, ensuring design system changes do not require an app rewrite. Unlike Compose Multiplatform, Decouple-based apps do not necessarily have the same look on all platforms. Decouple shares the same overall goals as Redwood, but prefers first-class Kotlin concepts (e.g. interface delegation) to code generation, and focuses on interoperability with other libraries of the ecosystem.

@@ -1,9 +1,18 @@
 # List of dependencies of the project
 
 [versions]
+coroutines = "1.7.3"
+pedestal = "2.1.0"
+prepared = "0.6.0"
+purecss = "3.0.0"
 
 [plugins]
 
 [libraries]
+kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+pedestal-progress = { module = "dev.opensavvy.pedestal:progress", version.ref = "pedestal" }
+pedestal-progress-coroutines = { module = "dev.opensavvy.pedestal:progress-coroutines", version.ref = "pedestal" }
+prepared = { module = "dev.opensavvy.prepared:suite", version.ref = "prepared" }
+prepared-kotest = { module = "dev.opensavvy.prepared:runner-kotest", version.ref = "prepared" }
 
 [bundles]

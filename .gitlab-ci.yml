@@ -14,6 +14,13 @@ variables:
   # https://gitlab.com/opensavvy/automation/containers
   ci_containers: 0.3.0
 
+  # Kotlin Multiplatform
+  kotlin_jvm: "yes"
+  kotlin_js_browser: "yes"
+  kotlin_js_node: "no"
+  kotlin_native_linuxX64: "yes"
+  kotlin_native_iosArm64: "yes"
+
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
@@ -25,7 +32,7 @@ workflow:
 
 .kotlin-jvm:
   extends: [ .os.gradle ]
-  image: registry.gitlab.com/opensavvy/automation/containers/java:$ci_containers
+  image: registry.gitlab.com/opensavvy/automation/containers/android:$ci_containers
   needs: [ os.version ]
 
 .kotlin-js-browser:
