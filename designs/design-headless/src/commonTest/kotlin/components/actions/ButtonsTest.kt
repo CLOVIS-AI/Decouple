@@ -2,6 +2,7 @@ package opensavvy.decouple.headless.components.actions
 
 import io.kotest.matchers.shouldBe
 import opensavvy.decouple.components.actions.Button
+import opensavvy.decouple.components.display.Text
 import opensavvy.decouple.headless.prepared.headlessUI
 import opensavvy.prepared.suite.SuiteDsl
 
@@ -11,7 +12,9 @@ fun SuiteDsl.buttons() = suite("Buttons") {
 		var clicked = false
 
 		val ui = headlessUI {
-			Button({ clicked = true }) {}
+			Button({ clicked = true }) {
+				Text("Click me")
+			}
 		}.immediate()
 
 		ui.paused {
