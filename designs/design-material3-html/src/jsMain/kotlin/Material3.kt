@@ -3,6 +3,7 @@ package opensavvy.decouple.material3.html
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.components.DesignSystem
 import opensavvy.decouple.material3.html.components.actions.Buttons
+import opensavvy.decouple.material3.html.components.display.Texts
 import opensavvy.material3.css.InstallColorScheme
 import opensavvy.material3.tailwind.ExperimentalComponent
 import opensavvy.material3.tailwind.UnfinishedComponent
@@ -10,7 +11,8 @@ import opensavvy.material3.tailwind.UnfinishedComponent
 /**
  * A single interface that contains all components provided by this module.
  */
-interface Material3 : DesignSystem {
+interface Material3 : DesignSystem,
+	Texts {
 
 	override val name: String
 		get() = "Material3 (HTML implementation)"
