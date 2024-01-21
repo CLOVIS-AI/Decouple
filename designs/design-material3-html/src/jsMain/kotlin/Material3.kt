@@ -2,6 +2,7 @@ package opensavvy.decouple.material3.html
 
 import androidx.compose.runtime.Composable
 import opensavvy.decouple.components.DesignSystem
+import opensavvy.decouple.material3.html.components.actions.Buttons
 import opensavvy.material3.css.InstallColorScheme
 import opensavvy.material3.tailwind.ExperimentalComponent
 import opensavvy.material3.tailwind.UnfinishedComponent
@@ -36,5 +37,6 @@ interface Material3 : DesignSystem {
 	 */
 	@UnfinishedComponent
 	@ExperimentalComponent
-	interface Unstable : UnfinishedDesign
+	interface Unstable : UnfinishedDesign,
+		Buttons
 }
