@@ -123,6 +123,37 @@ check[iosArm64]:
   interruptible: true
 
 # endregion
+# region Demo
+
+demo:js:
+  extends: [ .kotlin-js-node ]
+  stage: build
+
+  script:
+    - >
+      ./gradlew :demo:composeApp:viteBuild
+      -PappVersion=$project_version
+
+  after_script:
+    - mkdir -p website
+    - mv demo/composeApp/build/vite/dist/* website
+    - PREFIX="$CI_PROJECT_ROOT_NAMESPACE/"
+    - echo "URL=https://$CI_PROJECT_ROOT_NAMESPACE.$CI_PAGES_DOMAIN/-/${CI_PROJECT_PATH//$PREFIX}/-/jobs/$CI_JOB_ID/artifacts/website/index.html" >>deploy.env
+
+  artifacts:
+    paths:
+      - website
+    reports:
+      dotenv: deploy.env
+
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG/browser-demo
+    url: $URL
+    deployment_tier: development
+
+  interruptible: true
+
+# endregion
 # region Publishing
 
 publish-maven:gitlab:

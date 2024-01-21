@@ -5,6 +5,8 @@ plugins {
     alias(opensavvyConventions.plugins.aligned.kotlin)
     alias(demoLibs.plugins.androidApplication)
     alias(opensavvyConventions.plugins.aligned.composeMultiplatform)
+
+    alias(demoLibs.plugins.vite)
 }
 
 kotlin {
@@ -29,6 +31,11 @@ kotlin {
     }
     
     jvm("desktop")
+
+    js(IR) {
+        browser()
+        binaries.executable()
+    }
     
     listOf(
         iosX64(),
@@ -56,6 +63,11 @@ kotlin {
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(projects.designs.designMaterial3Androidx)
+        }
+
+        jsMain.dependencies {
+            implementation(compose.html.core)
+            implementation(projects.designs.designPureCss)
         }
 
         iosMain.dependencies {
