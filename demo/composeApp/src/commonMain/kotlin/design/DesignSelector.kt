@@ -1,8 +1,9 @@
 package opensavvy.decouple.demo.design
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import opensavvy.decouple.components.Install
+import opensavvy.decouple.components.actions.ActionButton
+import opensavvy.decouple.components.display.Text
 
 // By default, Composable functions cannot call Decouple components: they require the Components receiver.
 // However, supplying the receiver manually (like we would do for regular extension functions) is not enough:
@@ -23,11 +24,19 @@ import opensavvy.decouple.components.Install
 fun InstallSelectedDesign(block: @Composable Components.() -> Unit) {
 	val designSystems = remember { designSystems() }
 
-	// For now, we just use the first one available.
-	// In the future, we will add a way to choose.
-	val currentDesignSystem = designSystems.first()
+	var currentDesignSystem by remember { mutableStateOf(designSystems.first()) }
 
-	Install(currentDesignSystem, block)
+	Install(currentDesignSystem) {
+		if (designSystems.size > 1) {
+			for (designSystem in designSystems) {
+				ActionButton(onClick = { currentDesignSystem = designSystem }) {
+					Text(designSystem.name)
+				}
+			}
+		}
+
+		block()
+	}
 }
 
 // To learn more about how each platform is initialized, see the places where InstallSelectedDesign is called.
