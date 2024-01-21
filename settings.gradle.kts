@@ -54,6 +54,7 @@ include(
 	"designs:design-headless",
 	"designs:design-headless-prepared",
 	"designs:design-material3-androidx",
+	"designs:design-material3-html",
 	"designs:design-pure-css",
 
 	"demo",
