@@ -29,7 +29,7 @@ interface Material3 : DesignSystem,
 	 *
 	 * These components are safe to use in regard to source and binary compatibility, but may not look great in all situations.
 	 */
-	@UnfinishedComponent
+	@OptIn(UnfinishedComponent::class)
 	interface UnfinishedDesign : Material3
 
 	/**
@@ -37,8 +37,7 @@ interface Material3 : DesignSystem,
 	 *
 	 * These components may change in source and binary incompatible ways in the future.
 	 */
-	@UnfinishedComponent
-	@ExperimentalComponent
+	@OptIn(UnfinishedComponent::class, ExperimentalComponent::class)
 	interface Unstable : UnfinishedDesign,
 		Buttons
 }

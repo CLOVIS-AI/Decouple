@@ -4,4 +4,5 @@ package opensavvy.decouple.demo.design
 // To select one, CTRL+click on it.
 actual fun designSystems(): List<Components> = listOf(
 	PureCSS,
+	Material3,
 )
