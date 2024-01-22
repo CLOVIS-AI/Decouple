@@ -7,6 +7,7 @@ plugins {
     alias(opensavvyConventions.plugins.aligned.composeMultiplatform)
 
     alias(demoLibs.plugins.vite)
+    alias(demoLibs.plugins.resources.consumer)
 }
 
 kotlin {
@@ -68,6 +69,11 @@ kotlin {
         jsMain.dependencies {
             implementation(compose.html.core)
             implementation(projects.designs.designPureCss)
+
+            implementation(projects.designs.designMaterial3Html)
+            implementation(devNpm("tailwindcss", demoLibs.versions.tailwindcss.get()))
+            implementation(devNpm("postcss", demoLibs.versions.postcss.get()))
+            implementation(devNpm("autoprefixer", demoLibs.versions.autoprefixer.get()))
         }
 
         iosMain.dependencies {
@@ -129,4 +135,8 @@ compose.desktop {
 
 compose.experimental {
     web.application {}
+}
+
+dependencies {
+    transitiveJsResources(libs.material3.html.config)
 }

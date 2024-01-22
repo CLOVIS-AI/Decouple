@@ -1,0 +1,6 @@
+/* noinspection CssUnknownTarget IDEA doesn't know the folder exists */
+@import "imported/material-colors.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

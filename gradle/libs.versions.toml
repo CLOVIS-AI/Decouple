@@ -5,6 +5,7 @@ coroutines = "1.7.3"
 pedestal = "2.1.0"
 prepared = "0.6.0"
 purecss = "3.0.0"
+material3-html = "0.3.0"
 
 [plugins]
 
@@ -14,5 +15,7 @@ pedestal-progress = { module = "dev.opensavvy.pedestal:progress", version.ref = 
 pedestal-progress-coroutines = { module = "dev.opensavvy.pedestal:progress-coroutines", version.ref = "pedestal" }
 prepared = { module = "dev.opensavvy.prepared:suite", version.ref = "prepared" }
 prepared-kotest = { module = "dev.opensavvy.prepared:runner-kotest", version.ref = "prepared" }
+material3-html = { module = "dev.opensavvy.material3.tailwind:components", version.ref = "material3-html" }
+material3-html-config = { module = "dev.opensavvy.material3.tailwind:tailwindcss", version.ref = "material3-html" }
 
 [bundles]

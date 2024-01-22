@@ -27,6 +27,8 @@ dependencies {
 	dokkatoo(projects.designs.designHeadless)
 	dokkatoo(projects.designs.designHeadlessPrepared)
 	dokkatoo(projects.designs.designPureCss)
+	dokkatoo(projects.designs.designMaterial3Androidx)
+	dokkatoo(projects.designs.designMaterial3Html)
 }
 
 // region Check the users of the project didn't forget to rename the group
