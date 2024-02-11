@@ -135,10 +135,10 @@ demo:js:
       -PappVersion=$project_version
 
   after_script:
-    - mkdir -p website
-    - mv demo/composeApp/build/vite/dist/* website
+    - mkdir -p demo-js
+    - mv demo/composeApp/build/vite/dist/* demo-js
     - PREFIX="$CI_PROJECT_ROOT_NAMESPACE/"
-    - echo "URL=https://$CI_PROJECT_ROOT_NAMESPACE.$CI_PAGES_DOMAIN/-/${CI_PROJECT_PATH//$PREFIX}/-/jobs/$CI_JOB_ID/artifacts/website/index.html" >>deploy.env
+    - echo "URL=https://$CI_PROJECT_ROOT_NAMESPACE.$CI_PAGES_DOMAIN/-/${CI_PROJECT_PATH//$PREFIX}/-/jobs/$CI_JOB_ID/artifacts/demo-js/index.html" >>deploy.env
 
   artifacts:
     paths:
@@ -147,7 +147,7 @@ demo:js:
       dotenv: deploy.env
 
   environment:
-    name: review/$CI_COMMIT_REF_SLUG/browser-demo
+    name: review/$CI_COMMIT_REF_SLUG/demo-js
     url: $URL
     deployment_tier: development
 
@@ -352,10 +352,13 @@ pages:
   needs:
     - job: dokka
       artifacts: true
+    - job: demo:js
+      artifacts: true
 
   script:
     - mkdir -p public
     - mv api-docs public
+    - mv demo-js public
 
   artifacts:
     paths:
