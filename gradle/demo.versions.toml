@@ -14,7 +14,7 @@ androidx-material = "1.11.0"
 androidx-test-junit = "1.1.5"
 compose-compiler = "1.5.6"
 vite = "0.3.6"                           # https://gitlab.com/opensavvy/automation/kotlin-vite/-/releases
-resources-kjs = "0.1.3"                  # https://gitlab.com/opensavvy/automation/kotlin-js-resources/-/releases
+resources-kjs = "0.2.1"                  # https://gitlab.com/opensavvy/automation/kotlin-js-resources/-/releases
 
 # CSS
 tailwindcss = "3.4.1"                    # https://www.npmjs.com/package/tailwindcss
