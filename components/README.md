@@ -54,3 +54,18 @@ Text is the most important way to communicate static information to the user.
 |                                                      |                         |
 |------------------------------------------------------|-------------------------|
 | [`Text`](opensavvy.decouple.components.display.Text) | Simple unformatted text |
+
+# Package opensavvy.decouple.components.layouts
+
+Components used to specify the visual position of other components.
+
+## Column and Row
+
+> [Specification](opensavvy.decouple.components.layouts.LinearLayouts)
+
+`Column` and `Row` are simple linear layouts: components are laid on top of each other.
+
+|                                                          |                                                |
+|----------------------------------------------------------|------------------------------------------------|
+| [`Column`](opensavvy.decouple.components.layouts.Column) | Lay components vertically below each other     |
+| [`Row`](opensavvy.decouple.components.layouts.Row)       | Lay components horizontally next to each other |
