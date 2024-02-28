@@ -5,7 +5,7 @@ coroutines = "1.8.0"          # https://github.com/Kotlin/kotlinx.coroutines/rel
 pedestal = "2.1.1"            # https://gitlab.com/opensavvy/pedestal/-/releases
 prepared = "1.0.0-rc.2"       # https://gitlab.com/opensavvy/prepared/-/releases
 purecss = "3.0.0"             # https://www.npmjs.com/package/purecss
-material3-html = "0.3.0"      # https://gitlab.com/opensavvy/ui/compose-material3-tailwind/-/releases
+material3-html = "0.3.1"      # https://gitlab.com/opensavvy/ui/compose-material3-tailwind/-/releases
 
 [plugins]
 
