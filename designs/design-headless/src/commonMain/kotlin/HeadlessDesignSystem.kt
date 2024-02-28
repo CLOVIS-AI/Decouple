@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import opensavvy.decouple.components.DesignSystem
 import opensavvy.decouple.headless.components.actions.Buttons
 import opensavvy.decouple.headless.components.display.Texts
+import opensavvy.decouple.headless.components.layouts.LinearLayouts
 import opensavvy.decouple.headless.debug.Spies
 import opensavvy.decouple.headless.execution.runHeadlessUI
 
@@ -16,6 +17,7 @@ import opensavvy.decouple.headless.execution.runHeadlessUI
 interface HeadlessDesignComponents :
 	Buttons,
 	Texts,
+	LinearLayouts,
 	Spies
 
 /**
