@@ -1,7 +1,7 @@
 # List of dependencies for the demo
 
 [versions]
-agp = "8.1.4"
+agp = "8.2.2"
 android-compileSdk = "34"                # https://apilevels.com/
 android-minSdk = "24"
 android-targetSdk = "34"
