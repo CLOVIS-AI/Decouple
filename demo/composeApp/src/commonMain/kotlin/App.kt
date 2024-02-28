@@ -3,6 +3,9 @@ package opensavvy.decouple.demo
 import androidx.compose.runtime.*
 import opensavvy.decouple.components.actions.Button
 import opensavvy.decouple.components.display.Text
+import opensavvy.decouple.components.layout.Alignment
+import opensavvy.decouple.components.layout.Column
+import opensavvy.decouple.components.layout.Row
 import opensavvy.decouple.demo.design.Components
 
 // This is the project's entrypoint.
@@ -12,7 +15,7 @@ import opensavvy.decouple.demo.design.Components
 // This function is responsible for starting your app and triggering everything else.
 // For example, you could put your navigation logic here.
 @Composable
-fun Components.App() {
+fun Components.App() = Column {
 	Text("Welcome to the Decouple demo!")
 
 	Counter()
@@ -28,9 +31,11 @@ fun Components.App() {
 fun Components.Counter() {
 	var counter by remember { mutableStateOf(0) }
 
-	Button({ counter-- }) { Text("-") }
-	Text("$counter")
-	Button({ counter++ }) { Text("+") }
+	Row(alignment = Alignment.Center) {
+		Button({ counter-- }) { Text("-") }
+		Text("$counter")
+		Button({ counter++ }) { Text("+") }
+	}
 	// ^ Notice that these components are *not* part of androidx.compose.
 	// Here, we are calling thin abstractions over other existing components.
 	// The actual implementation is delegated to the Components receiver, which allows this function to run

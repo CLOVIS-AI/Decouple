@@ -4,6 +4,8 @@ import androidx.compose.runtime.*
 import opensavvy.decouple.components.Install
 import opensavvy.decouple.components.actions.ActionButton
 import opensavvy.decouple.components.display.Text
+import opensavvy.decouple.components.layout.Column
+import opensavvy.decouple.components.layout.Row
 
 // By default, Composable functions cannot call Decouple components: they require the Components receiver.
 // However, supplying the receiver manually (like we would do for regular extension functions) is not enough:
@@ -27,15 +29,19 @@ fun InstallSelectedDesign(block: @Composable Components.() -> Unit) {
 	var currentDesignSystem by remember { mutableStateOf(designSystems.first()) }
 
 	Install(currentDesignSystem) {
-		if (designSystems.size > 1) {
-			for (designSystem in designSystems) {
-				ActionButton(onClick = { currentDesignSystem = designSystem }) {
-					Text(designSystem.name)
+		Column {
+			if (designSystems.size > 1) {
+				Row {
+					for (designSystem in designSystems) {
+						ActionButton(onClick = { currentDesignSystem = designSystem }) {
+							Text(designSystem.name)
+						}
+					}
 				}
 			}
-		}
 
-		block()
+			block()
+		}
 	}
 }
 
