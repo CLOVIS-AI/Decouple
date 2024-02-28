@@ -1,11 +1,11 @@
 # List of dependencies of the project
 
 [versions]
-coroutines = "1.7.3"
-pedestal = "2.1.0"
-prepared = "0.6.0"
-purecss = "3.0.0"
-material3-html = "0.3.0"
+coroutines = "1.7.3"          # https://github.com/Kotlin/kotlinx.coroutines/releases
+pedestal = "2.1.0"            # https://gitlab.com/opensavvy/pedestal/-/releases
+prepared = "0.6.0"            # https://gitlab.com/opensavvy/prepared/-/releases
+purecss = "3.0.0"             # https://www.npmjs.com/package/purecss
+material3-html = "0.3.0"      # https://gitlab.com/opensavvy/ui/compose-material3-tailwind/-/releases
 
 [plugins]
 
