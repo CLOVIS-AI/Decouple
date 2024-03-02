@@ -3,6 +3,7 @@ package opensavvy.decouple.demo.design
 import opensavvy.decouple.components.DesignSystem
 import opensavvy.decouple.components.actions.Buttons
 import opensavvy.decouple.components.display.Texts
+import opensavvy.decouple.components.layout.LinearLayouts
 
 // When using Decouple, you need to explicitly say which components you want to use in your project.
 // This allows you to override any component: you can override a component, and all its usages (even if they are
@@ -16,6 +17,7 @@ import opensavvy.decouple.components.display.Texts
 // its own platform-specific source set.
 interface Components : DesignSystem,
 	Buttons,
+	LinearLayouts,
 	Texts
 
 // Now that we have declared which components we want to use, we can write all our common code by creating composable
