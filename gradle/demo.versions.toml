@@ -20,6 +20,8 @@ resources-kjs = "0.2.1"                  # https://gitlab.com/opensavvy/automati
 tailwindcss = "3.4.3"                    # https://www.npmjs.com/package/tailwindcss
 postcss = "8.4.38"                       # https://www.npmjs.com/package/postcss
 autoprefixer = "10.4.19"                 # https://www.npmjs.com/package/autoprefixer
+caniuse-lite = "1.0.30001610"            # https://www.npmjs.com/package/caniuse-lite
+browserslist = "4.23.0"                  # https://www.npmjs.com/package/browserslist
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
