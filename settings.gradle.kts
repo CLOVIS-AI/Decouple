@@ -9,25 +9,10 @@
 
 rootProject.name = "Decouple"
 
-pluginManagement {
-	repositories {
-		gradlePluginPortal()
-		google()
-
-		// OpenSavvy conventions
-		maven("https://gitlab.com/api/v4/projects/51233470/packages/maven")
-
-		// Compose Multiplatform
-		maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-	}
-
-	includeBuild("gradle/conventions")
-}
-
 dependencyResolutionManagement {
 	repositories {
-		google()
 		mavenCentral()
+		google()
 
 		// Compose Multiplatform
 		maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
@@ -40,14 +25,42 @@ dependencyResolutionManagement {
 	}
 }
 
+pluginManagement {
+	repositories {
+		// region OpenSavvy Conventions
+
+		maven {
+			name = "opensavvy-gradle-conventions"
+			url = uri("https://gitlab.com/api/v4/projects/51233470/packages/maven")
+
+			metadataSources {
+				gradleMetadata()
+				mavenPom()
+			}
+
+			content {
+				includeGroupAndSubgroups("dev.opensavvy")
+			}
+		}
+
+		// endregion
+		// region Standard repositories
+
+		gradlePluginPortal()
+		google()
+		mavenCentral()
+
+		// endregion
+	}
+
+	includeBuild("gradle/conventions")
+}
+
 plugins {
-	id("dev.opensavvy.conventions.settings") version "1.1.0"
+	id("dev.opensavvy.conventions.settings") version "1.2.0"
 }
 
 include(
-	"gradle:templates:template-app",
-	"gradle:templates:template-lib",
-
 	"polymorphism",
 	"components",
 
@@ -59,4 +72,7 @@ include(
 
 	"demo",
 	"demo:composeApp",
+
+	"gradle:templates:template-app",
+	"gradle:templates:template-lib",
 )

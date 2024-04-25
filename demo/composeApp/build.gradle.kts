@@ -74,6 +74,8 @@ kotlin {
             implementation(devNpm("tailwindcss", demoLibs.versions.tailwindcss.get()))
             implementation(devNpm("postcss", demoLibs.versions.postcss.get()))
             implementation(devNpm("autoprefixer", demoLibs.versions.autoprefixer.get()))
+            implementation(devNpm("caniuse-lite", demoLibs.versions.caniuse.lite.get()))
+            implementation(devNpm("browserslist", demoLibs.versions.browserslist.get()))
         }
 
         iosMain.dependencies {
