@@ -5,6 +5,7 @@ plugins {
     alias(opensavvyConventions.plugins.aligned.kotlin)
     alias(demoLibs.plugins.androidApplication)
     alias(opensavvyConventions.plugins.aligned.composeMultiplatform)
+    alias(opensavvyConventions.plugins.aligned.composeCompiler)
 
     alias(demoLibs.plugins.vite)
     alias(demoLibs.plugins.resources.consumer)
