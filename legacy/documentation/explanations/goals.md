@@ -18,7 +18,7 @@ Ultimately, Decouple is only limited in the platforms it can support by what Kot
 
 ## But, context receivers are not yet available?
 
-> If context receivers are available on all platforms we support when you read this, please [report to us](https://gitlab.com/opensavvy/decouple/-/issues/new) that we forgot to update this page!
+> If context receivers are available on all platforms we support when you read this, please [report to us](https://gitlab.com/opensavvy/ui/decouple/-/issues/new) that we forgot to update this page!
 
 Until context receivers are available, we are emulating them with [composition locals](https://developer.android.com/jetpack/compose/compositionlocal). Composition locals are not type-safe (components can not declare compile-time dependencies on a subset of the available components), and force the existence of a god-interface, `UI`, which declares all components of Decouple. This interface has the major downside that any modification to any component (including the introduction of new ones) is a binary breaking change for all users of Decouple, as well as source breaking change for all implementations of the `UI` interface. It also stops downstream users to declare their own components (since they would need to be added to the `UI` interface).
 

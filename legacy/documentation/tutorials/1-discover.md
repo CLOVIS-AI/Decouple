@@ -19,7 +19,7 @@ For this tutorial, we will avoid setting up a project. Instead, we will clone th
 First, clone the project:
 
 ```shell
-git clone https://gitlab.com/opensavvy/decouple.git
+git clone https://gitlab.com/opensavvy/ui/decouple.git
 cd decouple
 ```
 

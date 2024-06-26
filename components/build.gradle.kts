@@ -32,7 +32,7 @@ kotlin {
 library {
 	name.set("Component library")
 	description.set("Standardized component list that forms the basis of most applications")
-	homeUrl.set("https://gitlab.com/opensavvy/decouple")
+	homeUrl.set("https://gitlab.com/opensavvy/ui/decouple")
 
 	license.set {
 		name.set("Apache 2.0")

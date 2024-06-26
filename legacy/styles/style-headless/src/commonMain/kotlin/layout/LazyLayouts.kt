@@ -13,7 +13,7 @@ object TLazyLayouts : LazyLayouts {
 		alignment: Alignment,
 		content: LazyLayouts.LazyColumnScope.() -> Unit,
 	) {
-		TODO("Will be implemented in https://gitlab.com/opensavvy/decouple/-/issues/91")
+		TODO("Will be implemented in https://gitlab.com/opensavvy/ui/decouple/-/issues/91")
 	}
 
 	@Composable
@@ -22,7 +22,7 @@ object TLazyLayouts : LazyLayouts {
 		alignment: Alignment,
 		content: LazyLayouts.LazyRowScope.() -> Unit,
 	) {
-		TODO("Will be implemented in https://gitlab.com/opensavvy/decouple/-/issues/91")
+		TODO("Will be implemented in https://gitlab.com/opensavvy/ui/decouple/-/issues/91")
 	}
 
 }
