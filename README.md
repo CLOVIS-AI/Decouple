@@ -144,7 +144,7 @@ With Decouple, you will be able to:
 
 Currently, Decouple is at fairly early stages. In [our previous version](legacy), we proved that the technology worked. Now, we're reworking the project to follow its ideal structure: we have removed many workarounds we needed because of previous Compose bugs, and we extracted many utilities we built to other repositories.
 
-If you just want to use our syntax without a component library, [you can already do so](https://opensavvy.gitlab.io/decouple/api-docs/polymorphism/index.html).
+If you just want to use our syntax without a component library, [you can already do so](https://opensavvy.gitlab.io/ui/decouple/api-docs/polymorphism/index.html).
 
 We are building a component library, but it's not an easy task: we are categorizing all components _by their role, not their looks_. This is important to ensure design decisions are made by the implementation layer. If you'd like to help with that, please get in touch!
 
@@ -158,9 +158,9 @@ You can also help out by creating Compose compatibility layers for other popular
 
 To discover how Decouple is used in practice, [the demo](demo/README.md) is a commented example.
 
-To learn more about the project, how to use it, and the list of available components, see [our documentation](https://opensavvy.gitlab.io/decouple/api-docs/index.html) ([older versions](https://javadoc.io/doc/dev.opensavvy.decouple)).
+To learn more about the project, how to use it, and the list of available components, see [our documentation](https://opensavvy.gitlab.io/ui/decouple/api-docs/index.html) ([older versions](https://javadoc.io/doc/dev.opensavvy.decouple)).
 
-Information on our future plans are available [in our issue tracker](https://gitlab.com/opensavvy/decouple/-/issues).
+Information on our future plans are available [in our issue tracker](https://gitlab.com/opensavvy/ui/decouple/-/issues).
 
 ## License
 

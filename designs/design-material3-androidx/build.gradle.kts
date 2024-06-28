@@ -27,7 +27,7 @@ kotlin {
 library {
 	name.set("Design system: Material3 (AndroidX implementation)")
 	description.set("Material3 design system from Jetpack Compose")
-	homeUrl.set("https://gitlab.com/opensavvy/decouple")
+	homeUrl.set("https://gitlab.com/opensavvy/ui/decouple")
 
 	license.set {
 		name.set("Apache 2.0")

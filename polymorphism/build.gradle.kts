@@ -25,7 +25,7 @@ kotlin {
 library {
 	name.set("Polymorphic Compose")
 	description.set("Architecture to declare polymorphic Compose Multiplatform components")
-	homeUrl.set("https://gitlab.com/opensavvy/decouple")
+	homeUrl.set("https://gitlab.com/opensavvy/ui/decouple")
 
 	license.set {
 		name.set("Apache 2.0")

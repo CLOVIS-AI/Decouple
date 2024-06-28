@@ -28,7 +28,7 @@ kotlin {
 library {
 	name.set("Design system: Pure.css")
 	description.set("Components built with a set of small, responsive CSS modules")
-	homeUrl.set("https://gitlab.com/opensavvy/decouple")
+	homeUrl.set("https://gitlab.com/opensavvy/ui/decouple")
 
 	license.set {
 		name.set("Apache 2.0")

@@ -38,7 +38,7 @@ kotlin {
 library {
 	name.set("Design system: Headless")
 	description.set("Headless implementation of the Decouple component library to help test the behavior of a UI")
-	homeUrl.set("https://gitlab.com/opensavvy/decouple")
+	homeUrl.set("https://gitlab.com/opensavvy/ui/decouple")
 
 	license.set {
 		name.set("Apache 2.0")

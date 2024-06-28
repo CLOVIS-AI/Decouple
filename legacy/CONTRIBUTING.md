@@ -2,14 +2,14 @@
 
 Thanks for wanting to contribute to the project!
 
-There are many things we appreciate help with. The simplest is to [report problems](https://gitlab.com/opensavvy/decouple/-/issues/new) you see in the documentation or while using the project.
+There are many things we appreciate help with. The simplest is to [report problems](https://gitlab.com/opensavvy/ui/decouple/-/issues/new) you see in the documentation or while using the project.
 
 ## Issue tracking
 
 We use labels to organize issues.
 
 > If you are reading this page in the GitLab UI, you can click on any label to see related issues.
-> If you are seeing this file in another tool, you can manually search by label in the [issue page](https://gitlab.com/opensavvy/decouple/-/issues).
+> If you are seeing this file in another tool, you can manually search by label in the [issue page](https://gitlab.com/opensavvy/ui/decouple/-/issues).
 
 Issue categories:
 
@@ -69,7 +69,7 @@ Before starting to work on any major feature, component addition or platform add
 
 We are also grateful for blog articles mentioning the project, but please mention to your users that Decouple is not ready for production use.
 
-> If we forget to remove this disclaimer when Decouple eventually goes stable, please [report it to us](https://gitlab.com/opensavvy/decouple/-/issues/new).
+> If we forget to remove this disclaimer when Decouple eventually goes stable, please [report it to us](https://gitlab.com/opensavvy/ui/decouple/-/issues/new).
 
 The details about our workflow, our code style and our commit style
 are [available in our wiki](https://gitlab.com/opensavvy/wiki/-/blob/main/README.md).

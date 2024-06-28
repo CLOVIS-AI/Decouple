@@ -32,6 +32,6 @@ In the future, this section will have guides to set a new project with Decouple.
 The reference is documented directly in the code using [KDoc](https://kotlinlang.org/docs/kotlin-doc.html).
 Comments are extracted and generated into a static website using [Dokka](https://kotlinlang.org/docs/dokka-introduction.html).
 
-To browse the generated site for the latest Decouple version, [click here](https://opensavvy.gitlab.io/decouple/documentation/index.html).
+To browse the generated site for the latest Decouple version, [click here](https://opensavvy.gitlab.io/ui/decouple/documentation/index.html).
 
 To generate the site for any other version, clone the repository, run the command `./gradlew dokkaHtmlMultiModule` and look into [build/dokka/htmlMultiModule](../build/dokka/htmlMultiModule).

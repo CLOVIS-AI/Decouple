@@ -41,8 +41,8 @@ All rights to the Decouple logo and identity are reserved.
 
 ## Contribution
 
-Development takes place in the [OpenSavvy GitLab repository](https://gitlab.com/opensavvy/decouple).
-This is also the recommended place to [report problems and feature requests](https://gitlab.com/opensavvy/decouple/-/issues).
+Development takes place in the [OpenSavvy GitLab repository](https://gitlab.com/opensavvy/ui/decouple).
+This is also the recommended place to [report problems and feature requests](https://gitlab.com/opensavvy/ui/decouple/-/issues).
 
 To learn more about the various ways to contribute, please read our [contribution guide](CONTRIBUTING.md).
 

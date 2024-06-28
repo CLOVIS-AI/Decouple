@@ -26,4 +26,4 @@ var value by remember { persistentStateOf("your.app.value") { 0 } }
 As standard with Compose state management, a persistent state is usable outside composables (for example in your view models).
 For more information, see the [`persistentStateOf`](opensavvy.decouple.persist.persistentStateOf) documentation.
 
-**Platform support**. To request support for another platform, please [create an issue](https://gitlab.com/opensavvy/decouple/-/issues/new) and describe how persistence can be implemented on the platform, or submit a new merge request directly to the project.
+**Platform support**. To request support for another platform, please [create an issue](https://gitlab.com/opensavvy/ui/decouple/-/issues/new) and describe how persistence can be implemented on the platform, or submit a new merge request directly to the project.
