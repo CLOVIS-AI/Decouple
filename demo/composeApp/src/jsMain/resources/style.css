@@ -1,6 +1,3 @@
 /* noinspection CssUnknownTarget IDEA doesn't know the folder exists */
-@import "imported/material-colors.css";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "imported/mdk.css";
+@import "imported/mdk-components.css";

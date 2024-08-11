@@ -5,23 +5,16 @@ agp = "8.2.2"
 android-compileSdk = "34"                # https://apilevels.com/
 android-minSdk = "24"
 android-targetSdk = "34"
-androidx-activityCompose = "1.8.2"
-androidx-appcompat = "1.6.1"
+androidx-activityCompose = "1.9.1"
+androidx-appcompat = "1.7.0"
 androidx-constraintlayout = "2.1.4"
-androidx-core-ktx = "1.12.0"
-androidx-espresso-core = "3.5.1"
-androidx-material = "1.11.0"
-androidx-test-junit = "1.1.5"
+androidx-core-ktx = "1.13.1"
+androidx-espresso-core = "3.6.1"
+androidx-material = "1.12.0"
+androidx-test-junit = "1.2.1"
 compose-compiler = "1.5.6"
-vite = "0.3.6"                           # https://gitlab.com/opensavvy/automation/kotlin-vite/-/releases
-resources-kjs = "0.2.1"                  # https://gitlab.com/opensavvy/automation/kotlin-js-resources/-/releases
-
-# CSS
-tailwindcss = "3.4.3"                    # https://www.npmjs.com/package/tailwindcss
-postcss = "8.4.38"                       # https://www.npmjs.com/package/postcss
-autoprefixer = "10.4.19"                 # https://www.npmjs.com/package/autoprefixer
-caniuse-lite = "1.0.30001610"            # https://www.npmjs.com/package/caniuse-lite
-browserslist = "4.23.0"                  # https://www.npmjs.com/package/browserslist
+vite = "0.4.0"                           # https://gitlab.com/opensavvy/automation/kotlin-vite/-/releases
+resources-kjs = "0.3.0"                  # https://gitlab.com/opensavvy/automation/kotlin-js-resources/-/releases
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }

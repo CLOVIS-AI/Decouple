@@ -5,9 +5,9 @@ import opensavvy.decouple.components.DesignSystem
 import opensavvy.decouple.material3.html.components.actions.Buttons
 import opensavvy.decouple.material3.html.components.display.Texts
 import opensavvy.decouple.material3.html.components.layouts.LinearLayouts
-import opensavvy.material3.css.InstallColorScheme
-import opensavvy.material3.tailwind.ExperimentalComponent
-import opensavvy.material3.tailwind.UnfinishedComponent
+import opensavvy.material3.html.ExperimentalComponent
+import opensavvy.material3.html.UnfinishedComponent
+import opensavvy.material3.theme.InstallColorScheme
 
 /**
  * A single interface that contains all components provided by this module.
