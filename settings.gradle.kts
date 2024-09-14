@@ -10,6 +10,7 @@
 rootProject.name = "Decouple"
 
 dependencyResolutionManagement {
+	@Suppress("UnstableApiUsage")
 	repositories {
 		mavenCentral()
 		google()
@@ -39,6 +40,7 @@ pluginManagement {
 			}
 
 			content {
+				@Suppress("UnstableApiUsage")
 				includeGroupAndSubgroups("dev.opensavvy")
 			}
 		}
