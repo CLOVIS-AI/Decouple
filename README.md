@@ -173,7 +173,3 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 - This project is based on the [OpenSavvy Playground](docs/playground/README.md), a collection of preconfigured project templates.
 
 If you don't want to clone this project on your machine, it is also available using [GitPod](https://www.gitpod.io/) and [DevContainer](https://containers.dev/) ([VS Code](https://code.visualstudio.com/docs/devcontainers/containers) • [IntelliJ & JetBrains IDEs](https://www.jetbrains.com/help/idea/connect-to-devcontainer.html)). Don't hesitate to create issues if you have problems getting the project up and running.
-
-## Sponsors
-
-[![4SH Logo](https://www.4sh.fr/assets/img/svg/4sh_logo.svg)](https://www.4sh.fr/)
